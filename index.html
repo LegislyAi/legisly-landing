@@ -15,6 +15,9 @@
             padding: 0;
             box-sizing: border-box;
         }
+        html {
+            overflow-x: clip;
+        }
 
         :root {
             --bg-primary: #0B1120;
@@ -207,6 +210,7 @@
             gap: 4rem;
             max-width: 1400px;
             margin: 0 auto;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -1083,6 +1087,7 @@
             background: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
             position: relative;
+            overflow: hidden;
         }
 
         .cta-section::before {
