@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" rx="0" fill="#0B1120"/>
+  <!-- Lowercase 'l' as a geometric shape -->
+  <rect x="120" y="100" width="44" height="176" rx="0" fill="#F1F5F9"/>
+  <rect x="120" y="244" width="104" height="40" rx="0" fill="#F1F5F9"/>
+  <!-- Teal accent period -->
+  <circle cx="252" cy="264" r="20" fill="#14B8A6"/>
+</svg>
