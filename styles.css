@@ -6,6 +6,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    overflow-x: clip;
+}
 :root {
     --bg-primary: #0a0a0a;
     --bg-secondary: #111111;
@@ -120,6 +123,9 @@ nav {
     padding: 10rem 4rem 4rem;
     text-align: center;
     position: relative;
+}
+.page-header {
+    overflow: hidden;
 }
 .page-header::before {
     content: '';
