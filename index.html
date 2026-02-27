@@ -58,6 +58,25 @@
     .logo:hover {
       color: var(--orange-warm);
     }
+    /* Logo Lockup (Seal + Wordmark) */
+    .logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-lockup:hover { text-decoration: none; }
+    .logo-lockup .logo-seal { flex-shrink: 0; }
+    .logo-lockup .logo-text {
+      font-family: 'Righteous', cursive;
+      font-size: 2rem;
+      color: var(--yellow-vintage);
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+    .logo-lockup:hover .logo-text { color: var(--orange-warm); }
+    footer .logo-lockup .logo-seal { width: 36px; height: 36px; }
+    footer .logo-lockup .logo-text { font-size: 1.6rem; }
     /* Navigation */
     nav {
       position: fixed;
@@ -877,7 +896,10 @@
 <body>
   <!-- Navigation -->
   <nav>
-    <a href="index.html" class="logo">legisly<span class="dot">.</span></a>
+    <a href="index.html" class="logo-lockup">
+                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Righteous,cursive" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
+                    <span class="logo-text">legisly</span>
+                </a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -1072,7 +1094,10 @@
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
-        <a href="index.html" class="logo">legisly<span class="dot">.</span></a>
+        <a href="index.html" class="logo-lockup">
+                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Righteous,cursive" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
+                    <span class="logo-text">legisly</span>
+                </a>
         <p>AI-powered legislative tools that let any business compete &mdash; and win. The playing field, leveled.</p>
       </div>
       <div class="footer-column">

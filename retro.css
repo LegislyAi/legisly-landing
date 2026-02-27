@@ -51,6 +51,28 @@ a:hover { color: var(--red-accent); }
 .logo .dot { color: var(--yellow-vintage); }
 .logo:hover { color: var(--orange-warm); }
 
+/* ---- Logo Lockup (Seal + Wordmark) ---- */
+.logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.logo-lockup:hover { text-decoration: none; }
+.logo-lockup .logo-seal { flex-shrink: 0; }
+.logo-lockup .logo-text {
+  font-family: 'Righteous', cursive;
+  font-size: 2rem;
+  color: var(--yellow-vintage);
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+.logo-lockup:hover .logo-text { color: var(--orange-warm); }
+
+/* Footer lockup — slightly smaller */
+footer .logo-lockup .logo-seal { width: 36px; height: 36px; }
+footer .logo-lockup .logo-text { font-size: 1.6rem; }
+
 /* ---- Navigation ---- */
 nav {
   position: fixed;
