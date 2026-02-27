@@ -9,10 +9,10 @@
   <rect width="1200" height="630" fill="url(#grid)"/>
   <!-- Glow -->
   <ellipse cx="600" cy="315" rx="400" ry="200" fill="#14B8A6" opacity="0.06"/>
-  <!-- legisly text (lowercase) -->
-  <text x="588" y="290" text-anchor="middle" font-family="'Space Grotesk', 'Arial', sans-serif" font-size="96" font-weight="700" letter-spacing="4" fill="#F1F5F9">legisly</text>
-  <!-- Teal dot accent -->
-  <circle cx="690" cy="282" r="7" fill="#14B8A6"/>
+  <!-- legisly. text (lowercase) -->
+  <text x="600" y="290" text-anchor="middle" font-family="'Space Grotesk', 'Arial', sans-serif" font-size="96" font-weight="700" letter-spacing="4">
+    <tspan fill="#F1F5F9">legisly</tspan><tspan fill="#14B8A6">.</tspan>
+  </text>
   <!-- Tagline -->
   <text x="600" y="370" text-anchor="middle" font-family="'Inter', 'Arial', sans-serif" font-size="28" font-weight="400" fill="#94A3B8">Your unfair advantage in policy.</text>
   <!-- Bottom border accent -->
