@@ -923,58 +923,86 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <!-- 3D Capitol Dome -->
+    <!-- Capitol Dome -->
     <div class="capitol-container">
-      <div class="capitol-layer capitol-layer-1">
-        <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="60" y="320" width="30" height="140" fill="#0F2342" opacity="0.5"/>
-          <rect x="120" y="320" width="30" height="140" fill="#0F2342" opacity="0.5"/>
-          <rect x="180" y="320" width="30" height="140" fill="#0F2342" opacity="0.5"/>
-          <rect x="240" y="320" width="30" height="140" fill="#0F2342" opacity="0.5"/>
-          <rect x="300" y="320" width="30" height="140" fill="#0F2342" opacity="0.5"/>
-        </svg>
-      </div>
-      <div class="capitol-layer capitol-layer-2">
-        <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="30" y="460" width="340" height="30" fill="#E8DCC8" stroke="#2D1810" stroke-width="3"/>
-          <rect x="40" y="440" width="320" height="25" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
-          <rect x="55" y="310" width="35" height="135" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
-          <rect x="115" y="310" width="35" height="135" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
-          <rect x="175" y="310" width="35" height="135" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
-          <rect x="235" y="310" width="35" height="135" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
-          <rect x="295" y="310" width="35" height="135" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
-          <rect x="50" y="300" width="45" height="15" fill="#F2C744" stroke="#2D1810" stroke-width="2"/>
-          <rect x="110" y="300" width="45" height="15" fill="#F2C744" stroke="#2D1810" stroke-width="2"/>
-          <rect x="170" y="300" width="45" height="15" fill="#F2C744" stroke="#2D1810" stroke-width="2"/>
-          <rect x="230" y="300" width="45" height="15" fill="#F2C744" stroke="#2D1810" stroke-width="2"/>
-          <rect x="290" y="300" width="45" height="15" fill="#F2C744" stroke="#2D1810" stroke-width="2"/>
-          <polygon points="200,240 40,300 360,300" fill="#FAF3E3" stroke="#2D1810" stroke-width="3"/>
-          <polygon points="200,255 70,295 330,295" fill="#E8DCC8" stroke="#2D1810" stroke-width="1"/>
-        </svg>
-      </div>
-      <div class="capitol-layer capitol-layer-3">
-        <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="200" cy="240" rx="90" ry="25" fill="#E8DCC8" stroke="#2D1810" stroke-width="3"/>
-          <path d="M110 240 Q110 140 200 100 Q290 140 290 240" fill="#FAF3E3" stroke="#2D1810" stroke-width="3"/>
-          <path d="M140 235 Q145 160 200 125" stroke="#2D1810" stroke-width="1.5" fill="none"/>
-          <path d="M170 238 Q175 155 200 120" stroke="#2D1810" stroke-width="1.5" fill="none"/>
-          <path d="M200 240 L200 105" stroke="#2D1810" stroke-width="1.5"/>
-          <path d="M230 238 Q225 155 200 120" stroke="#2D1810" stroke-width="1.5" fill="none"/>
-          <path d="M260 235 Q255 160 200 125" stroke="#2D1810" stroke-width="1.5" fill="none"/>
-          <rect x="125" y="190" width="15" height="25" rx="7" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
-          <rect x="155" y="175" width="15" height="30" rx="7" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
-          <rect x="192" y="165" width="16" height="35" rx="8" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
-          <rect x="230" y="175" width="15" height="30" rx="7" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
-          <rect x="260" y="190" width="15" height="25" rx="7" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
-          <rect x="180" y="80" width="40" height="25" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
-          <ellipse cx="200" cy="80" rx="25" ry="8" fill="#F2C744" stroke="#2D1810" stroke-width="2"/>
-          <path d="M175 80 Q175 55 200 45 Q225 55 225 80" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
-          <line x1="200" y1="45" x2="200" y2="25" stroke="#2D1810" stroke-width="3"/>
-          <circle cx="200" cy="20" r="8" fill="#F2C744" stroke="#2D1810" stroke-width="2"/>
-          <line x1="200" y1="20" x2="200" y2="0" stroke="#2D1810" stroke-width="2"/>
-          <rect x="200" y="2" width="25" height="15" fill="#C73E3A" stroke="#2D1810" stroke-width="1"/>
-        </svg>
-      </div>
+      <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Base / Steps -->
+        <rect x="20" y="465" width="360" height="18" rx="2" fill="#E8DCC8" stroke="#2D1810" stroke-width="2.5"/>
+        <rect x="35" y="448" width="330" height="20" rx="2" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
+        <rect x="50" y="432" width="300" height="18" rx="1" fill="#E8DCC8" stroke="#2D1810" stroke-width="2"/>
+
+        <!-- Main building body -->
+        <rect x="60" y="320" width="280" height="115" fill="#FAF3E3" stroke="#2D1810" stroke-width="2.5"/>
+        <!-- Horizontal bands on building -->
+        <line x1="60" y1="350" x2="340" y2="350" stroke="#D4C9B0" stroke-width="1"/>
+        <line x1="60" y1="395" x2="340" y2="395" stroke="#D4C9B0" stroke-width="1"/>
+
+        <!-- Columns -->
+        <rect x="80" y="310" width="22" height="125" rx="2" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
+        <rect x="120" y="310" width="22" height="125" rx="2" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
+        <rect x="160" y="310" width="22" height="125" rx="2" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
+        <rect x="218" y="310" width="22" height="125" rx="2" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
+        <rect x="258" y="310" width="22" height="125" rx="2" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
+        <rect x="298" y="310" width="22" height="125" rx="2" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
+
+        <!-- Column capitals (gold tops) -->
+        <rect x="76" y="305" width="30" height="10" rx="2" fill="#F2C744" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="116" y="305" width="30" height="10" rx="2" fill="#F2C744" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="156" y="305" width="30" height="10" rx="2" fill="#F2C744" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="214" y="305" width="30" height="10" rx="2" fill="#F2C744" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="254" y="305" width="30" height="10" rx="2" fill="#F2C744" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="294" y="305" width="30" height="10" rx="2" fill="#F2C744" stroke="#2D1810" stroke-width="1.5"/>
+
+        <!-- Pediment / Triangle -->
+        <polygon points="200,240 50,310 350,310" fill="#FAF3E3" stroke="#2D1810" stroke-width="2.5"/>
+        <polygon points="200,255 80,305 320,305" fill="#E8DCC8" stroke="none"/>
+        <!-- Inner pediment detail -->
+        <polygon points="200,260 110,300 290,300" fill="none" stroke="#2D1810" stroke-width="1" stroke-dasharray="4,3"/>
+
+        <!-- Drum (base of dome) -->
+        <rect x="130" y="220" width="140" height="25" rx="2" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
+        <line x1="155" y1="220" x2="155" y2="245" stroke="#2D1810" stroke-width="1.5"/>
+        <line x1="180" y1="220" x2="180" y2="245" stroke="#2D1810" stroke-width="1.5"/>
+        <line x1="200" y1="220" x2="200" y2="245" stroke="#2D1810" stroke-width="1.5"/>
+        <line x1="220" y1="220" x2="220" y2="245" stroke="#2D1810" stroke-width="1.5"/>
+        <line x1="245" y1="220" x2="245" y2="245" stroke="#2D1810" stroke-width="1.5"/>
+
+        <!-- Dome -->
+        <path d="M125 222 Q125 140 200 105 Q275 140 275 222" fill="#FAF3E3" stroke="#2D1810" stroke-width="2.5"/>
+        <!-- Dome ribs -->
+        <path d="M150 218 Q155 155 200 120" stroke="#2D1810" stroke-width="1" fill="none"/>
+        <path d="M175 220 Q178 150 200 115" stroke="#2D1810" stroke-width="1" fill="none"/>
+        <line x1="200" y1="222" x2="200" y2="108" stroke="#2D1810" stroke-width="1"/>
+        <path d="M225 220 Q222 150 200 115" stroke="#2D1810" stroke-width="1" fill="none"/>
+        <path d="M250 218 Q245 155 200 120" stroke="#2D1810" stroke-width="1" fill="none"/>
+
+        <!-- Dome windows -->
+        <rect x="145" y="180" width="12" height="22" rx="6" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
+        <rect x="170" y="165" width="12" height="26" rx="6" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
+        <rect x="194" y="158" width="12" height="28" rx="6" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
+        <rect x="218" y="165" width="12" height="26" rx="6" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
+        <rect x="243" y="180" width="12" height="22" rx="6" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
+
+        <!-- Lantern -->
+        <rect x="185" y="82" width="30" height="26" rx="2" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
+        <ellipse cx="200" cy="83" rx="20" ry="6" fill="#F2C744" stroke="#2D1810" stroke-width="1.5"/>
+        <!-- Lantern dome -->
+        <path d="M182 82 Q182 62 200 52 Q218 62 218 82" fill="#FAF3E3" stroke="#2D1810" stroke-width="2"/>
+
+        <!-- Finial / Spire -->
+        <line x1="200" y1="52" x2="200" y2="32" stroke="#2D1810" stroke-width="2.5"/>
+        <circle cx="200" cy="28" r="6" fill="#F2C744" stroke="#2D1810" stroke-width="2"/>
+        <line x1="200" y1="22" x2="200" y2="8" stroke="#2D1810" stroke-width="2"/>
+
+        <!-- Central entrance -->
+        <rect x="182" y="380" width="36" height="55" rx="18" fill="#1B365D" stroke="#2D1810" stroke-width="2"/>
+
+        <!-- Wing windows -->
+        <rect x="85" y="355" width="16" height="24" rx="2" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
+        <rect x="125" y="355" width="16" height="24" rx="2" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
+        <rect x="259" y="355" width="16" height="24" rx="2" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
+        <rect x="299" y="355" width="16" height="24" rx="2" fill="#1B365D" stroke="#2D1810" stroke-width="1"/>
+      </svg>
     </div>
 
     <div class="vintage-badge">
@@ -1161,31 +1189,6 @@
   </div>
 
   <script>
-    // 3D Parallax for Capitol Dome
-    document.addEventListener('mousemove', (e) => {
-      const layers = document.querySelectorAll('.capitol-layer');
-      const container = document.querySelector('.capitol-container');
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const mouseX = e.clientX - centerX;
-      const mouseY = e.clientY - centerY;
-      layers.forEach((layer, index) => {
-        const depth = (index + 1) * 8;
-        const moveX = (mouseX / 50) * depth;
-        const moveY = (mouseY / 50) * depth;
-        const rotateY = (mouseX / 100) * (index + 1);
-        const rotateX = -(mouseY / 100) * (index + 1);
-        layer.style.transform = `translate(${moveX}px, ${moveY}px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-      });
-    });
-    document.querySelector('.hero')?.addEventListener('mouseleave', () => {
-      document.querySelectorAll('.capitol-layer').forEach(layer => {
-        layer.style.transform = 'translate(0, 0) rotateY(0) rotateX(0)';
-      });
-    });
-
     // Modal
     function openModal() {
       document.getElementById('emailModal').classList.add('active');
