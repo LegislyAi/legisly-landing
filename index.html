@@ -166,32 +166,21 @@
       );
       opacity: 0.3;
     }
-    /* 3D Capitol Dome Container */
+    /* Capitol Dome Container */
     .capitol-container {
       position: absolute;
       right: 5%;
       top: 50%;
       transform: translateY(-50%);
-      width: 500px;
-      height: 600px;
-      perspective: 1000px;
+      width: 420px;
+      height: 500px;
       z-index: 5;
     }
-    /* Capitol Dome SVG with 3D layers */
-    .capitol-layer {
-      position: absolute;
+    .capitol-container svg {
       width: 100%;
       height: 100%;
-      transition: transform 0.1s ease-out;
+      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.25));
     }
-    .capitol-layer svg {
-      width: 100%;
-      height: 100%;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
-    }
-    .capitol-layer-1 { z-index: 1; }
-    .capitol-layer-2 { z-index: 2; }
-    .capitol-layer-3 { z-index: 3; }
     /* Vintage badge */
     .vintage-badge {
       position: absolute;
@@ -391,53 +380,339 @@
       max-width: 500px;
       margin: 0 auto;
     }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+    /* Feature Showcase - alternating layout */
+    .feature-showcase {
       max-width: 1100px;
-      margin: 0 auto;
+      margin: 0 auto 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 4rem;
+      align-items: center;
     }
-    .feature-card {
-      background: var(--cream-dark);
-      border: 4px solid var(--blue-retro);
-      padding: 2rem;
-      position: relative;
-      transition: all 0.2s ease;
+    .feature-showcase.reverse {
+      grid-template-columns: 1.1fr 1fr;
     }
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      right: -8px;
-      bottom: -8px;
-      background: var(--blue-retro);
-      z-index: -1;
-      transition: all 0.2s ease;
+    .feature-showcase.reverse .feature-text {
+      order: 2;
     }
-    .feature-card:hover::before {
-      top: 12px;
-      left: 12px;
+    .feature-showcase.reverse .feature-preview {
+      order: 1;
     }
     .feature-number {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 4rem;
+      font-size: 3.5rem;
       color: var(--orange-warm);
       line-height: 1;
       margin-bottom: 0.5rem;
     }
-    .feature-card h3 {
+    .feature-text h3 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.6rem;
+      font-size: 2.2rem;
       color: var(--blue-retro);
       letter-spacing: 2px;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
-    .feature-card p {
+    .feature-text p {
       color: var(--blue-dark);
-      line-height: 1.6;
+      line-height: 1.7;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+    .feature-text .feature-bullets {
+      list-style: none;
+      padding: 0;
+    }
+    .feature-text .feature-bullets li {
+      padding: 0.4rem 0;
       font-size: 0.95rem;
+      color: var(--blue-dark);
+      font-weight: 500;
+    }
+    .feature-text .feature-bullets li::before {
+      content: '\2605';
+      color: var(--orange-warm);
+      margin-right: 0.75rem;
+    }
+    /* UI Mockup Preview Panels */
+    .feature-preview {
+      background: var(--cream-dark);
+      border: 4px solid var(--brown-shadow);
+      box-shadow: 10px 10px 0 var(--blue-retro);
+      position: relative;
+    }
+    .preview-bar {
+      background: var(--blue-retro);
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 3px solid var(--brown-shadow);
+    }
+    .preview-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .preview-dot.red { background: var(--red-accent); }
+    .preview-dot.yellow { background: var(--yellow-vintage); }
+    .preview-dot.green { background: #5EA075; }
+    .preview-bar-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--cream);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-left: 0.5rem;
+    }
+    .preview-body {
+      padding: 1.25rem;
+    }
+    /* Mini UI elements for mockups */
+    .mock-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .mock-stat {
+      background: var(--cream);
+      border: 2px solid var(--blue-retro);
+      padding: 0.75rem;
+      text-align: center;
+    }
+    .mock-stat-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--blue-retro);
+      line-height: 1;
+    }
+    .mock-stat-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--blue-dark);
+      opacity: 0.6;
+      margin-top: 0.25rem;
+    }
+    .mock-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.75rem;
+      background: var(--cream);
+      border: 2px solid var(--blue-retro);
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .mock-badge {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      padding: 0.15rem 0.5rem;
+      color: var(--cream);
+      white-space: nowrap;
+    }
+    .mock-badge.state { background: var(--blue-retro); }
+    .mock-badge.fed { background: var(--orange-warm); }
+    .mock-badge.reg { background: #5EA075; }
+    .mock-badge.support { background: #5EA075; }
+    .mock-badge.oppose { background: var(--red-accent); }
+    .mock-badge.watch { background: var(--yellow-vintage); color: var(--blue-dark); }
+    .mock-bill-id {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      color: var(--blue-retro);
+      white-space: nowrap;
+    }
+    .mock-bill-title {
+      flex: 1;
+      color: var(--blue-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mock-pct {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--orange-warm);
+      white-space: nowrap;
+    }
+    /* Client health mockup */
+    .mock-client {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 0.75rem;
+      background: var(--cream);
+      border: 2px solid var(--blue-retro);
+      margin-bottom: 0.5rem;
+    }
+    .mock-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--cream);
+      flex-shrink: 0;
+    }
+    .mock-client-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .mock-client-name {
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--blue-retro);
+    }
+    .mock-health-bar {
+      height: 6px;
+      background: var(--cream-dark);
+      border: 1px solid var(--blue-retro);
+      margin-top: 0.25rem;
+    }
+    .mock-health-fill {
+      height: 100%;
+    }
+    .mock-health-fill.good { background: #5EA075; }
+    .mock-health-fill.warn { background: var(--yellow-vintage); }
+    .mock-health-fill.bad { background: var(--red-accent); }
+    .mock-health-pct {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+    .mock-health-pct.good { color: #5EA075; }
+    .mock-health-pct.warn { color: var(--orange-warm); }
+    .mock-health-pct.bad { color: var(--red-accent); }
+    /* AI chat mockup */
+    .mock-chat {
+      background: var(--cream);
+      border: 2px solid var(--blue-retro);
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .mock-chat-ai {
+      background: var(--orange-warm);
+      border: 2px solid var(--brown-shadow);
+      padding: 0.75rem;
+      color: var(--cream);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+    .mock-chat-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      background: var(--yellow-vintage);
+      color: var(--blue-dark);
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .mock-chat-user {
+      font-size: 0.8rem;
+      color: var(--blue-dark);
+      line-height: 1.5;
+    }
+    .mock-input {
+      display: flex;
+      gap: 0;
+      margin-top: 0.5rem;
+    }
+    .mock-input-field {
+      flex: 1;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.75rem;
+      border: 2px solid var(--blue-retro);
+      background: var(--cream);
+      color: var(--blue-dark);
+      opacity: 0.5;
+    }
+    .mock-input-btn {
+      padding: 0.5rem 0.75rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      background: var(--orange-warm);
+      color: var(--cream);
+      border: 2px solid var(--blue-retro);
+      border-left: none;
+    }
+    /* Report mockup */
+    .mock-report {
+      background: var(--cream);
+      border: 2px solid var(--blue-retro);
+      padding: 1rem;
+    }
+    .mock-report-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--cream-dark);
+    }
+    .mock-report-logo {
+      width: 28px;
+      height: 28px;
+      background: var(--blue-retro);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--yellow-vintage);
+      font-size: 0.9rem;
+    }
+    .mock-report-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--blue-retro);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .mock-report-line {
+      height: 6px;
+      background: var(--cream-dark);
+      margin-bottom: 0.4rem;
+      border-radius: 2px;
+    }
+    .mock-report-line.short { width: 60%; }
+    .mock-report-line.med { width: 80%; }
+    /* Calendar mockup */
+    .mock-cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+    .mock-cal-day {
+      aspect-ratio: 1;
+      background: var(--cream);
+      border: 1px solid var(--blue-retro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--blue-dark);
+    }
+    .mock-cal-day.active {
+      background: var(--yellow-vintage);
+      color: var(--blue-dark);
+      font-weight: 800;
+    }
+    .mock-cal-day.hearing {
+      background: var(--blue-retro);
+      color: var(--cream);
+    }
+    .mock-cal-day.deadline {
+      background: var(--red-accent);
+      color: var(--cream);
     }
     /* Live Section */
     .live-section {
@@ -860,11 +1135,15 @@
     /* Responsive */
     @media (max-width: 1200px) {
       .capitol-container {
-        width: 350px;
+        width: 300px;
         right: 2%;
       }
       .vintage-badge {
-        right: calc(2% + 280px);
+        right: calc(2% + 230px);
+      }
+      .feature-showcase,
+      .feature-showcase.reverse {
+        gap: 2.5rem;
       }
     }
     @media (max-width: 1000px) {
@@ -887,7 +1166,15 @@
       .vintage-badge { display: none; }
       .capitol-container { display: none; }
       .features { padding: 4rem 2rem; }
-      .features-grid { grid-template-columns: 1fr; }
+      .feature-showcase,
+      .feature-showcase.reverse {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .feature-showcase.reverse .feature-text,
+      .feature-showcase.reverse .feature-preview {
+        order: unset;
+      }
       .live-section { padding: 4rem 2rem; }
       .live-content { grid-template-columns: 1fr; }
       .cta-section { padding: 4rem 2rem; }
@@ -1041,36 +1328,312 @@
       <h2>BUILT FOR <span class="underline">CA LOBBYISTS</span></h2>
       <p>Every tool your firm needs to track, analyze, and report on California and federal legislation.</p>
     </div>
-    <div class="features-grid">
-      <div class="feature-card">
+
+    <!-- Feature 1: Bill Tracking -->
+    <div class="feature-showcase">
+      <div class="feature-text">
         <div class="feature-number">01</div>
         <h3>CA + FEDERAL BILL TRACKING</h3>
-        <p>Real-time ingestion from leginfo.legislature.ca.gov and Congress.gov. Status tracking, amendment history, and vote records.</p>
+        <p>Real-time ingestion from leginfo.legislature.ca.gov and Congress.gov. Track status, amendments, vote records, and AI-predicted passage probability.</p>
+        <ul class="feature-bullets">
+          <li>State, federal, and regulatory bills in one view</li>
+          <li>AI passage probability scoring</li>
+          <li>Amendment history and vote records</li>
+        </ul>
       </div>
-      <div class="feature-card">
+      <div class="feature-preview">
+        <div class="preview-bar">
+          <span class="preview-dot red"></span>
+          <span class="preview-dot yellow"></span>
+          <span class="preview-dot green"></span>
+          <span class="preview-bar-title">All Bills &mdash; 82 Tracked</span>
+        </div>
+        <div class="preview-body">
+          <div class="mock-stats">
+            <div class="mock-stat"><div class="mock-stat-val">82</div><div class="mock-stat-label">Bills</div></div>
+            <div class="mock-stat"><div class="mock-stat-val" style="color:var(--red-accent)">5</div><div class="mock-stat-label">Urgent</div></div>
+            <div class="mock-stat"><div class="mock-stat-val" style="color:#5EA075">73%</div><div class="mock-stat-label">Win Rate</div></div>
+          </div>
+          <div class="mock-row">
+            <span class="mock-badge state">STATE</span>
+            <span class="mock-bill-id">AB-1234</span>
+            <span class="mock-bill-title">Affordable Housing Act</span>
+            <span class="mock-badge support">SUPPORT</span>
+            <span class="mock-pct">78%</span>
+          </div>
+          <div class="mock-row">
+            <span class="mock-badge fed">FED</span>
+            <span class="mock-bill-id">HR-8821</span>
+            <span class="mock-bill-title">Water Infrastructure Act</span>
+            <span class="mock-badge watch">WATCH</span>
+            <span class="mock-pct">32%</span>
+          </div>
+          <div class="mock-row">
+            <span class="mock-badge reg">REG</span>
+            <span class="mock-bill-id">OAL-0312</span>
+            <span class="mock-bill-title">Housing Element Guidelines</span>
+            <span class="mock-badge support">SUPPORT</span>
+            <span class="mock-pct">&mdash;</span>
+          </div>
+          <div class="mock-row">
+            <span class="mock-badge state">STATE</span>
+            <span class="mock-bill-id">SB-1492</span>
+            <span class="mock-bill-title">Transit-Oriented Development</span>
+            <span class="mock-badge support">SUPPORT</span>
+            <span class="mock-pct">58%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2: Client & Position Management -->
+    <div class="feature-showcase reverse">
+      <div class="feature-text">
         <div class="feature-number">02</div>
         <h3>CLIENT &amp; POSITION MANAGEMENT</h3>
-        <p>Manage client profiles, bill positions (Support/Oppose/Watch), internal memos, and a stakeholder CRM linked to active bills.</p>
+        <p>Manage client profiles, bill positions, internal memos, and a stakeholder CRM &mdash; all linked to active bills. Health scores show you which clients need attention.</p>
+        <ul class="feature-bullets">
+          <li>Client health scores with trend tracking</li>
+          <li>Support/Oppose/Watch position tracking</li>
+          <li>Stakeholder CRM linked to active bills</li>
+        </ul>
       </div>
-      <div class="feature-card">
+      <div class="feature-preview">
+        <div class="preview-bar">
+          <span class="preview-dot red"></span>
+          <span class="preview-dot yellow"></span>
+          <span class="preview-dot green"></span>
+          <span class="preview-bar-title">Client Health</span>
+        </div>
+        <div class="preview-body">
+          <div class="mock-client">
+            <div class="mock-avatar" style="background:#5EA075">C</div>
+            <div class="mock-client-info">
+              <div class="mock-client-name">CA Housing Coalition</div>
+              <div class="mock-health-bar"><div class="mock-health-fill warn" style="width:62%"></div></div>
+            </div>
+            <span class="mock-health-pct warn">62%</span>
+          </div>
+          <div class="mock-client">
+            <div class="mock-avatar" style="background:var(--blue-retro)">T</div>
+            <div class="mock-client-info">
+              <div class="mock-client-name">Tech Alliance CA</div>
+              <div class="mock-health-bar"><div class="mock-health-fill good" style="width:85%"></div></div>
+            </div>
+            <span class="mock-health-pct good">85%</span>
+          </div>
+          <div class="mock-client">
+            <div class="mock-avatar" style="background:var(--orange-warm)">V</div>
+            <div class="mock-client-info">
+              <div class="mock-client-name">Central Valley Water</div>
+              <div class="mock-health-bar"><div class="mock-health-fill good" style="width:94%"></div></div>
+            </div>
+            <span class="mock-health-pct good">94%</span>
+          </div>
+          <div class="mock-client">
+            <div class="mock-avatar" style="background:var(--red-accent)">B</div>
+            <div class="mock-client-info">
+              <div class="mock-client-name">Bay Area Builders</div>
+              <div class="mock-health-bar"><div class="mock-health-fill bad" style="width:48%"></div></div>
+            </div>
+            <span class="mock-health-pct bad">48%</span>
+          </div>
+          <div class="mock-stats" style="margin-top:0.75rem;margin-bottom:0">
+            <div class="mock-stat"><div class="mock-stat-val">4</div><div class="mock-stat-label">Clients</div></div>
+            <div class="mock-stat"><div class="mock-stat-val">31</div><div class="mock-stat-label">Bills</div></div>
+            <div class="mock-stat"><div class="mock-stat-val" style="color:#5EA075">$248K</div><div class="mock-stat-label">MRR</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 3: Branded Reports -->
+    <div class="feature-showcase">
+      <div class="feature-text">
         <div class="feature-number">03</div>
         <h3>BRANDED CLIENT REPORTS</h3>
-        <p>Your firm's logo, colors, and templates. One-click PDF exports, scheduled delivery, and a white-labeled Client Intelligence Portal.</p>
+        <p>Your firm's logo, colors, and templates. One-click PDF exports, scheduled delivery, and a white-labeled Client Intelligence Portal your clients will love.</p>
+        <ul class="feature-bullets">
+          <li>AI-generated weekly client updates</li>
+          <li>White-labeled client portal</li>
+          <li>87% average client open rate</li>
+        </ul>
       </div>
-      <div class="feature-card">
+      <div class="feature-preview">
+        <div class="preview-bar">
+          <span class="preview-dot red"></span>
+          <span class="preview-dot yellow"></span>
+          <span class="preview-dot green"></span>
+          <span class="preview-bar-title">Reports &mdash; AI Generated</span>
+        </div>
+        <div class="preview-body">
+          <div class="mock-report">
+            <div class="mock-report-header">
+              <div class="mock-report-logo">YF</div>
+              <span class="mock-report-title">Weekly Update &mdash; CA Housing Coalition</span>
+            </div>
+            <div style="font-size:0.7rem;color:var(--blue-dark);margin-bottom:0.5rem;font-weight:600">LEGISLATIVE SUMMARY &mdash; WEEK OF MAR 8</div>
+            <div class="mock-report-line"></div>
+            <div class="mock-report-line med"></div>
+            <div class="mock-report-line short"></div>
+            <div style="margin-top:0.75rem;font-size:0.7rem;color:var(--blue-dark);font-weight:600">KEY BILL UPDATES</div>
+            <div class="mock-row" style="margin-top:0.4rem;font-size:0.7rem">
+              <span class="mock-badge state" style="font-size:0.6rem">STATE</span>
+              <span class="mock-bill-id" style="font-size:0.75rem">AB-1234</span>
+              <span class="mock-bill-title">Passed committee</span>
+              <span class="mock-badge support" style="font-size:0.6rem">SUPPORT</span>
+            </div>
+            <div class="mock-row" style="font-size:0.7rem">
+              <span class="mock-badge state" style="font-size:0.6rem">STATE</span>
+              <span class="mock-bill-id" style="font-size:0.75rem">SB-567</span>
+              <span class="mock-bill-title">Amended Mar 5</span>
+              <span class="mock-badge support" style="font-size:0.6rem">SUPPORT</span>
+            </div>
+            <div class="mock-report-line" style="margin-top:0.5rem"></div>
+            <div class="mock-report-line short"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 4: AI Assistant -->
+    <div class="feature-showcase reverse">
+      <div class="feature-text">
         <div class="feature-number">04</div>
         <h3>AI ASSISTANT &amp; AGENTIC CHAT</h3>
-        <p>AI-powered bill summaries, position drafting, impact analysis, and natural language search across bills, regulations, and client history.</p>
+        <p>AI-powered bill summaries, position drafting, impact analysis, and natural language search across your entire legislative portfolio.</p>
+        <ul class="feature-bullets">
+          <li>Natural language bill search &amp; analysis</li>
+          <li>Auto-generated position drafts</li>
+          <li>Daily briefings tailored to your clients</li>
+        </ul>
       </div>
-      <div class="feature-card">
+      <div class="feature-preview">
+        <div class="preview-bar">
+          <span class="preview-dot red"></span>
+          <span class="preview-dot yellow"></span>
+          <span class="preview-dot green"></span>
+          <span class="preview-bar-title">Legisly AI</span>
+        </div>
+        <div class="preview-body">
+          <div class="mock-chat">
+            <div class="mock-chat-user">&ldquo;What should I focus on today?&rdquo;</div>
+          </div>
+          <div class="mock-chat-ai">
+            <div class="mock-chat-label">AI</div>
+            <div>Good morning, Sarah! Here&rsquo;s your briefing:</div>
+            <div style="margin-top:0.5rem;font-size:0.75rem">
+              <div style="margin-bottom:0.3rem">&bull; <strong>AB-1234</strong> floor vote scheduled today</div>
+              <div style="margin-bottom:0.3rem">&bull; 2 new bills match <strong>CA Housing Coalition</strong></div>
+              <div>&bull; <strong>SB-890</strong> passed Senate yesterday</div>
+            </div>
+          </div>
+          <div class="mock-chat" style="margin-top:0.5rem">
+            <div class="mock-chat-user">&ldquo;Draft a client update for CA Housing Coalition&rdquo;</div>
+          </div>
+          <div class="mock-input">
+            <div class="mock-input-field">Ask anything about your bills...</div>
+            <div class="mock-input-btn">SEND</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 5: Live Hearings (preview, full section below) -->
+    <div class="feature-showcase">
+      <div class="feature-text">
         <div class="feature-number">05</div>
         <h3>LIVE HEARING INTELLIGENCE</h3>
-        <p>Real-time transcription, speaker identification, AI-generated summaries, vote detection, and client-specific relevance scoring.</p>
+        <p>Real-time transcription, speaker identification, AI-generated summaries, vote detection, and client-specific relevance scoring &mdash; all automated.</p>
+        <ul class="feature-bullets">
+          <li>Real-time audio capture &amp; transcription</li>
+          <li>AI key moment detection</li>
+          <li>Client-specific relevance scoring</li>
+        </ul>
       </div>
-      <div class="feature-card">
+      <div class="feature-preview">
+        <div class="preview-bar" style="background:var(--red-accent)">
+          <span class="preview-dot" style="background:var(--cream);animation:blink 1s ease infinite"></span>
+          <span class="preview-bar-title">LIVE &mdash; Assembly Housing Committee</span>
+        </div>
+        <div class="preview-body">
+          <div class="mock-row" style="border-left:4px solid var(--blue-retro)">
+            <span class="mock-badge state">CHAIR</span>
+            <span class="mock-bill-title" style="white-space:normal;font-size:0.8rem">We&rsquo;ll now hear testimony on AB-1234.</span>
+          </div>
+          <div class="mock-row" style="border-left:4px solid var(--yellow-vintage)">
+            <span class="mock-badge" style="background:var(--yellow-vintage);color:var(--blue-dark)">M. CHEN</span>
+            <span class="mock-bill-title" style="white-space:normal;font-size:0.8rem">We strongly support this bill...</span>
+          </div>
+          <div style="background:var(--orange-warm);border:2px solid var(--brown-shadow);padding:0.6rem 0.75rem;display:flex;gap:0.5rem;align-items:flex-start">
+            <span style="background:var(--yellow-vintage);color:var(--blue-dark);font-family:'Bebas Neue',sans-serif;font-size:0.65rem;letter-spacing:1px;padding:0.15rem 0.4rem">AI</span>
+            <span style="color:var(--cream);font-size:0.75rem">Support testimony identified. CA Housing Coalition on record supporting AB-1234.</span>
+          </div>
+          <div class="mock-stats" style="margin-top:0.75rem;margin-bottom:0">
+            <div class="mock-stat"><div class="mock-stat-val" style="font-size:1.2rem">3</div><div class="mock-stat-label">Bills</div></div>
+            <div class="mock-stat"><div class="mock-stat-val" style="font-size:1.2rem;color:var(--red-accent)">42</div><div class="mock-stat-label">Watching</div></div>
+            <div class="mock-stat"><div class="mock-stat-val" style="font-size:1.2rem;color:#5EA075">2</div><div class="mock-stat-label">AI Moments</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 6: Regulatory & Budget -->
+    <div class="feature-showcase reverse">
+      <div class="feature-text">
         <div class="feature-number">06</div>
         <h3>REGULATORY &amp; BUDGET TRACKING</h3>
-        <p>CA OAL notices, Federal Register rulemakings, budget bill tracking, and FPPC fundraising compliance with deadline alerts.</p>
+        <p>CA OAL notices, Federal Register rulemakings, budget bill tracking, FPPC fundraising compliance with deadline alerts, and a full legislative calendar.</p>
+        <ul class="feature-bullets">
+          <li>Comment period deadline tracking</li>
+          <li>Budget impact analysis</li>
+          <li>FPPC compliance &amp; filing alerts</li>
+        </ul>
+      </div>
+      <div class="feature-preview">
+        <div class="preview-bar">
+          <span class="preview-dot red"></span>
+          <span class="preview-dot yellow"></span>
+          <span class="preview-dot green"></span>
+          <span class="preview-bar-title">Calendar &amp; Deadlines</span>
+        </div>
+        <div class="preview-body">
+          <div class="mock-cal-grid" style="margin-bottom:0.75rem">
+            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">S</div>
+            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">M</div>
+            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">T</div>
+            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">W</div>
+            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">T</div>
+            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">F</div>
+            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">S</div>
+            <div class="mock-cal-day">8</div>
+            <div class="mock-cal-day">9</div>
+            <div class="mock-cal-day">10</div>
+            <div class="mock-cal-day active">11</div>
+            <div class="mock-cal-day hearing">12</div>
+            <div class="mock-cal-day deadline">13</div>
+            <div class="mock-cal-day">14</div>
+            <div class="mock-cal-day">15</div>
+            <div class="mock-cal-day hearing">16</div>
+            <div class="mock-cal-day">17</div>
+            <div class="mock-cal-day">18</div>
+            <div class="mock-cal-day">19</div>
+            <div class="mock-cal-day deadline">20</div>
+            <div class="mock-cal-day">21</div>
+          </div>
+          <div class="mock-row" style="font-size:0.75rem">
+            <span class="mock-badge" style="background:var(--blue-retro);font-size:0.6rem">HEARING</span>
+            <span class="mock-bill-title">Assembly Housing Cmte &mdash; 3 bills</span>
+          </div>
+          <div class="mock-row" style="font-size:0.75rem">
+            <span class="mock-badge" style="background:var(--red-accent);font-size:0.6rem">FPPC</span>
+            <span class="mock-bill-title">Q1 Form 460 Filing &mdash; 5 days</span>
+          </div>
+          <div class="mock-row" style="font-size:0.75rem">
+            <span class="mock-badge reg" style="font-size:0.6rem">REG</span>
+            <span class="mock-bill-title">OAL Housing Guidelines &mdash; Comment due</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
