@@ -254,22 +254,22 @@
       color: var(--yellow-vintage);
       border-color: var(--yellow-vintage);
     }
-    /* Hero Visual */
-    .hero-visual {
-      position: absolute;
-      right: 4%;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 5;
+    /* Hero full-width text (Option E) */
+    .hero-fulltext .hero-content {
+      max-width: 900px;
+      text-align: center;
+      margin: 0 auto;
     }
-    .hero-seal {
-      width: 380px;
-      height: 380px;
+    .hero-fulltext h1 {
+      font-size: clamp(5rem, 14vw, 10rem);
     }
-    .hero-seal svg {
-      width: 100%;
-      height: 100%;
-      filter: drop-shadow(0 0 40px rgba(242, 199, 68, 0.3)) drop-shadow(8px 8px 0 var(--brown-shadow));
+    .hero-fulltext .hero-subtitle {
+      font-size: 1.6rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-fulltext .hero-cta {
+      justify-content: center;
     }
     /* Retro Divider */
     .divider {
@@ -1126,9 +1126,12 @@
       }
       .nav-links.open { display: flex; }
       .hero { padding: 7rem 2rem 4rem; }
-      .hero-visual { display: none; }
-      .hero-subtitle { font-size: 1.2rem; }
+      .hero-fulltext h1 { font-size: clamp(4rem, 12vw, 7rem); }
+      .hero-fulltext .hero-subtitle { font-size: 1.2rem; }
       .features { padding: 4rem 2rem; overflow-x: hidden; }
+      .feature-preview { box-shadow: 6px 6px 0 var(--blue-retro); }
+      .mock-row { flex-wrap: wrap; gap: 0.4rem; }
+      .mock-bill-title { min-width: 0; }
       .feature-showcase,
       .feature-showcase.reverse {
         grid-template-columns: 1fr;
@@ -1148,13 +1151,17 @@
     }
     @media (max-width: 600px) {
       .hero { padding: 6rem 1.25rem 3rem; }
-      .hero h1 { font-size: clamp(3.5rem, 14vw, 5rem); }
+      .hero-fulltext h1 { font-size: clamp(3.5rem, 14vw, 5rem); }
       .hero-eyebrow { font-size: 0.7rem; letter-spacing: 1.5px; padding: 0.4rem 1rem; }
-      .hero-subtitle { font-size: 1rem; }
-      .hero-cta { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .hero-fulltext .hero-subtitle { font-size: 1rem; }
+      .hero-cta { flex-direction: column; align-items: center; gap: 1rem; }
       .btn-hero { font-size: 1.4rem; padding: 1rem 2rem; }
       .divider-content { gap: 1rem; flex-direction: column; align-items: center; }
       .divider-item { font-size: 1rem; }
+      .feature-preview { box-shadow: 4px 4px 0 var(--blue-retro); }
+      .mock-stats { grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+      .mock-stat-val { font-size: 1.4rem; }
+      .mock-row { font-size: 0.7rem; padding: 0.5rem; gap: 0.4rem; }
       .footer-content { grid-template-columns: 1fr; }
       .cta-form { flex-direction: column; }
       .cta-form input[type="email"] { border-right: 4px solid var(--brown-shadow); }
@@ -1180,7 +1187,7 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero hero-fulltext">
     <div class="hero-content">
       <div class="hero-eyebrow">&starf; Purpose-Built for CA Lobbying Firms &starf;</div>
       <h1>
@@ -1192,33 +1199,6 @@
         <a href="#" class="btn-hero" onclick="openModal(); return false;">REQUEST A DEMO &rarr;</a>
         <a href="features.html" class="btn-outline">See Features</a>
       </div>
-    </div>
-    <div class="hero-visual hero-seal">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/>
-        <circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/>
-        <circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/>
-        <g transform="translate(40,30)">
-          <path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/>
-          <rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/>
-          <circle cx="60" cy="9" r="3" fill="#F2C744"/>
-          <circle cx="42" cy="45" r="4" fill="#F2C744"/>
-          <circle cx="60" cy="41" r="4" fill="#F2C744"/>
-          <circle cx="78" cy="45" r="4" fill="#F2C744"/>
-          <rect x="24" y="63" width="7" height="24" fill="#F2C744"/>
-          <rect x="40" y="63" width="7" height="24" fill="#F2C744"/>
-          <rect x="56" y="63" width="8" height="24" fill="#F2C744"/>
-          <rect x="73" y="63" width="7" height="24" fill="#F2C744"/>
-          <rect x="89" y="63" width="7" height="24" fill="#F2C744"/>
-          <rect x="16" y="87" width="88" height="6" fill="#F2C744"/>
-        </g>
-        <g fill="#F2C744">
-          <polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/>
-          <polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/>
-        </g>
-        <text x="100" y="145" text-anchor="middle" fill="#F2C744" font-family="Bebas Neue, sans-serif" font-size="14" letter-spacing="3">LEGISLY</text>
-        <text x="100" y="162" text-anchor="middle" fill="#F2C744" font-family="Righteous,cursive" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text>
-      </svg>
     </div>
   </section>
 
