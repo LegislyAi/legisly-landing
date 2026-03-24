@@ -3,96 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AI-powered legislative tracking for California lobbying firms. Real-time hearing intelligence, bill monitoring, and automated client alerts for the 2026 California Legislative Session.">
-  <meta name="keywords" content="AI legislative tracking, California legislative session 2026, legislative tracking software, AI lobbying tools, California bill tracking, hearing intelligence, legislative monitoring">
-  <meta property="og:title" content="Legisly — AI Legislative Tracking for California Lobbyists">
-  <meta property="og:description" content="A bill moved in committee yesterday. Your client found out before you did. Real-time hearing intelligence and AI analysis — purpose-built for CA lobbying firms.">
-  <meta property="og:image" content="https://legisly.ai/og-image.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://legisly.ai/">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://legisly.ai/og-image.png">
-  <title>Legisly — AI Legislative Tracking for California Lobbyists</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Barlow+Condensed:wght@600;700;800&family=Righteous&display=swap" rel="stylesheet">
+  <title>Legisly — AI Legislative Intelligence for CA Firms</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=Righteous&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue-retro: #1B365D;
-      --blue-dark: #0F2342;
-      --orange-warm: #E8722A;
+      --navy: #1B365D;
+      --navy-deep: #0F2342;
+      --orange: #E8722A;
       --orange-light: #F4A261;
-      --yellow-vintage: #F2C744;
+      --gold: #F2C744;
       --cream: #FAF3E3;
       --cream-dark: #E8DCC8;
-      --red-accent: #C73E3A;
-      --brown-shadow: #2D1810;
+      --red: #C73E3A;
+      --brown: #2D1810;
+      --sage: #4A7C59;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      overflow-x: hidden;
-    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Outfit', sans-serif;
       background: var(--cream);
-      color: var(--blue-dark);
+      color: var(--navy-deep);
       overflow-x: hidden;
-      width: 100%;
     }
-    /* Paper texture overlay */
+
+    /* Paper grain */
     body::before {
       content: '';
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       opacity: 0.04;
       pointer-events: none;
       z-index: 10000;
     }
-    /* Simple Logo */
-    .logo {
-      font-family: 'Righteous', cursive;
-      font-size: 2rem;
-      color: var(--cream);
-      text-decoration: none;
-      letter-spacing: 1px;
-    }
-    .logo .dot {
-      color: var(--yellow-vintage);
-    }
-    .logo:hover {
-      color: var(--orange-warm);
-    }
-    /* Logo Lockup (Seal + Wordmark) */
-    .logo-lockup {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-    .logo-lockup:hover { text-decoration: none; }
-    .logo-lockup .logo-seal { flex-shrink: 0; }
-    .logo-lockup .logo-text {
-      font-family: 'Righteous', cursive;
-      font-size: 2rem;
-      color: var(--yellow-vintage);
-      letter-spacing: 1px;
-      transition: color 0.2s;
-    }
-    .logo-lockup:hover .logo-text { color: var(--orange-warm); }
-    footer .logo-lockup .logo-seal { width: 36px; height: 36px; }
-    footer .logo-lockup .logo-text { font-size: 1.6rem; }
-    /* Navigation */
+
+    /* ===== NAV ===== */
     nav {
       position: fixed;
       top: 0;
@@ -103,1504 +50,1204 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--blue-retro);
-      border-bottom: 6px solid var(--yellow-vintage);
+      background: var(--navy);
+      border-bottom: 5px solid var(--gold);
     }
+
+    .logo {
+      font-family: 'Righteous', cursive;
+      font-size: 1.8rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       align-items: center;
     }
+
     .nav-links a {
       color: var(--cream);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      transition: color 0.2s ease;
-    }
-    .nav-links a:hover {
-      color: var(--yellow-vintage);
-    }
-    .btn-retro {
-      background: var(--orange-warm);
-      color: var(--cream);
-      padding: 0.9rem 2rem;
-      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
       font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 2px;
-      border: 3px solid var(--brown-shadow);
-      box-shadow:
-        4px 4px 0 var(--brown-shadow),
-        inset 0 -3px 0 rgba(0,0,0,0.2);
-      transition: all 0.1s ease;
-      cursor: pointer;
     }
-    .btn-retro:hover {
-      transform: translate(2px, 2px);
-      box-shadow:
-        2px 2px 0 var(--brown-shadow),
-        inset 0 -3px 0 rgba(0,0,0,0.2);
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--orange) !important;
+      color: var(--cream) !important;
+      padding: 0.6rem 1.5rem;
+      border: 2px solid var(--brown);
+      box-shadow: 3px 3px 0 var(--brown);
+      transition: all 0.1s;
     }
-    /* Hero Section */
+
+    .nav-cta:hover {
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0 var(--brown);
+    }
+
+    /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       padding: 8rem 4rem 4rem;
-      background: var(--blue-retro);
+      background: var(--navy);
       position: relative;
       overflow: hidden;
     }
-    /* Retro sunburst pattern */
+
     .hero::before {
       content: '';
       position: absolute;
       top: 50%;
-      left: 60%;
+      left: 50%;
       width: 200%;
       height: 200%;
       transform: translate(-50%, -50%);
-      background: repeating-conic-gradient(
-        from 0deg,
-        var(--blue-dark) 0deg 10deg,
-        var(--blue-retro) 10deg 20deg
-      );
-      opacity: 0.3;
+      background: repeating-conic-gradient(from 0deg, var(--navy-deep) 0deg 10deg, var(--navy) 10deg 20deg);
+      opacity: 0.25;
     }
-    /* Hero visual placeholder */
-    .hero-content {
+
+    .hero-layout {
       position: relative;
       z-index: 10;
-      max-width: 700px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
     }
+
     .hero-eyebrow {
       display: inline-block;
-      background: var(--yellow-vintage);
-      color: var(--blue-dark);
-      padding: 0.5rem 1.5rem;
+      background: var(--gold);
+      color: var(--navy-deep);
+      padding: 0.4rem 1.2rem;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 3px;
       margin-bottom: 1.5rem;
-      transform: rotate(-2deg);
-      box-shadow: 4px 4px 0 var(--brown-shadow);
+      transform: rotate(-1.5deg);
+      box-shadow: 3px 3px 0 var(--brown);
+      font-family: 'Barlow Condensed', sans-serif;
     }
+
     .hero h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(5rem, 12vw, 9rem);
-      line-height: 0.9;
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      line-height: 0.95;
       color: var(--cream);
       margin-bottom: 1.5rem;
-      letter-spacing: 4px;
+      letter-spacing: 3px;
     }
+
     .hero h1 .accent {
-      color: var(--yellow-vintage);
+      color: var(--gold);
       display: block;
-      text-shadow:
-        6px 6px 0 var(--orange-warm),
-        10px 10px 0 var(--brown-shadow);
+      text-shadow: 4px 4px 0 var(--orange), 7px 7px 0 var(--brown);
     }
-    .hero-subtitle {
+
+    .hero-sub {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 600;
+      font-size: 1.4rem;
       color: var(--orange-light);
-      margin-bottom: 2.5rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      margin-bottom: 2rem;
+      letter-spacing: 0.5px;
+      line-height: 1.4;
+      max-width: 480px;
     }
-    .hero-cta {
+
+    .hero-cta-group {
       display: flex;
       gap: 1.5rem;
       align-items: center;
-    }
-    .btn-hero {
-      background: var(--yellow-vintage);
-      color: var(--blue-dark);
-      padding: 1.25rem 3rem;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 3px;
-      text-decoration: none;
-      border: 4px solid var(--brown-shadow);
-      box-shadow:
-        6px 6px 0 var(--brown-shadow),
-        inset 0 -4px 0 rgba(0,0,0,0.15);
-      transition: all 0.1s ease;
-      cursor: pointer;
-    }
-    .btn-hero:hover {
-      transform: translate(3px, 3px);
-      box-shadow:
-        3px 3px 0 var(--brown-shadow),
-        inset 0 -4px 0 rgba(0,0,0,0.15);
-    }
-    .btn-outline {
-      color: var(--cream);
-      text-decoration: none;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      border-bottom: 3px solid var(--cream);
-      padding-bottom: 0.25rem;
-    }
-    .btn-outline:hover {
-      color: var(--yellow-vintage);
-      border-color: var(--yellow-vintage);
-    }
-    /* Hero full-width text (Option E) */
-    .hero-fulltext .hero-content {
-      max-width: 960px;
-      text-align: center;
-      margin: 0 auto;
-    }
-    .hero-fulltext h1 {
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      line-height: 1.05;
-      letter-spacing: 2px;
-    }
-    .hero-fulltext .hero-subtitle {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 400;
-      text-transform: none;
-      letter-spacing: 0;
-      color: var(--cream);
-      opacity: 0.85;
-      max-width: 680px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
-    }
-    .hero-fulltext .hero-cta {
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .hero-cta-subtext {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--orange-light);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    .founding-banner {
-      display: inline-block;
-      background: var(--red-accent);
-      color: var(--cream);
-      padding: 0.6rem 1.5rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-top: 1.5rem;
-      border: 3px solid var(--brown-shadow);
-      box-shadow: 4px 4px 0 var(--brown-shadow);
-      animation: pulse-glow 2s ease-in-out infinite;
-    }
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 4px 4px 0 var(--brown-shadow); }
-      50% { box-shadow: 4px 4px 12px rgba(199, 62, 58, 0.4); }
-    }
-    /* Retro Divider */
-    .divider {
-      background: var(--yellow-vintage);
-      padding: 1.25rem 0;
-      text-align: center;
-      border-top: 4px solid var(--brown-shadow);
-      border-bottom: 4px solid var(--brown-shadow);
-      position: relative;
-    }
-    .divider::before,
-    .divider::after {
-      content: '\2605';
-      color: var(--blue-dark);
-      font-size: 1.5rem;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .divider::before { left: 4rem; }
-    .divider::after { right: 4rem; }
-    .divider-content {
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
       flex-wrap: wrap;
     }
-    .divider-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--blue-dark);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    .divider-item span {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      color: var(--red-accent);
-    }
-    /* Features Section */
-    .features {
-      padding: 6rem 4rem;
-      background: var(--cream);
-      position: relative;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    .section-header h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 7vw, 5rem);
-      color: var(--blue-retro);
-      letter-spacing: 4px;
-      margin-bottom: 0.5rem;
-    }
-    .section-header h2 .underline {
-      position: relative;
+
+    .btn-primary {
       display: inline-block;
-    }
-    .section-header h2 .underline::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 8px;
-      background: var(--yellow-vintage);
-      transform: skewX(-10deg);
-    }
-    .section-header p {
-      font-size: 1.2rem;
-      color: var(--blue-dark);
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    /* Feature Showcase - alternating layout */
-    .feature-showcase {
-      max-width: 1100px;
-      margin: 0 auto 5rem;
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .feature-showcase.reverse {
-      grid-template-columns: 1.1fr 1fr;
-    }
-    .feature-showcase.reverse .feature-text {
-      order: 2;
-    }
-    .feature-showcase.reverse .feature-preview {
-      order: 1;
-    }
-    .feature-number {
+      background: var(--gold);
+      color: var(--navy-deep);
+      padding: 1rem 2.5rem;
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 3.5rem;
-      color: var(--orange-warm);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .feature-text h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.2rem;
-      color: var(--blue-retro);
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-    }
-    .feature-text p {
-      color: var(--blue-dark);
-      line-height: 1.7;
-      font-size: 1.05rem;
-      margin-bottom: 1.5rem;
-    }
-    .feature-text .feature-bullets {
-      list-style: none;
-      padding: 0;
-    }
-    .feature-text .feature-bullets li {
-      padding: 0.4rem 0;
-      font-size: 0.95rem;
-      color: var(--blue-dark);
-      font-weight: 500;
-    }
-    .feature-text .feature-bullets li::before {
-      content: '\2605';
-      color: var(--orange-warm);
-      margin-right: 0.75rem;
-    }
-    /* UI Mockup Preview Panels */
-    .feature-preview {
-      background: var(--cream-dark);
-      border: 4px solid var(--brown-shadow);
-      box-shadow: 10px 10px 0 var(--blue-retro);
-      position: relative;
-    }
-    .preview-bar {
-      background: var(--blue-retro);
-      padding: 0.6rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      border-bottom: 3px solid var(--brown-shadow);
-    }
-    .preview-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-    .preview-dot.red { background: var(--red-accent); }
-    .preview-dot.yellow { background: var(--yellow-vintage); }
-    .preview-dot.green { background: #5EA075; }
-    .preview-bar-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      color: var(--cream);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-left: 0.5rem;
-    }
-    .preview-body {
-      padding: 1.25rem;
-    }
-    /* Mini UI elements for mockups */
-    .mock-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-    .mock-stat {
-      background: var(--cream);
-      border: 2px solid var(--blue-retro);
-      padding: 0.75rem;
-      text-align: center;
-    }
-    .mock-stat-val {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      color: var(--blue-retro);
-      line-height: 1;
-    }
-    .mock-stat-label {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--blue-dark);
-      opacity: 0.6;
-      margin-top: 0.25rem;
-    }
-    .mock-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.6rem 0.75rem;
-      background: var(--cream);
-      border: 2px solid var(--blue-retro);
-      margin-bottom: 0.5rem;
-      font-size: 0.8rem;
-    }
-    .mock-badge {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 1px;
-      padding: 0.15rem 0.5rem;
-      color: var(--cream);
-      white-space: nowrap;
-    }
-    .mock-badge.state { background: var(--blue-retro); }
-    .mock-badge.fed { background: var(--orange-warm); }
-    .mock-badge.reg { background: #5EA075; }
-    .mock-badge.support { background: #5EA075; }
-    .mock-badge.oppose { background: var(--red-accent); }
-    .mock-badge.watch { background: var(--yellow-vintage); color: var(--blue-dark); }
-    .mock-bill-id {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      color: var(--blue-retro);
-      white-space: nowrap;
-    }
-    .mock-bill-title {
-      flex: 1;
-      color: var(--blue-dark);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .mock-pct {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1rem;
-      color: var(--orange-warm);
-      white-space: nowrap;
-    }
-    /* Client health mockup */
-    .mock-client {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-      padding: 0.75rem;
-      background: var(--cream);
-      border: 2px solid var(--blue-retro);
-      margin-bottom: 0.5rem;
-    }
-    .mock-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1rem;
-      color: var(--cream);
-      flex-shrink: 0;
-    }
-    .mock-client-info {
-      flex: 1;
-      min-width: 0;
-    }
-    .mock-client-name {
-      font-weight: 700;
-      font-size: 0.8rem;
-      color: var(--blue-retro);
-    }
-    .mock-health-bar {
-      height: 6px;
-      background: var(--cream-dark);
-      border: 1px solid var(--blue-retro);
-      margin-top: 0.25rem;
-    }
-    .mock-health-fill {
-      height: 100%;
-    }
-    .mock-health-fill.good { background: #5EA075; }
-    .mock-health-fill.warn { background: var(--yellow-vintage); }
-    .mock-health-fill.bad { background: var(--red-accent); }
-    .mock-health-pct {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      white-space: nowrap;
-    }
-    .mock-health-pct.good { color: #5EA075; }
-    .mock-health-pct.warn { color: var(--orange-warm); }
-    .mock-health-pct.bad { color: var(--red-accent); }
-    /* AI chat mockup */
-    .mock-chat {
-      background: var(--cream);
-      border: 2px solid var(--blue-retro);
-      padding: 0.75rem;
-      margin-bottom: 0.5rem;
-    }
-    .mock-chat-ai {
-      background: var(--orange-warm);
-      border: 2px solid var(--brown-shadow);
-      padding: 0.75rem;
-      color: var(--cream);
-      font-size: 0.8rem;
-      line-height: 1.5;
-    }
-    .mock-chat-label {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 1px;
-      background: var(--yellow-vintage);
-      color: var(--blue-dark);
-      display: inline-block;
-      padding: 0.1rem 0.5rem;
-      margin-bottom: 0.4rem;
-    }
-    .mock-chat-user {
-      font-size: 0.8rem;
-      color: var(--blue-dark);
-      line-height: 1.5;
-    }
-    .mock-input {
-      display: flex;
-      gap: 0;
-      margin-top: 0.5rem;
-    }
-    .mock-input-field {
-      flex: 1;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.75rem;
-      border: 2px solid var(--blue-retro);
-      background: var(--cream);
-      color: var(--blue-dark);
-      opacity: 0.5;
-    }
-    .mock-input-btn {
-      padding: 0.5rem 0.75rem;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      background: var(--orange-warm);
-      color: var(--cream);
-      border: 2px solid var(--blue-retro);
-      border-left: none;
-    }
-    /* Report mockup */
-    .mock-report {
-      background: var(--cream);
-      border: 2px solid var(--blue-retro);
-      padding: 1rem;
-    }
-    .mock-report-header {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--cream-dark);
-    }
-    .mock-report-logo {
-      width: 28px;
-      height: 28px;
-      background: var(--blue-retro);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      color: var(--yellow-vintage);
-      font-size: 0.9rem;
-    }
-    .mock-report-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: var(--blue-retro);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .mock-report-line {
-      height: 6px;
-      background: var(--cream-dark);
-      margin-bottom: 0.4rem;
-      border-radius: 2px;
-    }
-    .mock-report-line.short { width: 60%; }
-    .mock-report-line.med { width: 80%; }
-    /* Calendar mockup */
-    .mock-cal-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 2px;
-    }
-    .mock-cal-day {
-      aspect-ratio: 1;
-      background: var(--cream);
-      border: 1px solid var(--blue-retro);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
-      font-weight: 600;
-      color: var(--blue-dark);
-    }
-    .mock-cal-day.active {
-      background: var(--yellow-vintage);
-      color: var(--blue-dark);
-      font-weight: 800;
-    }
-    .mock-cal-day.hearing {
-      background: var(--blue-retro);
-      color: var(--cream);
-    }
-    .mock-cal-day.deadline {
-      background: var(--red-accent);
-      color: var(--cream);
-    }
-    /* Live Section */
-    .live-section {
-      padding: 6rem 4rem;
-      background: var(--blue-dark);
-      position: relative;
-      overflow: hidden;
-    }
-    /* Vintage halftone dots pattern */
-    .live-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: radial-gradient(var(--blue-retro) 1px, transparent 1px);
-      background-size: 8px 8px;
-      opacity: 0.5;
-    }
-    .live-content {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 4rem;
-      align-items: center;
-      position: relative;
-      z-index: 10;
-    }
-    .live-text h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 5vw, 4rem);
-      color: var(--yellow-vintage);
+      font-size: 1.6rem;
       letter-spacing: 3px;
-      margin-bottom: 1rem;
+      text-decoration: none;
+      border: 3px solid var(--brown);
+      box-shadow: 5px 5px 0 var(--brown);
+      transition: all 0.1s;
     }
-    .live-text h2 span {
+
+    .btn-primary:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 3px 3px 0 var(--brown);
+    }
+
+    .btn-ghost {
       color: var(--cream);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 2px solid var(--cream);
+      padding-bottom: 2px;
     }
-    .live-text p {
-      font-size: 1.15rem;
-      color: var(--cream);
-      line-height: 1.7;
-      margin-bottom: 2rem;
+
+    .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* Hero illustration — retro TV */
+    .hero-illustration {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .live-demo {
-      background: var(--cream);
-      border: 5px solid var(--brown-shadow);
-      box-shadow: 12px 12px 0 var(--orange-warm);
+
+    .retro-tv {
+      position: relative;
+      width: 420px;
+    }
+
+    .tv-body {
+      background: #3D2B1F;
+      border-radius: 24px;
+      padding: 24px 24px 16px;
+      border: 3px solid var(--brown);
+      box-shadow: 8px 8px 0 var(--brown), inset 0 2px 0 rgba(255,255,255,0.08);
       position: relative;
     }
-    .demo-header {
-      background: var(--red-accent);
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      border-bottom: 4px solid var(--brown-shadow);
-    }
-    .live-badge {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--yellow-vintage);
-      color: var(--blue-dark);
-      padding: 0.35rem 0.75rem;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1rem;
-      letter-spacing: 2px;
-    }
-    .live-badge::before {
+
+    /* Wood grain texture */
+    .tv-body::before {
       content: '';
-      width: 10px;
-      height: 10px;
-      background: var(--red-accent);
-      border-radius: 50%;
-      animation: blink 1s ease infinite;
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 8px,
+        rgba(255,255,255,0.015) 8px,
+        rgba(255,255,255,0.015) 9px
+      );
+      pointer-events: none;
     }
-    @keyframes blink {
+
+    .tv-screen-frame {
+      background: #111;
+      border-radius: 14px;
+      padding: 3px;
+      border: 2px solid #222;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tv-screen {
+      background: var(--navy-deep);
+      border-radius: 12px;
+      padding: 16px;
+      min-height: 240px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* CRT scanline effect */
+    .tv-screen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.12) 2px,
+        rgba(0,0,0,0.12) 4px
+      );
+      pointer-events: none;
+      border-radius: 12px;
+    }
+
+    /* CRT glow */
+    .tv-screen::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      box-shadow: inset 0 0 60px rgba(74, 124, 89, 0.08), inset 0 0 120px rgba(242, 199, 68, 0.04);
+      pointer-events: none;
+    }
+
+    .tv-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .tv-live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      animation: pulse-live 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-live {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.3; }
     }
-    .demo-title {
-      color: var(--cream);
+
+    .tv-live-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75rem;
+      color: var(--red);
+      letter-spacing: 3px;
+    }
+
+    .tv-channel {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
+      font-size: 0.7rem;
+      color: rgba(250,243,227,0.4);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: auto;
+    }
+
+    .tv-transcript-line {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .tv-speaker {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      padding-top: 1px;
     }
-    .demo-body {
-      padding: 1.5rem;
+
+    .tv-speaker.s-chair { color: var(--gold); }
+    .tv-speaker.s-witness { color: var(--orange-light); }
+    .tv-speaker.s-ai { color: var(--sage); }
+
+    .tv-text { color: rgba(250,243,227,0.75); }
+
+    .tv-ai-alert {
+      background: rgba(74, 124, 89, 0.15);
+      border-left: 2px solid var(--sage);
+      padding: 8px 10px;
+      margin-top: 4px;
     }
-    .transcript-line {
+
+    .tv-ai-alert .tv-text { color: var(--sage); font-weight: 500; }
+
+    /* TV controls */
+    .tv-controls {
       display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      padding: 1rem;
-      background: var(--cream-dark);
-      border-left: 5px solid var(--blue-retro);
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 8px 4px;
     }
-    .speaker-name {
-      background: var(--blue-retro);
-      color: var(--yellow-vintage);
-      padding: 0.25rem 0.75rem;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      height: fit-content;
-    }
-    .transcript-line p {
-      color: var(--blue-dark);
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-    .ai-box {
-      background: var(--orange-warm);
-      border: 3px solid var(--brown-shadow);
-      padding: 1rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .ai-icon {
-      background: var(--yellow-vintage);
-      color: var(--blue-dark);
-      font-family: 'Bebas Neue', sans-serif;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
-    .ai-box-content {
-      color: var(--cream);
-    }
-    .ai-box-content strong {
-      font-family: 'Bebas Neue', sans-serif;
+
+    .tv-brand {
+      font-family: 'Righteous', cursive;
       font-size: 1rem;
-      letter-spacing: 1px;
-      display: block;
-      margin-bottom: 0.25rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+      opacity: 0.7;
     }
-    .ai-box-content p {
-      font-size: 0.9rem;
+
+    .tv-knobs {
+      display: flex;
+      gap: 12px;
     }
-    /* Pricing-style CTA */
-    .cta-section {
-      padding: 6rem 4rem;
-      background: var(--cream);
-      text-align: center;
+
+    .tv-knob {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #5a4030, #3D2B1F);
+      border: 2px solid #2D1810;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
       position: relative;
     }
-    .cta-card {
-      max-width: 600px;
-      margin: 0 auto;
-      background: var(--blue-retro);
-      border: 5px solid var(--brown-shadow);
-      padding: 3rem;
-      position: relative;
-    }
-    .cta-card::before {
+
+    .tv-knob::after {
       content: '';
       position: absolute;
-      top: 12px;
-      left: 12px;
-      right: -12px;
-      bottom: -12px;
-      background: var(--yellow-vintage);
-      z-index: -1;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 8px;
+      background: var(--gold);
+      opacity: 0.5;
+      border-radius: 1px;
     }
-    .cta-card h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 3.5rem;
-      color: var(--cream);
-      letter-spacing: 3px;
-      margin-bottom: 0.5rem;
-    }
-    .cta-card .price {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 5rem;
-      color: var(--yellow-vintage);
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-    .cta-card .price span {
-      font-size: 1.5rem;
-      color: var(--cream);
-    }
-    .cta-card p {
-      color: var(--cream);
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-    .cta-card .btn-hero {
-      background: var(--orange-warm);
-      color: var(--cream);
-    }
-    /* Email form in CTA */
-    .cta-form {
+
+    /* TV legs */
+    .tv-legs {
       display: flex;
-      gap: 0;
-      max-width: 420px;
-      margin: 0 auto;
+      justify-content: center;
+      gap: 180px;
+      margin-top: -2px;
     }
-    .cta-form input[type="email"] {
-      flex: 1;
-      padding: 1rem 1.25rem;
-      font-family: 'Outfit', sans-serif;
-      font-size: 1rem;
-      border: 4px solid var(--brown-shadow);
-      border-right: none;
-      background: var(--cream);
-      color: var(--blue-dark);
-      outline: none;
+
+    .tv-leg {
+      width: 4px;
+      height: 32px;
+      background: #3D2B1F;
+      border: 1px solid var(--brown);
+      transform: rotate(-4deg);
+      border-radius: 0 0 2px 2px;
     }
-    .cta-form input[type="email"]::placeholder {
-      color: #999;
+
+    .tv-leg:last-child {
+      transform: rotate(4deg);
     }
-    .cta-form button {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 2px;
-      padding: 1rem 2rem;
-      background: var(--orange-warm);
-      color: var(--cream);
-      border: 4px solid var(--brown-shadow);
-      box-shadow: 4px 4px 0 var(--brown-shadow);
-      cursor: pointer;
-      transition: all 0.1s ease;
+
+    /* Floating badge on TV */
+    .vintage-badge {
+      position: absolute;
+      top: -16px;
+      right: -24px;
+      width: 110px;
+      height: 110px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid var(--gold);
+      box-shadow: 4px 4px 0 var(--brown);
+      transform: rotate(12deg);
+      z-index: 20;
+      animation: badge-bob 3s ease-in-out infinite;
+    }
+
+    @keyframes badge-bob {
+      0%, 100% { transform: rotate(12deg) translateY(0); }
+      50% { transform: rotate(12deg) translateY(-5px); }
+    }
+
+    .vintage-badge .top { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; color: var(--cream); letter-spacing: 2px; text-transform: uppercase; }
+    .vintage-badge .big { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--gold); line-height: 1; }
+    .vintage-badge .bot { font-family: 'Barlow Condensed', sans-serif; font-size: 0.55rem; color: var(--cream); letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Antenna */
+    .tv-antenna {
+      display: flex;
+      justify-content: center;
+      margin-bottom: -2px;
+      position: relative;
+      height: 50px;
+    }
+
+    .antenna-left, .antenna-right {
+      width: 3px;
+      height: 50px;
+      background: linear-gradient(to top, #3D2B1F, #5a4030);
+      border-radius: 2px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .antenna-left {
+      transform: rotate(-20deg);
+      transform-origin: bottom center;
+      left: calc(50% - 30px);
+    }
+
+    .antenna-right {
+      transform: rotate(20deg);
+      transform-origin: bottom center;
+      right: calc(50% - 30px);
+    }
+
+    .antenna-tip {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      position: absolute;
+      top: 0;
+    }
+
+    .antenna-left .antenna-tip { left: 0; }
+    .antenna-right .antenna-tip { right: 0; }
+
+    /* ===== TICKER DIVIDER ===== */
+    .ticker {
+      background: var(--gold);
+      padding: 1rem 0;
+      border-top: 4px solid var(--brown);
+      border-bottom: 4px solid var(--brown);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 3rem;
+      animation: scroll-ticker 20s linear infinite;
       white-space: nowrap;
     }
-    .cta-form button:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0 var(--brown-shadow);
+
+    @keyframes scroll-ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
-    .waitlist-note {
-      display: block;
-      color: var(--cream);
-      font-size: 0.85rem;
-      margin-top: 1rem;
-      opacity: 0.7;
+
+    .ticker-item {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--navy-deep);
+      letter-spacing: 3px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
     }
-    /* Footer */
-    footer {
-      background: var(--blue-dark);
-      padding: 3rem 4rem;
-      border-top: 6px solid var(--yellow-vintage);
+
+    .ticker-item .star { color: var(--red); font-size: 1rem; }
+
+    /* ===== PROBLEM/SOLUTION ===== */
+    .problem {
+      padding: 5rem 4rem;
+      background: var(--cream);
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
     }
-    .footer-content {
+
+    .problem h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--navy);
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .problem p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #444;
+      max-width: 650px;
+      margin: 0 auto 2rem;
+    }
+
+    .problem .highlight {
+      background: linear-gradient(transparent 60%, var(--gold) 60%);
+      padding: 0 4px;
+      font-weight: 600;
+    }
+
+    /* ===== FEATURES — Compact grid ===== */
+    .features {
+      padding: 4rem;
+      background: var(--navy);
+      position: relative;
+    }
+
+    .features::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .features-header h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--gold);
+      letter-spacing: 4px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
       max-width: 1100px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 3rem;
+      position: relative;
+      z-index: 2;
     }
-    .footer-brand p {
-      color: var(--cream);
-      font-size: 0.9rem;
-      margin-top: 0.75rem;
-      opacity: 0.7;
-      line-height: 1.6;
+
+    .feature-card {
+      background: var(--navy-deep);
+      border: 2px solid rgba(242, 199, 68, 0.15);
+      padding: 2rem;
+      position: relative;
+      transition: all 0.2s;
     }
-    .footer-column h4 {
+
+    .feature-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
       font-family: 'Bebas Neue', sans-serif;
-      color: var(--yellow-vintage);
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+      color: var(--cream);
       letter-spacing: 2px;
       margin-bottom: 0.75rem;
     }
-    .footer-column ul {
-      list-style: none;
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: rgba(250, 243, 227, 0.65);
+      line-height: 1.5;
     }
-    .footer-column ul li {
+
+    .feature-tag {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 1rem;
+    }
+
+    .tag-live { background: var(--red); color: var(--cream); }
+    .tag-ai { background: var(--sage); color: var(--cream); }
+    .tag-auto { background: var(--orange); color: var(--cream); }
+
+    /* ===== LIVE HEARING HERO SECTION ===== */
+    .live-section {
+      padding: 5rem 4rem;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .live-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .live-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--navy);
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .live-text h2 span { color: var(--red); }
+
+    .live-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .live-stats {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .live-stat {
+      text-align: center;
+    }
+
+    .live-stat .num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--navy);
+    }
+
+    .live-stat .label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Retro terminal / hearing transcript */
+    .live-terminal {
+      background: var(--navy-deep);
+      border: 3px solid var(--gold);
+      box-shadow: 8px 8px 0 var(--brown);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .terminal-bar {
+      background: var(--navy);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: var(--red); }
+    .dot-gold { background: var(--gold); }
+    .dot-green { background: var(--sage); }
+
+    .terminal-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--cream);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: 0.5rem;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      margin-left: auto;
+      animation: pulse-live 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-live {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .terminal-body {
+      padding: 1.5rem;
+      font-family: 'Outfit', monospace;
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+
+    .t-line {
+      margin-bottom: 0.75rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .t-speaker {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      padding-top: 2px;
+    }
+
+    .t-speaker.chair { color: var(--gold); }
+    .t-speaker.witness { color: var(--orange-light); }
+    .t-speaker.ai { color: var(--sage); }
+
+    .t-content { color: rgba(250, 243, 227, 0.8); }
+
+    .t-ai-box {
+      background: rgba(74, 124, 89, 0.15);
+      border-left: 3px solid var(--sage);
+      padding: 0.75rem 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .t-ai-box .t-content {
+      color: var(--sage);
+      font-weight: 500;
+    }
+
+    /* ===== RETRO CAPITOL ILLUSTRATION SECTION ===== */
+    .retro-break {
+      padding: 3rem 4rem;
+      background: var(--navy);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .retro-break::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-conic-gradient(from 0deg, var(--navy-deep) 0deg 10deg, var(--navy) 10deg 20deg);
+      opacity: 0.15;
+    }
+
+    .retro-capitol-row {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      align-items: flex-end;
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ===== CTA / WAITLIST ===== */
+    .cta-section {
+      padding: 5rem 4rem;
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .cta-card {
+      max-width: 580px;
+      margin: 0 auto;
+      background: var(--navy);
+      border: 4px solid var(--brown);
+      padding: 3rem;
+      position: relative;
+    }
+
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: -10px;
+      bottom: -10px;
+      background: var(--gold);
+      z-index: -1;
+    }
+
+    .cta-card h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--cream);
+      letter-spacing: 3px;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-card .founding {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
       margin-bottom: 0.5rem;
     }
-    .footer-column ul li a {
+
+    .cta-card p {
+      color: rgba(250, 243, 227, 0.7);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .cta-card .btn-primary {
+      background: var(--orange);
       color: var(--cream);
-      text-decoration: none;
-      font-size: 0.9rem;
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
     }
-    .footer-column ul li a:hover {
-      opacity: 1;
-      color: var(--yellow-vintage);
+
+    .cta-spots {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
-    .footer-bottom {
+
+    .cta-spots .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse-live 1.5s ease-in-out infinite;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy-deep);
+      padding: 2.5rem 4rem;
+      border-top: 5px solid var(--gold);
+    }
+
+    .footer-inner {
       max-width: 1100px;
-      margin: 2rem auto 0;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .footer-bottom p {
-      color: var(--cream);
-      font-size: 0.85rem;
-      opacity: 0.5;
+
+    .footer-logo {
+      font-family: 'Righteous', cursive;
+      font-size: 1.5rem;
+      color: var(--gold);
+      letter-spacing: 2px;
     }
-    .social-links a {
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
       color: var(--cream);
       text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
       font-weight: 600;
       text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      opacity: 0.7;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
     }
-    .social-links a:hover {
-      color: var(--yellow-vintage);
-      opacity: 1;
-    }
-    /* Email Modal */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(15, 35, 66, 0.85);
-      z-index: 10001;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal {
-      background: var(--cream);
-      border: 5px solid var(--brown-shadow);
-      box-shadow: 12px 12px 0 var(--orange-warm);
-      padding: 3rem;
-      max-width: 480px;
-      width: 90%;
-      position: relative;
-    }
-    .modal h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.5rem;
-      color: var(--blue-retro);
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-    }
-    .modal > p {
-      color: var(--blue-dark);
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-    }
-    .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1.25rem;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      color: var(--blue-dark);
-      cursor: pointer;
-      line-height: 1;
-    }
-    .modal-close:hover {
-      color: var(--red-accent);
-    }
-    .modal-form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .modal-form input[type="email"] {
-      padding: 1rem 1.25rem;
-      font-family: 'Outfit', sans-serif;
-      font-size: 1rem;
-      border: 3px solid var(--blue-retro);
-      background: white;
-      color: var(--blue-dark);
-      outline: none;
-    }
-    .modal-form input[type="email"]:focus {
-      border-color: var(--orange-warm);
-    }
-    .modal-form button {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      padding: 1rem 2rem;
-      background: var(--orange-warm);
-      color: var(--cream);
-      border: 3px solid var(--brown-shadow);
-      box-shadow: 4px 4px 0 var(--brown-shadow);
-      cursor: pointer;
-      transition: all 0.1s ease;
-    }
-    .modal-form button:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0 var(--brown-shadow);
-    }
-    .modal-form .waitlist-note {
-      color: var(--blue-dark);
-      opacity: 0.5;
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(250,243,227,0.4);
       text-align: center;
+      margin-top: 1.5rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .hamburger span {
-      width: 28px;
-      height: 3px;
-      background: var(--cream);
-      transition: all 0.3s ease;
-    }
-    /* Responsive */
-    @media (max-width: 1200px) {
-      .feature-showcase,
-      .feature-showcase.reverse {
-        gap: 2.5rem;
-      }
-    }
-    @media (max-width: 1000px) {
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
       nav { padding: 1rem 2rem; }
-      .hamburger { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        background: var(--blue-retro);
-        border-bottom: 6px solid var(--yellow-vintage);
-        padding: 1.5rem 2rem;
-        gap: 1.25rem;
-      }
-      .nav-links.open { display: flex; }
-      .hero { padding: 7rem 2rem 4rem; }
-      .hero-fulltext h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
-      .hero-fulltext .hero-subtitle { font-size: 1.1rem; }
-      .features { padding: 4rem 2rem; overflow-x: hidden; }
-      .feature-preview { box-shadow: 6px 6px 0 var(--blue-retro); }
-      .mock-row { flex-wrap: wrap; gap: 0.4rem; }
-      .mock-bill-title { min-width: 0; }
-      .feature-showcase,
-      .feature-showcase.reverse {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .feature-showcase.reverse .feature-text,
-      .feature-showcase.reverse .feature-preview {
-        order: unset;
-      }
-      .live-section { padding: 4rem 2rem; }
-      .live-content { grid-template-columns: 1fr; }
-      .cta-section { padding: 4rem 2rem; }
-      .divider-content { gap: 2rem; }
-      .divider::before, .divider::after { display: none; }
-      footer { padding: 2.5rem 2rem; }
-      .footer-content { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    }
-    @media (max-width: 600px) {
-      .hero { padding: 6rem 1.25rem 3rem; }
-      .hero-fulltext h1 { font-size: clamp(1.8rem, 6vw, 2.8rem); }
-      .hero-eyebrow { font-size: 0.7rem; letter-spacing: 1.5px; padding: 0.4rem 1rem; }
-      .hero-fulltext .hero-subtitle { font-size: 1rem; }
-      .hero-cta { flex-direction: column; align-items: center; gap: 1rem; }
-      .founding-banner { font-size: 0.8rem; padding: 0.5rem 1rem; }
-      .btn-hero { font-size: 1.4rem; padding: 1rem 2rem; }
-      .divider-content { gap: 1rem; flex-direction: column; align-items: center; }
-      .divider-item { font-size: 1rem; }
-      .feature-preview { box-shadow: 4px 4px 0 var(--blue-retro); }
-      .mock-stats { grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
-      .mock-stat-val { font-size: 1.4rem; }
-      .mock-row { font-size: 0.7rem; padding: 0.5rem; gap: 0.4rem; }
-      .footer-content { grid-template-columns: 1fr; }
-      .cta-form { flex-direction: column; }
-      .cta-form input[type="email"] { border-right: 4px solid var(--brown-shadow); }
+      .hero { padding: 7rem 2rem 3rem; }
+      .hero-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-illustration { display: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .live-layout { grid-template-columns: 1fr; }
+      .live-terminal { margin-top: 2rem; }
+      .problem { padding: 3rem 2rem; }
+      .features { padding: 3rem 2rem; }
+      .live-section { padding: 3rem 2rem; }
+      .cta-section { padding: 3rem 2rem; }
+      .retro-break { padding: 2rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
+
+  <!-- NAV -->
   <nav>
-    <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Righteous,cursive" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-links" id="navLinks">
-      <a href="features.html">Features</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="about.html">About</a>
-      <a href="#" class="btn-retro" onclick="openModal(); return false;">Request a Demo</a>
+    <a href="/" class="logo">legisly</a>
+    <div class="nav-links">
+      <a href="/features.html">Features</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/about.html">About</a>
+      <a href="#waitlist" class="nav-cta">Join Waitlist</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero hero-fulltext">
-    <div class="hero-content">
-      <div class="hero-eyebrow">&starf; AI-Powered Legislative Tracking for CA Firms &starf;</div>
-      <h1>
-        A BILL MOVED IN COMMITTEE YESTERDAY.<br>
-        <span class="accent">YOUR CLIENT FOUND OUT BEFORE YOU DID.</span>
-      </h1>
-      <p class="hero-subtitle">Legisly monitors every CA and federal hearing, amendment, and vote in real time &mdash; then alerts you, briefs your team, and updates your clients automatically. Never get caught flat-footed again.</p>
-      <div class="hero-cta">
-        <a href="#" class="btn-hero" onclick="openModal(); return false;">FIX IT BEFORE THE NEXT SESSION &rarr;</a>
-        <span class="hero-cta-subtext">See How Live Hearing Intelligence Works</span>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-layout">
+      <div class="hero-content">
+        <div class="hero-eyebrow">★ AI-Powered Legislative Intelligence ★</div>
+        <h1>
+          YOUR CLIENT<br>FOUND OUT<br><span class="accent">BEFORE YOU DID.</span>
+        </h1>
+        <p class="hero-sub">
+          Legisly monitors every CA hearing, amendment, and vote in real time — then alerts you, 
+          briefs your team, and updates your clients. Automatically.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#waitlist" class="btn-primary">CLAIM YOUR SPOT →</a>
+          <a href="#live-demo" class="btn-ghost">See It Live ↓</a>
+        </div>
       </div>
-      <div class="founding-banner">First 20 firms get 3 months free + founding member pricing locked for life</div>
+
+      <div class="hero-illustration">
+        <div class="retro-tv">
+          <!-- Antenna -->
+          <div class="tv-antenna">
+            <div class="antenna-left"><div class="antenna-tip"></div></div>
+            <div class="antenna-right"><div class="antenna-tip"></div></div>
+          </div>
+
+          <div class="tv-body">
+            <div class="tv-screen-frame">
+              <div class="tv-screen">
+                <div class="tv-header">
+                  <div class="tv-live-dot"></div>
+                  <span class="tv-live-label">LIVE</span>
+                  <span class="tv-channel">Assembly Housing Cmte</span>
+                </div>
+
+                <div class="tv-transcript-line">
+                  <span class="tv-speaker s-chair">CHAIR</span>
+                  <span class="tv-text">We'll now hear testimony on AB-1234.</span>
+                </div>
+                <div class="tv-transcript-line">
+                  <span class="tv-speaker s-witness">M. CHEN</span>
+                  <span class="tv-text">We strongly support this bill and urge an aye vote.</span>
+                </div>
+                <div class="tv-transcript-line">
+                  <div class="tv-ai-alert">
+                    <span class="tv-speaker s-ai">AI</span>
+                    <span class="tv-text">Support testimony detected — CA Housing Coalition. Client alert sent.</span>
+                  </div>
+                </div>
+                <div class="tv-transcript-line">
+                  <span class="tv-speaker s-chair">CHAIR</span>
+                  <span class="tv-text">Call the roll. The motion is do-pass.</span>
+                </div>
+                <div class="tv-transcript-line">
+                  <div class="tv-ai-alert">
+                    <span class="tv-speaker s-ai">AI</span>
+                    <span class="tv-text">Vote detected: AB-1234 PASSED 8-3.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tv-controls">
+              <span class="tv-brand">legisly</span>
+              <div class="tv-knobs">
+                <div class="tv-knob"></div>
+                <div class="tv-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TV Legs -->
+          <div class="tv-legs">
+            <div class="tv-leg"></div>
+            <div class="tv-leg"></div>
+          </div>
+
+          <!-- Badge -->
+          <div class="vintage-badge">
+            <span class="top">First 20</span>
+            <span class="big">FREE</span>
+            <span class="bot">3 Months</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Divider -->
-  <div class="divider">
-    <div class="divider-content">
-      <div class="divider-item"><span>CA</span> + Federal Coverage</div>
-      <div class="divider-item"><span>Live</span> Hearing Intelligence</div>
-      <div class="divider-item"><span>AI</span> Analysis &amp; Alerts</div>
-      <div class="divider-item"><span>24/7</span> Monitoring</div>
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="star">★</span> CA BILL TRACKING</span>
+      <span class="ticker-item"><span class="star">★</span> LIVE HEARING INTELLIGENCE</span>
+      <span class="ticker-item"><span class="star">★</span> AI ANALYSIS & ALERTS</span>
+      <span class="ticker-item"><span class="star">★</span> CLIENT REPORTS</span>
+      <span class="ticker-item"><span class="star">★</span> 24/7 MONITORING</span>
+      <span class="ticker-item"><span class="star">★</span> BRANDED CLIENT PORTAL</span>
+      <span class="ticker-item"><span class="star">★</span> CA BILL TRACKING</span>
+      <span class="ticker-item"><span class="star">★</span> LIVE HEARING INTELLIGENCE</span>
+      <span class="ticker-item"><span class="star">★</span> AI ANALYSIS & ALERTS</span>
+      <span class="ticker-item"><span class="star">★</span> CLIENT REPORTS</span>
+      <span class="ticker-item"><span class="star">★</span> 24/7 MONITORING</span>
+      <span class="ticker-item"><span class="star">★</span> BRANDED CLIENT PORTAL</span>
     </div>
   </div>
 
-  <!-- Features Section -->
+  <!-- PROBLEM/SOLUTION -->
+  <section class="problem">
+    <h2>YOUR COMPETITORS ARE WATCHING HEARINGS.<br>LEGISLY <span style="color:var(--red)">LISTENS</span> TO THEM.</h2>
+    <p>
+      Most firms still track bills manually — refreshing websites, scanning newsletters, hoping nothing slips through. 
+      Legisly's AI monitors <span class="highlight">every CA hearing in real time</span>, detects votes, amendments, and testimony 
+      the moment they happen, and delivers intelligence to your team before anyone else has it.
+    </p>
+  </section>
+
+  <!-- FEATURES GRID -->
   <section class="features">
-    <div class="section-header">
-      <h2>BUILT FOR <span class="underline">CA LOBBYISTS</span></h2>
-      <p>Every tool your firm needs to track, analyze, and report on California and federal legislation.</p>
+    <div class="features-header">
+      <h2>WHAT YOUR FIRM GETS</h2>
     </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <rect x="4" y="12" width="48" height="36" rx="3" stroke="#F2C744" stroke-width="2" fill="none"/>
+          <line x1="4" y1="22" x2="52" y2="22" stroke="#F2C744" stroke-width="1.5"/>
+          <rect x="10" y="28" width="16" height="4" rx="1" fill="#F2C744" opacity="0.5"/>
+          <rect x="10" y="36" width="24" height="4" rx="1" fill="#F2C744" opacity="0.3"/>
+          <rect x="38" y="28" width="8" height="12" rx="1" fill="#4A7C59" opacity="0.6"/>
+        </svg>
+        <h3>CA BILL TRACKING</h3>
+        <p>Real-time ingestion from leginfo. Status, amendments, votes, and AI passage probability — all in one view.</p>
+        <span class="feature-tag tag-auto">AUTOMATED</span>
+      </div>
 
-    <!-- Feature 1: Bill Tracking -->
-    <div class="feature-showcase">
-      <div class="feature-text">
-        <div class="feature-number">01</div>
-        <h3>CA + FEDERAL BILL TRACKING</h3>
-        <p>Real-time ingestion from leginfo.legislature.ca.gov and Congress.gov. Track status, amendments, vote records, and AI-predicted passage probability.</p>
-        <ul class="feature-bullets">
-          <li>State, federal, and regulatory bills in one view</li>
-          <li>AI passage probability scoring</li>
-          <li>Amendment history and vote records</li>
-        </ul>
-      </div>
-      <div class="feature-preview">
-        <div class="preview-bar">
-          <span class="preview-dot red"></span>
-          <span class="preview-dot yellow"></span>
-          <span class="preview-dot green"></span>
-          <span class="preview-bar-title">All Bills &mdash; 82 Tracked</span>
-        </div>
-        <div class="preview-body">
-          <div class="mock-stats">
-            <div class="mock-stat"><div class="mock-stat-val">82</div><div class="mock-stat-label">Bills</div></div>
-            <div class="mock-stat"><div class="mock-stat-val" style="color:var(--red-accent)">5</div><div class="mock-stat-label">Urgent</div></div>
-            <div class="mock-stat"><div class="mock-stat-val" style="color:#5EA075">73%</div><div class="mock-stat-label">Win Rate</div></div>
-          </div>
-          <div class="mock-row">
-            <span class="mock-badge state">STATE</span>
-            <span class="mock-bill-id">AB-1234</span>
-            <span class="mock-bill-title">Affordable Housing Act</span>
-            <span class="mock-badge support">SUPPORT</span>
-            <span class="mock-pct">78%</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-badge fed">FED</span>
-            <span class="mock-bill-id">HR-8821</span>
-            <span class="mock-bill-title">Water Infrastructure Act</span>
-            <span class="mock-badge watch">WATCH</span>
-            <span class="mock-pct">32%</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-badge reg">REG</span>
-            <span class="mock-bill-id">OAL-0312</span>
-            <span class="mock-bill-title">Housing Element Guidelines</span>
-            <span class="mock-badge support">SUPPORT</span>
-            <span class="mock-pct">&mdash;</span>
-          </div>
-          <div class="mock-row">
-            <span class="mock-badge state">STATE</span>
-            <span class="mock-bill-id">SB-1492</span>
-            <span class="mock-bill-title">Transit-Oriented Development</span>
-            <span class="mock-badge support">SUPPORT</span>
-            <span class="mock-pct">58%</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Feature 2: Client & Position Management -->
-    <div class="feature-showcase reverse">
-      <div class="feature-text">
-        <div class="feature-number">02</div>
-        <h3>CLIENT &amp; POSITION MANAGEMENT</h3>
-        <p>Manage client profiles, bill positions, internal memos, and a stakeholder CRM &mdash; all linked to active bills. Health scores show you which clients need attention.</p>
-        <ul class="feature-bullets">
-          <li>Client health scores with trend tracking</li>
-          <li>Support/Oppose/Watch position tracking</li>
-          <li>Stakeholder CRM linked to active bills</li>
-        </ul>
-      </div>
-      <div class="feature-preview">
-        <div class="preview-bar">
-          <span class="preview-dot red"></span>
-          <span class="preview-dot yellow"></span>
-          <span class="preview-dot green"></span>
-          <span class="preview-bar-title">Client Health</span>
-        </div>
-        <div class="preview-body">
-          <div class="mock-client">
-            <div class="mock-avatar" style="background:#5EA075">C</div>
-            <div class="mock-client-info">
-              <div class="mock-client-name">CA Housing Coalition</div>
-              <div class="mock-health-bar"><div class="mock-health-fill warn" style="width:62%"></div></div>
-            </div>
-            <span class="mock-health-pct warn">62%</span>
-          </div>
-          <div class="mock-client">
-            <div class="mock-avatar" style="background:var(--blue-retro)">T</div>
-            <div class="mock-client-info">
-              <div class="mock-client-name">Tech Alliance CA</div>
-              <div class="mock-health-bar"><div class="mock-health-fill good" style="width:85%"></div></div>
-            </div>
-            <span class="mock-health-pct good">85%</span>
-          </div>
-          <div class="mock-client">
-            <div class="mock-avatar" style="background:var(--orange-warm)">V</div>
-            <div class="mock-client-info">
-              <div class="mock-client-name">Central Valley Water</div>
-              <div class="mock-health-bar"><div class="mock-health-fill good" style="width:94%"></div></div>
-            </div>
-            <span class="mock-health-pct good">94%</span>
-          </div>
-          <div class="mock-client">
-            <div class="mock-avatar" style="background:var(--red-accent)">B</div>
-            <div class="mock-client-info">
-              <div class="mock-client-name">Bay Area Builders</div>
-              <div class="mock-health-bar"><div class="mock-health-fill bad" style="width:48%"></div></div>
-            </div>
-            <span class="mock-health-pct bad">48%</span>
-          </div>
-          <div class="mock-stats" style="margin-top:0.75rem;margin-bottom:0">
-            <div class="mock-stat"><div class="mock-stat-val">4</div><div class="mock-stat-label">Clients</div></div>
-            <div class="mock-stat"><div class="mock-stat-val">31</div><div class="mock-stat-label">Bills</div></div>
-            <div class="mock-stat"><div class="mock-stat-val" style="color:#5EA075">$248K</div><div class="mock-stat-label">MRR</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Feature 3: Branded Reports -->
-    <div class="feature-showcase">
-      <div class="feature-text">
-        <div class="feature-number">03</div>
-        <h3>BRANDED CLIENT REPORTS</h3>
-        <p>Your firm's logo, colors, and templates. One-click PDF exports, scheduled delivery, and a white-labeled Client Intelligence Portal your clients will love.</p>
-        <ul class="feature-bullets">
-          <li>AI-generated weekly client updates</li>
-          <li>White-labeled client portal</li>
-          <li>87% average client open rate</li>
-        </ul>
-      </div>
-      <div class="feature-preview">
-        <div class="preview-bar">
-          <span class="preview-dot red"></span>
-          <span class="preview-dot yellow"></span>
-          <span class="preview-dot green"></span>
-          <span class="preview-bar-title">Reports &mdash; AI Generated</span>
-        </div>
-        <div class="preview-body">
-          <div class="mock-report">
-            <div class="mock-report-header">
-              <div class="mock-report-logo">YF</div>
-              <span class="mock-report-title">Weekly Update &mdash; CA Housing Coalition</span>
-            </div>
-            <div style="font-size:0.7rem;color:var(--blue-dark);margin-bottom:0.5rem;font-weight:600">LEGISLATIVE SUMMARY &mdash; WEEK OF MAR 8</div>
-            <div class="mock-report-line"></div>
-            <div class="mock-report-line med"></div>
-            <div class="mock-report-line short"></div>
-            <div style="margin-top:0.75rem;font-size:0.7rem;color:var(--blue-dark);font-weight:600">KEY BILL UPDATES</div>
-            <div class="mock-row" style="margin-top:0.4rem;font-size:0.7rem">
-              <span class="mock-badge state" style="font-size:0.6rem">STATE</span>
-              <span class="mock-bill-id" style="font-size:0.75rem">AB-1234</span>
-              <span class="mock-bill-title">Passed committee</span>
-              <span class="mock-badge support" style="font-size:0.6rem">SUPPORT</span>
-            </div>
-            <div class="mock-row" style="font-size:0.7rem">
-              <span class="mock-badge state" style="font-size:0.6rem">STATE</span>
-              <span class="mock-bill-id" style="font-size:0.75rem">SB-567</span>
-              <span class="mock-bill-title">Amended Mar 5</span>
-              <span class="mock-badge support" style="font-size:0.6rem">SUPPORT</span>
-            </div>
-            <div class="mock-report-line" style="margin-top:0.5rem"></div>
-            <div class="mock-report-line short"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Feature 4: AI Assistant -->
-    <div class="feature-showcase reverse">
-      <div class="feature-text">
-        <div class="feature-number">04</div>
-        <h3>AI ASSISTANT &amp; AGENTIC CHAT</h3>
-        <p>AI-powered bill summaries, position drafting, impact analysis, and natural language search across your entire legislative portfolio.</p>
-        <ul class="feature-bullets">
-          <li>Natural language bill search &amp; analysis</li>
-          <li>Auto-generated position drafts</li>
-          <li>Daily briefings tailored to your clients</li>
-        </ul>
-      </div>
-      <div class="feature-preview">
-        <div class="preview-bar">
-          <span class="preview-dot red"></span>
-          <span class="preview-dot yellow"></span>
-          <span class="preview-dot green"></span>
-          <span class="preview-bar-title">Legisly AI</span>
-        </div>
-        <div class="preview-body">
-          <div class="mock-chat">
-            <div class="mock-chat-user">&ldquo;What should I focus on today?&rdquo;</div>
-          </div>
-          <div class="mock-chat-ai">
-            <div class="mock-chat-label">AI</div>
-            <div>Good morning, Sarah! Here&rsquo;s your briefing:</div>
-            <div style="margin-top:0.5rem;font-size:0.75rem">
-              <div style="margin-bottom:0.3rem">&bull; <strong>AB-1234</strong> floor vote scheduled today</div>
-              <div style="margin-bottom:0.3rem">&bull; 2 new bills match <strong>CA Housing Coalition</strong></div>
-              <div>&bull; <strong>SB-890</strong> passed Senate yesterday</div>
-            </div>
-          </div>
-          <div class="mock-chat" style="margin-top:0.5rem">
-            <div class="mock-chat-user">&ldquo;Draft a client update for CA Housing Coalition&rdquo;</div>
-          </div>
-          <div class="mock-input">
-            <div class="mock-input-field">Ask anything about your bills...</div>
-            <div class="mock-input-btn">SEND</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Feature 5: Live Hearings (preview, full section below) -->
-    <div class="feature-showcase">
-      <div class="feature-text">
-        <div class="feature-number">05</div>
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <circle cx="28" cy="28" r="22" stroke="#C73E3A" stroke-width="2" fill="none"/>
+          <circle cx="28" cy="28" r="8" fill="#C73E3A" opacity="0.6"/>
+          <circle cx="28" cy="28" r="3" fill="#C73E3A"/>
+          <line x1="28" y1="6" x2="28" y2="14" stroke="#C73E3A" stroke-width="1.5"/>
+          <line x1="28" y1="42" x2="28" y2="50" stroke="#C73E3A" stroke-width="1.5"/>
+          <line x1="6" y1="28" x2="14" y2="28" stroke="#C73E3A" stroke-width="1.5"/>
+          <line x1="42" y1="28" x2="50" y2="28" stroke="#C73E3A" stroke-width="1.5"/>
+        </svg>
         <h3>LIVE HEARING INTELLIGENCE</h3>
-        <p>Real-time transcription, speaker identification, AI-generated summaries, vote detection, and client-specific relevance scoring &mdash; all automated.</p>
-        <ul class="feature-bullets">
-          <li>Real-time audio capture &amp; transcription</li>
-          <li>AI key moment detection</li>
-          <li>Client-specific relevance scoring</li>
-        </ul>
+        <p>Real-time transcription, speaker ID, AI vote detection, and key moment alerts — while the hearing is still going.</p>
+        <span class="feature-tag tag-live">LIVE</span>
       </div>
-      <div class="feature-preview">
-        <div class="preview-bar" style="background:var(--red-accent)">
-          <span class="preview-dot" style="background:var(--cream);animation:blink 1s ease infinite"></span>
-          <span class="preview-bar-title">LIVE &mdash; Assembly Housing Committee</span>
-        </div>
-        <div class="preview-body">
-          <div class="mock-row" style="border-left:4px solid var(--blue-retro)">
-            <span class="mock-badge state">CHAIR</span>
-            <span class="mock-bill-title" style="white-space:normal;font-size:0.8rem">We&rsquo;ll now hear testimony on AB-1234.</span>
-          </div>
-          <div class="mock-row" style="border-left:4px solid var(--yellow-vintage)">
-            <span class="mock-badge" style="background:var(--yellow-vintage);color:var(--blue-dark)">M. CHEN</span>
-            <span class="mock-bill-title" style="white-space:normal;font-size:0.8rem">We strongly support this bill...</span>
-          </div>
-          <div style="background:var(--orange-warm);border:2px solid var(--brown-shadow);padding:0.6rem 0.75rem;display:flex;gap:0.5rem;align-items:flex-start">
-            <span style="background:var(--yellow-vintage);color:var(--blue-dark);font-family:'Bebas Neue',sans-serif;font-size:0.65rem;letter-spacing:1px;padding:0.15rem 0.4rem">AI</span>
-            <span style="color:var(--cream);font-size:0.75rem">Support testimony identified. CA Housing Coalition on record supporting AB-1234.</span>
-          </div>
-          <div class="mock-stats" style="margin-top:0.75rem;margin-bottom:0">
-            <div class="mock-stat"><div class="mock-stat-val" style="font-size:1.2rem">3</div><div class="mock-stat-label">Bills</div></div>
-            <div class="mock-stat"><div class="mock-stat-val" style="font-size:1.2rem;color:var(--red-accent)">42</div><div class="mock-stat-label">Watching</div></div>
-            <div class="mock-stat"><div class="mock-stat-val" style="font-size:1.2rem;color:#5EA075">2</div><div class="mock-stat-label">AI Moments</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Feature 6: Regulatory & Budget -->
-    <div class="feature-showcase reverse">
-      <div class="feature-text">
-        <div class="feature-number">06</div>
-        <h3>REGULATORY &amp; BUDGET TRACKING</h3>
-        <p>CA OAL notices, Federal Register rulemakings, budget bill tracking, FPPC fundraising compliance with deadline alerts, and a full legislative calendar.</p>
-        <ul class="feature-bullets">
-          <li>Comment period deadline tracking</li>
-          <li>Budget impact analysis</li>
-          <li>FPPC compliance &amp; filing alerts</li>
-        </ul>
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <rect x="8" y="4" width="32" height="44" rx="2" stroke="#4A7C59" stroke-width="2" fill="none"/>
+          <rect x="14" y="12" width="20" height="3" rx="1" fill="#4A7C59" opacity="0.5"/>
+          <rect x="14" y="20" width="16" height="3" rx="1" fill="#4A7C59" opacity="0.3"/>
+          <rect x="14" y="28" width="20" height="3" rx="1" fill="#4A7C59" opacity="0.5"/>
+          <rect x="14" y="36" width="12" height="3" rx="1" fill="#4A7C59" opacity="0.3"/>
+          <path d="M38 18 L50 14 L50 50 L38 46Z" fill="#4A7C59" opacity="0.2" stroke="#4A7C59" stroke-width="1.5"/>
+        </svg>
+        <h3>AI REPORTS & CLIENT PORTAL</h3>
+        <p>Branded PDFs, scheduled delivery, and a white-labeled portal your clients actually open. 87% avg open rate.</p>
+        <span class="feature-tag tag-ai">AI-POWERED</span>
       </div>
-      <div class="feature-preview">
-        <div class="preview-bar">
-          <span class="preview-dot red"></span>
-          <span class="preview-dot yellow"></span>
-          <span class="preview-dot green"></span>
-          <span class="preview-bar-title">Calendar &amp; Deadlines</span>
-        </div>
-        <div class="preview-body">
-          <div class="mock-cal-grid" style="margin-bottom:0.75rem">
-            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">S</div>
-            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">M</div>
-            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">T</div>
-            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">W</div>
-            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">T</div>
-            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">F</div>
-            <div class="mock-cal-day" style="font-size:0.5rem;background:var(--cream-dark)">S</div>
-            <div class="mock-cal-day">8</div>
-            <div class="mock-cal-day">9</div>
-            <div class="mock-cal-day">10</div>
-            <div class="mock-cal-day active">11</div>
-            <div class="mock-cal-day hearing">12</div>
-            <div class="mock-cal-day deadline">13</div>
-            <div class="mock-cal-day">14</div>
-            <div class="mock-cal-day">15</div>
-            <div class="mock-cal-day hearing">16</div>
-            <div class="mock-cal-day">17</div>
-            <div class="mock-cal-day">18</div>
-            <div class="mock-cal-day">19</div>
-            <div class="mock-cal-day deadline">20</div>
-            <div class="mock-cal-day">21</div>
-          </div>
-          <div class="mock-row" style="font-size:0.75rem">
-            <span class="mock-badge" style="background:var(--blue-retro);font-size:0.6rem">HEARING</span>
-            <span class="mock-bill-title">Assembly Housing Cmte &mdash; 3 bills</span>
-          </div>
-          <div class="mock-row" style="font-size:0.75rem">
-            <span class="mock-badge" style="background:var(--red-accent);font-size:0.6rem">FPPC</span>
-            <span class="mock-bill-title">Q1 Form 460 Filing &mdash; 5 days</span>
-          </div>
-          <div class="mock-row" style="font-size:0.75rem">
-            <span class="mock-badge reg" style="font-size:0.6rem">REG</span>
-            <span class="mock-bill-title">OAL Housing Guidelines &mdash; Comment due</span>
-          </div>
-        </div>
+
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <circle cx="20" cy="20" r="12" stroke="#F4A261" stroke-width="2" fill="none"/>
+          <circle cx="36" cy="36" r="12" stroke="#F4A261" stroke-width="2" fill="none"/>
+          <circle cx="38" cy="18" r="8" stroke="#F4A261" stroke-width="1.5" fill="none"/>
+          <line x1="20" y1="20" x2="36" y2="36" stroke="#F4A261" stroke-width="1" opacity="0.5"/>
+          <line x1="20" y1="20" x2="38" y2="18" stroke="#F4A261" stroke-width="1" opacity="0.5"/>
+        </svg>
+        <h3>CLIENT & POSITION MGMT</h3>
+        <p>Track support/oppose/watch for every client. Health scores, stakeholder CRM, and position history in one place.</p>
+        <span class="feature-tag tag-auto">AUTOMATED</span>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <rect x="6" y="8" width="44" height="40" rx="3" stroke="#F2C744" stroke-width="2" fill="none"/>
+          <line x1="6" y1="18" x2="50" y2="18" stroke="#F2C744" stroke-width="1.5"/>
+          <circle cx="16" cy="30" r="3" fill="#E8722A"/>
+          <circle cx="28" cy="26" r="3" fill="#C73E3A"/>
+          <circle cx="40" cy="34" r="3" fill="#4A7C59"/>
+          <rect x="12" y="38" width="8" height="4" rx="1" fill="#F2C744" opacity="0.3"/>
+          <rect x="24" y="38" width="8" height="4" rx="1" fill="#F2C744" opacity="0.3"/>
+          <rect x="36" y="38" width="8" height="4" rx="1" fill="#F2C744" opacity="0.3"/>
+        </svg>
+        <h3>SMART CALENDAR</h3>
+        <p>Hearings, deadlines, votes, and FPPC filings — auto-synced to Google Calendar. Never miss a date.</p>
+        <span class="feature-tag tag-auto">AUTOMATED</span>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <path d="M28 6 L28 16" stroke="#F2C744" stroke-width="2"/>
+          <path d="M28 40 L28 50" stroke="#F2C744" stroke-width="2"/>
+          <circle cx="28" cy="28" r="14" stroke="#F2C744" stroke-width="2" fill="none"/>
+          <path d="M20 28 L26 34 L38 22" stroke="#4A7C59" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="4" stroke="#F2C744" stroke-width="1.5" fill="none"/>
+          <circle cx="44" cy="12" r="4" stroke="#F2C744" stroke-width="1.5" fill="none"/>
+          <line x1="15" y1="14" x2="22" y2="20" stroke="#F2C744" stroke-width="1" opacity="0.4"/>
+          <line x1="41" y1="14" x2="34" y2="20" stroke="#F2C744" stroke-width="1" opacity="0.4"/>
+        </svg>
+        <h3>AI ASSISTANT</h3>
+        <p>"What should I focus on today?" Natural language search, auto-generated position drafts, daily briefings.</p>
+        <span class="feature-tag tag-ai">AI-POWERED</span>
       </div>
     </div>
   </section>
 
-  <!-- Live Section -->
-  <section class="live-section">
-    <div class="live-content">
+  <!-- LIVE HEARING DEMO -->
+  <section class="live-section" id="live-demo">
+    <div class="live-layout">
       <div class="live-text">
-        <h2>LIVE <span>HEARING INTELLIGENCE</span></h2>
+        <h2>LIVE HEARING <span>INTELLIGENCE</span></h2>
         <p>
-          Real-time audio capture and transcription of CA legislative hearings.
-          Speaker identification, AI-generated summaries, vote detection, and
-          client-specific relevance scoring &mdash; all automated.
+          While your competitors are still watching the stream, Legisly has already transcribed the testimony, 
+          detected the vote, and alerted your team. AI analysis happens in real time — not after the hearing ends.
         </p>
-        <a href="features.html" class="btn-retro">SEE ALL FEATURES &rarr;</a>
-      </div>
-      <div class="live-demo">
-        <div class="demo-header">
-          <div class="live-badge">&bull; LIVE</div>
-          <span class="demo-title">Assembly Housing Committee</span>
+        <div class="live-stats">
+          <div class="live-stat">
+            <div class="num">&lt;10s</div>
+            <div class="label">Transcription Delay</div>
+          </div>
+          <div class="live-stat">
+            <div class="num">90%+</div>
+            <div class="label">Vote Detection</div>
+          </div>
+          <div class="live-stat">
+            <div class="num">24/7</div>
+            <div class="label">Session Monitoring</div>
+          </div>
         </div>
-        <div class="demo-body">
-          <div class="transcript-line">
-            <span class="speaker-name">CHAIR</span>
-            <p>We'll now hear testimony on AB-1234. First witness, please state your name for the record.</p>
+      </div>
+
+      <div class="live-terminal">
+        <div class="terminal-bar">
+          <div class="terminal-dot dot-red"></div>
+          <div class="terminal-dot dot-gold"></div>
+          <div class="terminal-dot dot-green"></div>
+          <span class="terminal-title">Assembly Housing Committee</span>
+          <div class="live-dot"></div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-speaker chair">CHAIR</span>
+            <span class="t-content">We'll now hear testimony on AB-1234. First witness, please state your name.</span>
           </div>
-          <div class="transcript-line">
-            <span class="speaker-name">M. CHEN</span>
-            <p>Maria Chen, representing the California Housing Coalition. We strongly support this bill...</p>
+          <div class="t-line">
+            <span class="t-speaker witness">M. CHEN</span>
+            <span class="t-content">Maria Chen, California Housing Coalition. We strongly support this bill and urge an aye vote.</span>
           </div>
-          <div class="ai-box">
-            <span class="ai-icon">AI</span>
-            <div class="ai-box-content">
-              <strong>ANALYSIS DETECTED</strong>
-              <p>Support testimony identified. CA Housing Coalition on record supporting AB-1234.</p>
+          <div class="t-line">
+            <div class="t-ai-box">
+              <span class="t-speaker ai">AI</span>
+              <span class="t-content">Support testimony detected. CA Housing Coalition on record supporting AB-1234. Client alert sent.</span>
+            </div>
+          </div>
+          <div class="t-line">
+            <span class="t-speaker chair">CHAIR</span>
+            <span class="t-content">Call the roll. The motion is do-pass.</span>
+          </div>
+          <div class="t-line">
+            <div class="t-ai-box">
+              <span class="t-speaker ai">AI</span>
+              <span class="t-content">Vote detected: AB-1234 PASSED committee 8-3. Report generated.</span>
             </div>
           </div>
         </div>
@@ -1608,104 +1255,76 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="cta-card">
-      <h2>JOIN THE WAITLIST</h2>
-      <div class="price">Built for <span>CA Firms</span></div>
-      <p>First 20 firms get 3 months free + founding member pricing locked for life. Real-time hearing intelligence, AI-powered analysis, and branded client portals.</p>
-      <form class="cta-form" action="https://formspree.io/f/mdalewlb" method="POST">
-        <input type="email" name="email" placeholder="you@yourfirm.com" required>
-        <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-        <button type="submit">CLAIM YOUR SPOT</button>
-      </form>
-      <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
+  <!-- RETRO BREAK — Capitol row illustration -->
+  <section class="retro-break">
+    <div class="retro-capitol-row">
+      <!-- Small retro buildings -->
+      <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
+        <rect x="10" y="40" width="60" height="55" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="20" y="50" width="12" height="16" fill="none" stroke="#F2C744" stroke-width="1"/>
+        <rect x="48" y="50" width="12" height="16" fill="none" stroke="#F2C744" stroke-width="1"/>
+        <polygon points="5,40 40,15 75,40" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="32" y="70" width="16" height="25" fill="#2D1810"/>
+        <circle cx="40" cy="30" r="4" fill="#F2C744"/>
+      </svg>
+      <svg width="100" height="140" viewBox="0 0 100 140" fill="none">
+        <rect x="10" y="50" width="80" height="85" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="20" y="60" width="10" height="60" fill="none" stroke="#2D1810" stroke-width="1"/>
+        <rect x="38" y="60" width="10" height="60" fill="none" stroke="#2D1810" stroke-width="1"/>
+        <rect x="56" y="60" width="10" height="60" fill="none" stroke="#2D1810" stroke-width="1"/>
+        <rect x="72" y="60" width="10" height="60" fill="none" stroke="#2D1810" stroke-width="1"/>
+        <polygon points="5,50 50,20 95,50" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <ellipse cx="50" cy="38" rx="18" ry="14" fill="#FAF3E3" stroke="#2D1810" stroke-width="1"/>
+        <rect x="46" y="20" width="8" height="10" fill="#FAF3E3" stroke="#2D1810" stroke-width="1"/>
+        <circle cx="50" cy="17" r="4" fill="#C73E3A" stroke="#2D1810" stroke-width="1"/>
+      </svg>
+      <svg width="60" height="90" viewBox="0 0 60 90" fill="none">
+        <rect x="5" y="30" width="50" height="55" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="18" y="55" width="14" height="30" fill="#2D1810"/>
+        <circle cx="30" cy="45" r="8" fill="none" stroke="#F2C744" stroke-width="1.5"/>
+        <rect x="22" y="10" width="16" height="20" fill="#FAF3E3" stroke="#2D1810" stroke-width="1"/>
+        <polygon points="20,30 30,18 40,30" fill="#FAF3E3" stroke="#2D1810" stroke-width="1"/>
+      </svg>
+      <svg width="70" height="85" viewBox="0 0 70 85" fill="none">
+        <rect x="5" y="35" width="60" height="45" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="15" y="45" width="10" height="12" fill="none" stroke="#F2C744" stroke-width="1"/>
+        <rect x="30" y="45" width="10" height="12" fill="none" stroke="#F2C744" stroke-width="1"/>
+        <rect x="45" y="45" width="10" height="12" fill="none" stroke="#F2C744" stroke-width="1"/>
+        <polygon points="0,35 35,10 70,35" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="25" y="62" width="14" height="18" fill="#2D1810"/>
+        <circle cx="35" cy="25" r="3" fill="#4A7C59"/>
+      </svg>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- WAITLIST CTA -->
+  <section class="cta-section" id="waitlist">
+    <div class="cta-card">
+      <h2>JOIN THE FOUNDING 20</h2>
+      <div class="founding">3 Months Free + Locked Pricing For Life</div>
+      <p>Real-time hearing intelligence, AI-powered analysis, and branded client portals — built for CA lobbying firms that refuse to get caught off guard.</p>
+      <a href="#" class="btn-primary">CLAIM YOUR SPOT →</a>
+      <div class="cta-spots">
+        <span class="dot"></span>
+        Launching Summer 2026 — Limited Spots
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-content">
-      <div class="footer-brand">
-        <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Righteous,cursive" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-        <p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p>
-      </div>
-      <div class="footer-column">
-        <h4>Product</h4>
-        <ul>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="how-it-works.html">How It Works</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="careers.html">Careers</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="privacy.html">Privacy</a></li>
-          <li><a href="terms.html">Terms</a></li>
-          <li><a href="security.html">Security</a></li>
-        </ul>
+    <div class="footer-inner">
+      <span class="footer-logo">legisly</span>
+      <div class="footer-links">
+        <a href="/features.html">Features</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/about.html">About</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Legisly Labs, Inc. All rights reserved.</p>
-      <div class="social-links">
-        <a href="https://x.com/LegislyAI" target="_blank" rel="noopener noreferrer">X</a>
-      </div>
-    </div>
+    <div class="footer-copy">© 2025 Legisly Labs, Inc. All rights reserved.</div>
   </footer>
 
-  <!-- Email Modal -->
-  <div class="modal-overlay" id="emailModal">
-    <div class="modal">
-      <button class="modal-close" id="modalClose">&times;</button>
-      <h2>JOIN THE WAITLIST</h2>
-      <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-      <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
-        <input type="email" name="email" placeholder="you@yourfirm.com" required>
-        <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-        <button type="submit">CLAIM YOUR SPOT</button>
-        <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    // Modal
-    function openModal() {
-      document.getElementById('emailModal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-      setTimeout(() => document.querySelector('.modal-form input[type="email"]').focus(), 300);
-    }
-    function closeModal() {
-      document.getElementById('emailModal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    document.getElementById('modalClose').addEventListener('click', closeModal);
-    document.getElementById('emailModal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeModal();
-    });
-
-    // Hamburger menu
-    document.getElementById('hamburger').addEventListener('click', function() {
-      document.getElementById('navLinks').classList.toggle('open');
-    });
-  </script>
 </body>
 </html>
