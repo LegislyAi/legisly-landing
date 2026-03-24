@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Legislative tracking platform with real-time hearing intelligence, purpose-built for California lobbying firms.">
-  <meta property="og:title" content="Legisly — Built for California Lobbyists">
-  <meta property="og:description" content="Real-time bill tracking, live hearing intelligence, branded client reports, and AI-powered analysis — purpose-built for CA lobbying firms.">
+  <meta name="description" content="AI-powered legislative tracking for California lobbying firms. Real-time hearing intelligence, bill monitoring, and automated client alerts for the 2026 California Legislative Session.">
+  <meta name="keywords" content="AI legislative tracking, California legislative session 2026, legislative tracking software, AI lobbying tools, California bill tracking, hearing intelligence, legislative monitoring">
+  <meta property="og:title" content="Legisly — AI Legislative Tracking for California Lobbyists">
+  <meta property="og:description" content="A bill moved in committee yesterday. Your client found out before you did. Real-time hearing intelligence and AI analysis — purpose-built for CA lobbying firms.">
   <meta property="og:image" content="https://legisly.ai/og-image.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://legisly.ai/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://legisly.ai/og-image.png">
-  <title>Legisly — Built for California Lobbyists</title>
+  <title>Legisly — AI Legislative Tracking for California Lobbyists</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -256,20 +257,59 @@
     }
     /* Hero full-width text (Option E) */
     .hero-fulltext .hero-content {
-      max-width: 900px;
+      max-width: 960px;
       text-align: center;
       margin: 0 auto;
     }
     .hero-fulltext h1 {
-      font-size: clamp(5rem, 14vw, 10rem);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 2px;
     }
     .hero-fulltext .hero-subtitle {
-      font-size: 1.6rem;
-      max-width: 700px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--cream);
+      opacity: 0.85;
+      max-width: 680px;
       margin: 0 auto 2.5rem;
+      line-height: 1.7;
     }
     .hero-fulltext .hero-cta {
       justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-cta-subtext {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--orange-light);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .founding-banner {
+      display: inline-block;
+      background: var(--red-accent);
+      color: var(--cream);
+      padding: 0.6rem 1.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 1.5rem;
+      border: 3px solid var(--brown-shadow);
+      box-shadow: 4px 4px 0 var(--brown-shadow);
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 4px 4px 0 var(--brown-shadow); }
+      50% { box-shadow: 4px 4px 12px rgba(199, 62, 58, 0.4); }
     }
     /* Retro Divider */
     .divider {
@@ -1126,8 +1166,8 @@
       }
       .nav-links.open { display: flex; }
       .hero { padding: 7rem 2rem 4rem; }
-      .hero-fulltext h1 { font-size: clamp(4rem, 12vw, 7rem); }
-      .hero-fulltext .hero-subtitle { font-size: 1.2rem; }
+      .hero-fulltext h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+      .hero-fulltext .hero-subtitle { font-size: 1.1rem; }
       .features { padding: 4rem 2rem; overflow-x: hidden; }
       .feature-preview { box-shadow: 6px 6px 0 var(--blue-retro); }
       .mock-row { flex-wrap: wrap; gap: 0.4rem; }
@@ -1151,10 +1191,11 @@
     }
     @media (max-width: 600px) {
       .hero { padding: 6rem 1.25rem 3rem; }
-      .hero-fulltext h1 { font-size: clamp(3.5rem, 14vw, 5rem); }
+      .hero-fulltext h1 { font-size: clamp(1.8rem, 6vw, 2.8rem); }
       .hero-eyebrow { font-size: 0.7rem; letter-spacing: 1.5px; padding: 0.4rem 1rem; }
       .hero-fulltext .hero-subtitle { font-size: 1rem; }
       .hero-cta { flex-direction: column; align-items: center; gap: 1rem; }
+      .founding-banner { font-size: 0.8rem; padding: 0.5rem 1rem; }
       .btn-hero { font-size: 1.4rem; padding: 1rem 2rem; }
       .divider-content { gap: 1rem; flex-direction: column; align-items: center; }
       .divider-item { font-size: 1rem; }
@@ -1189,16 +1230,17 @@
   <!-- Hero Section -->
   <section class="hero hero-fulltext">
     <div class="hero-content">
-      <div class="hero-eyebrow">&starf; Purpose-Built for CA Lobbying Firms &starf;</div>
+      <div class="hero-eyebrow">&starf; AI-Powered Legislative Tracking for CA Firms &starf;</div>
       <h1>
-        ADVOCACY<br>
-        <span class="accent">MADE EASY</span>
+        A BILL MOVED IN COMMITTEE YESTERDAY.<br>
+        <span class="accent">YOUR CLIENT FOUND OUT BEFORE YOU DID.</span>
       </h1>
-      <p class="hero-subtitle">Real-Time Bill Tracking &bull; Live Hearing Intelligence &bull; Branded Client Reports &bull; AI Analysis</p>
+      <p class="hero-subtitle">Legisly monitors every CA and federal hearing, amendment, and vote in real time &mdash; then alerts you, briefs your team, and updates your clients automatically. Never get caught flat-footed again.</p>
       <div class="hero-cta">
-        <a href="#" class="btn-hero" onclick="openModal(); return false;">REQUEST A DEMO &rarr;</a>
-        <a href="features.html" class="btn-outline">See Features</a>
+        <a href="#" class="btn-hero" onclick="openModal(); return false;">FIX IT BEFORE THE NEXT SESSION &rarr;</a>
+        <span class="hero-cta-subtext">See How Live Hearing Intelligence Works</span>
       </div>
+      <div class="founding-banner">First 20 firms get 3 months free + founding member pricing locked for life</div>
     </div>
   </section>
 
@@ -1569,15 +1611,15 @@
   <!-- CTA Section -->
   <section class="cta-section">
     <div class="cta-card">
-      <h2>REQUEST A DEMO</h2>
+      <h2>JOIN THE WAITLIST</h2>
       <div class="price">Built for <span>CA Firms</span></div>
-      <p>Real-time hearing intelligence, AI-powered analysis, and branded client portals. Purpose-built for California lobbying firms.</p>
+      <p>First 20 firms get 3 months free + founding member pricing locked for life. Real-time hearing intelligence, AI-powered analysis, and branded client portals.</p>
       <form class="cta-form" action="https://formspree.io/f/mdalewlb" method="POST">
         <input type="email" name="email" placeholder="you@yourfirm.com" required>
-        <input type="hidden" name="_subject" value="New Legisly Demo Request!">
-        <button type="submit">REQUEST DEMO</button>
+        <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
+        <button type="submit">CLAIM YOUR SPOT</button>
       </form>
-      <span class="waitlist-note">Launching Summer 2026 &mdash; Request early access</span>
+      <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
     </div>
   </section>
 
@@ -1630,13 +1672,13 @@
   <div class="modal-overlay" id="emailModal">
     <div class="modal">
       <button class="modal-close" id="modalClose">&times;</button>
-      <h2>REQUEST A DEMO</h2>
-      <p>Real-time hearing intelligence, AI-powered analysis, and branded client portals — purpose-built for CA lobbying firms.</p>
+      <h2>JOIN THE WAITLIST</h2>
+      <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
       <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
         <input type="email" name="email" placeholder="you@yourfirm.com" required>
-        <input type="hidden" name="_subject" value="New Legisly Demo Request!">
-        <button type="submit">REQUEST DEMO</button>
-        <span class="waitlist-note">Launching Summer 2026</span>
+        <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
+        <button type="submit">CLAIM YOUR SPOT</button>
+        <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
       </form>
     </div>
   </div>

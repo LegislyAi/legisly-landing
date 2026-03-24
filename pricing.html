@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pricing built for California lobbying firms. Per-seat plans with real-time hearing intelligence, client portals, and FPPC compliance tracking.">
-    <meta property="og:title" content="Pricing — Legisly | CA Lobbying Firm Plans">
-    <meta property="og:description" content="Per-seat pricing for California lobbying firms. Real-time hearing intelligence, branded client portals, and FPPC compliance tracking.">
+    <meta name="description" content="AI legislative tracking pricing for California lobbying firms. Free tier available. Per-seat plans with real-time hearing intelligence, client portals, and FPPC compliance tracking.">
+    <meta property="og:title" content="Pricing — Legisly | AI Legislative Tracking for CA Firms">
+    <meta property="og:description" content="Start free, scale as you grow. AI-powered legislative tracking with real-time hearing intelligence, branded client portals, and FPPC compliance tracking.">
     <meta property="og:image" content="https://legisly.ai/og-image.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -19,11 +19,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Barlow+Condensed:wght@600;700;800&family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="retro.css">
     <style>
+        .founding-deal {
+            background: var(--red-accent);
+            color: var(--cream);
+            text-align: center;
+            padding: 1rem 2rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            border: 3px solid var(--brown-shadow);
+            box-shadow: 4px 4px 0 var(--brown-shadow);
+        }
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-top: 3rem;
+        }
+        .blurred-feature {
+            filter: blur(2px);
+            opacity: 0.4;
+            user-select: none;
+            position: relative;
         }
         .pricing-card {
             background: var(--cream-dark);
@@ -173,6 +193,11 @@
             font-weight: 700;
         }
 
+        @media (max-width: 1200px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
         @media (max-width: 900px) {
             .pricing-grid {
                 grid-template-columns: 1fr;
@@ -216,7 +241,28 @@
 
     <!-- Pricing Cards -->
     <section class="section">
+        <div class="founding-deal">First 20 firms get 3 months free + founding member pricing locked for life</div>
         <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="plan-name">Free</div>
+                <div class="price">$0<span>/month</span></div>
+                <p class="plan-description">Get started with basic bill tracking. No credit card required.</p>
+                <ul class="plan-features">
+                    <li>1 user</li>
+                    <li>Track 1 bill at a time</li>
+                    <li>CA bill tracking only</li>
+                    <li>Basic bill status updates</li>
+                    <li>Legislative calendar view</li>
+                    <li class="blurred-feature">AI-powered summaries</li>
+                    <li class="blurred-feature">Client position management</li>
+                    <li class="blurred-feature">Branded client reports</li>
+                    <li class="blurred-feature">Email &amp; SMS alerts</li>
+                </ul>
+                <div class="plan-cta">
+                    <a href="#" class="btn-secondary-retro" onclick="openModal(); return false;">Get Started Free</a>
+                </div>
+            </div>
+
             <div class="pricing-card">
                 <div class="plan-name">Solo Lobbyist</div>
                 <div class="price">$499<span>/month</span></div>
@@ -287,6 +333,7 @@
                 <thead>
                     <tr>
                         <th>Feature</th>
+                        <th>Free</th>
                         <th>Solo Lobbyist</th>
                         <th>Firm</th>
                         <th>Enterprise</th>
@@ -294,25 +341,36 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Lobbyist seats</td>
+                        <td>Users</td>
+                        <td>1</td>
                         <td>1</td>
                         <td>Up to 5</td>
                         <td>Unlimited</td>
                     </tr>
                     <tr>
+                        <td>Bills tracked</td>
+                        <td>1</td>
+                        <td>Unlimited</td>
+                        <td>Unlimited</td>
+                        <td>Unlimited</td>
+                    </tr>
+                    <tr>
                         <td>Clients</td>
+                        <td>&mdash;</td>
                         <td>Up to 10</td>
                         <td>Up to 25</td>
                         <td>Unlimited</td>
                     </tr>
                     <tr>
                         <td>CA + Federal bills</td>
+                        <td>CA only</td>
                         <td class="check">&check;</td>
                         <td class="check">&check;</td>
                         <td class="check">&check;</td>
                     </tr>
                     <tr>
                         <td>AI summaries</td>
+                        <td>&mdash;</td>
                         <td class="check">&check;</td>
                         <td class="check">&check;</td>
                         <td class="check">&check;</td>
@@ -320,11 +378,13 @@
                     <tr>
                         <td>Branded reports</td>
                         <td>&mdash;</td>
+                        <td>&mdash;</td>
                         <td class="check">&check;</td>
                         <td class="check">&check;</td>
                     </tr>
                     <tr>
                         <td>Client portal</td>
+                        <td>&mdash;</td>
                         <td>&mdash;</td>
                         <td class="check">&check;</td>
                         <td class="check">&check;</td>
@@ -332,11 +392,13 @@
                     <tr>
                         <td>AI Assistant</td>
                         <td>&mdash;</td>
+                        <td>&mdash;</td>
                         <td class="check">&check;</td>
                         <td class="check">&check;</td>
                     </tr>
                     <tr>
                         <td>Regulatory tracking</td>
+                        <td>&mdash;</td>
                         <td>&mdash;</td>
                         <td class="check">&check;</td>
                         <td class="check">&check;</td>
@@ -345,16 +407,19 @@
                         <td>Live hearing intelligence</td>
                         <td>&mdash;</td>
                         <td>&mdash;</td>
+                        <td>&mdash;</td>
                         <td class="check">&check;</td>
                     </tr>
                     <tr>
                         <td>FPPC compliance</td>
+                        <td>&mdash;</td>
                         <td>&mdash;</td>
                         <td class="check">&check;</td>
                         <td class="check">&check;</td>
                     </tr>
                     <tr>
                         <td>Support level</td>
+                        <td>Community</td>
                         <td>Email</td>
                         <td>Priority</td>
                         <td>Dedicated manager</td>
@@ -366,13 +431,13 @@
 
     <!-- CTA Section -->
     <section class="cta-section" id="cta">
-        <h2>READY TO SEE IT IN ACTION?</h2>
-        <p>Request a demo. Launching Summer 2026.</p>
+        <h2>JOIN THE WAITLIST</h2>
+        <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
         <form class="email-form" action="https://formspree.io/f/mdalewlb" method="POST">
             <input type="email" name="email" placeholder="you@yourfirm.com" required>
-            <input type="hidden" name="_subject" value="New Legisly Demo Request!">
+            <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
             <input type="hidden" name="_next" value="https://legisly.ai/thank-you.html">
-            <button type="submit">REQUEST A DEMO</button>
+            <button type="submit">CLAIM YOUR SPOT</button>
         </form>
     </section>
 
@@ -425,13 +490,13 @@
     <div class="modal-overlay" id="emailModal">
         <div class="modal">
             <button class="modal-close" id="modalClose">&times;</button>
-            <h2>REQUEST A DEMO</h2>
-            <p>See how Legisly works for your firm. Launching Summer 2026.</p>
+            <h2>JOIN THE WAITLIST</h2>
+            <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
             <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
                 <input type="email" name="email" placeholder="you@yourfirm.com" required>
-                <input type="hidden" name="_subject" value="New Legisly Demo Request!">
-                <button type="submit">REQUEST A DEMO</button>
-                <span class="waitlist-note">Launching Summer 2026</span>
+                <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
+                <button type="submit">CLAIM YOUR SPOT</button>
+                <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
             </form>
         </div>
     </div>

@@ -118,6 +118,53 @@
             line-height: 1.6;
             margin-bottom: 0;
         }
+        .founder-section {
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+            margin: 2rem 0 3rem;
+        }
+        .founder-avatar {
+            width: 140px;
+            height: 140px;
+            min-width: 140px;
+            background: var(--blue-retro);
+            border: 4px solid var(--yellow-vintage);
+            box-shadow: 6px 6px 0 var(--brown-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--yellow-vintage);
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        .founder-info h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--blue-retro);
+            letter-spacing: 2px;
+            margin-bottom: 0.25rem;
+        }
+        .founder-info .founder-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            color: var(--orange-warm);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .founder-info p {
+            font-size: 1.05rem !important;
+            line-height: 1.8 !important;
+        }
+        @media (max-width: 600px) {
+            .founder-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -192,10 +239,17 @@
                 </div>
             </div>
 
-            <h2>The Team</h2>
-            <p>Legisly is built by a team with deep experience in legislative technology and AI. We understand the California legislative process, the needs of lobbying firms, and the technology required to deliver real-time intelligence at scale.</p>
-
-            <p>We're based in California and laser-focused on capturing the CA market.</p>
+            <h2>Meet the Founder</h2>
+            <div class="founder-section">
+                <div class="founder-avatar">JD</div>
+                <div class="founder-info">
+                    <h4>Jordan Davis</h4>
+                    <div class="founder-title">Founder &amp; CEO</div>
+                    <p>Jordan has spent over a decade at the intersection of legislative policy and technology in California. After years of watching lobbying firms struggle with outdated tools that couldn't keep up with Sacramento's pace, he built Legisly to close the gap. His background spans legislative affairs, government technology, and AI product development. He's advised policy teams, built data pipelines for government agencies, and led product at a legal-tech startup before founding Legisly Labs.</p>
+                    <p>His mission is simple: give every CA lobbying firm &mdash; from solo practitioners to the largest firms in Sacramento &mdash; access to the same real-time intelligence and AI-powered tools that were previously only available to the best-resourced organizations.</p>
+                </div>
+            </div>
+            <p>Legisly is built by a California-based team with deep experience in legislative technology and AI. We understand the California legislative process, the needs of lobbying firms, and the technology required to deliver real-time intelligence at scale.</p>
 
             <h2>Join Us</h2>
             <p>We're building the future of legislative intelligence for California lobbyists. If that excites you, check out our <a href="careers.html">careers page</a> or <a href="contact.html">get in touch</a>.</p>
@@ -204,13 +258,13 @@
 
     <!-- CTA Section -->
     <section class="cta-section" id="cta">
-        <h2>READY TO SEE LEGISLY IN ACTION?</h2>
-        <p>Request a demo. Launching Summer 2026.</p>
+        <h2>JOIN THE WAITLIST</h2>
+        <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
         <form class="email-form" action="https://formspree.io/f/mdalewlb" method="POST">
             <input type="email" name="email" placeholder="you@yourfirm.com" required>
-            <input type="hidden" name="_subject" value="New Legisly Demo Request!">
+            <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
             <input type="hidden" name="_next" value="https://legisly.ai/thank-you.html">
-            <button type="submit">REQUEST DEMO</button>
+            <button type="submit">CLAIM YOUR SPOT</button>
         </form>
     </section>
 
@@ -263,13 +317,13 @@
     <div class="modal-overlay" id="emailModal">
         <div class="modal">
             <button class="modal-close" id="modalClose">&times;</button>
-            <h2>REQUEST A DEMO</h2>
-            <p>Real-time hearing intelligence, AI-powered analysis, and branded client portals — purpose-built for CA lobbying firms.</p>
+            <h2>JOIN THE WAITLIST</h2>
+            <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
             <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
                 <input type="email" name="email" placeholder="you@yourfirm.com" required>
-                <input type="hidden" name="_subject" value="New Legisly Demo Request!">
-                <button type="submit">REQUEST DEMO</button>
-                <span class="waitlist-note">Launching Summer 2026</span>
+                <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
+                <button type="submit">CLAIM YOUR SPOT</button>
+                <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
             </form>
         </div>
     </div>
