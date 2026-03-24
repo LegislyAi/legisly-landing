@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legisly — AI Legislative Intelligence for CA Firms</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=Righteous&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1B365D;
+      --navy-deep: #0F2342;
+      --orange: #E8722A;
+      --orange-light: #F4A261;
+      --gold: #F2C744;
+      --cream: #FAF3E3;
+      --cream-dark: #E8DCC8;
+      --red: #C73E3A;
+      --brown: #2D1810;
+      --sage: #4A7C59;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--navy-deep);
+      overflow-x: hidden;
+    }
+
+    /* Paper grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 10000;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--navy);
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .logo {
+      font-family: 'Righteous', cursive;
+      font-size: 1.8rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--orange) !important;
+      color: var(--cream) !important;
+      padding: 0.6rem 1.5rem;
+      border: 2px solid var(--brown);
+      box-shadow: 3px 3px 0 var(--brown);
+      transition: all 0.1s;
+    }
+
+    .nav-cta:hover {
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0 var(--brown);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200%;
+      height: 200%;
+      transform: translate(-50%, -50%);
+      background: repeating-conic-gradient(from 0deg, var(--navy-deep) 0deg 10deg, var(--navy) 10deg 20deg);
+      opacity: 0.25;
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy-deep);
+      padding: 0.4rem 1.2rem;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+      transform: rotate(-1.5deg);
+      box-shadow: 3px 3px 0 var(--brown);
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      line-height: 0.95;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+      letter-spacing: 3px;
+    }
+
+    .hero h1 .accent {
+      color: var(--gold);
+      display: block;
+      text-shadow: 4px 4px 0 var(--orange), 7px 7px 0 var(--brown);
+    }
+
+    .hero-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      color: var(--orange-light);
+      margin-bottom: 2rem;
+      letter-spacing: 0.5px;
+      line-height: 1.4;
+      max-width: 480px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy-deep);
+      padding: 1rem 2.5rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 3px;
+      text-decoration: none;
+      border: 3px solid var(--brown);
+      box-shadow: 5px 5px 0 var(--brown);
+      transition: all 0.1s;
+    }
+
+    .btn-primary:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 3px 3px 0 var(--brown);
+    }
+
+    .btn-ghost {
+      color: var(--cream);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 2px solid var(--cream);
+      padding-bottom: 2px;
+    }
+
+    .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* Hero illustration — retro TV */
+    .hero-illustration {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .retro-tv {
+      position: relative;
+      width: 420px;
+    }
+
+    .tv-body {
+      background: #3D2B1F;
+      border-radius: 24px;
+      padding: 24px 24px 16px;
+      border: 3px solid var(--brown);
+      box-shadow: 8px 8px 0 var(--brown), inset 0 2px 0 rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    /* Wood grain texture */
+    .tv-body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 8px,
+        rgba(255,255,255,0.015) 8px,
+        rgba(255,255,255,0.015) 9px
+      );
+      pointer-events: none;
+    }
+
+    .tv-screen-frame {
+      background: #111;
+      border-radius: 14px;
+      padding: 3px;
+      border: 2px solid #222;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tv-screen {
+      background: var(--navy-deep);
+      border-radius: 12px;
+      padding: 16px;
+      min-height: 240px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* CRT scanline effect */
+    .tv-screen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.12) 2px,
+        rgba(0,0,0,0.12) 4px
+      );
+      pointer-events: none;
+      border-radius: 12px;
+    }
+
+    /* CRT glow */
+    .tv-screen::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      box-shadow: inset 0 0 60px rgba(74, 124, 89, 0.08), inset 0 0 120px rgba(242, 199, 68, 0.04);
+      pointer-events: none;
+    }
+
+    .tv-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .tv-live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      animation: pulse-live 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-live {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .tv-live-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75rem;
+      color: var(--red);
+      letter-spacing: 3px;
+    }
+
+    .tv-channel {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      color: rgba(250,243,227,0.4);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: auto;
+    }
+
+    .tv-transcript-line {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .tv-speaker {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+
+    .tv-speaker.s-chair { color: var(--gold); }
+    .tv-speaker.s-witness { color: var(--orange-light); }
+    .tv-speaker.s-ai { color: var(--sage); }
+
+    .tv-text { color: rgba(250,243,227,0.75); }
+
+    .tv-ai-alert {
+      background: rgba(74, 124, 89, 0.15);
+      border-left: 2px solid var(--sage);
+      padding: 8px 10px;
+      margin-top: 4px;
+    }
+
+    .tv-ai-alert .tv-text { color: var(--sage); font-weight: 500; }
+
+    /* TV controls */
+    .tv-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 8px 4px;
+    }
+
+    .tv-brand {
+      font-family: 'Righteous', cursive;
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
+
+    .tv-knobs {
+      display: flex;
+      gap: 12px;
+    }
+
+    .tv-knob {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #5a4030, #3D2B1F);
+      border: 2px solid #2D1810;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+      position: relative;
+    }
+
+    .tv-knob::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 8px;
+      background: var(--gold);
+      opacity: 0.5;
+      border-radius: 1px;
+    }
+
+    /* TV legs */
+    .tv-legs {
+      display: flex;
+      justify-content: center;
+      gap: 180px;
+      margin-top: -2px;
+    }
+
+    .tv-leg {
+      width: 4px;
+      height: 32px;
+      background: #3D2B1F;
+      border: 1px solid var(--brown);
+      transform: rotate(-4deg);
+      border-radius: 0 0 2px 2px;
+    }
+
+    .tv-leg:last-child {
+      transform: rotate(4deg);
+    }
+
+    /* Floating badge on TV */
+    .vintage-badge {
+      position: absolute;
+      top: -16px;
+      right: -24px;
+      width: 110px;
+      height: 110px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid var(--gold);
+      box-shadow: 4px 4px 0 var(--brown);
+      transform: rotate(12deg);
+      z-index: 20;
+      animation: badge-bob 3s ease-in-out infinite;
+    }
+
+    @keyframes badge-bob {
+      0%, 100% { transform: rotate(12deg) translateY(0); }
+      50% { transform: rotate(12deg) translateY(-5px); }
+    }
+
+    .vintage-badge .top { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; color: var(--cream); letter-spacing: 2px; text-transform: uppercase; }
+    .vintage-badge .big { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--gold); line-height: 1; }
+    .vintage-badge .bot { font-family: 'Barlow Condensed', sans-serif; font-size: 0.55rem; color: var(--cream); letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Antenna */
+    .tv-antenna {
+      display: flex;
+      justify-content: center;
+      margin-bottom: -2px;
+      position: relative;
+      height: 50px;
+    }
+
+    .antenna-left, .antenna-right {
+      width: 3px;
+      height: 50px;
+      background: linear-gradient(to top, #3D2B1F, #5a4030);
+      border-radius: 2px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .antenna-left {
+      transform: rotate(-20deg);
+      transform-origin: bottom center;
+      left: calc(50% - 30px);
+    }
+
+    .antenna-right {
+      transform: rotate(20deg);
+      transform-origin: bottom center;
+      right: calc(50% - 30px);
+    }
+
+    .antenna-tip {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      position: absolute;
+      top: 0;
+    }
+
+    .antenna-left .antenna-tip { left: 0; }
+    .antenna-right .antenna-tip { right: 0; }
+
+    /* ===== TICKER DIVIDER ===== */
+    .ticker {
+      background: var(--gold);
+      padding: 1rem 0;
+      border-top: 4px solid var(--brown);
+      border-bottom: 4px solid var(--brown);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 3rem;
+      animation: scroll-ticker 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes scroll-ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .ticker-item {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--navy-deep);
+      letter-spacing: 3px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .ticker-item .star { color: var(--red); font-size: 1rem; }
+
+    /* ===== PROBLEM/SOLUTION ===== */
+    .problem {
+      padding: 5rem 4rem;
+      background: var(--cream);
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .problem h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--navy);
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .problem p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #444;
+      max-width: 650px;
+      margin: 0 auto 2rem;
+    }
+
+    .problem .highlight {
+      background: linear-gradient(transparent 60%, var(--gold) 60%);
+      padding: 0 4px;
+      font-weight: 600;
+    }
+
+    /* ===== FEATURES — Compact grid ===== */
+    .features {
+      padding: 4rem;
+      background: var(--navy);
+      position: relative;
+    }
+
+    .features::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .features-header h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--gold);
+      letter-spacing: 4px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .feature-card {
+      background: var(--navy-deep);
+      border: 2px solid rgba(242, 199, 68, 0.15);
+      padding: 2rem;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--cream);
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: rgba(250, 243, 227, 0.65);
+      line-height: 1.5;
+    }
+
+    .feature-tag {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 1rem;
+    }
+
+    .tag-live { background: var(--red); color: var(--cream); }
+    .tag-ai { background: var(--sage); color: var(--cream); }
+    .tag-auto { background: var(--orange); color: var(--cream); }
+
+    /* ===== LIVE HEARING HERO SECTION ===== */
+    .live-section {
+      padding: 5rem 4rem;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .live-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .live-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--navy);
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .live-text h2 span { color: var(--red); }
+
+    .live-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .live-stats {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .live-stat {
+      text-align: center;
+    }
+
+    .live-stat .num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--navy);
+    }
+
+    .live-stat .label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Retro terminal / hearing transcript */
+    .live-terminal {
+      background: var(--navy-deep);
+      border: 3px solid var(--gold);
+      box-shadow: 8px 8px 0 var(--brown);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .terminal-bar {
+      background: var(--navy);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: var(--red); }
+    .dot-gold { background: var(--gold); }
+    .dot-green { background: var(--sage); }
+
+    .terminal-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--cream);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: 0.5rem;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      margin-left: auto;
+      animation: pulse-live 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-live {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .terminal-body {
+      padding: 1.5rem;
+      font-family: 'Outfit', monospace;
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+
+    .t-line {
+      margin-bottom: 0.75rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .t-speaker {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      padding-top: 2px;
+    }
+
+    .t-speaker.chair { color: var(--gold); }
+    .t-speaker.witness { color: var(--orange-light); }
+    .t-speaker.ai { color: var(--sage); }
+
+    .t-content { color: rgba(250, 243, 227, 0.8); }
+
+    .t-ai-box {
+      background: rgba(74, 124, 89, 0.15);
+      border-left: 3px solid var(--sage);
+      padding: 0.75rem 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .t-ai-box .t-content {
+      color: var(--sage);
+      font-weight: 500;
+    }
+
+    /* ===== RETRO CAPITOL ILLUSTRATION SECTION ===== */
+    .retro-break {
+      padding: 3rem 4rem;
+      background: var(--navy);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .retro-break::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-conic-gradient(from 0deg, var(--navy-deep) 0deg 10deg, var(--navy) 10deg 20deg);
+      opacity: 0.15;
+    }
+
+    .retro-capitol-row {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      align-items: flex-end;
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ===== CTA / WAITLIST ===== */
+    .cta-section {
+      padding: 5rem 4rem;
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .cta-card {
+      max-width: 580px;
+      margin: 0 auto;
+      background: var(--navy);
+      border: 4px solid var(--brown);
+      padding: 3rem;
+      position: relative;
+    }
+
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: -10px;
+      bottom: -10px;
+      background: var(--gold);
+      z-index: -1;
+    }
+
+    .cta-card h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--cream);
+      letter-spacing: 3px;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-card .founding {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-card p {
+      color: rgba(250, 243, 227, 0.7);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .cta-card .btn-primary {
+      background: var(--orange);
+      color: var(--cream);
+    }
+
+    .cta-spots {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .cta-spots .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse-live 1.5s ease-in-out infinite;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy-deep);
+      padding: 2.5rem 4rem;
+      border-top: 5px solid var(--gold);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Righteous', cursive;
+      font-size: 1.5rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(250,243,227,0.4);
+      text-align: center;
+      margin-top: 1.5rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 2rem; }
+      .hero { padding: 7rem 2rem 3rem; }
+      .hero-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-illustration { display: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .live-layout { grid-template-columns: 1fr; }
+      .live-terminal { margin-top: 2rem; }
+      .problem { padding: 3rem 2rem; }
+      .features { padding: 3rem 2rem; }
+      .live-section { padding: 3rem 2rem; }
+      .cta-section { padding: 3rem 2rem; }
+      .retro-break { padding: 2rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">legisly</a>
+    <div class="nav-links">
+      <a href="/features.html">Features</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/about.html">About</a>
+      <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-layout">
+      <div class="hero-content">
+        <div class="hero-eyebrow">★ AI-Powered Legislative Intelligence ★</div>
+        <h1>
+          YOUR CLIENT<br>FOUND OUT<br><span class="accent">BEFORE YOU DID.</span>
+        </h1>
+        <p class="hero-sub">
+          Legisly monitors every CA hearing, amendment, and vote in real time — then alerts you, 
+          briefs your team, and updates your clients. Automatically.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#waitlist" class="btn-primary">CLAIM YOUR SPOT →</a>
+          <a href="#live-demo" class="btn-ghost">See It Live ↓</a>
+        </div>
+      </div>
+
+      <div class="hero-illustration">
+        <div class="retro-tv">
+          <!-- Antenna -->
+          <div class="tv-antenna">
+            <div class="antenna-left"><div class="antenna-tip"></div></div>
+            <div class="antenna-right"><div class="antenna-tip"></div></div>
+          </div>
+
+          <div class="tv-body">
+            <div class="tv-screen-frame">
+              <div class="tv-screen">
+                <div class="tv-header">
+                  <div class="tv-live-dot"></div>
+                  <span class="tv-live-label">LIVE</span>
+                  <span class="tv-channel">Assembly Housing Cmte</span>
+                </div>
+
+                <div class="tv-transcript-line">
+                  <span class="tv-speaker s-chair">CHAIR</span>
+                  <span class="tv-text">We'll now hear testimony on AB-1234.</span>
+                </div>
+                <div class="tv-transcript-line">
+                  <span class="tv-speaker s-witness">M. CHEN</span>
+                  <span class="tv-text">We strongly support this bill and urge an aye vote.</span>
+                </div>
+                <div class="tv-transcript-line">
+                  <div class="tv-ai-alert">
+                    <span class="tv-speaker s-ai">AI</span>
+                    <span class="tv-text">Support testimony detected — CA Housing Coalition. Client alert sent.</span>
+                  </div>
+                </div>
+                <div class="tv-transcript-line">
+                  <span class="tv-speaker s-chair">CHAIR</span>
+                  <span class="tv-text">Call the roll. The motion is do-pass.</span>
+                </div>
+                <div class="tv-transcript-line">
+                  <div class="tv-ai-alert">
+                    <span class="tv-speaker s-ai">AI</span>
+                    <span class="tv-text">Vote detected: AB-1234 PASSED 8-3.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tv-controls">
+              <span class="tv-brand">legisly</span>
+              <div class="tv-knobs">
+                <div class="tv-knob"></div>
+                <div class="tv-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TV Legs -->
+          <div class="tv-legs">
+            <div class="tv-leg"></div>
+            <div class="tv-leg"></div>
+          </div>
+
+          <!-- Badge -->
+          <div class="vintage-badge">
+            <span class="top">First 20</span>
+            <span class="big">FREE</span>
+            <span class="bot">3 Months</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="star">★</span> CA BILL TRACKING</span>
+      <span class="ticker-item"><span class="star">★</span> LIVE HEARING INTELLIGENCE</span>
+      <span class="ticker-item"><span class="star">★</span> AI ANALYSIS & ALERTS</span>
+      <span class="ticker-item"><span class="star">★</span> CLIENT REPORTS</span>
+      <span class="ticker-item"><span class="star">★</span> 24/7 MONITORING</span>
+      <span class="ticker-item"><span class="star">★</span> BRANDED CLIENT PORTAL</span>
+      <span class="ticker-item"><span class="star">★</span> CA BILL TRACKING</span>
+      <span class="ticker-item"><span class="star">★</span> LIVE HEARING INTELLIGENCE</span>
+      <span class="ticker-item"><span class="star">★</span> AI ANALYSIS & ALERTS</span>
+      <span class="ticker-item"><span class="star">★</span> CLIENT REPORTS</span>
+      <span class="ticker-item"><span class="star">★</span> 24/7 MONITORING</span>
+      <span class="ticker-item"><span class="star">★</span> BRANDED CLIENT PORTAL</span>
+    </div>
+  </div>
+
+  <!-- PROBLEM/SOLUTION -->
+  <section class="problem">
+    <h2>YOUR COMPETITORS ARE WATCHING HEARINGS.<br>LEGISLY <span style="color:var(--red)">LISTENS</span> TO THEM.</h2>
+    <p>
+      Most firms still track bills manually — refreshing websites, scanning newsletters, hoping nothing slips through. 
+      Legisly's AI monitors <span class="highlight">every CA hearing in real time</span>, detects votes, amendments, and testimony 
+      the moment they happen, and delivers intelligence to your team before anyone else has it.
+    </p>
+  </section>
+
+  <!-- FEATURES GRID -->
+  <section class="features">
+    <div class="features-header">
+      <h2>WHAT YOUR FIRM GETS</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <rect x="4" y="12" width="48" height="36" rx="3" stroke="#F2C744" stroke-width="2" fill="none"/>
+          <line x1="4" y1="22" x2="52" y2="22" stroke="#F2C744" stroke-width="1.5"/>
+          <rect x="10" y="28" width="16" height="4" rx="1" fill="#F2C744" opacity="0.5"/>
+          <rect x="10" y="36" width="24" height="4" rx="1" fill="#F2C744" opacity="0.3"/>
+          <rect x="38" y="28" width="8" height="12" rx="1" fill="#4A7C59" opacity="0.6"/>
+        </svg>
+        <h3>CA BILL TRACKING</h3>
+        <p>Real-time ingestion from leginfo. Status, amendments, votes, and AI passage probability — all in one view.</p>
+        <span class="feature-tag tag-auto">AUTOMATED</span>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <circle cx="28" cy="28" r="22" stroke="#C73E3A" stroke-width="2" fill="none"/>
+          <circle cx="28" cy="28" r="8" fill="#C73E3A" opacity="0.6"/>
+          <circle cx="28" cy="28" r="3" fill="#C73E3A"/>
+          <line x1="28" y1="6" x2="28" y2="14" stroke="#C73E3A" stroke-width="1.5"/>
+          <line x1="28" y1="42" x2="28" y2="50" stroke="#C73E3A" stroke-width="1.5"/>
+          <line x1="6" y1="28" x2="14" y2="28" stroke="#C73E3A" stroke-width="1.5"/>
+          <line x1="42" y1="28" x2="50" y2="28" stroke="#C73E3A" stroke-width="1.5"/>
+        </svg>
+        <h3>LIVE HEARING INTELLIGENCE</h3>
+        <p>Real-time transcription, speaker ID, AI vote detection, and key moment alerts — while the hearing is still going.</p>
+        <span class="feature-tag tag-live">LIVE</span>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <rect x="8" y="4" width="32" height="44" rx="2" stroke="#4A7C59" stroke-width="2" fill="none"/>
+          <rect x="14" y="12" width="20" height="3" rx="1" fill="#4A7C59" opacity="0.5"/>
+          <rect x="14" y="20" width="16" height="3" rx="1" fill="#4A7C59" opacity="0.3"/>
+          <rect x="14" y="28" width="20" height="3" rx="1" fill="#4A7C59" opacity="0.5"/>
+          <rect x="14" y="36" width="12" height="3" rx="1" fill="#4A7C59" opacity="0.3"/>
+          <path d="M38 18 L50 14 L50 50 L38 46Z" fill="#4A7C59" opacity="0.2" stroke="#4A7C59" stroke-width="1.5"/>
+        </svg>
+        <h3>AI REPORTS & CLIENT PORTAL</h3>
+        <p>Branded PDFs, scheduled delivery, and a white-labeled portal your clients actually open. 87% avg open rate.</p>
+        <span class="feature-tag tag-ai">AI-POWERED</span>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <circle cx="20" cy="20" r="12" stroke="#F4A261" stroke-width="2" fill="none"/>
+          <circle cx="36" cy="36" r="12" stroke="#F4A261" stroke-width="2" fill="none"/>
+          <circle cx="38" cy="18" r="8" stroke="#F4A261" stroke-width="1.5" fill="none"/>
+          <line x1="20" y1="20" x2="36" y2="36" stroke="#F4A261" stroke-width="1" opacity="0.5"/>
+          <line x1="20" y1="20" x2="38" y2="18" stroke="#F4A261" stroke-width="1" opacity="0.5"/>
+        </svg>
+        <h3>CLIENT & POSITION MGMT</h3>
+        <p>Track support/oppose/watch for every client. Health scores, stakeholder CRM, and position history in one place.</p>
+        <span class="feature-tag tag-auto">AUTOMATED</span>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <rect x="6" y="8" width="44" height="40" rx="3" stroke="#F2C744" stroke-width="2" fill="none"/>
+          <line x1="6" y1="18" x2="50" y2="18" stroke="#F2C744" stroke-width="1.5"/>
+          <circle cx="16" cy="30" r="3" fill="#E8722A"/>
+          <circle cx="28" cy="26" r="3" fill="#C73E3A"/>
+          <circle cx="40" cy="34" r="3" fill="#4A7C59"/>
+          <rect x="12" y="38" width="8" height="4" rx="1" fill="#F2C744" opacity="0.3"/>
+          <rect x="24" y="38" width="8" height="4" rx="1" fill="#F2C744" opacity="0.3"/>
+          <rect x="36" y="38" width="8" height="4" rx="1" fill="#F2C744" opacity="0.3"/>
+        </svg>
+        <h3>SMART CALENDAR</h3>
+        <p>Hearings, deadlines, votes, and FPPC filings — auto-synced to Google Calendar. Never miss a date.</p>
+        <span class="feature-tag tag-auto">AUTOMATED</span>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 56 56" fill="none">
+          <path d="M28 6 L28 16" stroke="#F2C744" stroke-width="2"/>
+          <path d="M28 40 L28 50" stroke="#F2C744" stroke-width="2"/>
+          <circle cx="28" cy="28" r="14" stroke="#F2C744" stroke-width="2" fill="none"/>
+          <path d="M20 28 L26 34 L38 22" stroke="#4A7C59" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="4" stroke="#F2C744" stroke-width="1.5" fill="none"/>
+          <circle cx="44" cy="12" r="4" stroke="#F2C744" stroke-width="1.5" fill="none"/>
+          <line x1="15" y1="14" x2="22" y2="20" stroke="#F2C744" stroke-width="1" opacity="0.4"/>
+          <line x1="41" y1="14" x2="34" y2="20" stroke="#F2C744" stroke-width="1" opacity="0.4"/>
+        </svg>
+        <h3>AI ASSISTANT</h3>
+        <p>"What should I focus on today?" Natural language search, auto-generated position drafts, daily briefings.</p>
+        <span class="feature-tag tag-ai">AI-POWERED</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE HEARING DEMO -->
+  <section class="live-section" id="live-demo">
+    <div class="live-layout">
+      <div class="live-text">
+        <h2>LIVE HEARING <span>INTELLIGENCE</span></h2>
+        <p>
+          While your competitors are still watching the stream, Legisly has already transcribed the testimony, 
+          detected the vote, and alerted your team. AI analysis happens in real time — not after the hearing ends.
+        </p>
+        <div class="live-stats">
+          <div class="live-stat">
+            <div class="num">&lt;10s</div>
+            <div class="label">Transcription Delay</div>
+          </div>
+          <div class="live-stat">
+            <div class="num">90%+</div>
+            <div class="label">Vote Detection</div>
+          </div>
+          <div class="live-stat">
+            <div class="num">24/7</div>
+            <div class="label">Session Monitoring</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="live-terminal">
+        <div class="terminal-bar">
+          <div class="terminal-dot dot-red"></div>
+          <div class="terminal-dot dot-gold"></div>
+          <div class="terminal-dot dot-green"></div>
+          <span class="terminal-title">Assembly Housing Committee</span>
+          <div class="live-dot"></div>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-speaker chair">CHAIR</span>
+            <span class="t-content">We'll now hear testimony on AB-1234. First witness, please state your name.</span>
+          </div>
+          <div class="t-line">
+            <span class="t-speaker witness">M. CHEN</span>
+            <span class="t-content">Maria Chen, California Housing Coalition. We strongly support this bill and urge an aye vote.</span>
+          </div>
+          <div class="t-line">
+            <div class="t-ai-box">
+              <span class="t-speaker ai">AI</span>
+              <span class="t-content">Support testimony detected. CA Housing Coalition on record supporting AB-1234. Client alert sent.</span>
+            </div>
+          </div>
+          <div class="t-line">
+            <span class="t-speaker chair">CHAIR</span>
+            <span class="t-content">Call the roll. The motion is do-pass.</span>
+          </div>
+          <div class="t-line">
+            <div class="t-ai-box">
+              <span class="t-speaker ai">AI</span>
+              <span class="t-content">Vote detected: AB-1234 PASSED committee 8-3. Report generated.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RETRO BREAK — Capitol row illustration -->
+  <section class="retro-break">
+    <div class="retro-capitol-row">
+      <!-- Small retro buildings -->
+      <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
+        <rect x="10" y="40" width="60" height="55" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="20" y="50" width="12" height="16" fill="none" stroke="#F2C744" stroke-width="1"/>
+        <rect x="48" y="50" width="12" height="16" fill="none" stroke="#F2C744" stroke-width="1"/>
+        <polygon points="5,40 40,15 75,40" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="32" y="70" width="16" height="25" fill="#2D1810"/>
+        <circle cx="40" cy="30" r="4" fill="#F2C744"/>
+      </svg>
+      <svg width="100" height="140" viewBox="0 0 100 140" fill="none">
+        <rect x="10" y="50" width="80" height="85" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="20" y="60" width="10" height="60" fill="none" stroke="#2D1810" stroke-width="1"/>
+        <rect x="38" y="60" width="10" height="60" fill="none" stroke="#2D1810" stroke-width="1"/>
+        <rect x="56" y="60" width="10" height="60" fill="none" stroke="#2D1810" stroke-width="1"/>
+        <rect x="72" y="60" width="10" height="60" fill="none" stroke="#2D1810" stroke-width="1"/>
+        <polygon points="5,50 50,20 95,50" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <ellipse cx="50" cy="38" rx="18" ry="14" fill="#FAF3E3" stroke="#2D1810" stroke-width="1"/>
+        <rect x="46" y="20" width="8" height="10" fill="#FAF3E3" stroke="#2D1810" stroke-width="1"/>
+        <circle cx="50" cy="17" r="4" fill="#C73E3A" stroke="#2D1810" stroke-width="1"/>
+      </svg>
+      <svg width="60" height="90" viewBox="0 0 60 90" fill="none">
+        <rect x="5" y="30" width="50" height="55" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="18" y="55" width="14" height="30" fill="#2D1810"/>
+        <circle cx="30" cy="45" r="8" fill="none" stroke="#F2C744" stroke-width="1.5"/>
+        <rect x="22" y="10" width="16" height="20" fill="#FAF3E3" stroke="#2D1810" stroke-width="1"/>
+        <polygon points="20,30 30,18 40,30" fill="#FAF3E3" stroke="#2D1810" stroke-width="1"/>
+      </svg>
+      <svg width="70" height="85" viewBox="0 0 70 85" fill="none">
+        <rect x="5" y="35" width="60" height="45" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="15" y="45" width="10" height="12" fill="none" stroke="#F2C744" stroke-width="1"/>
+        <rect x="30" y="45" width="10" height="12" fill="none" stroke="#F2C744" stroke-width="1"/>
+        <rect x="45" y="45" width="10" height="12" fill="none" stroke="#F2C744" stroke-width="1"/>
+        <polygon points="0,35 35,10 70,35" fill="#FAF3E3" stroke="#2D1810" stroke-width="1.5"/>
+        <rect x="25" y="62" width="14" height="18" fill="#2D1810"/>
+        <circle cx="35" cy="25" r="3" fill="#4A7C59"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- WAITLIST CTA -->
+  <section class="cta-section" id="waitlist">
+    <div class="cta-card">
+      <h2>JOIN THE FOUNDING 20</h2>
+      <div class="founding">3 Months Free + Locked Pricing For Life</div>
+      <p>Real-time hearing intelligence, AI-powered analysis, and branded client portals — built for CA lobbying firms that refuse to get caught off guard.</p>
+      <a href="#" class="btn-primary">CLAIM YOUR SPOT →</a>
+      <div class="cta-spots">
+        <span class="dot"></span>
+        Launching Summer 2026 — Limited Spots
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">legisly</span>
+      <div class="footer-links">
+        <a href="/features.html">Features</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/about.html">About</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2025 Legisly Labs, Inc. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
