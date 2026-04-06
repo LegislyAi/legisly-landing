@@ -966,6 +966,78 @@
       .retro-break { padding: 2rem; }
       .footer-inner { flex-direction: column; gap: 1rem; }
     }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15,35,66,0.85);
+      z-index: 9999;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--cream);
+      border: 3px solid var(--brown);
+      border-radius: 12px;
+      box-shadow: 6px 6px 0 var(--brown);
+      padding: 2.5rem;
+      max-width: 420px; width: 90%;
+      text-align: center;
+      position: relative;
+    }
+    .modal h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .modal > p {
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+    .modal-close {
+      position: absolute; top: 10px; right: 16px;
+      background: none; border: none;
+      font-size: 1.8rem; color: var(--navy);
+      cursor: pointer;
+    }
+    .modal-close:hover { color: var(--red); }
+    .modal-form {
+      display: flex; flex-direction: column;
+      gap: 0.75rem;
+    }
+    .modal-form input[type="email"] {
+      padding: 0.8rem 1rem;
+      border: 2px solid var(--cream-dark);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Outfit', sans-serif;
+    }
+    .modal-form input[type="email"]:focus { border-color: var(--orange); outline: none; }
+    .modal-form button {
+      padding: 0.8rem;
+      background: var(--orange);
+      color: var(--cream);
+      border: 2px solid var(--brown);
+      border-radius: 8px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--brown);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .modal-form button:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--brown);
+    }
+    .waitlist-note {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 0.25rem;
+    }
   </style>
 </head>
 <body>
@@ -977,7 +1049,7 @@
       <a href="/features.html">Features</a>
       <a href="/pricing.html">Pricing</a>
       <a href="/about.html">About</a>
-      <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+      <a href="#" class="nav-cta" onclick="openModal(); return false;">Join Waitlist</a>
     </div>
   </nav>
 
@@ -994,7 +1066,7 @@
           briefs your team, and updates your clients. Automatically.
         </p>
         <div class="hero-cta-group">
-          <a href="#waitlist" class="btn-primary">CLAIM YOUR SPOT →</a>
+          <a href="#" class="btn-primary" onclick="openModal(); return false;">CLAIM YOUR SPOT →</a>
           <a href="#live-demo" class="btn-ghost">See It Live ↓</a>
         </div>
       </div>
@@ -1303,13 +1375,48 @@
       <h2>JOIN THE FOUNDING 20</h2>
       <div class="founding">3 Months Free + Locked Pricing For Life</div>
       <p>Real-time hearing intelligence, AI-powered analysis, and branded client portals — built for CA lobbying firms that refuse to get caught off guard.</p>
-      <a href="#" class="btn-primary">CLAIM YOUR SPOT →</a>
+      <a href="#" class="btn-primary" onclick="openModal(); return false;">CLAIM YOUR SPOT →</a>
       <div class="cta-spots">
         <span class="dot"></span>
         Launching Summer 2026 — Limited Spots
       </div>
     </div>
   </section>
+
+  <!-- Email Modal -->
+  <div class="modal-overlay" id="emailModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h2>JOIN THE WAITLIST</h2>
+      <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
+      <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
+        <input type="email" name="email" placeholder="you@yourfirm.com" required>
+        <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
+        <input type="hidden" name="_next" value="https://legisly.ai/thank-you.html">
+        <button type="submit">CLAIM YOUR SPOT</button>
+        <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('emailModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.querySelector('.modal-form input[type="email"]').focus(), 300);
+    }
+    function closeModal() {
+      document.getElementById('emailModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('emailModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
 
   <!-- FOOTER -->
   <footer>
