@@ -2,26 +2,29 @@
    LEGISLY RETRO THEME — Shared Styles
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Barlow+Condensed:wght@600;700;800&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-  --blue-retro: #1B365D;
-  --blue-dark: #0F2342;
-  --orange-warm: #E8722A;
-  --orange-light: #F4A261;
-  --yellow-vintage: #F2C744;
-  --cream: #FAF3E3;
-  --cream-dark: #E8DCC8;
-  --red-accent: #C73E3A;
-  --brown-shadow: #2D1810;
+  --blue-primary: #1E40AF;
+  --blue-deep: #0B1D5E;
+  --blue-bright: #2563EB;
+  --blue-electric: #3B82F6;
+  --orange-hot: #FF6B35;
+  --orange-bright: #FF8C42;
+  --yellow-bright: #FFD60A;
+  --yellow-warm: #FDE047;
+  --coral: #FF4D6D;
+  --cream: #FFFDF5;
+  --white: #FFFFFF;
+  --body-text: #4A5568;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   background: var(--cream);
-  color: var(--blue-dark);
+  color: var(--blue-deep);
   overflow-x: hidden;
 }
 
@@ -31,25 +34,25 @@ body::before {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
   pointer-events: none;
   z-index: 10000;
 }
 
-a { color: var(--orange-warm); transition: color 0.2s; }
-a:hover { color: var(--red-accent); }
+a { color: var(--blue-bright); transition: color 0.2s; }
+a:hover { color: var(--orange-hot); }
 
 /* ---- Logo ---- */
 .logo {
-  font-family: 'Righteous', cursive;
+  font-family: 'Archivo Black', sans-serif;
   font-size: 2rem;
   color: var(--cream);
   text-decoration: none;
   letter-spacing: 1px;
 }
-.logo .dot { color: var(--yellow-vintage); }
-.logo:hover { color: var(--orange-warm); }
+.logo .dot { color: var(--yellow-bright); }
+.logo:hover { color: var(--orange-hot); }
 
 /* ---- Logo Lockup (Seal + Wordmark) ---- */
 .logo-lockup {
@@ -61,13 +64,13 @@ a:hover { color: var(--red-accent); }
 .logo-lockup:hover { text-decoration: none; }
 .logo-lockup .logo-seal { flex-shrink: 0; }
 .logo-lockup .logo-text {
-  font-family: 'Righteous', cursive;
+  font-family: 'Archivo Black', sans-serif;
   font-size: 2rem;
-  color: var(--yellow-vintage);
+  color: var(--yellow-bright);
   letter-spacing: 1px;
   transition: color 0.2s;
 }
-.logo-lockup:hover .logo-text { color: var(--orange-warm); }
+.logo-lockup:hover .logo-text { color: var(--orange-hot); }
 
 /* Footer lockup — slightly smaller */
 footer .logo-lockup .logo-seal { width: 36px; height: 36px; }
@@ -82,8 +85,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--blue-retro);
-  border-bottom: 6px solid var(--yellow-vintage);
+  background: var(--blue-primary);
+  border-bottom: 4px solid var(--yellow-bright);
 }
 .nav-links {
   display: flex;
@@ -100,67 +103,70 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover,
-.nav-links a.active { color: var(--yellow-vintage); }
+.nav-links a.active { color: var(--yellow-bright); }
 
 /* ---- Buttons ---- */
 .btn-retro {
-  background: var(--orange-warm);
-  color: var(--cream) !important;
-  padding: 0.9rem 2rem;
+  background: var(--orange-hot);
+  color: var(--white) !important;
+  padding: 1rem 2rem;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  border: 3px solid var(--brown-shadow);
-  box-shadow: 4px 4px 0 var(--brown-shadow), inset 0 -3px 0 rgba(0,0,0,0.2);
-  transition: all 0.1s;
+  letter-spacing: 1px;
+  border: 3px solid var(--blue-deep);
+  box-shadow: 5px 5px 0 var(--yellow-bright);
+  transition: all 0.15s;
   cursor: pointer;
   display: inline-block;
+  border-radius: 0;
 }
 .btn-retro:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--brown-shadow), inset 0 -3px 0 rgba(0,0,0,0.2);
-  color: var(--cream) !important;
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--yellow-bright);
+  color: var(--white) !important;
 }
 .btn-hero {
-  background: var(--yellow-vintage);
-  color: var(--blue-dark);
+  background: var(--yellow-bright);
+  color: var(--blue-deep);
   padding: 1.25rem 3rem;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
-  letter-spacing: 3px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.3rem;
+  text-transform: uppercase;
   text-decoration: none;
-  border: 4px solid var(--brown-shadow);
-  box-shadow: 6px 6px 0 var(--brown-shadow), inset 0 -4px 0 rgba(0,0,0,0.15);
-  transition: all 0.1s;
+  border: 4px solid var(--blue-deep);
+  box-shadow: 8px 8px 0 var(--coral);
+  transition: all 0.15s;
   cursor: pointer;
   display: inline-block;
+  border-radius: 0;
+  transform: rotate(-1deg);
 }
 .btn-hero:hover {
-  transform: translate(3px, 3px);
-  box-shadow: 3px 3px 0 var(--brown-shadow), inset 0 -4px 0 rgba(0,0,0,0.15);
+  transform: rotate(-1deg) translate(4px, 4px);
+  box-shadow: 4px 4px 0 var(--coral);
 }
 .btn-secondary-retro {
-  color: var(--blue-retro);
+  color: var(--blue-primary);
   text-decoration: none;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  border-bottom: 3px solid var(--blue-retro);
+  letter-spacing: 1px;
+  border-bottom: 3px solid var(--yellow-bright);
   padding-bottom: 0.25rem;
   display: inline-block;
 }
 .btn-secondary-retro:hover {
-  color: var(--orange-warm);
-  border-color: var(--orange-warm);
+  color: var(--orange-hot);
+  border-color: var(--orange-hot);
 }
 
 /* ---- Page Header ---- */
 .page-header {
-  background: var(--blue-retro);
+  background: var(--blue-primary);
   padding: 10rem 4rem 4rem;
   text-align: center;
   position: relative;
@@ -172,11 +178,11 @@ nav {
   top: 50%; left: 50%;
   width: 200%; height: 200%;
   transform: translate(-50%, -50%);
-  background: repeating-conic-gradient(from 0deg, var(--blue-dark) 0deg 10deg, var(--blue-retro) 10deg 20deg);
+  background: repeating-conic-gradient(from 0deg, var(--blue-deep) 0deg 10deg, var(--blue-primary) 10deg 20deg);
   opacity: 0.15;
 }
 .page-header h1 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Archivo Black', sans-serif;
   font-size: clamp(3rem, 7vw, 5rem);
   color: var(--cream);
   letter-spacing: 4px;
@@ -184,13 +190,13 @@ nav {
   z-index: 1;
 }
 .page-header h1 .accent {
-  color: var(--yellow-vintage);
+  color: var(--yellow-bright);
 }
 .page-header p {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--orange-light);
+  color: var(--orange-bright);
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-top: 0.75rem;
@@ -205,9 +211,9 @@ nav {
   margin: 0 auto;
 }
 .section h2 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Archivo Black', sans-serif;
   font-size: 2.5rem;
-  color: var(--blue-retro);
+  color: var(--blue-primary);
   letter-spacing: 3px;
   margin-bottom: 1.5rem;
 }
@@ -215,7 +221,7 @@ nav {
 /* ---- CTA Section ---- */
 .cta-section {
   padding: 5rem 4rem;
-  background: var(--blue-dark);
+  background: var(--blue-deep);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -224,14 +230,14 @@ nav {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-image: radial-gradient(var(--blue-retro) 1px, transparent 1px);
+  background-image: radial-gradient(var(--blue-primary) 1px, transparent 1px);
   background-size: 8px 8px;
   opacity: 0.4;
 }
 .cta-section h2 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Archivo Black', sans-serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
-  color: var(--yellow-vintage);
+  color: var(--yellow-bright);
   letter-spacing: 3px;
   position: relative;
   z-index: 1;
@@ -261,38 +267,38 @@ nav {
 .email-form input[type="email"] {
   flex: 1;
   padding: 1rem 1.25rem;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1rem;
-  border: 3px solid var(--brown-shadow);
+  border: 3px solid var(--blue-deep);
   border-right: none;
   background: var(--cream);
-  color: var(--blue-dark);
+  color: var(--blue-deep);
   outline: none;
 }
 .email-form input[type="email"]::placeholder { color: #999; }
 .email-form button {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Archivo Black', sans-serif;
   font-size: 1.3rem;
   letter-spacing: 2px;
   padding: 1rem 1.75rem;
-  background: var(--orange-warm);
+  background: var(--orange-hot);
   color: var(--cream);
-  border: 3px solid var(--brown-shadow);
-  box-shadow: 4px 4px 0 var(--brown-shadow);
+  border: 3px solid var(--blue-deep);
+  box-shadow: 4px 4px 0 var(--blue-deep);
   cursor: pointer;
   transition: all 0.1s;
   white-space: nowrap;
 }
 .email-form button:hover {
   transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--brown-shadow);
+  box-shadow: 2px 2px 0 var(--blue-deep);
 }
 
 /* ---- Footer ---- */
 footer {
-  background: var(--blue-dark);
+  background: var(--blue-deep);
   padding: 3rem 4rem;
-  border-top: 6px solid var(--yellow-vintage);
+  border-top: 4px solid var(--yellow-bright);
 }
 .footer-content {
   max-width: 1100px;
@@ -309,8 +315,8 @@ footer {
   line-height: 1.6;
 }
 .footer-column h4 {
-  font-family: 'Bebas Neue', sans-serif;
-  color: var(--yellow-vintage);
+  font-family: 'Archivo Black', sans-serif;
+  color: var(--yellow-bright);
   font-size: 1.2rem;
   letter-spacing: 2px;
   margin-bottom: 0.75rem;
@@ -326,7 +332,7 @@ footer {
 }
 .footer-column ul li a:hover {
   opacity: 1;
-  color: var(--yellow-vintage);
+  color: var(--yellow-bright);
 }
 .footer-bottom {
   max-width: 1100px;
@@ -352,38 +358,42 @@ footer {
   opacity: 0.7;
 }
 .social-links a:hover {
-  color: var(--yellow-vintage);
+  color: var(--yellow-bright);
   opacity: 1;
 }
 
 /* ---- Retro Cards ---- */
 .retro-card {
-  background: var(--cream-dark);
-  border: 4px solid var(--blue-retro);
-  padding: 2rem;
+  background: var(--white);
+  border: 4px solid var(--blue-primary);
+  padding: 2.5rem;
   position: relative;
   transition: all 0.2s;
+  border-radius: 0;
 }
 .retro-card::before {
   content: '';
   position: absolute;
   top: 8px; left: 8px; right: -8px; bottom: -8px;
-  background: var(--blue-retro);
+  background: var(--blue-bright);
   z-index: -1;
   transition: all 0.2s;
+}
+.retro-card:hover {
+  transform: translate(-4px, -4px);
 }
 .retro-card:hover::before {
   top: 12px; left: 12px;
 }
 .retro-card h3 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Archivo Black', sans-serif;
   font-size: 1.5rem;
-  color: var(--blue-retro);
+  color: var(--blue-primary);
   letter-spacing: 2px;
   margin-bottom: 0.75rem;
 }
 .retro-card p {
-  color: var(--blue-dark);
+  color: var(--blue-deep);
   line-height: 1.6;
   font-size: 0.95rem;
 }
@@ -395,31 +405,31 @@ footer {
   padding: 10rem 4rem 5rem;
 }
 .content-page h1 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Archivo Black', sans-serif;
   font-size: clamp(3rem, 6vw, 4.5rem);
-  color: var(--blue-retro);
+  color: var(--blue-primary);
   letter-spacing: 3px;
   margin-bottom: 0.5rem;
 }
 .content-page .last-updated {
   font-size: 0.85rem;
-  color: var(--blue-dark);
+  color: var(--blue-deep);
   opacity: 0.5;
   margin-bottom: 2.5rem;
 }
 .content-page h2 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Archivo Black', sans-serif;
   font-size: 1.8rem;
-  color: var(--blue-retro);
+  color: var(--blue-primary);
   letter-spacing: 2px;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  border-bottom: 3px solid var(--yellow-vintage);
+  border-bottom: 3px solid var(--yellow-bright);
   padding-bottom: 0.3rem;
   display: inline-block;
 }
 .content-page p {
-  color: var(--blue-dark);
+  color: var(--blue-deep);
   font-size: 1.05rem;
   line-height: 1.8;
   margin-bottom: 1.25rem;
@@ -429,15 +439,15 @@ footer {
   margin-bottom: 1.5rem;
 }
 .content-page li {
-  color: var(--blue-dark);
+  color: var(--blue-deep);
   margin-bottom: 0.6rem;
   line-height: 1.7;
 }
 .content-page a {
-  color: var(--orange-warm);
+  color: var(--blue-bright);
   font-weight: 600;
 }
-.content-page strong { color: var(--blue-retro); }
+.content-page strong { color: var(--blue-primary); }
 
 /* ---- Hamburger ---- */
 .hamburger {
@@ -469,22 +479,23 @@ footer {
 .modal-overlay.active { display: flex; }
 .modal {
   background: var(--cream);
-  border: 5px solid var(--brown-shadow);
-  box-shadow: 12px 12px 0 var(--orange-warm);
+  border: 5px solid var(--blue-deep);
+  box-shadow: 12px 12px 0 var(--orange-hot);
   padding: 3rem;
   max-width: 480px;
   width: 90%;
   position: relative;
+  border-radius: 0;
 }
 .modal h2 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Archivo Black', sans-serif;
   font-size: 2.5rem;
-  color: var(--blue-retro);
+  color: var(--blue-primary);
   letter-spacing: 2px;
   margin-bottom: 0.5rem;
 }
 .modal > p {
-  color: var(--blue-dark);
+  color: var(--blue-deep);
   font-size: 1rem;
   margin-bottom: 1.5rem;
   line-height: 1.5;
@@ -495,11 +506,11 @@ footer {
   background: none;
   border: none;
   font-size: 2rem;
-  color: var(--blue-dark);
+  color: var(--blue-deep);
   cursor: pointer;
   line-height: 1;
 }
-.modal-close:hover { color: var(--red-accent); }
+.modal-close:hover { color: var(--coral); }
 .modal-form {
   display: flex;
   flex-direction: column;
@@ -507,34 +518,36 @@ footer {
 }
 .modal-form input[type="email"] {
   padding: 1rem 1.25rem;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1rem;
-  border: 3px solid var(--blue-retro);
+  border: 3px solid var(--blue-primary);
   background: white;
-  color: var(--blue-dark);
+  color: var(--blue-deep);
   outline: none;
+  border-radius: 0;
 }
-.modal-form input[type="email"]:focus { border-color: var(--orange-warm); }
+.modal-form input[type="email"]:focus { border-color: var(--orange-hot); }
 .modal-form button {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Archivo Black', sans-serif;
   font-size: 1.5rem;
   letter-spacing: 2px;
   padding: 1rem 2rem;
-  background: var(--orange-warm);
+  background: var(--orange-hot);
   color: var(--cream);
-  border: 3px solid var(--brown-shadow);
-  box-shadow: 4px 4px 0 var(--brown-shadow);
+  border: 3px solid var(--blue-deep);
+  box-shadow: 4px 4px 0 var(--blue-deep);
   cursor: pointer;
   transition: all 0.1s;
+  border-radius: 0;
 }
 .modal-form button:hover {
   transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--brown-shadow);
+  box-shadow: 2px 2px 0 var(--blue-deep);
 }
 .modal-form .waitlist-note,
 .waitlist-note {
   display: block;
-  color: var(--blue-dark);
+  color: var(--blue-deep);
   font-size: 0.85rem;
   margin-top: 0.5rem;
   opacity: 0.5;
@@ -550,8 +563,8 @@ footer {
     position: absolute;
     top: 100%; left: 0; right: 0;
     flex-direction: column;
-    background: var(--blue-retro);
-    border-bottom: 6px solid var(--yellow-vintage);
+    background: var(--blue-primary);
+    border-bottom: 4px solid var(--yellow-bright);
     padding: 1.5rem 2rem;
     gap: 1.25rem;
   }
@@ -566,5 +579,5 @@ footer {
 @media (max-width: 600px) {
   .footer-content { grid-template-columns: 1fr; }
   .email-form { flex-direction: column; }
-  .email-form input[type="email"] { border-right: 3px solid var(--brown-shadow); }
+  .email-form input[type="email"] { border-right: 3px solid var(--blue-deep); }
 }
