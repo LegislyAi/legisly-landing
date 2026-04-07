@@ -2,7 +2,7 @@
    LEGISLY RETRO THEME — Shared Styles
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
   --blue-primary: #1E40AF;
@@ -11,6 +11,7 @@
   --blue-electric: #3B82F6;
   --orange-hot: #FF6B35;
   --orange-bright: #FF8C42;
+  --orange-light: #FF8C42;
   --yellow-bright: #FFD60A;
   --yellow-warm: #FDE047;
   --coral: #FF4D6D;
@@ -45,11 +46,11 @@ a:hover { color: var(--orange-hot); }
 
 /* ---- Logo ---- */
 .logo {
-  font-family: 'Archivo Black', sans-serif;
+  font-family: 'Righteous', cursive;
   font-size: 2rem;
   color: var(--cream);
   text-decoration: none;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 .logo .dot { color: var(--yellow-bright); }
 .logo:hover { color: var(--orange-hot); }
@@ -64,10 +65,10 @@ a:hover { color: var(--orange-hot); }
 .logo-lockup:hover { text-decoration: none; }
 .logo-lockup .logo-seal { flex-shrink: 0; }
 .logo-lockup .logo-text {
-  font-family: 'Archivo Black', sans-serif;
+  font-family: 'Righteous', cursive;
   font-size: 2rem;
   color: var(--yellow-bright);
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   transition: color 0.2s;
 }
 .logo-lockup:hover .logo-text { color: var(--orange-hot); }
