@@ -29,9 +29,17 @@
             line-height: 1.9;
             margin-bottom: 1.5rem;
         }
+        .about-content .bold-statement {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+        .about-content .bold-statement strong {
+            color: var(--blue-primary);
+        }
         .about-content h2 {
             font-family: 'Archivo Black', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--blue-primary);
             letter-spacing: 3px;
             margin-top: 3rem;
@@ -47,123 +55,63 @@
         .about-content a:hover {
             color: var(--coral);
         }
-        .mission-box {
-            background: var(--cream);
-            border: 4px solid var(--blue-primary);
-            padding: 3rem;
-            margin: 3rem 0;
-            text-align: center;
+        .what-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 2rem;
+        }
+        .what-list li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
             position: relative;
-        }
-        .mission-box::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            right: -8px;
-            bottom: -8px;
-            background: var(--blue-primary);
-            z-index: -1;
-        }
-        .mission-box h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.8rem;
-            color: var(--blue-primary);
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-        .mission-box p {
-            font-size: 1.25rem;
             color: var(--blue-deep);
-            margin-bottom: 0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .what-list li::before {
+            content: '\2605';
+            position: absolute;
+            left: 0;
+            color: var(--yellow-bright);
+        }
+        .what-list li strong {
+            color: var(--blue-primary);
         }
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
             margin: 2rem 0;
         }
         .value-card {
-            background: var(--cream);
+            background: var(--white);
             border: 4px solid var(--blue-primary);
-            padding: 2rem;
+            padding: 1.75rem;
             position: relative;
             transition: all 0.2s;
+            box-shadow: 5px 5px 0 var(--blue-bright);
         }
-        .value-card::before {
-            content: '';
-            position: absolute;
-            top: 6px;
-            left: 6px;
-            right: -6px;
-            bottom: -6px;
-            background: var(--yellow-bright);
-            z-index: -1;
-            transition: all 0.2s;
-        }
-        .value-card:hover::before {
-            top: 10px;
-            left: 10px;
+        .value-card:nth-child(2) { box-shadow: 5px 5px 0 var(--orange-hot); }
+        .value-card:nth-child(3) { box-shadow: 5px 5px 0 var(--coral); }
+        .value-card:nth-child(4) { box-shadow: 5px 5px 0 var(--yellow-bright); }
+        .value-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 8px 8px 0 var(--orange-hot);
         }
         .value-card h4 {
             font-family: 'Archivo Black', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--blue-primary);
-            letter-spacing: 2px;
-            margin-bottom: 0.75rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
         }
         .value-card p {
             color: var(--blue-deep);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
             margin-bottom: 0;
         }
-        .founder-section {
-            display: flex;
-            gap: 2.5rem;
-            align-items: flex-start;
-            margin: 2rem 0 3rem;
-        }
-        .founder-avatar {
-            width: 140px;
-            height: 140px;
-            min-width: 140px;
-            background: var(--blue-primary);
-            border: 4px solid var(--yellow-bright);
-            box-shadow: 6px 6px 0 var(--blue-deep);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--yellow-bright);
-            font-family: 'Archivo Black', sans-serif;
-        }
-        .founder-info h4 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            color: var(--blue-primary);
-            letter-spacing: 2px;
-            margin-bottom: 0.25rem;
-        }
-        .founder-info .founder-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            color: var(--orange-hot);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-        .founder-info p {
-            font-size: 1.05rem !important;
-            line-height: 1.8 !important;
-        }
         @media (max-width: 600px) {
-            .founder-section {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
+            .values-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -187,85 +135,57 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>About <span class="accent">Legisly</span></h1>
-        <p>Purpose-built for California lobbying firms.</p>
+        <h1>THE CAPITOL DOESN'T WAIT. <span class="accent">NEITHER DO WE.</span></h1>
+        <p>Legisly is legislative intelligence built by people who've worked the Capitol &mdash; for everyone with something at stake.</p>
     </section>
 
     <!-- Content Section -->
     <section class="section">
         <div class="about-content">
-            <p>California's legislative landscape moves fast. Every session, thousands of bills are introduced across Sacramento and Washington &mdash; each one potentially affecting your clients. Your firm needs tools that keep pace.</p>
+            <p class="bold-statement">Sacramento moves at the speed of politics. Thousands of bills. Hundreds of hearings. Votes that reshape entire industries &mdash; sometimes in a single afternoon.</p>
+            <p class="bold-statement"><strong>Your current tools weren't built for this. They were built in 1993.</strong></p>
 
-            <p>Legacy platforms weren't built for how modern lobbying firms actually work.</p>
+            <h2>WHAT WE BUILT</h2>
+            <p>A platform that sees everything happening in the California Legislature &mdash; in real time &mdash; and tells you what matters before anyone else knows.</p>
+            <ul class="what-list">
+                <li><strong>Live hearing intelligence.</strong> Real-time transcription, AI analysis, and vote detection while hearings are still happening.</li>
+                <li><strong>AI that does the work.</strong> Summaries, position letters, testimony, amendments, meeting prep &mdash; generated in seconds.</li>
+                <li><strong>A client portal that replaces PDFs.</strong> Live, branded, interactive dashboards your clients actually want to use.</li>
+                <li><strong>150+ local jurisdictions.</strong> City councils and county boards across California, tracked alongside state legislation.</li>
+                <li><strong>One-click migration.</strong> Leave your legacy platform behind. Bring your clients, positions, and history with you.</li>
+            </ul>
 
-            <div class="mission-box">
-                <h3>Our Mission</h3>
-                <p>To give California lobbying firms the most powerful legislative intelligence platform available &mdash; with real-time hearing intelligence, AI-powered analysis, and branded client portals that make your firm indispensable.</p>
-            </div>
+            <h2>WHY WE BUILT IT</h2>
+            <p>Because legislative intelligence shouldn't cost $30,000 a year. Because small businesses deserve the same visibility as the biggest firms. Because the tools lobbyists rely on haven't changed in three decades &mdash; and the Capitol has.</p>
+            <p>We built Legisly to democratize access to the legislative process in California. Not to replace lobbyists &mdash; to make every lobbyist, every government affairs team, and every advocacy organization more effective.</p>
 
-            <h2>The Problem We're Solving</h2>
-            <p>Existing legislative tracking tools were built in a different era. Legacy platforms provide basic bill tracking, but they lack real-time hearing intelligence, AI-powered analysis, modern client portals, and the kind of automation that lets a small firm punch above its weight.</p>
-
-            <p>Meanwhile, your clients expect instant updates, professional branded reports, and real-time access to their bill status. The gap between what they expect and what legacy tools deliver is only growing.</p>
-
-            <h2>Our Solution</h2>
-            <p>Legisly is a legislative tracking platform with real-time hearing intelligence, purpose-built to serve California lobbying firms. We cover California and federal legislation with a single integrated platform that includes:</p>
-
-            <p>&bull; Real-time CA + federal bill tracking with automated data pipelines<br>
-            &bull; Client and position management with a stakeholder CRM<br>
-            &bull; Branded client reports and a white-labeled Client Intelligence Portal<br>
-            &bull; AI assistant for bill summaries, position drafting, and impact analysis<br>
-            &bull; Live hearing transcription with AI-generated summaries and vote detection<br>
-            &bull; CA regulatory tracking, budget tracking, and FPPC compliance<br>
-            &bull; Data migration wizard for seamless switching from any legacy system</p>
-
-            <h2>Our Values</h2>
+            <h2>OUR VALUES</h2>
             <div class="values-grid">
                 <div class="value-card">
-                    <h4>Built for Lobbyists</h4>
-                    <p>Every feature is designed for how California lobbying firms actually work &mdash; not generic "legislative tracking."</p>
+                    <h4>BUILT BY INSIDERS</h4>
+                    <p>Designed by people who've walked the halls of the Capitol. Every feature solves a real problem we've seen firsthand.</p>
                 </div>
                 <div class="value-card">
-                    <h4>Real-Time Intelligence</h4>
-                    <p>Live hearing transcription, instant alerts, and AI analysis &mdash; because in Sacramento, timing is everything.</p>
+                    <h4>REAL-TIME OR NOTHING</h4>
+                    <p>Live transcription. Instant alerts. AI analysis during hearings. In Sacramento, second place is last place.</p>
                 </div>
                 <div class="value-card">
-                    <h4>Client-First Design</h4>
-                    <p>Branded portals, professional reports, and tools that make your firm look exceptional to every client.</p>
+                    <h4>YOUR BRAND, NOT OURS</h4>
+                    <p>Branded portals. Branded reports. Your clients see your firm &mdash; not our software.</p>
                 </div>
                 <div class="value-card">
-                    <h4>Seamless Migration</h4>
-                    <p>Switch from any legacy system without losing your client history, positions, or data.</p>
+                    <h4>CALIFORNIA FIRST</h4>
+                    <p>State bills. Local ordinances. Regulatory tracking. Budget and FPPC. We go deeper on California than anyone.</p>
                 </div>
             </div>
-
-            <h2>Meet the Founder</h2>
-            <div class="founder-section">
-                <div class="founder-avatar">JD</div>
-                <div class="founder-info">
-                    <h4>Jordan Davis</h4>
-                    <div class="founder-title">Founder &amp; CEO</div>
-                    <p>Jordan has spent over a decade at the intersection of legislative policy and technology in California. After years of watching lobbying firms struggle with outdated tools that couldn't keep up with Sacramento's pace, he built Legisly to close the gap. His background spans legislative affairs, government technology, and AI product development. He's advised policy teams, built data pipelines for government agencies, and led product at a legal-tech startup before founding Legisly Labs.</p>
-                    <p>His mission is simple: give every CA lobbying firm &mdash; from solo practitioners to the largest firms in Sacramento &mdash; access to the same real-time intelligence and AI-powered tools that were previously only available to the best-resourced organizations.</p>
-                </div>
-            </div>
-            <p>Legisly is built by a California-based team with deep experience in legislative technology and AI. We understand the California legislative process, the needs of lobbying firms, and the technology required to deliver real-time intelligence at scale.</p>
-
-            <h2>Join Us</h2>
-            <p>We're building the future of legislative intelligence for California lobbyists. If that excites you, check out our <a href="careers.html">careers page</a> or <a href="contact.html">get in touch</a>.</p>
         </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta-section" id="cta">
-        <h2>JOIN THE WAITLIST</h2>
-        <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-        <form class="email-form" action="https://formspree.io/f/mdalewlb" method="POST">
-            <input type="email" name="email" placeholder="you@yourfirm.com" required>
-            <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-            <input type="hidden" name="_next" value="https://legisly.ai/thank-you.html">
-            <button type="submit">CLAIM YOUR SPOT</button>
-        </form>
+        <h2>READY TO MOVE FIRST?</h2>
+        <p>Request a demo. Launching Summer 2026.</p>
+        <a href="#" class="btn-retro" onclick="openModal(); return false;" style="position:relative;z-index:1;">REQUEST DEMO</a>
     </section>
 
     <!-- Footer -->
