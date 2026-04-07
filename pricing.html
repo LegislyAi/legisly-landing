@@ -36,7 +36,7 @@
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            gap: 2.5rem;
             margin-top: 3rem;
         }
         .blurred-feature {
@@ -48,10 +48,11 @@
         .pricing-card {
             background: var(--cream);
             border: 4px solid var(--blue-primary);
-            padding: 2.5rem;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             position: relative;
+            overflow: visible;
         }
         .pricing-card::before {
             content: '';
@@ -101,10 +102,11 @@
         }
         .price {
             font-family: 'Archivo Black', sans-serif;
-            font-size: 3.5rem;
+            font-size: 2rem;
             color: var(--orange-hot);
-            margin-bottom: 0.5rem;
-            line-height: 1;
+            margin-bottom: 0.75rem;
+            line-height: 1.1;
+            text-transform: uppercase;
         }
         .featured .price {
             color: var(--coral);
@@ -147,6 +149,9 @@
         .plan-cta .btn-secondary-retro {
             width: 100%;
             text-align: center;
+        }
+        .section.pricing-section {
+            max-width: 1200px;
         }
         .compare-section {
             margin-top: 5rem;
@@ -201,12 +206,14 @@
         @media (max-width: 900px) {
             .pricing-grid {
                 grid-template-columns: 1fr;
-                max-width: 400px;
+                max-width: 480px;
                 margin-left: auto;
                 margin-right: auto;
             }
             .compare-table {
                 font-size: 0.85rem;
+                overflow-x: auto;
+                display: block;
             }
             .compare-table th,
             .compare-table td {
@@ -240,7 +247,7 @@
     </section>
 
     <!-- Pricing Cards -->
-    <section class="section">
+    <section class="section pricing-section">
         <div class="founding-deal">First 20 firms get 3 months free + founding member pricing locked for life</div>
         <div class="pricing-grid">
             <div class="pricing-card">
