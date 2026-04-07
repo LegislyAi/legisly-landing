@@ -19,89 +19,89 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="retro.css">
     <style>
-        .steps-container {
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .step-card {
+            background: var(--white);
+            border: 4px solid var(--blue-primary);
+            padding: 2rem;
             position: relative;
-            margin-top: 3rem;
+            transition: all 0.2s;
+            box-shadow: 6px 6px 0 var(--blue-bright);
         }
-        .steps-container::before {
-            content: '';
-            position: absolute;
-            left: 47px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--yellow-bright);
-            opacity: 0.4;
+        .step-card:nth-child(2) { box-shadow: 6px 6px 0 var(--orange-hot); }
+        .step-card:nth-child(3) { box-shadow: 6px 6px 0 var(--coral); }
+        .step-card:nth-child(4) { box-shadow: 6px 6px 0 var(--yellow-bright); }
+        .step-card:nth-child(5) { box-shadow: 6px 6px 0 var(--blue-bright); }
+        .step-card:nth-child(6) { box-shadow: 6px 6px 0 var(--coral); }
+        .step-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0 var(--orange-hot);
         }
-        .step {
-            display: flex;
-            gap: 2.5rem;
-            padding: 2.5rem 0;
-        }
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: var(--orange-hot);
+        .step-header {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .step-number {
             font-family: 'Archivo Black', sans-serif;
             font-size: 1.75rem;
-            color: var(--cream);
-            border: 3px solid var(--blue-deep);
-            box-shadow: 4px 4px 0 var(--blue-deep);
-            flex-shrink: 0;
-            position: relative;
-            z-index: 1;
-        }
-        .step-content h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            color: var(--blue-primary);
-            letter-spacing: 2px;
-            margin-bottom: 0.75rem;
-        }
-        .step-content p {
-            color: var(--blue-deep);
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 1.25rem;
-        }
-        .step-detail {
-            background: var(--cream);
-            border: 4px solid var(--blue-primary);
-            padding: 1.5rem;
-        }
-        .step-detail h4 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            text-transform: uppercase;
             color: var(--orange-hot);
-            margin-bottom: 0.5rem;
-        }
-        .step-detail p {
-            color: var(--blue-deep);
-            font-size: 0.95rem;
-            margin-bottom: 0;
+            flex-shrink: 0;
         }
         .time-badge {
             display: inline-block;
             background: var(--yellow-bright);
             color: var(--blue-deep);
-            padding: 0.35rem 0.75rem;
+            padding: 0.25rem 0.75rem;
             font-family: 'Archivo Black', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            border: 3px solid var(--blue-deep);
+        }
+        .step-card h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: var(--blue-primary);
             letter-spacing: 1px;
-            border: 2px solid var(--blue-deep);
             margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+        .step-card p {
+            color: var(--blue-deep);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .step-card p:last-child { margin-bottom: 0; }
+        .step-callout {
+            background: var(--cream);
+            border-left: 4px solid var(--orange-hot);
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+        }
+        .step-callout strong {
+            color: var(--blue-primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .step-callout p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            line-height: 1.6;
         }
         @media (max-width: 768px) {
-            .step { flex-direction: column; gap: 1.5rem; }
-            .steps-container::before { display: none; }
-            .step-number { width: 60px; height: 60px; font-size: 1.25rem; }
+            .steps-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -125,75 +125,88 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>HOW <span class="accent">LEGISLY WORKS</span></h1>
-        <p>From onboarding to live hearing intelligence &mdash; built for how CA lobbyists actually work.</p>
+        <h1>FROM SIGNUP TO <span class="accent">UNFAIR ADVANTAGE</span> IN 5 MINUTES</h1>
+        <p>No sales calls. No training sessions. No 90-day implementation. Just tell us what you care about and start winning.</p>
     </section>
 
     <!-- Steps Section -->
     <section class="section">
-        <div class="steps-container">
-            <div class="step">
-                <div class="step-number">01</div>
-                <div class="step-content">
-                    <span class="time-badge">DAY 1</span>
-                    <h3>Onboard your firm &amp; migrate your data</h3>
-                    <p>Set up your firm account with multi-tenant architecture. Import your client bill lists, positions, tags, notes, and historical tracking data from your existing tools via CSV/Excel.</p>
-                    <div class="step-detail">
-                        <h4>Data Migration Wizard</h4>
-                        <p>Our migration tool imports your existing data so you can switch without losing any client history. User roles for firm admins, lobbyists, and client viewers.</p>
-                    </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">01</div>
+                    <span class="time-badge">MINUTE 1</span>
+                </div>
+                <h3>Sign up. Tell us your industry. We do the rest.</h3>
+                <p>Create your firm account. Our AI asks what you do &mdash; restaurants, housing, healthcare, energy &mdash; and instantly surfaces every active California bill that matters to you. One click and they're all tracked. Invite your team with a link.</p>
+                <div class="step-callout">
+                    <strong>Switching from CapitolTrack?</strong>
+                    <p>Upload your CSV. We auto-match your clients, bills, positions, and notes. Your entire history migrates in minutes &mdash; not months.</p>
                 </div>
             </div>
 
-            <div class="step">
-                <div class="step-number">02</div>
-                <div class="step-content">
-                    <span class="time-badge">AUTOMATIC</span>
-                    <h3>CA + Federal data pipeline starts tracking</h3>
-                    <p>Real-time bill ingestion from California Legislative Information and Congress.gov. Bill status, amendment history, vote records, legislator data, and committee memberships &mdash; all synced automatically.</p>
-                    <div class="step-detail">
-                        <h4>Always current</h4>
-                        <p>Automated data refresh keeps your bill tracking, legislator profiles, and committee schedules up to date 24/7.</p>
-                    </div>
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">02</div>
+                    <span class="time-badge">EVERY DAY, AUTOMATICALLY</span>
+                </div>
+                <h3>50,000+ bills. Always current. Always searchable.</h3>
+                <p>Our pipeline syncs with the California Legislature daily &mdash; every bill, amendment, vote, hearing, and committee action back to 1999. Search in plain English. The AI understands "bills that affect restaurant labor costs" &mdash; not just keywords.</p>
+                <div class="step-callout">
+                    <strong>Plus 150+ local jurisdictions</strong>
+                    <p>City councils and county boards across California, tracked alongside state bills. Regulatory actions and budget trailer bills too.</p>
                 </div>
             </div>
 
-            <div class="step">
-                <div class="step-number">03</div>
-                <div class="step-content">
-                    <span class="time-badge">DAILY WORKFLOW</span>
-                    <h3>Manage clients, positions &amp; stakeholders</h3>
-                    <p>Track bill positions (Support/Oppose/Watch/Neutral) per client. Maintain internal memos, stakeholder contacts, and coalition relationships &mdash; all linked to active bills.</p>
-                    <div class="step-detail">
-                        <h4>Stakeholder CRM</h4>
-                        <p>A contact database for legislators, staff, advocates, and coalition contacts linked to your clients and their active bills.</p>
-                    </div>
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">03</div>
+                    <span class="time-badge">YOUR DAILY WORKFLOW</span>
+                </div>
+                <h3>Manage clients. Set positions. Prep for meetings.</h3>
+                <p>Track support/oppose/watch across every client. Log every meeting, call, and email with legislators in the stakeholder CRM. Before your next meeting, one click generates a prep package: legislator bio, voting history on your bills, prior firm interactions, and AI-generated talking points.</p>
+                <div class="step-callout">
+                    <strong>Relationship gap alerts</strong>
+                    <p>Two weeks before a hearing, Legisly flags committee members your firm hasn't contacted in 90 days. You walk in prepared. Always.</p>
                 </div>
             </div>
 
-            <div class="step">
-                <div class="step-number">04</div>
-                <div class="step-content">
-                    <span class="time-badge">ONE CLICK</span>
-                    <h3>Generate branded reports &amp; share with clients</h3>
-                    <p>Create professional reports with your firm's logo and branding. One-click PDF export. Or give clients their own white-labeled portal with live bill status, hearing alerts, and position notes.</p>
-                    <div class="step-detail">
-                        <h4>Client Intelligence Portal</h4>
-                        <p>A branded, read-only login for each client with live dashboards, hearing alerts, and a WYSIWYG builder so you control what each client sees.</p>
-                    </div>
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">04</div>
+                    <span class="time-badge">IN SECONDS</span>
+                </div>
+                <h3>AI drafts your letters. Your testimony. Your amendments.</h3>
+                <p>Need a position letter? Tell the AI "draft an oppose letter for AB-1234 for my restaurant client" and it's done &mdash; in proper CA legislative format, addressed to the right committee. Same for committee testimony, amendment language, and meeting request emails.</p>
+                <div class="step-callout">
+                    <strong>Passage prediction</strong>
+                    <p>Every bill gets a likelihood-of-passage score based on sponsor strength, committee composition, and 25 years of historical data. Know where to spend your energy.</p>
                 </div>
             </div>
 
-            <div class="step">
-                <div class="step-number">05</div>
-                <div class="step-content">
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">05</div>
                     <span class="time-badge">REAL-TIME</span>
-                    <h3>Live hearing intelligence &amp; AI analysis</h3>
-                    <p>Real-time audio capture and transcription of CA legislative hearings. AI-generated summaries, speaker identification, vote detection, bill outcome predictions, and client-specific relevance scoring.</p>
-                    <div class="step-detail">
-                        <h4>Never miss a hearing</h4>
-                        <p>Searchable transcript archives, automated alerts when your clients' bills are discussed, and AI-powered key moment extraction.</p>
-                    </div>
+                </div>
+                <h3>Live hearing intelligence. No other platform has this.</h3>
+                <p>When a committee hearing goes live, Legisly captures the audio, transcribes it in real-time, identifies speakers, and runs AI analysis on every word. Votes detected via OCR within 30 seconds. Support and oppose testimony classified automatically. Your phone buzzes before the hearing is even over.</p>
+                <div class="step-callout">
+                    <strong>After the gavel drops</strong>
+                    <p>AI-generated hearing summary in 15 minutes. Video playback synced to the searchable transcript. Click any line to jump to that exact moment. Share with your team or your clients instantly.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">06</div>
+                    <span class="time-badge">FOR YOUR CLIENTS</span>
+                </div>
+                <h3>Give them a portal they'll actually use.</h3>
+                <p>Every client gets their own branded, live dashboard &mdash; your firm's logo, your colors, real-time bill status, hearing alerts, and position notes. Clients can comment directly on bills and submit recommendations. No more emailing PDFs that nobody reads.</p>
+                <div class="step-callout">
+                    <strong>Branded reports on autopilot</strong>
+                    <p>Professional reports with cover pages, your branding, and a table of contents &mdash; generated and emailed to clients on whatever schedule you set. Weekly, monthly, or after every major hearing.</p>
                 </div>
             </div>
         </div>
@@ -201,14 +214,9 @@
 
     <!-- CTA Section -->
     <section class="cta-section" id="cta">
-        <h2>JOIN THE WAITLIST</h2>
+        <h2>READY TO MOVE FIRST?</h2>
         <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-        <form class="email-form" action="https://formspree.io/f/mdalewlb" method="POST">
-            <input type="email" name="email" placeholder="you@yourfirm.com" required>
-            <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-            <input type="hidden" name="_next" value="https://legisly.ai/thank-you.html">
-            <button type="submit">CLAIM YOUR SPOT</button>
-        </form>
+        <a href="#" class="btn-retro" onclick="openModal(); return false;" style="position:relative;z-index:1;">CLAIM YOUR SPOT</a>
     </section>
 
     <!-- Footer -->
