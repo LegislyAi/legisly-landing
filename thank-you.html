@@ -1,200 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.">
-    <meta property="og:title" content="Legisly — Built for California Lobbyists">
-    <meta property="og:description" content="Real-time bill tracking, live hearing intelligence, branded client reports, and AI-powered analysis — purpose-built for CA lobbying firms.">
-    <meta property="og:image" content="https://legisly.ai/og-image.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://legisly.ai/og-image.png">
-    <title>Thank You — Legisly</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="retro.css">
-    <style>
-        .thank-you-section {
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 10rem 2rem 5rem;
-            background: var(--blue-primary);
-            position: relative;
-            overflow: hidden;
-        }
-        .thank-you-section::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200%;
-            height: 200%;
-            transform: translate(-50%, -50%);
-            background: repeating-conic-gradient(from 0deg, var(--blue-deep) 0deg 10deg, var(--blue-primary) 10deg 20deg);
-            opacity: 0.15;
-        }
-        .thank-you-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--yellow-bright);
-            color: var(--blue-deep);
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-            border: 4px solid var(--blue-deep);
-            box-shadow: 4px 4px 0 var(--blue-deep);
-        }
-        .thank-you-section h1 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 3.5rem;
-            color: var(--cream);
-            letter-spacing: 4px;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-        .thank-you-section p {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--orange-light);
-            max-width: 500px;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
-        }
-        .thank-you-section .btn-retro {
-            position: relative;
-            z-index: 1;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank You — Legisly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<meta name="description" content="Thanks for reaching out to Legisly. We'll be in touch to schedule your demo.">
+<meta property="og:title" content="Thank You — Legisly">
+<meta property="og:description" content="Thanks for reaching out to Legisly. We'll be in touch to schedule your demo.">
+<meta property="og:image" content="https://legisly.ai/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://legisly.ai/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .ty{min-height:62vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 0}
+  .ty .check{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff;font-size:34px;font-weight:800;box-shadow:var(--shadow-lift);margin-bottom:24px}
+  .ty h1{font-size:clamp(34px,5vw,56px);font-weight:800;margin-bottom:14px}
+  .ty h1 .pop{color:var(--primary)}
+  .ty p{font-size:17px;color:var(--muted);line-height:1.65;max-width:520px;margin:0 auto 28px;font-weight:500}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links" id="navLinks">
-            <a href="features.html">Features</a>
-            <a href="how-it-works.html">How It Works</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
-            <a href="#" class="btn-retro" onclick="openModal(); return false;">Request a Demo</a>
-        </div>
-    </nav>
+<div class="noise"></div>
 
-    <section class="thank-you-section">
-        <div class="thank-you-icon">&#x2713;</div>
-        <h1>WE'LL BE IN TOUCH!</h1>
-        <p>Thanks for your interest in Legisly. We'll reach out to schedule your demo and discuss how Legisly works for your firm.</p>
-        <a href="index.html" class="btn-retro">BACK TO HOME</a>
-    </section>
+<nav><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="mark">L</span><span>legisly<span class="est">★ EST 2025</span></span></a>
+  <div class="nav-links">
+    <a href="features.html">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
+    <a class="nav-cta" href="index.html#waitlist">Request a Demo</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-                <p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="how-it-works.html">How It Works</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
-                    <li><a href="security.html">Security</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Legisly Labs, Inc. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://x.com/LegislyAI" target="_blank" rel="noopener noreferrer">X</a>
-            </div>
-        </div>
-    </footer>
+<main>
+  <div class="wrap ty">
+    <div class="check">✓</div>
+    <span class="eyebrow">✦ Message received</span>
+    <h1>We'll be <span class="pop">in touch</span></h1>
+    <p>Thanks for your interest in Legisly. We'll reach out soon to schedule your demo and discuss how Legisly works for your firm.</p>
+    <a class="btn primary" href="index.html">Back to home →</a>
+  </div>
+</main>
 
-    <!-- Email Modal -->
-    <div class="modal-overlay" id="emailModal">
-        <div class="modal">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h2>REQUEST A DEMO</h2>
-            <p>Real-time hearing intelligence, AI-powered analysis, and branded client portals — purpose-built for CA lobbying firms.</p>
-            <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
-                <input type="email" name="email" placeholder="you@yourfirm.com" required>
-                <input type="hidden" name="_subject" value="New Legisly Demo Request!">
-                <button type="submit">REQUEST DEMO</button>
-                <span class="waitlist-note">Launching Summer 2026</span>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        // Modal
-        function openModal() {
-            document.getElementById('emailModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => document.querySelector('.modal-form input[type="email"]').focus(), 300);
-        }
-        function closeModal() {
-            document.getElementById('emailModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('emailModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // Hamburger menu
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('open');
-        });
-    </script>
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-brand"><a class="logo" href="index.html"><span class="mark">L</span>legisly</a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
+</div></footer>
+<script>(function(){var t=document.querySelector(".nav-toggle"),n=document.querySelector(".nav-in");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o)});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded",false)})});})();</script>
 </body>
 </html>

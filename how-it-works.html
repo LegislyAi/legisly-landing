@@ -1,307 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="See how Legisly works for California lobbying firms — from onboarding and data migration to real-time hearing intelligence.">
-    <meta property="og:title" content="How It Works — Legisly">
-    <meta property="og:description" content="From onboarding to live hearing intelligence — see how Legisly streamlines your CA lobbying workflow.">
-    <meta property="og:image" content="https://legisly.ai/og-image.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://legisly.ai/og-image.png">
-    <title>How It Works — Legisly</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="retro.css">
-    <style>
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .step-card {
-            background: var(--white);
-            border: 4px solid var(--blue-primary);
-            padding: 2rem;
-            position: relative;
-            transition: all 0.2s;
-            box-shadow: 6px 6px 0 var(--blue-bright);
-        }
-        .step-card:nth-child(2) { box-shadow: 6px 6px 0 var(--orange-hot); }
-        .step-card:nth-child(3) { box-shadow: 6px 6px 0 var(--coral); }
-        .step-card:nth-child(4) { box-shadow: 6px 6px 0 var(--yellow-bright); }
-        .step-card:nth-child(5) { box-shadow: 6px 6px 0 var(--blue-bright); }
-        .step-card:nth-child(6) { box-shadow: 6px 6px 0 var(--coral); }
-        .step-card:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 9px 9px 0 var(--orange-hot);
-        }
-        .step-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .step-number {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.75rem;
-            color: var(--orange-hot);
-            flex-shrink: 0;
-        }
-        .time-badge {
-            display: inline-block;
-            background: var(--yellow-bright);
-            color: var(--blue-deep);
-            padding: 0.25rem 0.75rem;
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            border: 3px solid var(--blue-deep);
-        }
-        .step-card h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1rem;
-            text-transform: uppercase;
-            color: var(--blue-primary);
-            letter-spacing: 1px;
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
-        }
-        .step-card p {
-            color: var(--blue-deep);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-        .step-card p:last-child { margin-bottom: 0; }
-        .step-callout {
-            background: var(--cream);
-            border-left: 4px solid var(--orange-hot);
-            padding: 1rem 1.25rem;
-            margin-top: 1rem;
-        }
-        .step-callout strong {
-            color: var(--blue-primary);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-        .step-callout p {
-            font-size: 0.9rem;
-            margin-bottom: 0;
-            line-height: 1.6;
-        }
-        @media (max-width: 768px) {
-            .steps-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How It Works — Legisly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<meta name="description" content="How Legisly works — from real-time bill tracking to live hearing intelligence and AI-powered client reports.">
+<meta property="og:title" content="How It Works — Legisly">
+<meta property="og:description" content="How Legisly works — from real-time bill tracking to live hearing intelligence and AI-powered client reports.">
+<meta property="og:image" content="https://legisly.ai/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://legisly.ai/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .steps{max-width:920px;margin:30px auto 0;position:relative}
+  .steps::before{content:"";position:absolute;left:31px;top:20px;bottom:20px;width:2px;background:var(--border)}
+  .step{display:grid;grid-template-columns:64px 1fr;gap:24px;margin-bottom:22px;position:relative}
+  .snum{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:24px;box-shadow:var(--shadow);position:relative;z-index:1}
+  .scard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow);transition:.2s}
+  .scard:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+  .stage{display:inline-block;font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.06em;color:var(--accent);background:var(--accent-soft);padding:4px 11px;border-radius:999px;margin-bottom:11px}
+  .scard h3{font-size:21px;font-weight:700;margin-bottom:10px}
+  .scard p{font-size:14.5px;color:var(--muted);line-height:1.65}
+  .subcard{margin-top:16px;background:var(--surface-2);border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:12px;padding:14px 16px}
+  .subcard h4{font-size:14px;font-weight:800;margin-bottom:5px}
+  .subcard p{font-size:13px;color:var(--muted);line-height:1.55}
+  @media(max-width:720px){.steps::before{display:none}.step{grid-template-columns:1fr;gap:12px}}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links" id="navLinks">
-            <a href="features.html">Features</a>
-            <a href="how-it-works.html" class="active">How It Works</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="#" class="btn-retro" onclick="openModal(); return false;">Request a Demo</a>
-        </div>
-    </nav>
+<div class="noise"></div>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1>FROM SIGNUP TO <span class="accent">UNFAIR ADVANTAGE</span> IN 5 MINUTES</h1>
-        <p>No sales calls. No training sessions. No 90-day implementation. Just tell us what you care about and start winning.</p>
-    </section>
+<nav><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="mark">L</span><span>legisly<span class="est">★ EST 2025</span></span></a>
+  <div class="nav-links">
+    <a href="features.html">Features</a><a href="how-it-works.html" class="active">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
+    <a class="nav-cta" href="index.html#waitlist">Request a Demo</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
 
-    <!-- Steps Section -->
-    <section class="section">
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-header">
-                    <div class="step-number">01</div>
-                    <span class="time-badge">MINUTE 1</span>
-                </div>
-                <h3>Sign up. Tell us your industry. We do the rest.</h3>
-                <p>Create your firm account. Our AI asks what you do &mdash; restaurants, housing, healthcare, energy &mdash; and instantly surfaces every active California bill that matters to you. One click and they're all tracked. Invite your team with a link.</p>
-                <div class="step-callout">
-                    <strong>Switching from CapitolTrack?</strong>
-                    <p>Upload your CSV. We auto-match your clients, bills, positions, and notes. Your entire history migrates in minutes &mdash; not months.</p>
-                </div>
-            </div>
+<main>
+  <div class="wrap page-head">
+    <span class="eyebrow">✦ From onboarding to live intelligence</span>
+    <h1>How Legisly <span class="pop">works</span></h1>
+    <p class="lede">From onboarding to live hearing intelligence — built for how CA lobbyists actually work.</p>
+  </div>
 
-            <div class="step-card">
-                <div class="step-header">
-                    <div class="step-number">02</div>
-                    <span class="time-badge">EVERY DAY, AUTOMATICALLY</span>
-                </div>
-                <h3>50,000+ bills. Always current. Always searchable.</h3>
-                <p>Our pipeline syncs with the California Legislature daily &mdash; every bill, amendment, vote, hearing, and committee action back to 1999. Search in plain English. The AI understands "bills that affect restaurant labor costs" &mdash; not just keywords.</p>
-                <div class="step-callout">
-                    <strong>Plus 150+ local jurisdictions</strong>
-                    <p>City councils and county boards across California, tracked alongside state bills. Regulatory actions and budget trailer bills too.</p>
-                </div>
-            </div>
+  <div class="wrap"><div class="steps">
+    <div class="step reveal"><div class="snum">01</div><div class="scard">
+      <span class="stage">Day 1</span>
+      <h3>Onboard your firm &amp; migrate your data</h3>
+      <p>Set up your firm account with multi-tenant architecture. Import your client bill lists, positions, tags, notes, and historical tracking data from your existing tools via CSV/Excel.</p>
+      <div class="subcard"><h4>Data Migration Wizard</h4><p>Our migration tool imports your existing data so you can switch without losing any client history. User roles for firm admins, lobbyists, and client viewers.</p></div>
+    </div></div>
 
-            <div class="step-card">
-                <div class="step-header">
-                    <div class="step-number">03</div>
-                    <span class="time-badge">YOUR DAILY WORKFLOW</span>
-                </div>
-                <h3>Manage clients. Set positions. Prep for meetings.</h3>
-                <p>Track support/oppose/watch across every client. Log every meeting, call, and email with legislators in the stakeholder CRM. Before your next meeting, one click generates a prep package: legislator bio, voting history on your bills, prior firm interactions, and AI-generated talking points.</p>
-                <div class="step-callout">
-                    <strong>Relationship gap alerts</strong>
-                    <p>Two weeks before a hearing, Legisly flags committee members your firm hasn't contacted in 90 days. You walk in prepared. Always.</p>
-                </div>
-            </div>
+    <div class="step reveal"><div class="snum">02</div><div class="scard">
+      <span class="stage">Automatic</span>
+      <h3>CA + Federal data pipeline starts tracking</h3>
+      <p>Real-time bill ingestion from California Legislative Information and Congress.gov. Bill status, amendment history, vote records, legislator data, and committee memberships — all synced automatically.</p>
+      <div class="subcard"><h4>Always current</h4><p>Automated data refresh keeps your bill tracking, legislator profiles, and committee schedules up to date 24/7.</p></div>
+    </div></div>
 
-            <div class="step-card">
-                <div class="step-header">
-                    <div class="step-number">04</div>
-                    <span class="time-badge">IN SECONDS</span>
-                </div>
-                <h3>AI drafts your letters. Your testimony. Your amendments.</h3>
-                <p>Need a position letter? Tell the AI "draft an oppose letter for AB-1234 for my restaurant client" and it's done &mdash; in proper CA legislative format, addressed to the right committee. Same for committee testimony, amendment language, and meeting request emails.</p>
-                <div class="step-callout">
-                    <strong>Passage prediction</strong>
-                    <p>Every bill gets a likelihood-of-passage score based on sponsor strength, committee composition, and 25 years of historical data. Know where to spend your energy.</p>
-                </div>
-            </div>
+    <div class="step reveal"><div class="snum">03</div><div class="scard">
+      <span class="stage">Daily workflow</span>
+      <h3>Manage clients, positions &amp; stakeholders</h3>
+      <p>Track bill positions (Support / Oppose / Watch / Neutral) per client. Maintain internal memos, stakeholder contacts, and coalition relationships — all linked to active bills.</p>
+      <div class="subcard"><h4>Stakeholder CRM</h4><p>A contact database for legislators, staff, advocates, and coalition contacts linked to your clients and their active bills.</p></div>
+    </div></div>
 
-            <div class="step-card">
-                <div class="step-header">
-                    <div class="step-number">05</div>
-                    <span class="time-badge">REAL-TIME</span>
-                </div>
-                <h3>Live hearing intelligence. No other platform has this.</h3>
-                <p>When a committee hearing goes live, Legisly captures the audio, transcribes it in real-time, identifies speakers, and runs AI analysis on every word. Votes detected via OCR within 30 seconds. Support and oppose testimony classified automatically. Your phone buzzes before the hearing is even over.</p>
-                <div class="step-callout">
-                    <strong>After the gavel drops</strong>
-                    <p>AI-generated hearing summary in 15 minutes. Video playback synced to the searchable transcript. Click any line to jump to that exact moment. Share with your team or your clients instantly.</p>
-                </div>
-            </div>
+    <div class="step reveal"><div class="snum">04</div><div class="scard">
+      <span class="stage">One click</span>
+      <h3>Generate branded reports &amp; share with clients</h3>
+      <p>Create professional reports with your firm's logo and branding. One-click PDF export. Or give clients their own white-labeled portal with live bill status, hearing alerts, and position notes.</p>
+      <div class="subcard"><h4>Client Intelligence Portal</h4><p>A branded, read-only login for each client with live dashboards, hearing alerts, and a WYSIWYG builder so you control what each client sees.</p></div>
+    </div></div>
 
-            <div class="step-card">
-                <div class="step-header">
-                    <div class="step-number">06</div>
-                    <span class="time-badge">FOR YOUR CLIENTS</span>
-                </div>
-                <h3>Give them a portal they'll actually use.</h3>
-                <p>Every client gets their own branded, live dashboard &mdash; your firm's logo, your colors, real-time bill status, hearing alerts, and position notes. Clients can comment directly on bills and submit recommendations. No more emailing PDFs that nobody reads.</p>
-                <div class="step-callout">
-                    <strong>Branded reports on autopilot</strong>
-                    <p>Professional reports with cover pages, your branding, and a table of contents &mdash; generated and emailed to clients on whatever schedule you set. Weekly, monthly, or after every major hearing.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="step reveal"><div class="snum">05</div><div class="scard">
+      <span class="stage">Real-time</span>
+      <h3>Live hearing intelligence &amp; AI analysis</h3>
+      <p>Real-time audio capture and transcription of CA legislative hearings. AI-generated summaries, speaker identification, vote detection, bill outcome predictions, and client-specific relevance scoring.</p>
+      <div class="subcard"><h4>Never miss a hearing</h4><p>Searchable transcript archives, automated alerts when your clients' bills are discussed, and AI-powered key moment extraction.</p></div>
+    </div></div>
+  </div></div>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="cta">
-        <h2>READY TO MOVE FIRST?</h2>
-        <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-        <a href="#" class="btn-retro" onclick="openModal(); return false;" style="position:relative;z-index:1;">CLAIM YOUR SPOT</a>
-    </section>
+  <section class="cta-sec" style="padding-top:72px"><div class="wrap"><div class="cta-card reveal">
+    <span class="pin">Join the Founding 20</span>
+    <h2>3 months free + locked pricing for life</h2>
+    <p>First 20 firms get founding-member pricing locked for life.</p>
+    <a class="btn primary" href="index.html#waitlist">Claim your spot →</a>
+    <div class="small">Launching Summer 2026 — limited founding-member spots</div>
+  </div></div></section>
+</main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-                <p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="how-it-works.html">How It Works</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
-                    <li><a href="security.html">Security</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Legisly Labs, Inc. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://x.com/LegislyAI" target="_blank" rel="noopener noreferrer">X</a>
-            </div>
-        </div>
-    </footer>
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-brand"><a class="logo" href="index.html"><span class="mark">L</span>legisly</a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
+</div></footer>
 
-    <!-- Email Modal -->
-    <div class="modal-overlay" id="emailModal">
-        <div class="modal">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h2>JOIN THE WAITLIST</h2>
-            <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-            <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
-                <input type="email" name="email" placeholder="you@yourfirm.com" required>
-                <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-                <button type="submit">CLAIM YOUR SPOT</button>
-                <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        // Modal
-        function openModal() {
-            document.getElementById('emailModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => document.querySelector('.modal-form input[type="email"]').focus(), 300);
-        }
-        function closeModal() {
-            document.getElementById('emailModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('emailModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // Hamburger menu
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('open');
-        });
-    </script>
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach((el)=>io.observe(el));
+</script>
+<script>(function(){var t=document.querySelector(".nav-toggle"),n=document.querySelector(".nav-in");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o)});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded",false)})});})();</script>
 </body>
 </html>

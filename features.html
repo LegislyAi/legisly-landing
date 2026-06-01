@@ -1,372 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Features — Legisly</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <meta name="description" content="Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms. California bill tracking, live hearing capture, AI analysis, and branded client portals.">
-    <meta property="og:title" content="Legisly — Legislative Tracking for California Lobbying Firms">
-    <meta property="og:description" content="Real-time hearing intelligence, California bill tracking, AI analysis, and branded client portals — purpose-built for California lobbying firms.">
-    <meta property="og:image" content="https://legisly.ai/og-image.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://legisly.ai/og-image.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="retro.css">
-    <style>
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.75rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .feature-card {
-            background: var(--white);
-            border: 4px solid var(--blue-primary);
-            padding: 1.5rem;
-            position: relative;
-            transition: all 0.2s;
-            box-shadow: 5px 5px 0 var(--blue-bright);
-        }
-        .feature-card:nth-child(2) { box-shadow: 5px 5px 0 var(--orange-hot); }
-        .feature-card:nth-child(3) { box-shadow: 5px 5px 0 var(--coral); }
-        .feature-card:nth-child(4) { box-shadow: 5px 5px 0 var(--yellow-bright); }
-        .feature-card:nth-child(5) { box-shadow: 5px 5px 0 var(--blue-bright); }
-        .feature-card:nth-child(6) { box-shadow: 5px 5px 0 var(--coral); }
-        .feature-card:nth-child(7) { box-shadow: 5px 5px 0 var(--orange-hot); }
-        .feature-card:nth-child(8) { box-shadow: 5px 5px 0 var(--yellow-bright); }
-        .feature-card:nth-child(9) { box-shadow: 5px 5px 0 var(--blue-bright); }
-        .feature-card:nth-child(10) { box-shadow: 5px 5px 0 var(--coral); }
-        .feature-card:nth-child(11) { box-shadow: 5px 5px 0 var(--orange-hot); }
-        .feature-card:nth-child(12) { box-shadow: 5px 5px 0 var(--yellow-bright); }
-        .feature-card:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 8px 8px 0 var(--orange-hot);
-        }
-        .feature-header {
-            display: flex;
-            align-items: baseline;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-        }
-        .feature-number {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            color: var(--orange-hot);
-            line-height: 1;
-            flex-shrink: 0;
-        }
-        .feature-card h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 0.85rem;
-            color: var(--blue-primary);
-            letter-spacing: 1px;
-            line-height: 1.3;
-        }
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .feature-list li {
-            color: var(--blue-deep);
-            padding: 0.3rem 0;
-            padding-left: 1.25rem;
-            position: relative;
-            font-size: 0.85rem;
-            line-height: 1.45;
-        }
-        .feature-list li::before {
-            content: '\2605';
-            position: absolute;
-            left: 0;
-            color: var(--yellow-bright);
-            font-size: 0.75rem;
-        }
-        @media (max-width: 1000px) {
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .features-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Features — Legisly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<meta name="description" content="Explore Legisly's features: CA bill tracking, live hearing intelligence, AI reports, client and position management, and more.">
+<meta property="og:title" content="Features — Legisly">
+<meta property="og:description" content="Explore Legisly's features: CA bill tracking, live hearing intelligence, AI reports, client and position management, and more.">
+<meta property="og:image" content="https://legisly.ai/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://legisly.ai/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .feat-list{display:flex;flex-direction:column;gap:18px;max-width:980px;margin:30px auto 0}
+  .frow{display:grid;grid-template-columns:64px 1fr;gap:22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow);transition:.2s}
+  .frow:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+  .fnum{font-family:var(--display);font-size:30px;font-weight:800;color:var(--primary-soft);line-height:1}
+  .frow:nth-child(odd) .fnum{color:var(--primary)}
+  .fhead{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:9px}
+  .fhead h3{font-size:21px;font-weight:700}
+  .fhead .pill{font-size:10px;font-weight:800;font-family:var(--display);letter-spacing:.04em;padding:4px 10px;border-radius:999px}
+  .p-auto{background:var(--primary-soft);color:var(--primary)}.p-ai{background:var(--accent-soft);color:var(--accent)}.p-live{background:var(--senate-soft);color:var(--senate)}
+  .frow p.desc{font-size:14.5px;color:var(--muted);line-height:1.6;margin-bottom:13px}
+  .fbul{display:grid;grid-template-columns:1fr 1fr;gap:7px 22px}
+  .fbul div{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;font-weight:500}
+  .fbul .ck{color:var(--accent);font-weight:800;flex:none}
+  @media(max-width:720px){.frow{grid-template-columns:1fr;gap:10px}.fbul{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links" id="navLinks">
-            <a href="features.html" class="active">Features</a>
-            <a href="how-it-works.html">How It Works</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
-            <a href="#" class="btn-retro" onclick="openModal(); return false;">Request Demo</a>
-        </div>
-    </nav>
+<div class="noise"></div>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1>PURPOSE-BUILT FOR <span class="accent">CA LOBBYING FIRMS</span></h1>
-        <p>Real-time hearing intelligence, California bill tracking, and AI-powered analysis &mdash; everything your firm needs to win.</p>
-    </section>
+<nav><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="mark">L</span><span>legisly<span class="est">★ EST 2025</span></span></a>
+  <div class="nav-links">
+    <a href="features.html" class="active">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
+    <a class="nav-cta" href="index.html#waitlist">Request Demo</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
 
-    <!-- Features Section -->
-    <section class="section">
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">01</div>
-                    <h3>CALIFORNIA DATA PIPELINE</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>California leginfo.legislature.ca.gov integration</li>
-                    <li>50,000+ bills tracked back to 1999</li>
-                    <li>Automated daily ingestion &amp; normalization</li>
-                    <li>Real-time sync with official sources</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">02</div>
-                    <h3>CORE BILL TRACKING &amp; ONBOARDING</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>AI-powered smart search with natural language</li>
-                    <li>Bill detail view with status, history &amp; version comparison</li>
-                    <li>Conversational onboarding &mdash; set up in under 5 minutes</li>
-                    <li>AI suggests relevant bills based on your industry</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">03</div>
-                    <h3>CLIENT &amp; POSITION MANAGEMENT + STAKEHOLDER CRM</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>Client portfolios with support / oppose / watch / neutral positions</li>
-                    <li>Stakeholder CRM &mdash; log every meeting, call, and email with legislators</li>
-                    <li>Relationship timeline and meeting prep with AI talking points</li>
-                    <li>Multi-client conflict detection and CapitolTrack data migration</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">04</div>
-                    <h3>REPORTS &amp; CLIENT INTELLIGENCE PORTAL</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>Live, interactive client portal &mdash; white-labeled with your firm's branding</li>
-                    <li>Drag-and-drop portal builder with AI insights and dynamic charts</li>
-                    <li>Branded PDF reports with cover pages, TOC, and scheduled delivery</li>
-                    <li>Firm-wide dashboard with cross-client position conflict detection</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">05</div>
-                    <h3>AI ASSISTANT &amp; AGENTIC CHAT</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>Natural language bill summaries and ELI5 explanations</li>
-                    <li>AI-drafted position letters, committee testimony, and amendments</li>
-                    <li>Meeting request emails and one-click testimony prep packages</li>
-                    <li>Passage prediction scoring with factor breakdown and alerts</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">06</div>
-                    <h3>ALERTS &amp; CALENDAR</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>Bill status, amendment, hearing, and vote alerts</li>
-                    <li>Email, SMS (Twilio), and push notifications</li>
-                    <li>Legislative calendar synced to Google Calendar and Outlook</li>
-                    <li>Regulatory and budget change alerts with deadline tracking</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">07</div>
-                    <h3>LEGISLATOR INTELLIGENCE</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>Legislator bios, photos, staff directory, and contact info</li>
-                    <li>Voting history with pattern analysis and bipartisan index</li>
-                    <li>Side-by-side vote comparison between legislators</li>
-                    <li>Committee assignments and Capitol Codex insider directory</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">08</div>
-                    <h3>CA REGULATORY TRACKING</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>California OAL Notice Register &mdash; weekly automated sync</li>
-                    <li>Agency rulemaking tracking by topic and client issue area</li>
-                    <li>Public comment period deadline alerts</li>
-                    <li>AI summary of proposed regulation impact and emergency regulations tracking</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">09</div>
-                    <h3>LIVE INTELLIGENCE &mdash; CAPTURE &amp; TRANSCRIPTION</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>Real-time hearing audio capture via FFmpeg</li>
-                    <li>Deepgram-powered speech-to-text with &lt;10 second delay</li>
-                    <li>Speaker identification and custom legislative vocabulary</li>
-                    <li>Searchable hearing archives with video playback and transcript sync</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">10</div>
-                    <h3>LIVE INTELLIGENCE &mdash; AI ANALYSIS &amp; VOTES</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>AI-generated hearing summaries within 15 minutes of gavel</li>
-                    <li>Real-time vote detection via transcript analysis and OCR</li>
-                    <li>Testimony sentiment classification &mdash; support, oppose, neutral</li>
-                    <li>Watch list matching within 5 seconds and instant multi-channel alerts</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">11</div>
-                    <h3>CA BUDGET TRACKING &amp; FPPC COMPLIANCE</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>CA budget bills, trailer bills, and May Revise diff tracking</li>
-                    <li>Budget subcommittee hearing calendar and deadline alerts</li>
-                    <li>FPPC contribution limit calculator with compliance warnings</li>
-                    <li>Fundraiser event calendar and quarterly contribution reports</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-number">12</div>
-                    <h3>LOCAL GOVERNMENT</h3>
-                </div>
-                <ul class="feature-list">
-                    <li>150+ California cities and counties via Granicus Legistar API</li>
-                    <li>Keyword-based local agenda tracking with AI summaries</li>
-                    <li>Assign local agenda items to clients with positions</li>
-                    <li>Local meeting calendar integrated alongside state hearings</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<main>
+  <div class="wrap page-head">
+    <span class="eyebrow">✦ Purpose-built for CA lobbying firms</span>
+    <h1>Everything your firm needs <span class="pop">to win</span></h1>
+    <p class="lede">Real-time hearing intelligence, CA + Federal bill tracking, and AI-powered analysis — in one platform.</p>
+  </div>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="cta">
-        <h2>JOIN THE WAITLIST</h2>
-        <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-        <form class="email-form" action="https://formspree.io/f/mdalewlb" method="POST">
-            <input type="email" name="email" placeholder="you@yourfirm.com" required>
-            <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-            <input type="hidden" name="_next" value="https://legisly.ai/thank-you.html">
-            <button type="submit">CLAIM YOUR SPOT</button>
-        </form>
-    </section>
+  <div class="wrap"><div class="feat-list">
+    <div class="frow reveal"><div class="fnum">01</div><div>
+      <div class="fhead"><h3>CA + Federal Data Pipeline</h3><span class="pill p-auto">Automated</span></div>
+      <p class="desc">Direct integrations with leginfo.legislature.ca.gov and Congress.gov. Every California and federal bill, amendment, and vote — ingested automatically.</p>
+      <div class="fbul"><div><span class="ck">✓</span>California leginfo integration</div><div><span class="ck">✓</span>Congress.gov federal bill data</div><div><span class="ck">✓</span>Automated ingestion &amp; normalization</div><div><span class="ck">✓</span>Real-time sync with official sources</div></div>
+    </div></div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-                <p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="how-it-works.html">How It Works</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
-                    <li><a href="security.html">Security</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Legisly Labs, Inc. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://x.com/LegislyAI" target="_blank" rel="noopener noreferrer">X</a>
-            </div>
-        </div>
-    </footer>
+    <div class="frow reveal"><div class="fnum">02</div><div>
+      <div class="fhead"><h3>Core Bill Tracking &amp; Onboarding</h3><span class="pill p-auto">Automated</span></div>
+      <p class="desc">Hit the ground running. Full bill tracking from day one with seamless data migration — no lost history, no downtime.</p>
+      <div class="fbul"><div><span class="ck">✓</span>Legacy system data migration tools</div><div><span class="ck">✓</span>Bill status, history &amp; version comparison</div><div><span class="ck">✓</span>Firm-wide bill lists &amp; tagging</div><div><span class="ck">✓</span>Guided onboarding for your team</div></div>
+    </div></div>
 
-    <!-- Email Modal -->
-    <div class="modal-overlay" id="emailModal">
-        <div class="modal">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h2>JOIN THE WAITLIST</h2>
-            <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-            <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
-                <input type="email" name="email" placeholder="you@yourfirm.com" required>
-                <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-                <button type="submit">CLAIM YOUR SPOT</button>
-                <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
-            </form>
-        </div>
-    </div>
+    <div class="frow reveal"><div class="fnum">03</div><div>
+      <div class="fhead"><h3>Client &amp; Position Management</h3><span class="pill p-auto">Automated</span></div>
+      <p class="desc">Organize every client, every position, every stakeholder in one place. Your firm's CRM, built for lobbying.</p>
+      <div class="fbul"><div><span class="ck">✓</span>Client portfolios &amp; bill positions</div><div><span class="ck">✓</span>Support / oppose / watch tracking</div><div><span class="ck">✓</span>Stakeholder CRM &amp; contact management</div><div><span class="ck">✓</span>Multi-client bill overlap detection</div></div>
+    </div></div>
 
-    <script>
-        // Modal
-        function openModal() {
-            document.getElementById('emailModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => document.querySelector('.modal-form input[type="email"]').focus(), 300);
-        }
-        function closeModal() {
-            document.getElementById('emailModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('emailModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
+    <div class="frow reveal"><div class="fnum">04</div><div>
+      <div class="fhead"><h3>Reports &amp; Client Intelligence Portal</h3><span class="pill p-ai">AI-Powered</span></div>
+      <p class="desc">Generate branded client reports in seconds. Give clients their own white-labeled portal to track bills, positions, and activity.</p>
+      <div class="fbul"><div><span class="ck">✓</span>Branded PDF &amp; web reports</div><div><span class="ck">✓</span>White-labeled client portal</div><div><span class="ck">✓</span>Scheduled auto-delivery</div><div><span class="ck">✓</span>Custom templates &amp; firm branding</div></div>
+    </div></div>
 
-        // Hamburger menu
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('open');
-        });
-    </script>
+    <div class="frow reveal"><div class="fnum">05</div><div>
+      <div class="fhead"><h3>AI Assistant &amp; Agentic Chat</h3><span class="pill p-ai">AI-Powered</span></div>
+      <p class="desc">Ask questions in plain English. Get bill summaries, position drafts, and impact analysis — powered by AI that understands CA legislation.</p>
+      <div class="fbul"><div><span class="ck">✓</span>Natural language bill summaries</div><div><span class="ck">✓</span>Position &amp; opposition letter drafting</div><div><span class="ck">✓</span>Impact analysis across portfolios</div><div><span class="ck">✓</span>Agentic workflows &amp; multi-step research</div></div>
+    </div></div>
+
+    <div class="frow reveal"><div class="fnum">06</div><div>
+      <div class="fhead"><h3>Smart Alerts</h3><span class="pill p-auto">Automated</span></div>
+      <p class="desc">Get notified the moment a bill moves, an amendment drops, or a hearing is scheduled. Email alerts with daily or weekly digest options.</p>
+      <div class="fbul"><div><span class="ck">✓</span>Bill status &amp; amendment alerts</div><div><span class="ck">✓</span>Hearing &amp; vote notifications</div><div><span class="ck">✓</span>Regulatory change alerts</div><div><span class="ck">✓</span>Daily or weekly digest options</div></div>
+    </div></div>
+
+    <div class="frow reveal"><div class="fnum">07</div><div>
+      <div class="fhead"><h3>Calendar &amp; Legislator Profiles</h3><span class="pill p-auto">Automated</span></div>
+      <p class="desc">Never miss a hearing. Full CA and federal legislative calendars, plus detailed legislator profiles with voting history and committee assignments.</p>
+      <div class="fbul"><div><span class="ck">✓</span>CA &amp; federal hearing calendars</div><div><span class="ck">✓</span>Sync to Google / Outlook / iCal</div><div><span class="ck">✓</span>Legislator bios &amp; voting patterns</div><div><span class="ck">✓</span>Committee assignments &amp; contacts</div></div>
+    </div></div>
+
+    <div class="frow reveal"><div class="fnum">08</div><div>
+      <div class="fhead"><h3>CA &amp; Federal Regulatory Tracking</h3><span class="pill p-auto">Automated</span></div>
+      <p class="desc">Track California OAL rulemaking, Federal Register notices, and Regulations.gov activity — all in one place alongside your bill tracking.</p>
+      <div class="fbul"><div><span class="ck">✓</span>California OAL rulemaking tracking</div><div><span class="ck">✓</span>Federal Register integration</div><div><span class="ck">✓</span>Regulations.gov comment tracking</div><div><span class="ck">✓</span>Unified legislative + regulatory view</div></div>
+    </div></div>
+
+    <div class="frow reveal"><div class="fnum">09</div><div>
+      <div class="fhead"><h3>Live Intelligence — Capture &amp; Transcription</h3><span class="pill p-live">Live</span></div>
+      <p class="desc">Real-time hearing audio capture and transcription. Never miss what was said in committee — even when you can't be in the room.</p>
+      <div class="fbul"><div><span class="ck">✓</span>Real-time hearing audio capture</div><div><span class="ck">✓</span>Automated speech-to-text</div><div><span class="ck">✓</span>Speaker identification &amp; attribution</div><div><span class="ck">✓</span>Searchable hearing archives</div></div>
+    </div></div>
+
+    <div class="frow reveal"><div class="fnum">10</div><div>
+      <div class="fhead"><h3>Live Intelligence — AI Analysis &amp; Votes</h3><span class="pill p-ai">AI-Powered</span></div>
+      <p class="desc">AI-powered hearing summaries, real-time vote detection, and outcome predictions — delivered as hearings happen.</p>
+      <div class="fbul"><div><span class="ck">✓</span>AI-generated hearing summaries</div><div><span class="ck">✓</span>Real-time vote detection &amp; tallies</div><div><span class="ck">✓</span>Sentiment &amp; outcome predictions</div><div><span class="ck">✓</span>Key moment highlights &amp; alerts</div></div>
+    </div></div>
+
+    <div class="frow reveal"><div class="fnum">11</div><div>
+      <div class="fhead"><h3>CA Budget Tracking &amp; FPPC Compliance</h3><span class="pill p-auto">Automated</span></div>
+      <p class="desc">Track California budget trailer bills and FPPC fundraising compliance — the details that matter most to your clients.</p>
+      <div class="fbul"><div><span class="ck">✓</span>CA budget &amp; trailer bill tracking</div><div><span class="ck">✓</span>FPPC fundraising compliance tools</div><div><span class="ck">✓</span>Contribution limit tracking</div><div><span class="ck">✓</span>Filing deadline reminders</div></div>
+    </div></div>
+  </div></div>
+
+  <section class="cta-sec" style="padding-top:72px"><div class="wrap"><div class="cta-card reveal">
+    <span class="pin">Join the Founding 20</span>
+    <h2>3 months free + locked pricing for life</h2>
+    <p>First 20 firms get founding-member pricing locked for life. Real-time hearing intelligence, AI analysis, and branded client portals.</p>
+    <a class="btn primary" href="index.html#waitlist">Claim your spot →</a>
+    <div class="small">Launching Summer 2026 — limited founding-member spots</div>
+  </div></div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-brand"><a class="logo" href="index.html"><span class="mark">L</span>legisly</a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
+</div></footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%2*0.06)+'s';io.observe(el)});
+</script>
+<script>(function(){var t=document.querySelector(".nav-toggle"),n=document.querySelector(".nav-in");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o)});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded",false)})});})();</script>
 </body>
 </html>

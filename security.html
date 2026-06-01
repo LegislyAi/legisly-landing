@@ -1,304 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.">
-    <meta property="og:title" content="Legisly — Built for California Lobbyists">
-    <meta property="og:description" content="Real-time bill tracking, live hearing intelligence, branded client reports, and AI-powered analysis — purpose-built for CA lobbying firms.">
-    <meta property="og:image" content="https://legisly.ai/og-image.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://legisly.ai/og-image.png">
-    <title>Security — Legisly</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="retro.css">
-    <style>
-        .security-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        .security-card {
-            background: var(--cream);
-            border: 4px solid var(--blue-primary);
-            padding: 2rem;
-            position: relative;
-            transition: all 0.2s;
-        }
-        .security-card::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            right: -8px;
-            bottom: -8px;
-            background: var(--blue-primary);
-            z-index: -1;
-            transition: all 0.2s;
-        }
-        .security-card:hover::before {
-            top: 12px;
-            left: 12px;
-        }
-        .security-card h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.2rem;
-            color: var(--blue-primary);
-            letter-spacing: 2px;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .security-card p {
-            color: var(--blue-deep);
-            line-height: 1.7;
-            margin: 0;
-            font-size: 0.95rem;
-        }
-        .security-content {
-            max-width: 800px;
-        }
-        .security-content p {
-            color: var(--blue-deep);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 1.25rem;
-        }
-        .security-content h2 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.8rem;
-            color: var(--blue-primary);
-            letter-spacing: 2px;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 3px solid var(--yellow-bright);
-            padding-bottom: 0.3rem;
-            display: inline-block;
-        }
-        .security-content ul {
-            padding-left: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .security-content li {
-            color: var(--blue-deep);
-            margin-bottom: 0.6rem;
-            line-height: 1.7;
-        }
-        .security-content a {
-            color: var(--orange-hot);
-            font-weight: 600;
-        }
-        .security-content strong {
-            color: var(--blue-primary);
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Security — Legisly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<meta name="description" content="How Legisly keeps your data secure — encryption, access controls, and security best practices.">
+<meta property="og:title" content="Security — Legisly">
+<meta property="og:description" content="How Legisly keeps your data secure — encryption, access controls, and security best practices.">
+<meta property="og:image" content="https://legisly.ai/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://legisly.ai/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links" id="navLinks">
-            <a href="features.html">Features</a>
-            <a href="how-it-works.html">How It Works</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
-            <a href="#" class="btn-retro" onclick="openModal(); return false;">Request a Demo</a>
-        </div>
-    </nav>
+<div class="noise"></div>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1>SECURITY AT <span class="accent">LEGISLY</span></h1>
-        <p>Your data security is our top priority.</p>
-    </section>
+<nav><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="mark">L</span><span>legisly<span class="est">★ EST 2025</span></span></a>
+  <div class="nav-links">
+    <a href="features.html">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
+    <a class="nav-cta" href="index.html#waitlist">Request a Demo</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
 
-    <section class="section">
-        <div class="security-grid">
-            <div class="security-card">
-                <h3>&#x1F510; Encryption</h3>
-                <p>All data is encrypted in transit using TLS 1.3 and at rest using AES-256 encryption.</p>
-            </div>
-            <div class="security-card">
-                <h3>&#x1F3E2; Infrastructure</h3>
-                <p>We use enterprise-grade cloud infrastructure with SOC 2 certified data centers.</p>
-            </div>
-            <div class="security-card">
-                <h3>&#x1F511; Access Control</h3>
-                <p>Role-based access controls ensure only authorized personnel can access systems and data.</p>
-            </div>
-            <div class="security-card">
-                <h3>&#x1F4CA; Monitoring</h3>
-                <p>24/7 monitoring and logging of all system activity with real-time threat detection.</p>
-            </div>
-            <div class="security-card">
-                <h3>&#x1F504; Backups</h3>
-                <p>Automated daily backups with point-in-time recovery and geographic redundancy.</p>
-            </div>
-            <div class="security-card">
-                <h3>&#x1F6E1;&#xFE0F; Privacy</h3>
-                <p>Your legislative positions and business data are never shared with other users or sold to third parties.</p>
-            </div>
-        </div>
+<main>
+  <div class="wrap page-head">
+    <span class="eyebrow">✦ Security at Legisly</span>
+    <h1>Your data security is <span class="pop">our top priority</span></h1>
+    <p class="lede">We've built our platform with security as a foundational principle — not an afterthought.</p>
+  </div>
 
-        <div class="security-content">
-            <h2>Our Security Practices</h2>
-            <p>At Legisly, we understand that legislative intelligence often involves sensitive business strategies and positions. We've built our platform with security as a foundational principle, not an afterthought.</p>
-
-            <h2>Data Protection</h2>
-            <p>Your data is protected through multiple layers of security:</p>
-            <ul>
-                <li><strong>Encryption in Transit:</strong> All communications between your browser and our servers use TLS 1.3 encryption.</li>
-                <li><strong>Encryption at Rest:</strong> All stored data is encrypted using AES-256, an industry-standard encryption algorithm.</li>
-                <li><strong>Database Security:</strong> Our databases are isolated within private networks with no direct internet access.</li>
-                <li><strong>Secure Backups:</strong> Backups are encrypted and stored in geographically separate locations.</li>
-            </ul>
-
-            <h2>Application Security</h2>
-            <p>We follow security best practices in our development process:</p>
-            <ul>
-                <li>Regular security code reviews and automated vulnerability scanning</li>
-                <li>Dependency monitoring for known vulnerabilities</li>
-                <li>Secure authentication with password hashing and optional two-factor authentication</li>
-                <li>Protection against common web vulnerabilities (XSS, CSRF, SQL injection)</li>
-                <li>Rate limiting and DDoS protection</li>
-            </ul>
-
-            <h2>Infrastructure Security</h2>
-            <p>Our infrastructure is designed for security and reliability:</p>
-            <ul>
-                <li>Hosted on enterprise cloud providers with SOC 2 Type II certification</li>
-                <li>Network isolation with firewalls and private subnets</li>
-                <li>Automated security patching and updates</li>
-                <li>Multi-region deployment for high availability</li>
-                <li>Regular penetration testing by third-party security firms</li>
-            </ul>
-
-            <h2>Access Controls</h2>
-            <p>We strictly limit who can access what:</p>
-            <ul>
-                <li>Principle of least privilege for all employee access</li>
-                <li>Multi-factor authentication required for all administrative access</li>
-                <li>Detailed audit logs of all data access</li>
-                <li>Regular access reviews and immediate revocation upon role changes</li>
-            </ul>
-
-            <h2>Compliance</h2>
-            <p>We are committed to meeting the highest standards of data protection and are working toward SOC 2 Type II certification. We comply with applicable data protection regulations including CCPA.</p>
-
-            <h2>Incident Response</h2>
-            <p>We maintain a comprehensive incident response plan that includes:</p>
-            <ul>
-                <li>24/7 monitoring and alerting</li>
-                <li>Defined escalation procedures</li>
-                <li>Communication protocols for affected users</li>
-                <li>Post-incident analysis and remediation</li>
-            </ul>
-
-            <h2>Responsible Disclosure</h2>
-            <p>We welcome security researchers to report vulnerabilities responsibly. If you discover a security issue, please email us at <a href="mailto:security@legisly.ai">security@legisly.ai</a> with details. We commit to investigating all reports and will not take legal action against researchers who follow responsible disclosure practices.</p>
-
-            <h2>Questions?</h2>
-            <p>If you have questions about our security practices or would like to discuss enterprise security requirements, please contact us at <a href="mailto:security@legisly.ai">security@legisly.ai</a>.</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-                <p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="how-it-works.html">How It Works</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
-                    <li><a href="security.html">Security</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Legisly Labs, Inc. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://x.com/LegislyAI" target="_blank" rel="noopener noreferrer">X</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Email Modal -->
-    <div class="modal-overlay" id="emailModal">
-        <div class="modal">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h2>JOIN THE WAITLIST</h2>
-            <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-            <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
-                <input type="email" name="email" placeholder="you@yourfirm.com" required>
-                <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-                <button type="submit">CLAIM YOUR SPOT</button>
-                <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
-            </form>
-        </div>
+  <div class="wrap">
+    <div class="card-grid">
+      <div class="icard reveal"><span class="em">🔐</span><h4>Encryption</h4><p>All data is encrypted in transit using TLS 1.3 and at rest using AES-256 encryption.</p></div>
+      <div class="icard reveal"><span class="em">🏢</span><h4>Infrastructure</h4><p>We use enterprise-grade cloud infrastructure with SOC 2 certified data centers.</p></div>
+      <div class="icard reveal"><span class="em">🔑</span><h4>Access Control</h4><p>Role-based access controls ensure only authorized personnel can access systems and data.</p></div>
+      <div class="icard reveal"><span class="em">📊</span><h4>Monitoring</h4><p>24/7 monitoring and logging of all system activity with real-time threat detection.</p></div>
+      <div class="icard reveal"><span class="em">🔄</span><h4>Backups</h4><p>Automated daily backups with point-in-time recovery and geographic redundancy.</p></div>
+      <div class="icard reveal"><span class="em">🛡️</span><h4>Privacy</h4><p>Your legislative positions and business data are never shared with other users or sold to third parties.</p></div>
     </div>
+  </div>
 
-    <script>
-        // Modal
-        function openModal() {
-            document.getElementById('emailModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => document.querySelector('.modal-form input[type="email"]').focus(), 300);
-        }
-        function closeModal() {
-            document.getElementById('emailModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('emailModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
+  <div class="wrap" style="padding-top:50px"><div class="legal">
+    <h2>Our security practices</h2>
+    <p>At Legisly, we understand that legislative intelligence often involves sensitive business strategies and positions. We've built our platform with security as a foundational principle, not an afterthought.</p>
 
-        // Hamburger menu
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('open');
-        });
-    </script>
+    <h2>Data protection</h2>
+    <p>Your data is protected through multiple layers of security:</p>
+    <ul>
+      <li><b>Encryption in transit:</b> All communications between your browser and our servers use TLS 1.3 encryption.</li>
+      <li><b>Encryption at rest:</b> All stored data is encrypted using AES-256, an industry-standard encryption algorithm.</li>
+      <li><b>Database security:</b> Our databases are isolated within private networks with no direct internet access.</li>
+      <li><b>Secure backups:</b> Backups are encrypted and stored in geographically separate locations.</li>
+    </ul>
+
+    <h2>Application security</h2>
+    <p>We follow security best practices in our development process:</p>
+    <ul>
+      <li>Regular security code reviews and automated vulnerability scanning</li>
+      <li>Dependency monitoring for known vulnerabilities</li>
+      <li>Secure authentication with password hashing and optional two-factor authentication</li>
+      <li>Protection against common web vulnerabilities (XSS, CSRF, SQL injection)</li>
+      <li>Rate limiting and DDoS protection</li>
+    </ul>
+
+    <h2>Infrastructure security</h2>
+    <p>Our infrastructure is designed for security and reliability:</p>
+    <ul>
+      <li>Hosted on enterprise cloud providers with SOC 2 Type II certification</li>
+      <li>Network isolation with firewalls and private subnets</li>
+      <li>Automated security patching and updates</li>
+      <li>Multi-region deployment for high availability</li>
+      <li>Regular penetration testing by third-party security firms</li>
+    </ul>
+
+    <h2>Access controls</h2>
+    <p>We strictly limit who can access what:</p>
+    <ul>
+      <li>Principle of least privilege for all employee access</li>
+      <li>Multi-factor authentication required for all administrative access</li>
+      <li>Detailed audit logs of all data access</li>
+      <li>Regular access reviews and immediate revocation upon role changes</li>
+    </ul>
+
+    <h2>Compliance</h2>
+    <p>We are committed to meeting the highest standards of data protection and are working toward SOC 2 Type II certification. We comply with applicable data protection regulations including CCPA.</p>
+
+    <h2>Incident response</h2>
+    <p>We maintain a comprehensive incident response plan that includes:</p>
+    <ul>
+      <li>24/7 monitoring and alerting</li>
+      <li>Defined escalation procedures</li>
+      <li>Communication protocols for affected users</li>
+      <li>Post-incident analysis and remediation</li>
+    </ul>
+
+    <h2>Responsible disclosure</h2>
+    <p>We welcome security researchers to report vulnerabilities responsibly. If you discover a security issue, please email us at <a href="mailto:security@legisly.ai">security@legisly.ai</a> with details. We commit to investigating all reports and will not take legal action against researchers who follow responsible disclosure practices.</p>
+
+    <h2>Questions?</h2>
+    <p>If you have questions about our security practices or would like to discuss enterprise security requirements, please contact us at <a href="mailto:security@legisly.ai">security@legisly.ai</a>.</p>
+  </div></div>
+
+  <section style="padding:50px 0 90px"></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-brand"><a class="logo" href="index.html"><span class="mark">L</span>legisly</a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
+</div></footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach((el)=>io.observe(el));
+</script>
+<script>(function(){var t=document.querySelector(".nav-toggle"),n=document.querySelector(".nav-in");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o)});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded",false)})});})();</script>
 </body>
 </html>
