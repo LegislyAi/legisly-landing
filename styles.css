@@ -20,7 +20,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:var(--body);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--body);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.02em;line-height:1.04}
 a{text-decoration:none;color:inherit}
 .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
@@ -106,9 +106,18 @@ footer{padding:54px 0 40px;border-top:1px solid var(--border);background:var(--s
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:560px){
+  .wrap{padding:0 20px}
+  .nav-links a{padding-left:20px;padding-right:20px}
+  .nav-links a.nav-cta{margin-left:20px;margin-right:20px}
+  .page-head{padding:44px 0 22px}
+  .page-head h1{font-size:clamp(30px,8.4vw,46px)}
+  .page-head .lede{font-size:16px}
+  .big{font-size:clamp(26px,7vw,40px)}
+  .sub{font-size:15.5px}
   .subscribe{flex-direction:column}
   .subscribe .btn,.subscribe button{width:100%;justify-content:center}
-  .cta-card{padding:46px 22px}
+  .cta-card{padding:42px 20px}
+  .cta-card p{font-size:15.5px}
   .stats3{flex-wrap:wrap}
   .foot-grid{grid-template-columns:1fr 1fr;gap:24px 30px}
 }
