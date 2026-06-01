@@ -1,268 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Frequently asked questions about Legisly — legislative tracking with real-time hearing intelligence for California lobbying firms.">
-    <meta property="og:title" content="FAQ — Legisly">
-    <meta property="og:description" content="Questions about Legisly's CA + Federal bill tracking, live hearing intelligence, client portals, and data migration.">
-    <meta property="og:image" content="https://legisly.ai/og-image.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://legisly.ai/og-image.png">
-    <title>FAQ — Legisly</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="retro.css">
-    <style>
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .faq-item {
-            border-bottom: 4px solid var(--cream);
-            padding: 2rem 0;
-        }
-        .faq-item:first-child {
-            border-top: 4px solid var(--cream);
-        }
-        .faq-question {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            color: var(--blue-primary);
-            letter-spacing: 2px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        .faq-question .toggle-arrow {
-            font-size: 1.2rem;
-            transition: transform 0.3s;
-        }
-        .faq-answer {
-            color: var(--blue-deep);
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-        .faq-answer p {
-            margin-bottom: 1rem;
-        }
-        .faq-answer p:last-child {
-            margin-bottom: 0;
-        }
-        .faq-answer a {
-            color: var(--orange-hot);
-            font-weight: 600;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAQ — Legisly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<meta name="description" content="Answers to common questions about Legisly — pricing, launch timeline, coverage, and security.">
+<meta property="og:title" content="FAQ — Legisly">
+<meta property="og:description" content="Answers to common questions about Legisly — pricing, launch timeline, coverage, and security.">
+<meta property="og:image" content="https://legisly.ai/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://legisly.ai/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links" id="navLinks">
-            <a href="features.html">Features</a>
-            <a href="how-it-works.html">How It Works</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
-            <a href="#" class="btn-retro" onclick="openModal(); return false;">Request a Demo</a>
-        </div>
-    </nav>
+<div class="noise"></div>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1>FREQUENTLY ASKED <span class="accent">QUESTIONS</span></h1>
-        <p>Everything you need to know about Legisly.</p>
-    </section>
+<nav><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="mark">L</span><span>legisly<span class="est">★ EST 2025</span></span></a>
+  <div class="nav-links">
+    <a href="features.html">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
+    <a class="nav-cta" href="index.html#waitlist">Request a Demo</a>
+  </div>
+</div></nav>
 
-    <!-- FAQ Section -->
-    <section class="section">
-        <div class="faq-list">
-            <div class="faq-item">
-                <div class="faq-question">What is Legisly? <span class="toggle-arrow">&#9660;</span></div>
-                <div class="faq-answer">
-                    <p>Legisly is a legislative tracking platform with real-time hearing intelligence, purpose-built for California lobbying firms. It covers both California and federal legislation with a single integrated platform.</p>
-                    <p>Features include real-time bill tracking, live hearing transcription and AI analysis, client and position management, branded client reports, a white-labeled Client Intelligence Portal, regulatory tracking, budget tracking, and FPPC compliance tools.</p>
-                </div>
-            </div>
+<main>
+  <div class="wrap page-head">
+    <span class="eyebrow">✦ Frequently asked questions</span>
+    <h1>Everything you need <span class="pop">to know</span></h1>
+    <p class="lede">Answers about Legisly — coverage, migration, security, and launch.</p>
+  </div>
 
-            <div class="faq-item">
-                <div class="faq-question">Who is Legisly for? <span class="toggle-arrow">&#9660;</span></div>
-                <div class="faq-answer">
-                    <p>Legisly is purpose-built for California lobbying firms and government affairs professionals, including:</p>
-                    <p>&bull; Solo lobbyists and small lobbying firms<br>
-                    &bull; Mid-size and large CA lobbying firms<br>
-                    &bull; Government affairs consultancies<br>
-                    &bull; Trade associations with CA legislative priorities<br>
-                    &bull; Corporate government relations teams focused on Sacramento</p>
-                </div>
-            </div>
+  <div class="wrap"><div class="faq-list">
+    <details class="faq" open><summary>What is Legisly?<span class="tw">+</span></summary><div class="ans"><p>Legisly is a legislative tracking platform with real-time hearing intelligence, purpose-built for California lobbying firms. It covers both California and federal legislation in a single integrated platform.</p><p>Features include real-time bill tracking, live hearing transcription and AI analysis, client and position management, branded client reports, a white-labeled Client Intelligence Portal, regulatory tracking, budget tracking, and FPPC compliance tools.</p></div></details>
+    <details class="faq"><summary>Who is Legisly for?<span class="tw">+</span></summary><div class="ans"><p>Legisly is purpose-built for California lobbying firms and government affairs professionals, including:</p><div class="bul"><span>Solo lobbyists and small lobbying firms</span><span>Mid-size and large CA lobbying firms</span><span>Government affairs consultancies</span><span>Trade associations with CA legislative priorities</span><span>Corporate government relations teams focused on Sacramento</span></div></div></details>
+    <details class="faq"><summary>What jurisdictions do you cover?<span class="tw">+</span></summary><div class="ans"><p>Legisly covers California state legislation (via leginfo.legislature.ca.gov) and federal legislation (via Congress.gov). We also track CA regulatory activity through the Office of Administrative Law and federal rulemakings through the Federal Register and Regulations.gov.</p><p>Multi-state coverage (TX, NY, FL) is planned for a future phase — our primary focus is California + Federal.</p></div></details>
+    <details class="faq"><summary>Can I migrate from my current tools?<span class="tw">+</span></summary><div class="ans"><p>Yes. Legisly includes a Data Migration Wizard that imports your client bill lists, positions, tags, notes, and historical tracking data via CSV/Excel. We support imports from any legacy legislative tracking system.</p><p>Your firm can switch without losing any client history or data.</p></div></details>
+    <details class="faq"><summary>What is Live Hearing Intelligence?<span class="tw">+</span></summary><div class="ans"><p>Legisly captures and transcribes CA legislative hearings in real time with speaker identification and timestamp linking. Our AI then generates hearing summaries, extracts key moments, detects votes, and scores hearing relevance per client.</p><p>All hearings are archived with searchable transcripts. Federal committee hearings are also monitored where audio/video is available.</p></div></details>
+    <details class="faq"><summary>What is the Client Intelligence Portal?<span class="tw">+</span></summary><div class="ans"><p>The Client Intelligence Portal is a white-labeled, read-only login that you give to your clients. Each client sees a live bill status dashboard, hearing alerts, position notes from their lobbyist, and a legislative calendar filtered to their issues.</p><p>The portal is branded per firm (your branding, not Legisly's), and a WYSIWYG builder lets you customize what each client sees.</p></div></details>
+    <details class="faq"><summary>Is my data secure?<span class="tw">+</span></summary><div class="ans"><p>Absolutely. Legisly uses multi-tenant architecture with strict firm and client separation. We use bank-level encryption for all data in transit and at rest. Client positions, internal memos, and firm data are never shared between tenants.</p><p>Enterprise plans include SSO/OAuth and role-based access control. See our <a href="security.html">Security page</a> for details.</p></div></details>
+    <details class="faq"><summary>What does FPPC compliance tracking include?<span class="tw">+</span></summary><div class="ans"><p>Legisly tracks contributions, supports 460/496 form workflows, and maintains a fundraising activity log per client. You'll get compliance deadline alerts for FPPC filing dates so nothing slips through the cracks.</p></div></details>
+    <details class="faq"><summary>When is Legisly launching?<span class="tw">+</span></summary><div class="ans"><p>Legisly is launching in Summer 2026, starting with California + Federal coverage. Development begins March 2026. Request a demo to get early access and provide input during development.</p></div></details>
+    <details class="faq"><summary>How do I get in touch?<span class="tw">+</span></summary><div class="ans"><p>Email us at <a href="mailto:contact@legisly.ai">contact@legisly.ai</a> or visit our <a href="contact.html">Contact page</a>. We respond to all inquiries within 24 hours.</p></div></details>
+  </div></div>
 
-            <div class="faq-item">
-                <div class="faq-question">What jurisdictions do you cover? <span class="toggle-arrow">&#9660;</span></div>
-                <div class="faq-answer">
-                    <p>Legisly covers California state legislation (via leginfo.legislature.ca.gov) and federal legislation (via Congress.gov). We also track CA regulatory activity through the Office of Administrative Law and federal rulemakings through the Federal Register and Regulations.gov.</p>
-                    <p>Multi-state coverage (TX, NY, FL) is planned for a future phase &mdash; our primary focus is California + Federal.</p>
-                </div>
-            </div>
+  <section class="cta-sec" style="padding-top:64px"><div class="wrap"><div class="cta-card reveal">
+    <span class="pin">We're happy to help</span>
+    <h2>Still have questions?</h2>
+    <p>Get in touch and we'll get back to you within 24 hours.</p>
+    <a class="btn primary" href="contact.html">Contact Us →</a>
+  </div></div></section>
+</main>
 
-            <div class="faq-item">
-                <div class="faq-question">Can I migrate from my current tools? <span class="toggle-arrow">&#9660;</span></div>
-                <div class="faq-answer">
-                    <p>Yes. Legisly includes a Data Migration Wizard that imports your client bill lists, positions, tags, notes, and historical tracking data via CSV/Excel. We support imports from any legacy legislative tracking system.</p>
-                    <p>Your firm can switch without losing any client history or data.</p>
-                </div>
-            </div>
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-brand"><a class="logo" href="index.html"><span class="mark">L</span>legisly</a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
+</div></footer>
 
-            <div class="faq-item">
-                <div class="faq-question">What is Live Hearing Intelligence? <span class="toggle-arrow">&#9660;</span></div>
-                <div class="faq-answer">
-                    <p>Legisly captures and transcribes CA legislative hearings in real-time with speaker identification and timestamp linking. Our AI then generates hearing summaries, extracts key moments, detects votes, and scores hearing relevance per client.</p>
-                    <p>All hearings are archived with searchable transcripts. Federal committee hearings are also monitored where audio/video is available.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">What is the Client Intelligence Portal? <span class="toggle-arrow">&#9660;</span></div>
-                <div class="faq-answer">
-                    <p>The Client Intelligence Portal is a white-labeled, read-only login that you give to your clients. Each client sees a live bill status dashboard, hearing alerts, position notes from their lobbyist, and a legislative calendar filtered to their issues.</p>
-                    <p>The portal is branded per firm (your branding, not Legisly's), and a WYSIWYG builder lets you customize what each client sees.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Is my data secure? <span class="toggle-arrow">&#9660;</span></div>
-                <div class="faq-answer">
-                    <p>Absolutely. Legisly uses multi-tenant architecture with strict firm and client separation. We use bank-level encryption for all data in transit and at rest. Client positions, internal memos, and firm data are never shared between tenants.</p>
-                    <p>Enterprise plans include SSO/OAuth and role-based access control. See our <a href="security.html">Security page</a> for details.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">What does FPPC compliance tracking include? <span class="toggle-arrow">&#9660;</span></div>
-                <div class="faq-answer">
-                    <p>Legisly tracks contributions, supports 460/496 form workflows, and maintains a fundraising activity log per client. You'll get compliance deadline alerts for FPPC filing dates so nothing slips through the cracks.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">When is Legisly launching? <span class="toggle-arrow">&#9660;</span></div>
-                <div class="faq-answer">
-                    <p>Legisly is launching in Summer 2026, starting with California + Federal coverage. Development begins March 2026. Request a demo to get early access and provide input during development.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">How do I get in touch? <span class="toggle-arrow">&#9660;</span></div>
-                <div class="faq-answer">
-                    <p>Email us at <a href="mailto:contact@legisly.ai">contact@legisly.ai</a> or visit our <a href="contact.html">Contact page</a>. We respond to all inquiries within 24 hours.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section" id="cta">
-        <h2>STILL HAVE QUESTIONS?</h2>
-        <p>Get in touch. We're happy to help.</p>
-        <a href="contact.html" class="btn-retro">Contact Us</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-                <p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="how-it-works.html">How It Works</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
-                    <li><a href="security.html">Security</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Legisly Labs, Inc. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://x.com/LegislyAI" target="_blank" rel="noopener noreferrer">X</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Email Modal -->
-    <div class="modal-overlay" id="emailModal">
-        <div class="modal">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h2>JOIN THE WAITLIST</h2>
-            <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-            <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
-                <input type="email" name="email" placeholder="you@yourfirm.com" required>
-                <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-                <button type="submit">CLAIM YOUR SPOT</button>
-                <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        // Modal
-        function openModal() {
-            document.getElementById('emailModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => document.querySelector('.modal-form input[type="email"]').focus(), 300);
-        }
-        function closeModal() {
-            document.getElementById('emailModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('emailModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // Hamburger menu
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('open');
-        });
-    </script>
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach((el)=>io.observe(el));
+</script>
 </body>
 </html>

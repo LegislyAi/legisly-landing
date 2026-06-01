@@ -1,323 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI legislative tracking pricing for California lobbying firms. Free tier available. Per-seat plans with real-time hearing intelligence, client portals, and FPPC compliance tracking.">
-    <meta property="og:title" content="Pricing — Legisly | AI Legislative Tracking for CA Firms">
-    <meta property="og:description" content="Start free, scale as you grow. AI-powered legislative tracking with real-time hearing intelligence, branded client portals, and FPPC compliance tracking.">
-    <meta property="og:image" content="https://legisly.ai/og-image.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://legisly.ai/og-image.png">
-    <title>Pricing — Legisly</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="retro.css">
-    <style>
-        .founding-deal {
-            background: var(--coral);
-            color: var(--cream);
-            text-align: center;
-            padding: 0.75rem 2rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 2.5rem;
-            border: 3px solid var(--blue-deep);
-            box-shadow: 4px 4px 0 var(--blue-deep);
-        }
-        .free-note {
-            text-align: center;
-            color: var(--blue-deep);
-            font-size: 1rem;
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-        }
-        .free-note strong {
-            color: var(--blue-primary);
-            font-weight: 700;
-        }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        .pricing-card {
-            background: var(--white);
-            border: 4px solid var(--blue-primary);
-            padding: 2rem 1.75rem;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            box-shadow: 6px 6px 0 var(--blue-bright);
-            transition: all 0.2s;
-        }
-        .pricing-card:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 9px 9px 0 var(--blue-bright);
-        }
-        .pricing-card.featured {
-            border-color: var(--orange-hot);
-            box-shadow: 6px 6px 0 var(--coral);
-        }
-        .pricing-card.featured:hover {
-            box-shadow: 9px 9px 0 var(--coral);
-        }
-        .featured-badge {
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--coral);
-            color: var(--cream);
-            padding: 0.3rem 1.25rem;
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border: 3px solid var(--blue-deep);
-            white-space: nowrap;
-        }
-        .plan-name {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--blue-deep);
-            margin-bottom: 0.5rem;
-        }
-        .plan-for {
-            color: var(--body-text);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1.25rem;
-            padding-bottom: 1.25rem;
-            border-bottom: 2px solid rgba(30, 64, 175, 0.1);
-        }
-        .plan-highlights {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.5rem;
-            flex-grow: 1;
-        }
-        .plan-highlights li {
-            padding: 0.4rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: var(--blue-deep);
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        .plan-highlights li::before {
-            content: '\2605';
-            position: absolute;
-            left: 0;
-            color: var(--yellow-bright);
-            font-size: 0.8rem;
-        }
-        .plan-cta {
-            margin-top: auto;
-        }
-        .plan-cta .btn-retro,
-        .plan-cta .btn-secondary-retro {
-            width: 100%;
-            text-align: center;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pricing — Legisly | CA Lobbying Firm Plans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<meta name="description" content="Legisly pricing for California lobbying firms. Custom plans built around your team — request a demo.">
+<meta property="og:title" content="Pricing — Legisly | CA Lobbying Firm Plans">
+<meta property="og:description" content="Legisly pricing for California lobbying firms. Custom plans built around your team — request a demo.">
+<meta property="og:image" content="https://legisly.ai/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://legisly.ai/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1060px;margin:34px auto 0;align-items:start}
+  .tier{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);transition:.2s;position:relative}
+  .tier:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
+  .tier.pop{border:2px solid var(--primary);box-shadow:var(--shadow-lift)}
+  .tier .flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.05em;padding:5px 14px;border-radius:999px}
+  .tier h3{font-size:17px;font-weight:700;color:var(--muted)}
+  .tier .price{font-family:var(--display);font-size:42px;font-weight:800;margin:8px 0 2px}
+  .tier .price span{font-size:15px;color:var(--muted);font-weight:600}
+  .tier .blurb{font-size:13.5px;color:var(--muted);line-height:1.55;margin:0 0 18px;min-height:40px}
+  .tier ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 0 22px}
+  .tier li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;font-weight:500;line-height:1.4}
+  .tier li .ck{color:var(--accent);font-weight:800;flex:none}
+  .tier li.head{font-weight:700;color:var(--text);margin-top:4px}
+  .tier .btn{width:100%;justify-content:center}
+  .tier.pop .btn{background:var(--primary);color:#fff}
 
-        @media (max-width: 1000px) {
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                max-width: 480px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-    </style>
+  .cmp{max-width:980px;margin:70px auto 0}
+  .cmp h2{text-align:center;margin-bottom:26px}
+  .ctable{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .ctable th,.ctable td{padding:14px 16px;text-align:left;font-size:13.5px;border-bottom:1px solid var(--border)}
+  .ctable thead th{font-family:var(--display);font-weight:800;background:var(--surface-2);font-size:13px}
+  .ctable thead th:not(:first-child),.ctable td:not(:first-child){text-align:center}
+  .ctable thead th.pop{color:var(--primary)}
+  .ctable tr:last-child td{border-bottom:none}
+  .ctable td.y{color:var(--assembly);font-weight:800}
+  .ctable td.n{color:var(--muted)}
+  .ctable tbody tr:hover{background:var(--surface-2)}
+  @media(max-width:860px){.tiers{grid-template-columns:1fr;max-width:420px}.cmp{overflow-x:auto}}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links" id="navLinks">
-            <a href="features.html">Features</a>
-            <a href="how-it-works.html">How It Works</a>
-            <a href="pricing.html" class="active">Pricing</a>
-            <a href="about.html">About</a>
-            <a href="#" class="btn-retro" onclick="openModal(); return false;">Request a Demo</a>
-        </div>
-    </nav>
+<div class="noise"></div>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1>PRICING BUILT FOR <span class="accent">CA LOBBYING FIRMS</span></h1>
-        <p>Per-seat plans that scale with your firm. No hidden fees. Cancel anytime.</p>
-    </section>
+<nav><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="mark">L</span><span>legisly<span class="est">★ EST 2025</span></span></a>
+  <div class="nav-links">
+    <a href="features.html">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html" class="active">Pricing</a><a href="about.html">About</a>
+    <a class="nav-cta" href="index.html#waitlist">Request a Demo</a>
+  </div>
+</div></nav>
 
-    <!-- Pricing Cards -->
-    <section class="section">
-        <div class="founding-deal">First 20 firms get 3 months free + founding member pricing locked for life</div>
-        <p class="free-note">Explore Legisly with our <strong>free tier</strong> &mdash; track 1 bill, view the legislative calendar, and see what's possible. No credit card required.</p>
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <div class="plan-name">Solo Lobbyist</div>
-                <p class="plan-for">For independent lobbyists managing a focused client roster.</p>
-                <ul class="plan-highlights">
-                    <li>1 lobbyist seat, up to 10 clients</li>
-                    <li>CA + Federal bill tracking</li>
-                    <li>AI-powered summaries &amp; alerts</li>
-                    <li>Weekly client reports (PDF)</li>
-                    <li>Legislative calendar &amp; legislator profiles</li>
-                    <li>Email support</li>
-                </ul>
-                <div class="plan-cta">
-                    <a href="#" class="btn-secondary-retro" onclick="openModal(); return false;">Request a Demo</a>
-                </div>
-            </div>
+<main>
+  <div class="wrap page-head">
+    <span class="eyebrow">✦ Plans that scale with your firm</span>
+    <h1>Pricing built for <span class="pop">CA lobbying firms</span></h1>
+    <p class="lede">Plans that scale with your firm. No hidden fees. Cancel anytime. Request a demo for a quote tailored to your seats and clients.</p>
+  </div>
 
-            <div class="pricing-card featured">
-                <div class="featured-badge">MOST POPULAR</div>
-                <div class="plan-name">Firm</div>
-                <p class="plan-for">For lobbying firms that need branded portals and compliance tools.</p>
-                <ul class="plan-highlights">
-                    <li>Up to 5 seats, 25 clients</li>
-                    <li>Everything in Solo, plus:</li>
-                    <li>Branded client reports &amp; white-labeled portal</li>
-                    <li>AI Assistant &amp; Agentic Chat</li>
-                    <li>Stakeholder CRM &amp; regulatory tracking</li>
-                    <li>FPPC compliance tracking</li>
-                    <li>Priority support</li>
-                </ul>
-                <div class="plan-cta">
-                    <a href="#" class="btn-retro" onclick="openModal(); return false;">Request a Demo</a>
-                </div>
-            </div>
-
-            <div class="pricing-card">
-                <div class="plan-name">Enterprise</div>
-                <p class="plan-for">For large firms with unlimited needs and dedicated support.</p>
-                <ul class="plan-highlights">
-                    <li>Unlimited seats &amp; clients</li>
-                    <li>Everything in Firm, plus:</li>
-                    <li>Live Hearing Intelligence (transcription + AI)</li>
-                    <li>CA Budget tracking</li>
-                    <li>Custom integrations &amp; SSO</li>
-                    <li>Dedicated account manager &amp; SLA</li>
-                </ul>
-                <div class="plan-cta">
-                    <a href="#" class="btn-secondary-retro" onclick="openModal(); return false;">Request a Demo</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section" id="cta">
-        <h2>JOIN THE WAITLIST</h2>
-        <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-        <form class="email-form" action="https://formspree.io/f/mdalewlb" method="POST">
-            <input type="email" name="email" placeholder="you@yourfirm.com" required>
-            <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-            <input type="hidden" name="_next" value="https://legisly.ai/thank-you.html">
-            <button type="submit">CLAIM YOUR SPOT</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-                <p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="how-it-works.html">How It Works</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
-                    <li><a href="security.html">Security</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Legisly Labs, Inc. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://x.com/LegislyAI" target="_blank" rel="noopener noreferrer">X</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Email Modal -->
-    <div class="modal-overlay" id="emailModal">
-        <div class="modal">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h2>JOIN THE WAITLIST</h2>
-            <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-            <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
-                <input type="email" name="email" placeholder="you@yourfirm.com" required>
-                <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-                <button type="submit">CLAIM YOUR SPOT</button>
-                <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
-            </form>
-        </div>
+  <div class="wrap"><div class="tiers">
+    <div class="tier reveal">
+      <h3>Solo Lobbyist</h3>
+      <div class="price">Custom<span></span></div>
+      <p class="blurb">For independent lobbyists managing a focused client roster.</p>
+      <ul>
+        <li><span class="ck">✓</span>1 lobbyist seat</li>
+        <li><span class="ck">✓</span>Up to 10 clients</li>
+        <li><span class="ck">✓</span>CA + Federal bill tracking</li>
+        <li><span class="ck">✓</span>Client position management</li>
+        <li><span class="ck">✓</span>Weekly client reports (PDF export)</li>
+        <li><span class="ck">✓</span>Email &amp; SMS alerts</li>
+        <li><span class="ck">✓</span>Legislative calendar</li>
+        <li><span class="ck">✓</span>Legislator profiles</li>
+        <li><span class="ck">✓</span>Email support</li>
+      </ul>
+      <a class="btn ghost" href="index.html#waitlist">Request a Demo</a>
     </div>
 
-    <script>
-        // Modal
-        function openModal() {
-            document.getElementById('emailModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => document.querySelector('.modal-form input[type="email"]').focus(), 300);
-        }
-        function closeModal() {
-            document.getElementById('emailModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('emailModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
+    <div class="tier pop reveal">
+      <span class="flag">★ Most Popular</span>
+      <h3>Firm</h3>
+      <div class="price">Custom<span></span></div>
+      <p class="blurb">For lobbying firms that need branded portals and compliance tools.</p>
+      <ul>
+        <li><span class="ck">✓</span>Up to 5 lobbyist seats</li>
+        <li><span class="ck">✓</span>Up to 25 clients</li>
+        <li class="head">Everything in Solo, plus:</li>
+        <li><span class="ck">✓</span>Branded client reports (logo &amp; colors)</li>
+        <li><span class="ck">✓</span>Client Intelligence Portal (white-labeled)</li>
+        <li><span class="ck">✓</span>AI Assistant &amp; Agentic Chat</li>
+        <li><span class="ck">✓</span>Stakeholder CRM</li>
+        <li><span class="ck">✓</span>CA &amp; Federal regulatory tracking</li>
+        <li><span class="ck">✓</span>FPPC compliance tracking</li>
+        <li><span class="ck">✓</span>Priority support</li>
+      </ul>
+      <a class="btn primary" href="index.html#waitlist">Request a Demo</a>
+    </div>
 
-        // Hamburger menu
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('open');
-        });
-    </script>
+    <div class="tier reveal">
+      <h3>Enterprise</h3>
+      <div class="price">Custom</div>
+      <p class="blurb">For large firms with unlimited needs and dedicated support.</p>
+      <ul>
+        <li><span class="ck">✓</span>Unlimited lobbyist seats</li>
+        <li><span class="ck">✓</span>Unlimited clients</li>
+        <li class="head">Everything in Firm, plus:</li>
+        <li><span class="ck">✓</span>Live Hearing Intelligence (transcription + AI)</li>
+        <li><span class="ck">✓</span>CA Budget tracking</li>
+        <li><span class="ck">✓</span>Legacy system data migration wizard</li>
+        <li><span class="ck">✓</span>Custom integrations &amp; SSO</li>
+        <li><span class="ck">✓</span>Dedicated account manager</li>
+        <li><span class="ck">✓</span>SLA guarantee</li>
+      </ul>
+      <a class="btn ghost" href="index.html#waitlist">Request a Demo</a>
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="cmp reveal">
+    <h2 class="big">Compare plans</h2>
+    <table class="ctable">
+      <thead><tr><th>Feature</th><th>Solo</th><th class="pop">Firm</th><th>Enterprise</th></tr></thead>
+      <tbody>
+        <tr><td>Lobbyist seats</td><td>1</td><td>Up to 5</td><td>Unlimited</td></tr>
+        <tr><td>Clients</td><td>Up to 10</td><td>Up to 25</td><td>Unlimited</td></tr>
+        <tr><td>CA + Federal bills</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>AI summaries</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Branded reports</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Client portal</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>AI Assistant</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Regulatory tracking</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Live hearing intelligence</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr>
+        <tr><td>FPPC compliance</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Support level</td><td>Email</td><td>Priority</td><td>Dedicated mgr</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+
+  <section class="cta-sec" style="padding-top:72px"><div class="wrap"><div class="cta-card reveal">
+    <span class="pin">Launching Summer 2026</span>
+    <h2>Ready to see it in action?</h2>
+    <p>Request a demo and see how Legisly works for your firm.</p>
+    <a class="btn primary" href="index.html#waitlist">Request a Demo →</a>
+  </div></div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-brand"><a class="logo" href="index.html"><span class="mark">L</span>legisly</a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
+</div></footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*0.07)+'s';io.observe(el)});
+</script>
 </body>
 </html>

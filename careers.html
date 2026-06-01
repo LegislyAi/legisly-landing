@@ -1,290 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.">
-    <meta property="og:title" content="Legisly — Built for California Lobbyists">
-    <meta property="og:description" content="Real-time bill tracking, live hearing intelligence, branded client reports, and AI-powered analysis — purpose-built for CA lobbying firms.">
-    <meta property="og:image" content="https://legisly.ai/og-image.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://legisly.ai/og-image.png">
-    <title>Careers — Legisly</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="retro.css">
-    <style>
-        .careers-intro {
-            max-width: 700px;
-            margin: 0 auto 4rem;
-            text-align: center;
-        }
-        .careers-intro p {
-            color: var(--blue-deep);
-            font-size: 1.15rem;
-            line-height: 1.8;
-        }
-        .jobs-section h2 {
-            margin-bottom: 2rem;
-        }
-        .no-jobs-box {
-            background: var(--cream);
-            border: 4px solid var(--blue-primary);
-            padding: 4rem;
-            text-align: center;
-            position: relative;
-        }
-        .no-jobs-box::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            right: -8px;
-            bottom: -8px;
-            background: var(--blue-primary);
-            z-index: -1;
-        }
-        .no-jobs-box h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.8rem;
-            color: var(--blue-primary);
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-        .no-jobs-box p {
-            color: var(--blue-deep);
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-        .values-section {
-            margin-top: 5rem;
-            padding-top: 5rem;
-            border-top: 4px solid var(--blue-primary);
-        }
-        .values-section h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        .perks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        .perk-card {
-            background: var(--cream);
-            border: 4px solid var(--blue-primary);
-            padding: 1.5rem;
-            text-align: center;
-            position: relative;
-            transition: all 0.2s ease;
-        }
-        .perk-card::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            right: -8px;
-            bottom: -8px;
-            background: var(--blue-primary);
-            z-index: -1;
-            transition: all 0.2s ease;
-        }
-        .perk-card:hover::before {
-            top: 12px;
-            left: 12px;
-        }
-        .perk-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .perk-card h4 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.1rem;
-            color: var(--blue-primary);
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-        .perk-card p {
-            color: var(--blue-deep);
-            font-size: 0.9rem;
-            margin: 0;
-            line-height: 1.6;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Careers — Legisly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<meta name="description" content="Join Legisly. We're building AI legislative intelligence for California lobbying firms.">
+<meta property="og:title" content="Careers — Legisly">
+<meta property="og:description" content="Join Legisly. We're building AI legislative intelligence for California lobbying firms.">
+<meta property="og:image" content="https://legisly.ai/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://legisly.ai/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links" id="navLinks">
-            <a href="features.html">Features</a>
-            <a href="how-it-works.html">How It Works</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
-            <a href="#" class="btn-retro" onclick="openModal(); return false;">Request a Demo</a>
-        </div>
-    </nav>
+<div class="noise"></div>
 
-    <section class="page-header">
-        <h1>JOIN THE <span class="accent">LEGISLY TEAM</span></h1>
-        <p>Building the future of legislative intelligence for California lobbyists.</p>
-    </section>
+<nav><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="mark">L</span><span>legisly<span class="est">★ EST 2025</span></span></a>
+  <div class="nav-links">
+    <a href="features.html">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
+    <a class="nav-cta" href="index.html#waitlist">Request a Demo</a>
+  </div>
+</div></nav>
 
-    <section class="section">
-        <div class="careers-intro">
-            <p>We're building a legislative tracking platform with real-time hearing intelligence for California lobbying firms. It's ambitious, technical work &mdash; and we're looking for people who want to build something that matters.</p>
-        </div>
+<main>
+  <div class="wrap page-head">
+    <span class="eyebrow">✦ Building the future of legislative intelligence</span>
+    <h1>Join the <span class="pop">Legisly team</span></h1>
+    <p class="lede">It's ambitious, technical work — and we're looking for people who want to build something that matters for California lobbyists.</p>
+  </div>
 
-        <div class="jobs-section">
-            <h2>Open Positions</h2>
-
-            <div class="no-jobs-box">
-                <h3>No Open Positions Right Now</h3>
-                <p>We're not actively hiring at the moment, but we're always interested in hearing from talented people. Send us your resume and tell us why you'd be a great fit.</p>
-                <a href="mailto:careers@legisly.ai" class="btn-retro">Send Your Resume</a>
-            </div>
-        </div>
-
-        <div class="values-section">
-            <h2>Why Work at Legisly?</h2>
-            <div class="perks-grid">
-                <div class="perk-card">
-                    <div class="perk-icon">🌍</div>
-                    <h4>Remote First</h4>
-                    <p>Work from anywhere. We're distributed and asynchronous.</p>
-                </div>
-                <div class="perk-card">
-                    <div class="perk-icon">🚀</div>
-                    <h4>Early Stage</h4>
-                    <p>Join early and shape the product, culture, and company.</p>
-                </div>
-                <div class="perk-card">
-                    <div class="perk-icon">💡</div>
-                    <h4>Meaningful Work</h4>
-                    <p>Build tools that make democracy more accessible.</p>
-                </div>
-                <div class="perk-card">
-                    <div class="perk-icon">📈</div>
-                    <h4>Growth</h4>
-                    <p>Learn fast in a startup environment with real responsibility.</p>
-                </div>
-                <div class="perk-card">
-                    <div class="perk-icon">🤖</div>
-                    <h4>Cutting Edge</h4>
-                    <p>Work with the latest AI technology and shape the future.</p>
-                </div>
-                <div class="perk-card">
-                    <div class="perk-icon">💰</div>
-                    <h4>Equity</h4>
-                    <p>Meaningful ownership stake in what we're building together.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <h2>DON'T SEE THE RIGHT ROLE?</h2>
-        <p>We're always looking for exceptional people. Reach out and tell us about yourself.</p>
-        <a href="mailto:careers@legisly.ai" class="btn-retro" style="position: relative; z-index: 1;">Get in Touch</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-                <p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="how-it-works.html">How It Works</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
-                    <li><a href="security.html">Security</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Legisly Labs, Inc. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://x.com/LegislyAI" target="_blank" rel="noopener noreferrer">X</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Email Modal -->
-    <div class="modal-overlay" id="emailModal">
-        <div class="modal">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h2>JOIN THE WAITLIST</h2>
-            <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-            <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
-                <input type="email" name="email" placeholder="you@yourfirm.com" required>
-                <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-                <button type="submit">CLAIM YOUR SPOT</button>
-                <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
-            </form>
-        </div>
+  <div class="wrap">
+    <div class="panel reveal">
+      <h3>No open positions right now</h3>
+      <p>We're not actively hiring at the moment, but we're always interested in hearing from talented people. Send us your resume and tell us why you'd be a great fit.</p>
+      <a class="btn primary" href="mailto:careers@legisly.ai">Send Your Resume →</a>
     </div>
+  </div>
 
-    <script>
-        // Modal
-        function openModal() {
-            document.getElementById('emailModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => document.querySelector('.modal-form input[type="email"]').focus(), 300);
-        }
-        function closeModal() {
-            document.getElementById('emailModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('emailModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
+  <section style="padding:64px 0 20px"><div class="wrap">
+    <div class="center reveal"><div class="kicker">Why Legisly</div><h2 class="big">Why work at Legisly?</h2></div>
+    <div class="card-grid">
+      <div class="icard reveal"><span class="em">🌍</span><h4>Remote First</h4><p>Work from anywhere. We're distributed and asynchronous.</p></div>
+      <div class="icard reveal"><span class="em">🚀</span><h4>Early Stage</h4><p>Join early and shape the product, culture, and company.</p></div>
+      <div class="icard reveal"><span class="em">💡</span><h4>Meaningful Work</h4><p>Build tools that make democracy more accessible.</p></div>
+      <div class="icard reveal"><span class="em">📈</span><h4>Growth</h4><p>Learn fast in a startup environment with real responsibility.</p></div>
+      <div class="icard reveal"><span class="em">🤖</span><h4>Cutting Edge</h4><p>Work with the latest AI technology and shape the future.</p></div>
+      <div class="icard reveal"><span class="em">💰</span><h4>Equity</h4><p>Meaningful ownership stake in what we're building together.</p></div>
+    </div>
+  </div></section>
 
-        // Hamburger menu
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('open');
-        });
-    </script>
+  <section class="cta-sec" style="padding-top:50px"><div class="wrap"><div class="cta-card reveal">
+    <span class="pin">We're always looking</span>
+    <h2>Don't see the right role?</h2>
+    <p>We're always looking for exceptional people. Reach out and tell us about yourself.</p>
+    <a class="btn primary" href="mailto:careers@legisly.ai">Get in Touch →</a>
+  </div></div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-brand"><a class="logo" href="index.html"><span class="mark">L</span>legisly</a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
+</div></footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach((el)=>io.observe(el));
+</script>
 </body>
 </html>

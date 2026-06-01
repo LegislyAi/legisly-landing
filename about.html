@@ -1,277 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Legisly is a legislative tracking platform with real-time hearing intelligence, purpose-built for California lobbying firms.">
-    <meta property="og:title" content="About — Legisly">
-    <meta property="og:description" content="Purpose-built for CA lobbying firms. Real-time hearing intelligence, AI analysis, and branded client portals.">
-    <meta property="og:image" content="https://legisly.ai/og-image.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://legisly.ai/og-image.png">
-    <title>About — Legisly</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="retro.css">
-    <style>
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .about-content p {
-            color: var(--blue-deep);
-            font-size: 1.15rem;
-            line-height: 1.9;
-            margin-bottom: 1.5rem;
-        }
-        .about-content .bold-statement {
-            font-size: 1.3rem;
-            font-weight: 600;
-            line-height: 1.7;
-        }
-        .about-content .bold-statement strong {
-            color: var(--blue-primary);
-        }
-        .about-content h2 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 2rem;
-            color: var(--blue-primary);
-            letter-spacing: 3px;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid var(--yellow-bright);
-            padding-bottom: 0.3rem;
-            display: inline-block;
-        }
-        .about-content a {
-            color: var(--orange-hot);
-            font-weight: 600;
-        }
-        .about-content a:hover {
-            color: var(--coral);
-        }
-        .what-list {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0 2rem;
-        }
-        .what-list li {
-            padding: 0.5rem 0 0.5rem 1.5rem;
-            position: relative;
-            color: var(--blue-deep);
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-        .what-list li::before {
-            content: '\2605';
-            position: absolute;
-            left: 0;
-            color: var(--yellow-bright);
-        }
-        .what-list li strong {
-            color: var(--blue-primary);
-        }
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .value-card {
-            background: var(--white);
-            border: 4px solid var(--blue-primary);
-            padding: 1.75rem;
-            position: relative;
-            transition: all 0.2s;
-            box-shadow: 5px 5px 0 var(--blue-bright);
-        }
-        .value-card:nth-child(2) { box-shadow: 5px 5px 0 var(--orange-hot); }
-        .value-card:nth-child(3) { box-shadow: 5px 5px 0 var(--coral); }
-        .value-card:nth-child(4) { box-shadow: 5px 5px 0 var(--yellow-bright); }
-        .value-card:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 8px 8px 0 var(--orange-hot);
-        }
-        .value-card h4 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.1rem;
-            color: var(--blue-primary);
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-        .value-card p {
-            color: var(--blue-deep);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
-        @media (max-width: 600px) {
-            .values-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Legisly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<meta name="description" content="Purpose-built for CA lobbying firms. Real-time hearing intelligence, AI analysis, and branded client portals.">
+<meta property="og:title" content="About — Legisly">
+<meta property="og:description" content="Purpose-built for CA lobbying firms. Real-time hearing intelligence, AI analysis, and branded client portals.">
+<meta property="og:image" content="https://legisly.ai/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://legisly.ai/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .prose{max-width:760px;margin:0 auto}
+  .prose .intro{font-size:19px;line-height:1.65;color:var(--text);font-weight:500}
+  .prose .intro .muted{color:var(--muted)}
+  .mission{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:var(--radius);padding:26px 28px;margin:30px 0;box-shadow:var(--shadow)}
+  .mission h3{font-size:18px;font-weight:800;margin-bottom:10px}
+  .mission p{font-size:15px;color:var(--muted);line-height:1.65}
+  .block{margin:44px 0}
+  .block h2{font-size:28px;font-weight:800;margin-bottom:14px}
+  .block p{font-size:15.5px;color:var(--muted);line-height:1.7;margin-bottom:12px}
+  .sol-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:16px}
+  .sol-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;line-height:1.5;font-weight:500}
+  .sol-list .ck{color:var(--accent);font-weight:800;flex:none}
+  .values{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .vcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);transition:.2s}
+  .vcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+  .vcard .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:19px;margin-bottom:12px;background:var(--primary-soft);color:var(--primary)}
+  .vcard:nth-child(2) .ic{background:var(--accent-soft);color:var(--accent)}
+  .vcard:nth-child(3) .ic{background:var(--assembly-soft);color:var(--assembly)}
+  .vcard:nth-child(4) .ic{background:var(--senate-soft);color:var(--senate)}
+  .vcard h4{font-size:16px;font-weight:700;margin-bottom:7px}
+  .vcard p{font-size:13.5px;color:var(--muted);line-height:1.55;margin:0}
+  @media(max-width:720px){.values{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links" id="navLinks">
-            <a href="features.html">Features</a>
-            <a href="how-it-works.html">How It Works</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html" class="active">About</a>
-            <a href="#" class="btn-retro" onclick="openModal(); return false;">Request a Demo</a>
-        </div>
-    </nav>
+<div class="noise"></div>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1>THE CAPITOL DOESN'T WAIT. <span class="accent">NEITHER DO WE.</span></h1>
-        <p>Legisly is legislative intelligence built by people who've worked the Capitol &mdash; for everyone with something at stake.</p>
-    </section>
+<nav><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="mark">L</span><span>legisly<span class="est">★ EST 2025</span></span></a>
+  <div class="nav-links">
+    <a href="features.html">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html" class="active">About</a>
+    <a class="nav-cta" href="index.html#waitlist">Request a Demo</a>
+  </div>
+</div></nav>
 
-    <!-- Content Section -->
-    <section class="section">
-        <div class="about-content">
-            <p class="bold-statement">Sacramento moves at the speed of politics. Thousands of bills. Hundreds of hearings. Votes that reshape entire industries &mdash; sometimes in a single afternoon.</p>
-            <p class="bold-statement"><strong>Your current tools weren't built for this. They were built in 1993.</strong></p>
+<main>
+  <div class="wrap page-head">
+    <span class="eyebrow">✦ Purpose-built for California</span>
+    <h1>About <span class="pop">Legisly</span></h1>
+    <p class="lede">Purpose-built for California lobbying firms.</p>
+  </div>
 
-            <h2>WHAT WE BUILT</h2>
-            <p>A platform that sees everything happening in the California Legislature &mdash; in real time &mdash; and tells you what matters before anyone else knows.</p>
-            <ul class="what-list">
-                <li><strong>Live hearing intelligence.</strong> Real-time transcription, AI analysis, and vote detection while hearings are still happening.</li>
-                <li><strong>AI that does the work.</strong> Summaries, position letters, testimony, amendments, meeting prep &mdash; generated in seconds.</li>
-                <li><strong>A client portal that replaces PDFs.</strong> Live, branded, interactive dashboards your clients actually want to use.</li>
-                <li><strong>150+ local jurisdictions.</strong> City councils and county boards across California, tracked alongside state legislation.</li>
-                <li><strong>One-click migration.</strong> Leave your legacy platform behind. Bring your clients, positions, and history with you.</li>
-            </ul>
+  <div class="wrap"><div class="prose">
+    <p class="intro">California's legislative landscape moves fast. Every session, thousands of bills are introduced across Sacramento and Washington — each one potentially affecting your clients. Your firm needs tools that keep pace. <span class="muted">Legacy platforms weren't built for how modern lobbying firms actually work.</span></p>
 
-            <h2>WHY WE BUILT IT</h2>
-            <p>Because legislative intelligence shouldn't cost $30,000 a year. Because small businesses deserve the same visibility as the biggest firms. Because the tools lobbyists rely on haven't changed in three decades &mdash; and the Capitol has.</p>
-            <p>We built Legisly to democratize access to the legislative process in California. Not to replace lobbyists &mdash; to make every lobbyist, every government affairs team, and every advocacy organization more effective.</p>
-
-            <h2>OUR VALUES</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <h4>BUILT BY INSIDERS</h4>
-                    <p>Designed by people who've walked the halls of the Capitol. Every feature solves a real problem we've seen firsthand.</p>
-                </div>
-                <div class="value-card">
-                    <h4>REAL-TIME OR NOTHING</h4>
-                    <p>Live transcription. Instant alerts. AI analysis during hearings. In Sacramento, second place is last place.</p>
-                </div>
-                <div class="value-card">
-                    <h4>YOUR BRAND, NOT OURS</h4>
-                    <p>Branded portals. Branded reports. Your clients see your firm &mdash; not our software.</p>
-                </div>
-                <div class="value-card">
-                    <h4>CALIFORNIA FIRST</h4>
-                    <p>State bills. Local ordinances. Regulatory tracking. Budget and FPPC. We go deeper on California than anyone.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section" id="cta">
-        <h2>READY TO MOVE FIRST?</h2>
-        <p>Request a demo. Launching Summer 2026.</p>
-        <a href="#" class="btn-retro" onclick="openModal(); return false;" style="position:relative;z-index:1;">REQUEST DEMO</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <a href="index.html" class="logo-lockup">
-                    <svg class="logo-seal" viewBox="0 0 200 200" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="96" stroke="#F2C744" stroke-width="4"/><circle cx="100" cy="100" r="88" stroke="#F2C744" stroke-width="1" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="82" stroke="#F2C744" stroke-width="2"/><g transform="translate(40,30)"><path d="M60 20C30 20 18 50 18 63L102 63C102 50 90 20 60 20Z" stroke="#F2C744" stroke-width="2.5"/><rect x="52" y="9" width="16" height="15" stroke="#F2C744" stroke-width="2"/><circle cx="60" cy="9" r="3" fill="#F2C744"/><circle cx="42" cy="45" r="4" fill="#F2C744"/><circle cx="60" cy="41" r="4" fill="#F2C744"/><circle cx="78" cy="45" r="4" fill="#F2C744"/><rect x="24" y="63" width="7" height="24" fill="#F2C744"/><rect x="40" y="63" width="7" height="24" fill="#F2C744"/><rect x="56" y="63" width="8" height="24" fill="#F2C744"/><rect x="73" y="63" width="7" height="24" fill="#F2C744"/><rect x="89" y="63" width="7" height="24" fill="#F2C744"/><rect x="16" y="87" width="88" height="6" fill="#F2C744"/></g><g fill="#F2C744"><polygon points="28,100 30,105 35,105 31,108 32.5,113 28,110 23.5,113 25,108 21,105 26,105"/><polygon points="172,100 174,105 179,105 175,108 176.5,113 172,110 167.5,113 169,108 165,105 170,105"/></g><text x="100" y="158" text-anchor="middle" fill="#F2C744" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="2">&#x2605; EST 2025 &#x2605;</text></svg>
-                    <span class="logo-text">legisly</span>
-                </a>
-                <p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="how-it-works.html">How It Works</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
-                    <li><a href="security.html">Security</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Legisly Labs, Inc. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://x.com/LegislyAI" target="_blank" rel="noopener noreferrer">X</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Email Modal -->
-    <div class="modal-overlay" id="emailModal">
-        <div class="modal">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h2>JOIN THE WAITLIST</h2>
-            <p>First 20 firms get 3 months free + founding member pricing locked for life.</p>
-            <form class="modal-form" action="https://formspree.io/f/mdalewlb" method="POST">
-                <input type="email" name="email" placeholder="you@yourfirm.com" required>
-                <input type="hidden" name="_subject" value="New Legisly Waitlist Signup!">
-                <button type="submit">CLAIM YOUR SPOT</button>
-                <span class="waitlist-note">Launching Summer 2026 &mdash; Limited founding member spots</span>
-            </form>
-        </div>
+    <div class="mission">
+      <h3>Our Mission</h3>
+      <p>To give California lobbying firms the most powerful legislative intelligence platform available — with real-time hearing intelligence, AI-powered analysis, and branded client portals that make your firm indispensable.</p>
     </div>
 
-    <script>
-        // Modal
-        function openModal() {
-            document.getElementById('emailModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => document.querySelector('.modal-form input[type="email"]').focus(), 300);
-        }
-        function closeModal() {
-            document.getElementById('emailModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('emailModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
+    <div class="block reveal">
+      <h2>The problem we're solving</h2>
+      <p>Existing legislative tracking tools were built in a different era. Legacy platforms provide basic bill tracking, but they lack real-time hearing intelligence, AI-powered analysis, modern client portals, and the kind of automation that lets a small firm punch above its weight.</p>
+      <p>Meanwhile, your clients expect instant updates, professional branded reports, and real-time access to their bill status. The gap between what they expect and what legacy tools deliver is only growing.</p>
+    </div>
 
-        // Hamburger menu
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('open');
-        });
-    </script>
+    <div class="block reveal">
+      <h2>Our solution</h2>
+      <p>Legisly is a legislative tracking platform with real-time hearing intelligence, purpose-built to serve California lobbying firms. We cover California and federal legislation with a single integrated platform that includes:</p>
+      <ul class="sol-list">
+        <li><span class="ck">✓</span>Real-time CA + federal bill tracking with automated data pipelines</li>
+        <li><span class="ck">✓</span>Client and position management with a stakeholder CRM</li>
+        <li><span class="ck">✓</span>Branded client reports and a white-labeled Client Intelligence Portal</li>
+        <li><span class="ck">✓</span>AI assistant for bill summaries, position drafting, and impact analysis</li>
+        <li><span class="ck">✓</span>Live hearing transcription with AI-generated summaries and vote detection</li>
+        <li><span class="ck">✓</span>CA regulatory tracking, budget tracking, and FPPC compliance</li>
+        <li><span class="ck">✓</span>Data migration wizard for seamless switching from any legacy system</li>
+      </ul>
+    </div>
+
+    <div class="block reveal">
+      <h2>Our values</h2>
+      <div class="values">
+        <div class="vcard"><div class="ic">⚖️</div><h4>Built for Lobbyists</h4><p>Every feature is designed for how California lobbying firms actually work — not generic "legislative tracking."</p></div>
+        <div class="vcard"><div class="ic">⚡</div><h4>Real-Time Intelligence</h4><p>Live hearing transcription, instant alerts, and AI analysis — because in Sacramento, timing is everything.</p></div>
+        <div class="vcard"><div class="ic">◇</div><h4>Client-First Design</h4><p>Branded portals, professional reports, and tools that make your firm look exceptional to every client.</p></div>
+        <div class="vcard"><div class="ic">↻</div><h4>Seamless Migration</h4><p>Switch from any legacy system without losing your client history, positions, or data.</p></div>
+      </div>
+    </div>
+
+    <div class="block reveal">
+      <h2>The team</h2>
+      <p>Legisly is built by a team with deep experience in legislative technology and AI. We understand the California legislative process, the needs of lobbying firms, and the technology required to deliver real-time intelligence at scale.</p>
+      <p>We're based in California and laser-focused on capturing the CA market.</p>
+    </div>
+  </div></div>
+
+  <section class="cta-sec" style="padding-top:50px"><div class="wrap"><div class="cta-card reveal">
+    <span class="pin">Launching Summer 2026</span>
+    <h2>Ready to see Legisly in action?</h2>
+    <p>Request a demo and see how Legisly works for your firm.</p>
+    <a class="btn primary" href="index.html#waitlist">Request Demo →</a>
+  </div></div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-brand"><a class="logo" href="index.html"><span class="mark">L</span>legisly</a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
+</div></footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach((el)=>io.observe(el));
+</script>
 </body>
 </html>
