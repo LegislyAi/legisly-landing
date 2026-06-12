@@ -19,23 +19,76 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
 <style>
+  .eyebrow .ico{width:14px;height:14px}
   .steps{max-width:920px;margin:30px auto 0;position:relative}
-  .steps::before{content:"";position:absolute;left:31px;top:20px;bottom:20px;width:2px;background:var(--border)}
+  .steps::before{content:"";position:absolute;left:31px;top:20px;bottom:20px;width:2px;background:linear-gradient(180deg,var(--primary-2),color-mix(in srgb,var(--senate) 55%,var(--gold)));opacity:.5}
   .step{display:grid;grid-template-columns:64px 1fr;gap:24px;margin-bottom:22px;position:relative}
   .snum{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:24px;box-shadow:var(--shadow);position:relative;z-index:1}
-  .scard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow);transition:.2s}
-  .scard:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
-  .stage{display:inline-block;font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.06em;color:var(--accent);background:var(--accent-soft);padding:4px 11px;border-radius:999px;margin-bottom:11px}
+  .scard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow);transition:.22s;position:relative;overflow:hidden}
+  .scard::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--hero-a),var(--hero-b));opacity:0;transition:.25s}
+  .scard:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);border-color:color-mix(in srgb,var(--primary) 22%,var(--border))}
+  .scard:hover::before{opacity:1}
+  .scard:hover .ic{transform:scale(1.1) rotate(-5deg)}
+  /* card header: icon plate + stage badge */
+  .shead{display:flex;align-items:center;gap:13px;margin-bottom:13px}
+  .stage{display:inline-block;font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.06em;color:var(--accent);background:var(--accent-soft);padding:4px 11px;border-radius:999px}
   .scard h3{font-size:21px;font-weight:700;margin-bottom:10px}
   .scard p{font-size:14.5px;color:var(--muted);line-height:1.65}
   .subcard{margin-top:16px;background:var(--surface-2);border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:12px;padding:14px 16px}
   .subcard h4{font-size:14px;font-weight:800;margin-bottom:5px}
   .subcard p{font-size:13px;color:var(--muted);line-height:1.55}
-  @media(max-width:720px){.steps::before{display:none}.step{grid-template-columns:1fr;gap:12px}}
+  /* outcome metric chips */
+  .outcomes{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+  .ochip{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--text);background:var(--surface-2);border:1px solid var(--border);padding:7px 13px 7px 9px;border-radius:999px}
+  .ochip .ck{width:18px;height:18px}
+  .ochip b{font-family:var(--display);font-weight:800;color:var(--primary)}
+  /* green soft-pill check (from features.html) */
+  .ck{width:19px;height:19px;flex:none;border-radius:50%;background:var(--assembly-soft) url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%231FA85F'%20stroke-width='3.6'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M5%2012.5l4.2%204.2L19%206.5'/%3E%3C/svg%3E") center/12px no-repeat}
+  /* climax: the live-hearing payoff step */
+  .step.climax .snum{background:linear-gradient(135deg,var(--senate),var(--gold))}
+  .step.climax .scard{border-color:color-mix(in srgb,var(--senate) 30%,var(--border));background:linear-gradient(180deg,color-mix(in srgb,var(--senate) 5%,var(--surface)),var(--surface))}
+  .step.climax .scard::before{background:linear-gradient(90deg,var(--senate),var(--gold));opacity:1}
+  .step.climax .stage{color:var(--senate);background:var(--senate-soft)}
+  .climax-pin{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:.04em;color:#fff;background:linear-gradient(135deg,var(--senate),var(--gold));padding:5px 12px;border-radius:999px}
+  .climax-pin .ico{width:13px;height:13px}
+  @media(max-width:720px){
+    /* keep the process readable: connector runs through the snum badges */
+    .steps::before{left:23px;top:24px;bottom:24px}
+    .step{grid-template-columns:46px 1fr;gap:14px}
+    .snum{width:46px;height:46px;border-radius:14px;font-size:18px}
+    .scard{padding:20px 18px}
+    .scard h3{font-size:19px}
+    .shead{gap:10px}
+    .climax-pin{margin-left:0}
+  }
 </style>
 </head>
 <body>
 <div class="noise"></div>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <symbol id="i-bill" viewBox="0 0 24 24"><path d="M15 12h-5" stroke="var(--ico-accent, currentColor)" /><path d="M15 8h-5" stroke="var(--ico-accent, currentColor)" /><path d="M19 17V5a2 2 0 0 0-2-2H4" /><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" /></symbol>
+  <symbol id="i-live" viewBox="0 0 24 24"><path d="M16.247 7.761a6 6 0 0 1 0 8.478" /><path d="M19.075 4.933a10 10 0 0 1 0 14.134" /><path d="M4.925 19.067a10 10 0 0 1 0-14.134" /><path d="M7.753 16.239a6 6 0 0 1 0-8.478" /><circle cx="12" cy="12" r="2" /><circle cx="12" cy="12" r="1.6" fill="var(--ico-accent, currentColor)" stroke="none" /></symbol>
+  <symbol id="i-report" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="M8 18v-1" stroke="var(--ico-accent, currentColor)" /><path d="M12 18v-6" stroke="var(--ico-accent, currentColor)" /><path d="M16 18v-3" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" stroke="var(--ico-accent, currentColor)" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="var(--ico-accent, currentColor)" /><circle cx="9" cy="7" r="4" /></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /><path d="m9 16 2 2 4-4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" stroke="var(--ico-accent, currentColor)" /><path d="M22 4h-4" stroke="var(--ico-accent, currentColor)" /><circle cx="4" cy="20" r="2" /></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18" /><path d="m19 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" /><path d="m5 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M7 21h10" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-cycle" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /><path d="M21 3v5h-5" stroke="var(--ico-accent, currentColor)" /><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /><path d="M8 16H3v5" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" stroke="var(--ico-accent, currentColor)" /><path d="M2 12h20" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" stroke="var(--ico-accent, currentColor)" /><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" /></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" stroke="var(--ico-accent, currentColor)" /><path d="M10 22h4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-chart-up" viewBox="0 0 24 24"><path d="M16 7h6v6" stroke="var(--ico-accent, currentColor)" /><path d="m22 7-8.5 8.5-5-5L2 17" /></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" stroke="var(--ico-accent, currentColor)" /><path d="M9 13v2" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" stroke="var(--ico-accent, currentColor)" /><path d="M21.21 15.89A10 10 0 1 1 8 2.83" /></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><circle cx="12" cy="16" r="1" stroke="var(--ico-accent, currentColor)" /><rect x="3" y="10" width="18" height="12" rx="2" /><path d="M7 10V7a5 5 0 0 1 10 0v3" /></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" /><rect width="20" height="8" x="2" y="14" rx="2" ry="2" /><line x1="6" x2="6.01" y1="6" y2="6" stroke="var(--ico-accent, currentColor)" /><line x1="6" x2="6.01" y1="18" y2="18" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /><circle cx="16.5" cy="7.5" r=".8" fill="var(--ico-accent, currentColor)" stroke="none" /></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0" /><path d="M22 8c0-2.3-.8-4.3-2-6" stroke="var(--ico-accent, currentColor)" /><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /><path d="M4 2C2.8 3.7 2 5.7 2 8" stroke="var(--ico-accent, currentColor)" /></symbol>
+</svg>
 
 <nav><div class="wrap nav-in">
   <a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a>
@@ -48,45 +101,66 @@
 
 <main>
   <div class="wrap page-head">
-    <span class="eyebrow">✦ From onboarding to live intelligence</span>
+    <span class="eyebrow"><svg class="ico"><use href="#i-sparkle"/></svg>From onboarding to live intelligence</span>
     <h1>How Legisly <span class="pop">works</span></h1>
     <p class="lede">From onboarding to live hearing intelligence — built for how CA lobbyists actually work.</p>
   </div>
 
   <div class="wrap"><div class="steps">
     <div class="step reveal"><div class="snum">01</div><div class="scard">
-      <span class="stage">Day 1</span>
+      <div class="shead"><span class="ic ic-primary"><svg class="ico"><use href="#i-rocket"/></svg></span><span class="stage">Day 1</span></div>
       <h3>Onboard your firm &amp; migrate your data</h3>
       <p>Set up your firm account with multi-tenant architecture. Import your client bill lists, positions, tags, notes, and historical tracking data from your existing tools via CSV/Excel.</p>
       <div class="subcard"><h4>Data Migration Wizard</h4><p>Our migration tool imports your existing data so you can switch without losing any client history. User roles for firm admins, lobbyists, and client viewers.</p></div>
+      <div class="outcomes">
+        <span class="ochip"><span class="ck" aria-hidden="true"></span><b>Live in &lt;1 day</b></span>
+        <span class="ochip"><span class="ck" aria-hidden="true"></span>Zero lost client history</span>
+      </div>
     </div></div>
 
     <div class="step reveal"><div class="snum">02</div><div class="scard">
-      <span class="stage">Automatic</span>
+      <div class="shead"><span class="ic ic-primary"><svg class="ico"><use href="#i-cycle"/></svg></span><span class="stage">Automatic</span></div>
       <h3>CA + Federal data pipeline starts tracking</h3>
       <p>Real-time bill ingestion from California Legislative Information and Congress.gov. Bill status, amendment history, vote records, legislator data, and committee memberships — all synced automatically.</p>
       <div class="subcard"><h4>Always current</h4><p>Automated data refresh keeps your bill tracking, legislator profiles, and committee schedules up to date 24/7.</p></div>
+      <div class="outcomes">
+        <span class="ochip"><span class="ck" aria-hidden="true"></span><b>24/7</b> automated sync</span>
+        <span class="ochip"><span class="ck" aria-hidden="true"></span>CA + Federal coverage</span>
+      </div>
     </div></div>
 
     <div class="step reveal"><div class="snum">03</div><div class="scard">
-      <span class="stage">Daily workflow</span>
+      <div class="shead"><span class="ic ic-green"><svg class="ico"><use href="#i-users"/></svg></span><span class="stage">Daily workflow</span></div>
       <h3>Manage clients, positions &amp; stakeholders</h3>
       <p>Track bill positions (Support / Oppose / Watch / Neutral) per client. Maintain internal memos, stakeholder contacts, and coalition relationships — all linked to active bills.</p>
       <div class="subcard"><h4>Stakeholder CRM</h4><p>A contact database for legislators, staff, advocates, and coalition contacts linked to your clients and their active bills.</p></div>
+      <div class="outcomes">
+        <span class="ochip"><span class="ck" aria-hidden="true"></span>One workspace per client</span>
+        <span class="ochip"><span class="ck" aria-hidden="true"></span>Positions linked to live bills</span>
+      </div>
     </div></div>
 
     <div class="step reveal"><div class="snum">04</div><div class="scard">
-      <span class="stage">One click</span>
+      <div class="shead"><span class="ic ic-ai"><svg class="ico"><use href="#i-report"/></svg></span><span class="stage">One click</span></div>
       <h3>Generate branded reports &amp; share with clients</h3>
       <p>Create professional reports with your firm's logo and branding. One-click PDF export. Or give clients their own white-labeled portal with live bill status, hearing alerts, and position notes.</p>
       <div class="subcard"><h4>Client Intelligence Portal</h4><p>A branded, read-only login for each client with live dashboards, hearing alerts, and a WYSIWYG builder so you control what each client sees.</p></div>
+      <div class="outcomes">
+        <span class="ochip"><span class="ck" aria-hidden="true"></span><b>One-click</b> PDF export</span>
+        <span class="ochip"><span class="ck" aria-hidden="true"></span>White-labeled client portal</span>
+      </div>
     </div></div>
 
-    <div class="step reveal"><div class="snum">05</div><div class="scard">
-      <span class="stage">Real-time</span>
+    <div class="step climax reveal"><div class="snum">05</div><div class="scard">
+      <div class="shead"><span class="ic ic-live"><svg class="ico"><use href="#i-live"/></svg></span><span class="stage">Real-time</span><span class="climax-pin"><svg class="ico"><use href="#i-sparkle"/></svg>The payoff</span></div>
       <h3>Live hearing intelligence &amp; AI analysis</h3>
       <p>Real-time audio capture and transcription of CA legislative hearings. AI-generated summaries, speaker identification, vote detection, bill outcome predictions, and client-specific relevance scoring.</p>
       <div class="subcard"><h4>Never miss a hearing</h4><p>Searchable transcript archives, automated alerts when your clients' bills are discussed, and AI-powered key moment extraction.</p></div>
+      <div class="outcomes">
+        <span class="ochip"><span class="ck" aria-hidden="true"></span><b>&lt;10s</b> transcription delay</span>
+        <span class="ochip"><span class="ck" aria-hidden="true"></span><b>90%+</b> vote detection</span>
+        <span class="ochip"><span class="ck" aria-hidden="true"></span><b>24/7</b> session monitoring</span>
+      </div>
     </div></div>
   </div></div>
 
@@ -102,7 +176,7 @@
 <footer><div class="wrap">
   <div class="foot-grid">
     <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
-    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a><a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a Demo</a></div>
     <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
     <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
   </div>

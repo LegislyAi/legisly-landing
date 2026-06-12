@@ -19,107 +19,178 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .feat-list{display:flex;flex-direction:column;gap:18px;max-width:980px;margin:30px auto 0}
-  .frow{display:grid;grid-template-columns:64px 1fr;gap:22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow);transition:.2s}
-  .frow:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
-  .fnum{font-family:var(--display);font-size:30px;font-weight:800;color:var(--primary-soft);line-height:1}
-  .frow:nth-child(odd) .fnum{color:var(--primary)}
-  .fhead{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:9px}
-  .fhead h3{font-size:21px;font-weight:700}
+  .eyebrow .ico{width:14px;height:14px}
+  /* jump nav */
+  .fjump{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin:24px auto 0;max-width:740px}
+  .fjump a{font-family:var(--display);font-weight:700;font-size:12.5px;color:var(--text);background:var(--surface);border:1px solid var(--border);padding:8px 15px;border-radius:999px;transition:.16s}
+  .fjump a:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px);box-shadow:var(--shadow)}
+  /* feature catalog */
+  .feat-wrap{max-width:1000px;margin:14px auto 0}
+  .fcat{margin-top:42px;scroll-margin-top:92px}
+  .fcat-h{display:flex;align-items:center;gap:14px;margin:0 4px 18px}
+  .fcat-h .k{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .fcat-h .ln{flex:1;height:1px;background:var(--border)}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .fcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 24px 26px;box-shadow:var(--shadow);transition:.22s;position:relative;overflow:hidden}
+  .fcard::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--hero-a),var(--hero-b));opacity:0;transition:.25s}
+  .fcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift);border-color:color-mix(in srgb,var(--primary) 22%,var(--border))}
+  .fcard:hover::before{opacity:1}
+  .fcard:hover .ic{transform:scale(1.1) rotate(-5deg)}
+  .fcard.feat-hot{grid-column:1/-1;border-color:color-mix(in srgb,var(--senate) 28%,var(--border));background:linear-gradient(180deg,color-mix(in srgb,var(--senate) 5%,var(--surface)),var(--surface))}
+  .fcard.feat-hot::before{background:linear-gradient(90deg,var(--senate),var(--gold));opacity:1}
+  .fhead{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin:15px 0 9px}
+  .fhead h3{font-size:18px;font-weight:700;line-height:1.15}
   .fhead .pill{font-size:10px;font-weight:800;font-family:var(--display);letter-spacing:.04em;padding:4px 10px;border-radius:999px}
   .p-auto{background:var(--primary-soft);color:var(--primary)}.p-ai{background:var(--accent-soft);color:var(--accent)}.p-live{background:var(--senate-soft);color:var(--senate)}
-  .frow p.desc{font-size:14.5px;color:var(--muted);line-height:1.6;margin-bottom:13px}
-  .fbul{display:grid;grid-template-columns:1fr 1fr;gap:7px 22px}
-  .fbul div{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;font-weight:500}
-  .fbul .ck{color:var(--accent);font-weight:800;flex:none}
-  @media(max-width:720px){.frow{grid-template-columns:1fr;gap:10px}.fbul{grid-template-columns:1fr}}
+  .fcard .desc{font-size:14px;color:var(--muted);line-height:1.6}
+  .fcard ul.fbul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:14px}
+  .fcard ul.fbul li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;font-weight:500;line-height:1.4}
+  .fcard.feat-hot ul.fbul{display:grid;grid-template-columns:1fr 1fr;gap:9px 26px}
+  .ck{width:19px;height:19px;flex:none;border-radius:50%;margin-top:1px;background:var(--assembly-soft) url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%231FA85F'%20stroke-width='3.6'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M5%2012.5l4.2%204.2L19%206.5'/%3E%3C/svg%3E") center/12px no-repeat}
+  @media(max-width:760px){.fgrid{grid-template-columns:1fr}.fcard.feat-hot ul.fbul{grid-template-columns:1fr}.fcat-h .k{font-size:11px}}
 </style>
 </head>
 <body>
 <div class="noise"></div>
 
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <symbol id="i-bill" viewBox="0 0 24 24"><path d="M15 12h-5" stroke="var(--ico-accent, currentColor)" /><path d="M15 8h-5" stroke="var(--ico-accent, currentColor)" /><path d="M19 17V5a2 2 0 0 0-2-2H4" /><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" /></symbol>
+  <symbol id="i-live" viewBox="0 0 24 24"><path d="M16.247 7.761a6 6 0 0 1 0 8.478" /><path d="M19.075 4.933a10 10 0 0 1 0 14.134" /><path d="M4.925 19.067a10 10 0 0 1 0-14.134" /><path d="M7.753 16.239a6 6 0 0 1 0-8.478" /><circle cx="12" cy="12" r="2" /><circle cx="12" cy="12" r="1.6" fill="var(--ico-accent, currentColor)" stroke="none" /></symbol>
+  <symbol id="i-report" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="M8 18v-1" stroke="var(--ico-accent, currentColor)" /><path d="M12 18v-6" stroke="var(--ico-accent, currentColor)" /><path d="M16 18v-3" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" stroke="var(--ico-accent, currentColor)" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="var(--ico-accent, currentColor)" /><circle cx="9" cy="7" r="4" /></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /><path d="m9 16 2 2 4-4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" stroke="var(--ico-accent, currentColor)" /><path d="M22 4h-4" stroke="var(--ico-accent, currentColor)" /><circle cx="4" cy="20" r="2" /></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18" /><path d="m19 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" /><path d="m5 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M7 21h10" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-cycle" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /><path d="M21 3v5h-5" stroke="var(--ico-accent, currentColor)" /><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /><path d="M8 16H3v5" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" stroke="var(--ico-accent, currentColor)" /><path d="M2 12h20" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" stroke="var(--ico-accent, currentColor)" /><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" /></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" stroke="var(--ico-accent, currentColor)" /><path d="M10 22h4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-chart-up" viewBox="0 0 24 24"><path d="M16 7h6v6" stroke="var(--ico-accent, currentColor)" /><path d="m22 7-8.5 8.5-5-5L2 17" /></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" stroke="var(--ico-accent, currentColor)" /><path d="M9 13v2" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" stroke="var(--ico-accent, currentColor)" /><path d="M21.21 15.89A10 10 0 1 1 8 2.83" /></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><circle cx="12" cy="16" r="1" stroke="var(--ico-accent, currentColor)" /><rect x="3" y="10" width="18" height="12" rx="2" /><path d="M7 10V7a5 5 0 0 1 10 0v3" /></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" /><rect width="20" height="8" x="2" y="14" rx="2" ry="2" /><line x1="6" x2="6.01" y1="6" y2="6" stroke="var(--ico-accent, currentColor)" /><line x1="6" x2="6.01" y1="18" y2="18" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /><circle cx="16.5" cy="7.5" r=".8" fill="var(--ico-accent, currentColor)" stroke="none" /></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0" /><path d="M22 8c0-2.3-.8-4.3-2-6" stroke="var(--ico-accent, currentColor)" /><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /><path d="M4 2C2.8 3.7 2 5.7 2 8" stroke="var(--ico-accent, currentColor)" /></symbol>
+</svg>
+
 <nav><div class="wrap nav-in">
   <a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a>
   <div class="nav-links">
     <a href="features.html" class="active">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
-    <a class="nav-cta" href="index.html#waitlist">Request Demo</a>
+    <a class="nav-cta" href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Request Demo</a>
   </div>
   <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></nav>
 
 <main>
   <div class="wrap page-head">
-    <span class="eyebrow">✦ Purpose-built for CA lobbying firms</span>
+    <span class="eyebrow"><svg class="ico"><use href="#i-sparkle"/></svg>Purpose-built for CA lobbying firms</span>
     <h1>Everything your firm needs <span class="pop">to win</span></h1>
     <p class="lede">Real-time hearing intelligence, CA + Federal bill tracking, and AI-powered analysis — in one platform.</p>
+    <nav class="fjump" aria-label="Feature categories">
+      <a href="#cat-data">Data &amp; coverage</a>
+      <a href="#cat-clients">Clients &amp; reporting</a>
+      <a href="#cat-ai">AI &amp; live intelligence</a>
+      <a href="#cat-alerts">Alerts &amp; compliance</a>
+    </nav>
   </div>
 
-  <div class="wrap"><div class="feat-list">
-    <div class="frow reveal"><div class="fnum">01</div><div>
-      <div class="fhead"><h3>CA + Federal Data Pipeline</h3><span class="pill p-auto">Automated</span></div>
-      <p class="desc">Direct integrations with leginfo.legislature.ca.gov and Congress.gov. Every California and federal bill, amendment, and vote — ingested automatically.</p>
-      <div class="fbul"><div><span class="ck">✓</span>California leginfo integration</div><div><span class="ck">✓</span>Congress.gov federal bill data</div><div><span class="ck">✓</span>Automated ingestion &amp; normalization</div><div><span class="ck">✓</span>Real-time sync with official sources</div></div>
-    </div></div>
+  <div class="wrap"><div class="feat-wrap">
 
-    <div class="frow reveal"><div class="fnum">02</div><div>
-      <div class="fhead"><h3>Core Bill Tracking &amp; Onboarding</h3><span class="pill p-auto">Automated</span></div>
-      <p class="desc">Hit the ground running. Full bill tracking from day one with seamless data migration — no lost history, no downtime.</p>
-      <div class="fbul"><div><span class="ck">✓</span>Legacy system data migration tools</div><div><span class="ck">✓</span>Bill status, history &amp; version comparison</div><div><span class="ck">✓</span>Firm-wide bill lists &amp; tagging</div><div><span class="ck">✓</span>Guided onboarding for your team</div></div>
-    </div></div>
+    <section class="fcat" id="cat-data">
+      <div class="fcat-h"><span class="k">Data &amp; coverage</span><span class="ln"></span></div>
+      <div class="fgrid">
+        <div class="fcard reveal">
+          <span class="ic ic-primary"><svg class="ico"><use href="#i-server"/></svg></span>
+          <div class="fhead"><h3>CA + Federal Data Pipeline</h3><span class="pill p-auto">Automated</span></div>
+          <p class="desc">Direct integrations with leginfo.legislature.ca.gov and Congress.gov. Every California and federal bill, amendment, and vote — ingested automatically.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>California leginfo integration</li><li><span class="ck" aria-hidden="true"></span>Congress.gov federal bill data</li><li><span class="ck" aria-hidden="true"></span>Automated ingestion &amp; normalization</li><li><span class="ck" aria-hidden="true"></span>Real-time sync with official sources</li></ul>
+        </div>
+        <div class="fcard reveal">
+          <span class="ic ic-primary"><svg class="ico"><use href="#i-bill"/></svg></span>
+          <div class="fhead"><h3>Core Bill Tracking &amp; Onboarding</h3><span class="pill p-auto">Automated</span></div>
+          <p class="desc">Hit the ground running. Full bill tracking from day one with seamless data migration — no lost history, no downtime.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>Legacy system data migration tools</li><li><span class="ck" aria-hidden="true"></span>Bill status, history &amp; version comparison</li><li><span class="ck" aria-hidden="true"></span>Firm-wide bill lists &amp; tagging</li><li><span class="ck" aria-hidden="true"></span>Guided onboarding for your team</li></ul>
+        </div>
+        <div class="fcard reveal">
+          <span class="ic ic-primary"><svg class="ico"><use href="#i-calendar"/></svg></span>
+          <div class="fhead"><h3>Calendar &amp; Legislator Profiles</h3><span class="pill p-auto">Automated</span></div>
+          <p class="desc">Never miss a hearing. Full CA and federal legislative calendars, plus detailed legislator profiles with voting history and committee assignments.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>CA &amp; federal hearing calendars</li><li><span class="ck" aria-hidden="true"></span>Sync to Google / Outlook / iCal</li><li><span class="ck" aria-hidden="true"></span>Legislator bios &amp; voting patterns</li><li><span class="ck" aria-hidden="true"></span>Committee assignments &amp; contacts</li></ul>
+        </div>
+        <div class="fcard reveal">
+          <span class="ic ic-primary"><svg class="ico"><use href="#i-scale"/></svg></span>
+          <div class="fhead"><h3>CA &amp; Federal Regulatory Tracking</h3><span class="pill p-auto">Automated</span></div>
+          <p class="desc">Track California OAL rulemaking, Federal Register notices, and Regulations.gov activity — all in one place alongside your bill tracking.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>California OAL rulemaking tracking</li><li><span class="ck" aria-hidden="true"></span>Federal Register integration</li><li><span class="ck" aria-hidden="true"></span>Regulations.gov comment tracking</li><li><span class="ck" aria-hidden="true"></span>Unified legislative + regulatory view</li></ul>
+        </div>
+      </div>
+    </section>
 
-    <div class="frow reveal"><div class="fnum">03</div><div>
-      <div class="fhead"><h3>Client &amp; Position Management</h3><span class="pill p-auto">Automated</span></div>
-      <p class="desc">Organize every client, every position, every stakeholder in one place. Your firm's CRM, built for lobbying.</p>
-      <div class="fbul"><div><span class="ck">✓</span>Client portfolios &amp; bill positions</div><div><span class="ck">✓</span>Support / oppose / watch tracking</div><div><span class="ck">✓</span>Stakeholder CRM &amp; contact management</div><div><span class="ck">✓</span>Multi-client bill overlap detection</div></div>
-    </div></div>
+    <section class="fcat" id="cat-clients">
+      <div class="fcat-h"><span class="k">Clients &amp; reporting</span><span class="ln"></span></div>
+      <div class="fgrid">
+        <div class="fcard reveal">
+          <span class="ic ic-primary"><svg class="ico"><use href="#i-users"/></svg></span>
+          <div class="fhead"><h3>Client &amp; Position Management</h3><span class="pill p-auto">Automated</span></div>
+          <p class="desc">Organize every client, every position, every stakeholder in one place. Your firm's CRM, built for lobbying.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>Client portfolios &amp; bill positions</li><li><span class="ck" aria-hidden="true"></span>Support / oppose / watch tracking</li><li><span class="ck" aria-hidden="true"></span>Stakeholder CRM &amp; contact management</li><li><span class="ck" aria-hidden="true"></span>Multi-client bill overlap detection</li></ul>
+        </div>
+        <div class="fcard reveal">
+          <span class="ic ic-ai"><svg class="ico"><use href="#i-report"/></svg></span>
+          <div class="fhead"><h3>Reports &amp; Client Intelligence Portal</h3><span class="pill p-ai">AI-Powered</span></div>
+          <p class="desc">Generate branded client reports in seconds. Give clients their own white-labeled portal to track bills, positions, and activity.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>Branded PDF &amp; web reports</li><li><span class="ck" aria-hidden="true"></span>White-labeled client portal</li><li><span class="ck" aria-hidden="true"></span>Scheduled auto-delivery</li><li><span class="ck" aria-hidden="true"></span>Custom templates &amp; firm branding</li></ul>
+        </div>
+      </div>
+    </section>
 
-    <div class="frow reveal"><div class="fnum">04</div><div>
-      <div class="fhead"><h3>Reports &amp; Client Intelligence Portal</h3><span class="pill p-ai">AI-Powered</span></div>
-      <p class="desc">Generate branded client reports in seconds. Give clients their own white-labeled portal to track bills, positions, and activity.</p>
-      <div class="fbul"><div><span class="ck">✓</span>Branded PDF &amp; web reports</div><div><span class="ck">✓</span>White-labeled client portal</div><div><span class="ck">✓</span>Scheduled auto-delivery</div><div><span class="ck">✓</span>Custom templates &amp; firm branding</div></div>
-    </div></div>
+    <section class="fcat" id="cat-ai">
+      <div class="fcat-h"><span class="k">AI &amp; live intelligence</span><span class="ln"></span></div>
+      <div class="fgrid">
+        <div class="fcard feat-hot reveal">
+          <span class="ic ic-live"><svg class="ico"><use href="#i-live"/></svg></span>
+          <div class="fhead"><h3>Live Hearing Intelligence — Capture &amp; Transcription</h3><span class="pill p-live">Live · Flagship</span></div>
+          <p class="desc">Our flagship. Real-time hearing audio capture and transcription — never miss what was said in committee, even when you can't be in the room.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>Real-time hearing audio capture</li><li><span class="ck" aria-hidden="true"></span>Automated speech-to-text</li><li><span class="ck" aria-hidden="true"></span>Speaker identification &amp; attribution</li><li><span class="ck" aria-hidden="true"></span>Searchable hearing archives</li></ul>
+        </div>
+        <div class="fcard reveal">
+          <span class="ic ic-ai"><svg class="ico"><use href="#i-cpu"/></svg></span>
+          <div class="fhead"><h3>AI Assistant &amp; Agentic Chat</h3><span class="pill p-ai">AI-Powered</span></div>
+          <p class="desc">Ask questions in plain English. Get bill summaries, position drafts, and impact analysis — powered by AI that understands CA legislation.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>Natural language bill summaries</li><li><span class="ck" aria-hidden="true"></span>Position &amp; opposition letter drafting</li><li><span class="ck" aria-hidden="true"></span>Impact analysis across portfolios</li><li><span class="ck" aria-hidden="true"></span>Agentic workflows &amp; multi-step research</li></ul>
+        </div>
+        <div class="fcard reveal">
+          <span class="ic ic-ai"><svg class="ico"><use href="#i-activity"/></svg></span>
+          <div class="fhead"><h3>Live Intelligence — AI Analysis &amp; Votes</h3><span class="pill p-ai">AI-Powered</span></div>
+          <p class="desc">AI-powered hearing summaries, real-time vote detection, and outcome predictions — delivered as hearings happen.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>AI-generated hearing summaries</li><li><span class="ck" aria-hidden="true"></span>Real-time vote detection &amp; tallies</li><li><span class="ck" aria-hidden="true"></span>Sentiment &amp; outcome predictions</li><li><span class="ck" aria-hidden="true"></span>Key moment highlights &amp; alerts</li></ul>
+        </div>
+      </div>
+    </section>
 
-    <div class="frow reveal"><div class="fnum">05</div><div>
-      <div class="fhead"><h3>AI Assistant &amp; Agentic Chat</h3><span class="pill p-ai">AI-Powered</span></div>
-      <p class="desc">Ask questions in plain English. Get bill summaries, position drafts, and impact analysis — powered by AI that understands CA legislation.</p>
-      <div class="fbul"><div><span class="ck">✓</span>Natural language bill summaries</div><div><span class="ck">✓</span>Position &amp; opposition letter drafting</div><div><span class="ck">✓</span>Impact analysis across portfolios</div><div><span class="ck">✓</span>Agentic workflows &amp; multi-step research</div></div>
-    </div></div>
+    <section class="fcat" id="cat-alerts">
+      <div class="fcat-h"><span class="k">Alerts &amp; compliance</span><span class="ln"></span></div>
+      <div class="fgrid">
+        <div class="fcard reveal">
+          <span class="ic ic-primary"><svg class="ico"><use href="#i-bell"/></svg></span>
+          <div class="fhead"><h3>Smart Alerts</h3><span class="pill p-auto">Automated</span></div>
+          <p class="desc">Get notified the moment a bill moves, an amendment drops, or a hearing is scheduled. Email alerts with daily or weekly digest options.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>Bill status &amp; amendment alerts</li><li><span class="ck" aria-hidden="true"></span>Hearing &amp; vote notifications</li><li><span class="ck" aria-hidden="true"></span>Regulatory change alerts</li><li><span class="ck" aria-hidden="true"></span>Daily or weekly digest options</li></ul>
+        </div>
+        <div class="fcard reveal">
+          <span class="ic ic-primary"><svg class="ico"><use href="#i-pie"/></svg></span>
+          <div class="fhead"><h3>CA Budget Tracking &amp; FPPC Compliance</h3><span class="pill p-auto">Automated</span></div>
+          <p class="desc">Track California budget trailer bills and FPPC fundraising compliance — the details that matter most to your clients.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>CA budget &amp; trailer bill tracking</li><li><span class="ck" aria-hidden="true"></span>FPPC fundraising compliance tools</li><li><span class="ck" aria-hidden="true"></span>Contribution limit tracking</li><li><span class="ck" aria-hidden="true"></span>Filing deadline reminders</li></ul>
+        </div>
+      </div>
+    </section>
 
-    <div class="frow reveal"><div class="fnum">06</div><div>
-      <div class="fhead"><h3>Smart Alerts</h3><span class="pill p-auto">Automated</span></div>
-      <p class="desc">Get notified the moment a bill moves, an amendment drops, or a hearing is scheduled. Email alerts with daily or weekly digest options.</p>
-      <div class="fbul"><div><span class="ck">✓</span>Bill status &amp; amendment alerts</div><div><span class="ck">✓</span>Hearing &amp; vote notifications</div><div><span class="ck">✓</span>Regulatory change alerts</div><div><span class="ck">✓</span>Daily or weekly digest options</div></div>
-    </div></div>
-
-    <div class="frow reveal"><div class="fnum">07</div><div>
-      <div class="fhead"><h3>Calendar &amp; Legislator Profiles</h3><span class="pill p-auto">Automated</span></div>
-      <p class="desc">Never miss a hearing. Full CA and federal legislative calendars, plus detailed legislator profiles with voting history and committee assignments.</p>
-      <div class="fbul"><div><span class="ck">✓</span>CA &amp; federal hearing calendars</div><div><span class="ck">✓</span>Sync to Google / Outlook / iCal</div><div><span class="ck">✓</span>Legislator bios &amp; voting patterns</div><div><span class="ck">✓</span>Committee assignments &amp; contacts</div></div>
-    </div></div>
-
-    <div class="frow reveal"><div class="fnum">08</div><div>
-      <div class="fhead"><h3>CA &amp; Federal Regulatory Tracking</h3><span class="pill p-auto">Automated</span></div>
-      <p class="desc">Track California OAL rulemaking, Federal Register notices, and Regulations.gov activity — all in one place alongside your bill tracking.</p>
-      <div class="fbul"><div><span class="ck">✓</span>California OAL rulemaking tracking</div><div><span class="ck">✓</span>Federal Register integration</div><div><span class="ck">✓</span>Regulations.gov comment tracking</div><div><span class="ck">✓</span>Unified legislative + regulatory view</div></div>
-    </div></div>
-
-    <div class="frow reveal"><div class="fnum">09</div><div>
-      <div class="fhead"><h3>Live Intelligence — Capture &amp; Transcription</h3><span class="pill p-live">Live</span></div>
-      <p class="desc">Real-time hearing audio capture and transcription. Never miss what was said in committee — even when you can't be in the room.</p>
-      <div class="fbul"><div><span class="ck">✓</span>Real-time hearing audio capture</div><div><span class="ck">✓</span>Automated speech-to-text</div><div><span class="ck">✓</span>Speaker identification &amp; attribution</div><div><span class="ck">✓</span>Searchable hearing archives</div></div>
-    </div></div>
-
-    <div class="frow reveal"><div class="fnum">10</div><div>
-      <div class="fhead"><h3>Live Intelligence — AI Analysis &amp; Votes</h3><span class="pill p-ai">AI-Powered</span></div>
-      <p class="desc">AI-powered hearing summaries, real-time vote detection, and outcome predictions — delivered as hearings happen.</p>
-      <div class="fbul"><div><span class="ck">✓</span>AI-generated hearing summaries</div><div><span class="ck">✓</span>Real-time vote detection &amp; tallies</div><div><span class="ck">✓</span>Sentiment &amp; outcome predictions</div><div><span class="ck">✓</span>Key moment highlights &amp; alerts</div></div>
-    </div></div>
-
-    <div class="frow reveal"><div class="fnum">11</div><div>
-      <div class="fhead"><h3>CA Budget Tracking &amp; FPPC Compliance</h3><span class="pill p-auto">Automated</span></div>
-      <p class="desc">Track California budget trailer bills and FPPC fundraising compliance — the details that matter most to your clients.</p>
-      <div class="fbul"><div><span class="ck">✓</span>CA budget &amp; trailer bill tracking</div><div><span class="ck">✓</span>FPPC fundraising compliance tools</div><div><span class="ck">✓</span>Contribution limit tracking</div><div><span class="ck">✓</span>Filing deadline reminders</div></div>
-    </div></div>
   </div></div>
 
   <section class="cta-sec" style="padding-top:72px"><div class="wrap"><div class="cta-card reveal">
@@ -134,7 +205,7 @@
 <footer><div class="wrap">
   <div class="foot-grid">
     <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
-    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a><a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a Demo</a></div>
     <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
     <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
   </div>

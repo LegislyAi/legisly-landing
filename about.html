@@ -19,31 +19,229 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .prose{max-width:760px;margin:0 auto}
-  .prose .intro{font-size:19px;line-height:1.65;color:var(--text);font-weight:500}
-  .prose .intro .muted{color:var(--muted)}
-  .mission{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:var(--radius);padding:26px 28px;margin:30px 0;box-shadow:var(--shadow)}
-  .mission h3{font-size:18px;font-weight:800;margin-bottom:10px}
-  .mission p{font-size:15px;color:var(--muted);line-height:1.65}
-  .block{margin:44px 0}
-  .block h2{font-size:28px;font-weight:800;margin-bottom:14px}
-  .block p{font-size:15.5px;color:var(--muted);line-height:1.7;margin-bottom:12px}
-  .sol-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:16px}
-  .sol-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;line-height:1.5;font-weight:500}
-  .sol-list .ck{color:var(--accent);font-weight:800;flex:none}
-  .values{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
-  .vcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);transition:.2s}
-  .vcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
-  .vcard .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:19px;margin-bottom:12px;background:var(--primary-soft);color:var(--primary)}
-  .vcard:nth-child(2) .ic{background:var(--accent-soft);color:var(--accent)}
-  .vcard:nth-child(3) .ic{background:var(--assembly-soft);color:var(--assembly)}
-  .vcard:nth-child(4) .ic{background:var(--senate-soft);color:var(--senate)}
+  .eyebrow .ico{width:14px;height:14px}
+
+  /* shared section heading */
+  .about-wrap{max-width:1000px;margin:0 auto}
+  .sec{margin-top:64px}
+  .sec-h{text-align:center;max-width:680px;margin:0 auto 30px}
+  .sec-h h2{font-size:clamp(26px,3.4vw,36px);font-weight:800}
+  .sec-h p{font-size:15.5px;color:var(--muted);line-height:1.6;margin-top:12px}
+
+  /* intro prose */
+  .prose-lead{max-width:760px;margin:0 auto;text-align:center}
+  .prose-lead .intro{font-size:clamp(18px,2.2vw,21px);line-height:1.65;color:var(--text);font-weight:500}
+  .prose-lead .intro .muted{color:var(--muted)}
+
+  /* stats / credibility band */
+  .stat-band{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1000px;margin:38px auto 0}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 22px;box-shadow:var(--shadow);transition:.22s;text-align:left}
+  .stat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);border-color:color-mix(in srgb,var(--primary) 22%,var(--border))}
+  .stat-card:hover .ic{transform:scale(1.1) rotate(-5deg)}
+  .stat-card .ic{width:40px;height:40px;border-radius:12px;margin-bottom:13px}
+  .stat-card .ic .ico{width:20px;height:20px}
+  .stat-card .k{font-family:var(--display);font-weight:800;font-size:17px;line-height:1.18;color:var(--ink)}
+  .stat-card .l{font-size:12.5px;color:var(--muted);font-weight:600;line-height:1.45;margin-top:6px}
+
+  /* mission — centered brand-thesis panel */
+  .mission{background:linear-gradient(180deg,color-mix(in srgb,var(--primary) 4%,var(--surface)),var(--surface));border:1px solid var(--border);border-radius:24px;padding:48px 40px;max-width:860px;margin:0 auto;box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden}
+  .mission::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--hero-a),var(--hero-b))}
+  .mission .ic{width:56px;height:56px;border-radius:16px;margin:0 auto 20px}
+  .mission .ic .ico{width:28px;height:28px}
+  .mission .ek{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .mission p{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.6vw,27px);line-height:1.35;color:var(--ink);letter-spacing:-.01em;max-width:680px;margin:0 auto}
+  .mission p .pop{color:var(--primary)}
+
+  /* problem vs solution — two-column contrast */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1000px;margin:0 auto}
+  .ccol{border-radius:var(--radius);padding:28px 26px;box-shadow:var(--shadow)}
+  .ccol.legacy{background:var(--surface-2);border:1px solid var(--border)}
+  .ccol.legisly{background:linear-gradient(180deg,color-mix(in srgb,var(--primary) 6%,var(--surface)),var(--surface));border:1px solid color-mix(in srgb,var(--primary) 26%,var(--border))}
+  .ccol .ctag{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:6px 13px;border-radius:999px;margin-bottom:16px}
+  .ccol.legacy .ctag{background:color-mix(in srgb,var(--muted) 14%,transparent);color:var(--muted)}
+  .ccol.legisly .ctag{background:var(--primary-soft);color:var(--primary)}
+  .ccol h3{font-size:19px;font-weight:800;margin-bottom:14px}
+  .clist{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .clist li{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;line-height:1.5;font-weight:500;color:var(--text)}
+  .clist .m{width:20px;height:20px;flex:none;margin-top:1px;border-radius:50%;display:grid;place-items:center}
+  .clist .m.bad{background:color-mix(in srgb,var(--senate) 12%,transparent);color:var(--senate)}
+  .clist .m.bad::before{content:"";width:9px;height:2px;border-radius:2px;background:currentColor}
+  .ck{width:20px;height:20px;flex:none;border-radius:50%;margin-top:1px;background:var(--assembly-soft) url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%231FA85F'%20stroke-width='3.6'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M5%2012.5l4.2%204.2L19%206.5'/%3E%3C/svg%3E") center/12px no-repeat}
+
+  /* solution feature grid */
+  .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:0 auto}
+  .scard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);transition:.22s;position:relative;overflow:hidden}
+  .scard::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--hero-a),var(--hero-b));opacity:0;transition:.25s}
+  .scard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift);border-color:color-mix(in srgb,var(--primary) 22%,var(--border))}
+  .scard:hover::before{opacity:1}
+  .scard:hover .ic{transform:scale(1.1) rotate(-5deg)}
+  .scard .ic{width:46px;height:46px;border-radius:13px;margin-bottom:14px}
+  .scard .ic .ico{width:23px;height:23px}
+  .scard h4{font-size:16px;font-weight:700;margin-bottom:7px;line-height:1.2}
+  .scard p{font-size:13.5px;color:var(--muted);line-height:1.55;margin:0}
+
+  /* values */
+  .values{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:840px;margin:0 auto}
+  .vcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);transition:.22s}
+  .vcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);border-color:color-mix(in srgb,var(--primary) 22%,var(--border))}
+  .vcard .ic{width:42px;height:42px;border-radius:12px;margin-bottom:12px}
+  .vcard .ic .ico{width:21px;height:21px}
+  .vcard:hover .ic{transform:scale(1.1) rotate(-5deg)}
   .vcard h4{font-size:16px;font-weight:700;margin-bottom:7px}
   .vcard p{font-size:13.5px;color:var(--muted);line-height:1.55;margin:0}
-  @media(max-width:720px){.values{grid-template-columns:1fr}}
+
+  /* team — honest expertise/role cards */
+  .team-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:0 auto}
+  .tcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow);transition:.22s;text-align:center}
+  .tcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);border-color:color-mix(in srgb,var(--primary) 22%,var(--border))}
+  .tcard:hover .ic{transform:scale(1.1) rotate(-5deg)}
+  .tcard .ic{width:50px;height:50px;border-radius:14px;margin:0 auto 14px}
+  .tcard .ic .ico{width:25px;height:25px}
+  .tcard h4{font-size:16.5px;font-weight:700;margin-bottom:8px}
+  .tcard p{font-size:13.5px;color:var(--muted);line-height:1.55;margin:0}
+  .team-note{text-align:center;font-size:14.5px;color:var(--muted);line-height:1.6;max-width:620px;margin:24px auto 0;font-weight:500}
+
+  @media(max-width:860px){
+    .stat-band{grid-template-columns:1fr 1fr}
+    .sol-grid,.team-row{grid-template-columns:1fr}
+    .compare{grid-template-columns:1fr}
+    .mission{padding:38px 24px}
+  }
+  @media(max-width:560px){
+    .stat-band{grid-template-columns:1fr}
+    .values{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <!-- Legisly icon sprite — adapted from Lucide v1.17 (ISC license, https://lucide.dev).
+       Duotone: strokes inherit currentColor; accent details use var(--ico-accent). -->
+  <symbol id="i-bill" viewBox="0 0 24 24">
+    <path d="M15 12h-5" stroke="var(--ico-accent, currentColor)" />
+    <path d="M15 8h-5" stroke="var(--ico-accent, currentColor)" />
+    <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+    <path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
+  </symbol>
+  <symbol id="i-live" viewBox="0 0 24 24">
+    <path d="M16.247 7.761a6 6 0 0 1 0 8.478" />
+    <path d="M19.075 4.933a10 10 0 0 1 0 14.134" />
+    <path d="M4.925 19.067a10 10 0 0 1 0-14.134" />
+    <path d="M7.753 16.239a6 6 0 0 1 0-8.478" />
+    <circle cx="12" cy="12" r="2" />
+    <circle cx="12" cy="12" r="1.6" fill="var(--ico-accent, currentColor)" stroke="none" />
+  </symbol>
+  <symbol id="i-report" viewBox="0 0 24 24">
+    <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+    <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+    <path d="M8 18v-1" stroke="var(--ico-accent, currentColor)" />
+    <path d="M12 18v-6" stroke="var(--ico-accent, currentColor)" />
+    <path d="M16 18v-3" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-users" viewBox="0 0 24 24">
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <path d="M16 3.128a4 4 0 0 1 0 7.744" stroke="var(--ico-accent, currentColor)" />
+    <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="var(--ico-accent, currentColor)" />
+    <circle cx="9" cy="7" r="4" />
+  </symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24">
+    <path d="M8 2v4" />
+    <path d="M16 2v4" />
+    <rect width="18" height="18" x="3" y="4" rx="2" />
+    <path d="M3 10h18" />
+    <path d="m9 16 2 2 4-4" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24">
+    <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+    <path d="M20 2v4" stroke="var(--ico-accent, currentColor)" />
+    <path d="M22 4h-4" stroke="var(--ico-accent, currentColor)" />
+    <circle cx="4" cy="20" r="2" />
+  </symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24">
+    <path d="M12 3v18" />
+    <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
+    <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
+    <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
+    <path d="M7 21h10" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24">
+    <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+  </symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24">
+    <path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762" />
+  </symbol>
+  <symbol id="i-cycle" viewBox="0 0 24 24">
+    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+    <path d="M21 3v5h-5" stroke="var(--ico-accent, currentColor)" />
+    <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+    <path d="M8 16H3v5" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" stroke="var(--ico-accent, currentColor)" />
+    <path d="M2 12h20" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24">
+    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" stroke="var(--ico-accent, currentColor)" />
+    <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" />
+    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" />
+  </symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24">
+    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+    <path d="M9 18h6" stroke="var(--ico-accent, currentColor)" />
+    <path d="M10 22h4" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-chart-up" viewBox="0 0 24 24">
+    <path d="M16 7h6v6" stroke="var(--ico-accent, currentColor)" />
+    <path d="m22 7-8.5 8.5-5-5L2 17" />
+  </symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24">
+    <path d="M12 8V4H8" />
+    <rect width="16" height="12" x="4" y="8" rx="2" />
+    <path d="M2 14h2" />
+    <path d="M20 14h2" />
+    <path d="M15 13v2" stroke="var(--ico-accent, currentColor)" />
+    <path d="M9 13v2" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24">
+    <path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" stroke="var(--ico-accent, currentColor)" />
+    <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+  </symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24">
+    <circle cx="12" cy="16" r="1" stroke="var(--ico-accent, currentColor)" />
+    <rect x="3" y="10" width="18" height="12" rx="2" />
+    <path d="M7 10V7a5 5 0 0 1 10 0v3" />
+  </symbol>
+  <symbol id="i-server" viewBox="0 0 24 24">
+    <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+    <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+    <line x1="6" x2="6.01" y1="6" y2="6" stroke="var(--ico-accent, currentColor)" />
+    <line x1="6" x2="6.01" y1="18" y2="18" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-key" viewBox="0 0 24 24">
+    <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+    <circle cx="16.5" cy="7.5" r=".8" fill="var(--ico-accent, currentColor)" stroke="none" />
+  </symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24">
+    <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24">
+    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+    <path d="m9 12 2 2 4-4" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-target" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24">
+    <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+    <path d="M22 8c0-2.3-.8-4.3-2-6" stroke="var(--ico-accent, currentColor)" />
+    <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" />
+    <path d="M4 2C2.8 3.7 2 5.7 2 8" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+</svg>
 <div class="noise"></div>
 
 <nav><div class="wrap nav-in">
@@ -57,57 +255,105 @@
 
 <main>
   <div class="wrap page-head">
-    <span class="eyebrow">✦ Purpose-built for California</span>
+    <span class="eyebrow"><svg class="ico"><use href="#i-sparkle"/></svg>Purpose-built for California</span>
     <h1>About <span class="pop">Legisly</span></h1>
     <p class="lede">Purpose-built for California lobbying firms.</p>
   </div>
 
-  <div class="wrap"><div class="prose">
-    <p class="intro">California's legislative landscape moves fast. Every session, thousands of bills are introduced across Sacramento and Washington — each one potentially affecting your clients. Your firm needs tools that keep pace. <span class="muted">Legacy platforms weren't built for how modern lobbying firms actually work.</span></p>
+  <div class="wrap reveal">
+    <div class="prose-lead">
+      <p class="intro">California's legislative landscape moves fast. Every session, thousands of bills are introduced across Sacramento and Washington — each one potentially affecting your clients. Your firm needs tools that keep pace. <span class="muted">Legacy platforms weren't built for how modern lobbying firms actually work.</span></p>
+    </div>
 
+    <div class="stat-band">
+      <div class="stat-card"><span class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg></span><div class="k">CA + Federal coverage</div><div class="l">Sacramento and Washington legislation in one platform</div></div>
+      <div class="stat-card"><span class="ic ic-live"><svg class="ico" aria-hidden="true"><use href="#i-live"/></svg></span><div class="k">Real-time hearing intelligence</div><div class="l">Live transcription, AI summaries, and vote detection</div></div>
+      <div class="stat-card"><span class="ic ic-ai"><svg class="ico" aria-hidden="true"><use href="#i-rocket"/></svg></span><div class="k">Launching Summer 2026</div><div class="l">Founding-member onboarding now open</div></div>
+      <div class="stat-card"><span class="ic ic-gold"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></span><div class="k">First 20 firms</div><div class="l">Founding-member pricing locked for life</div></div>
+    </div>
+  </div>
+
+  <section class="sec"><div class="wrap reveal">
     <div class="mission">
-      <h3>Our Mission</h3>
-      <p>To give California lobbying firms the most powerful legislative intelligence platform available — with real-time hearing intelligence, AI-powered analysis, and branded client portals that make your firm indispensable.</p>
+      <span class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg></span>
+      <div class="ek">Our mission</div>
+      <p>Give California lobbying firms the most powerful legislative intelligence platform available — <span class="pop">real-time hearing intelligence, AI-powered analysis, and branded client portals</span> that make your firm indispensable.</p>
     </div>
+  </div></section>
 
-    <div class="block reveal">
-      <h2>The problem we're solving</h2>
-      <p>Existing legislative tracking tools were built in a different era. Legacy platforms provide basic bill tracking, but they lack real-time hearing intelligence, AI-powered analysis, modern client portals, and the kind of automation that lets a small firm punch above its weight.</p>
-      <p>Meanwhile, your clients expect instant updates, professional branded reports, and real-time access to their bill status. The gap between what they expect and what legacy tools deliver is only growing.</p>
+  <section class="sec"><div class="wrap">
+    <div class="sec-h reveal">
+      <h2>Legacy tools vs. Legisly</h2>
+      <p>Existing legislative trackers were built in a different era. Here's the gap between what they deliver and what modern firms — and their clients — now expect.</p>
     </div>
-
-    <div class="block reveal">
-      <h2>Our solution</h2>
-      <p>Legisly is a legislative tracking platform with real-time hearing intelligence, purpose-built to serve California lobbying firms. We cover California and federal legislation with a single integrated platform that includes:</p>
-      <ul class="sol-list">
-        <li><span class="ck">✓</span>Real-time CA + federal bill tracking with automated data pipelines</li>
-        <li><span class="ck">✓</span>Client and position management with a stakeholder CRM</li>
-        <li><span class="ck">✓</span>Branded client reports and a white-labeled Client Intelligence Portal</li>
-        <li><span class="ck">✓</span>AI assistant for bill summaries, position drafting, and impact analysis</li>
-        <li><span class="ck">✓</span>Live hearing transcription with AI-generated summaries and vote detection</li>
-        <li><span class="ck">✓</span>CA regulatory tracking, budget tracking, and FPPC compliance</li>
-        <li><span class="ck">✓</span>Data migration wizard for seamless switching from any legacy system</li>
-      </ul>
-    </div>
-
-    <div class="block reveal">
-      <h2>Our values</h2>
-      <div class="values">
-        <div class="vcard"><div class="ic">⚖️</div><h4>Built for Lobbyists</h4><p>Every feature is designed for how California lobbying firms actually work — not generic "legislative tracking."</p></div>
-        <div class="vcard"><div class="ic">⚡</div><h4>Real-Time Intelligence</h4><p>Live hearing transcription, instant alerts, and AI analysis — because in Sacramento, timing is everything.</p></div>
-        <div class="vcard"><div class="ic">◇</div><h4>Client-First Design</h4><p>Branded portals, professional reports, and tools that make your firm look exceptional to every client.</p></div>
-        <div class="vcard"><div class="ic">↻</div><h4>Seamless Migration</h4><p>Switch from any legacy system without losing your client history, positions, or data.</p></div>
+    <div class="compare reveal">
+      <div class="ccol legacy">
+        <span class="ctag">Legacy &amp; manual tools</span>
+        <h3>Built for a different era</h3>
+        <ul class="clist">
+          <li><span class="m bad" aria-hidden="true"></span>Basic bill tracking with no real-time hearing intelligence</li>
+          <li><span class="m bad" aria-hidden="true"></span>No AI analysis — summaries and impact work done by hand</li>
+          <li><span class="m bad" aria-hidden="true"></span>Dated interfaces with no modern client portal</li>
+          <li><span class="m bad" aria-hidden="true"></span>Manual reporting that eats staff hours every week</li>
+          <li><span class="m bad" aria-hidden="true"></span>Painful migration — your history held hostage</li>
+        </ul>
+      </div>
+      <div class="ccol legisly">
+        <span class="ctag"><svg class="ico" aria-hidden="true" style="width:13px;height:13px"><use href="#i-sparkle"/></svg>The Legisly platform</span>
+        <h3>Built for how firms work now</h3>
+        <ul class="clist">
+          <li><span class="ck" aria-hidden="true"></span>Real-time hearing transcription, AI summaries, and vote detection</li>
+          <li><span class="ck" aria-hidden="true"></span>AI assistant for bill summaries, position drafting, and impact analysis</li>
+          <li><span class="ck" aria-hidden="true"></span>White-labeled Client Intelligence Portal your clients log into</li>
+          <li><span class="ck" aria-hidden="true"></span>Branded reports generated in seconds, auto-delivered</li>
+          <li><span class="ck" aria-hidden="true"></span>Migration wizard that moves your history with no downtime</li>
+        </ul>
       </div>
     </div>
+  </div></section>
 
-    <div class="block reveal">
-      <h2>The team</h2>
-      <p>Legisly is built by a team with deep experience in legislative technology and AI. We understand the California legislative process, the needs of lobbying firms, and the technology required to deliver real-time intelligence at scale.</p>
-      <p>We're based in California and laser-focused on capturing the CA market.</p>
+  <section class="sec"><div class="wrap">
+    <div class="sec-h reveal">
+      <h2>Our solution</h2>
+      <p>One integrated platform covering California and federal legislation — purpose-built to serve CA lobbying firms end to end.</p>
     </div>
-  </div></div>
+    <div class="sol-grid reveal">
+      <div class="scard"><span class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-bill"/></svg></span><h4>CA + Federal bill tracking</h4><p>Real-time tracking across Sacramento and Washington, fed by automated data pipelines.</p></div>
+      <div class="scard"><span class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><h4>Client &amp; position management</h4><p>Organize clients, positions, and stakeholders in a CRM built for lobbying.</p></div>
+      <div class="scard"><span class="ic ic-ai"><svg class="ico" aria-hidden="true"><use href="#i-report"/></svg></span><h4>Branded reports &amp; portal</h4><p>Professional branded client reports and a white-labeled Client Intelligence Portal.</p></div>
+      <div class="scard"><span class="ic ic-ai"><svg class="ico" aria-hidden="true"><use href="#i-cpu"/></svg></span><h4>AI assistant</h4><p>Bill summaries, position drafting, and impact analysis in plain English.</p></div>
+      <div class="scard"><span class="ic ic-live"><svg class="ico" aria-hidden="true"><use href="#i-live"/></svg></span><h4>Live hearing intelligence</h4><p>Real-time transcription with AI-generated summaries and vote detection.</p></div>
+      <div class="scard"><span class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></span><h4>Regulatory &amp; compliance</h4><p>CA regulatory tracking, budget tracking, and FPPC compliance in one view.</p></div>
+    </div>
+  </div></section>
 
-  <section class="cta-sec" style="padding-top:50px"><div class="wrap"><div class="cta-card reveal">
+  <section class="sec"><div class="wrap">
+    <div class="sec-h reveal">
+      <h2>Our values</h2>
+      <p>The principles behind every product decision we make.</p>
+    </div>
+    <div class="values reveal">
+      <div class="vcard"><div class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg></div><h4>Built for Lobbyists</h4><p>Every feature is designed for how California lobbying firms actually work — not generic "legislative tracking."</p></div>
+      <div class="vcard"><div class="ic ic-ai"><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg></div><h4>Real-Time Intelligence</h4><p>Live hearing transcription, instant alerts, and AI analysis — because in Sacramento, timing is everything.</p></div>
+      <div class="vcard"><div class="ic ic-green"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></div><h4>Client-First Design</h4><p>Branded portals, professional reports, and tools that make your firm look exceptional to every client.</p></div>
+      <div class="vcard"><div class="ic ic-live"><svg class="ico" aria-hidden="true"><use href="#i-cycle"/></svg></div><h4>Seamless Migration</h4><p>Switch from any legacy system without losing your client history, positions, or data.</p></div>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-h reveal">
+      <h2>The team</h2>
+      <p>Legisly is built by people who know both sides of the work — the California legislative process and the technology required to deliver real-time intelligence at scale.</p>
+    </div>
+    <div class="team-row reveal">
+      <div class="tcard"><div class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg></div><h4>Capitol insiders</h4><p>Deep working knowledge of the California legislative process, hearings, and how Sacramento really moves.</p></div>
+      <div class="tcard"><div class="ic ic-ai"><svg class="ico" aria-hidden="true"><use href="#i-cpu"/></svg></div><h4>AI engineers</h4><p>Builders focused on real-time transcription, AI analysis, and intelligence delivered at scale.</p></div>
+      <div class="tcard"><div class="ic ic-green"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></div><h4>Lobbying operators</h4><p>Grounded in how firms manage clients, positions, and reporting day to day.</p></div>
+    </div>
+    <p class="team-note reveal">We're based in California and laser-focused on capturing the CA market.</p>
+  </div></section>
+
+  <section class="cta-sec" style="padding-top:72px"><div class="wrap"><div class="cta-card reveal">
     <span class="pin">Launching Summer 2026</span>
     <h2>Ready to see Legisly in action?</h2>
     <p>Request a demo and see how Legisly works for your firm.</p>
@@ -118,7 +364,7 @@
 <footer><div class="wrap">
   <div class="foot-grid">
     <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
-    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a><a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a Demo</a></div>
     <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
     <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
   </div>

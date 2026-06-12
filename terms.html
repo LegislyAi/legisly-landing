@@ -18,9 +18,82 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
+<style>
+  .eyebrow .ico{width:14px;height:14px}
+  /* updated pill badge near H1 */
+  .legal-badge{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);color:var(--muted);font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.02em;padding:7px 15px;border-radius:999px;box-shadow:var(--shadow);margin-top:22px}
+  .legal-badge .ico{width:14px;height:14px;color:var(--primary)}
+  /* two-column legal layout: sticky TOC rail + prose measure */
+  .legal-layout{display:grid;grid-template-columns:236px minmax(0,760px);gap:48px;justify-content:center;max-width:1100px;margin:0 auto;align-items:start}
+  .legal{margin:0}
+  /* TOC rail */
+  .toc{position:sticky;top:90px;align-self:start}
+  .toc .toc-head{font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 14px;padding-left:14px}
+  .toc>ol{list-style:none;display:flex;flex-direction:column;gap:1px;border-left:1px solid var(--border);counter-reset:toc}
+  .toc>ol a{display:flex;gap:8px;font-size:13px;font-weight:600;line-height:1.4;color:var(--muted);padding:7px 14px;margin-left:-1px;border-left:2px solid transparent;transition:.16s}
+  .toc>ol a::before{counter-increment:toc;content:counter(toc) ".";color:color-mix(in srgb,var(--muted) 70%,transparent);font-weight:700;flex:none}
+  .toc>ol a:hover{color:var(--text)}
+  .toc>ol a.active{color:var(--primary);border-left-color:var(--primary);font-weight:700}
+  .toc>ol a.active::before{color:var(--primary)}
+  /* mobile disclosure (hidden on desktop) */
+  .toc-mobile{display:none}
+  /* back to top */
+  .to-top{position:fixed;right:24px;bottom:24px;z-index:40;width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--primary);box-shadow:var(--shadow-lift);cursor:pointer;display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s,transform .25s,visibility .25s}
+  .to-top.show{opacity:1;visibility:visible;transform:none}
+  .to-top:hover{transform:translateY(-2px);color:#fff;background:var(--primary);border-color:var(--primary)}
+  .to-top .ico{width:20px;height:20px}
+  /* closing contact panel */
+  .legal-close{max-width:760px;margin:6px auto 0;padding:0 0 90px}
+  .legal-close .panel{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 26px}
+  .legal-close .ic{flex:none}
+  .legal-close .lc-txt h3{font-family:var(--display);font-size:17px;font-weight:800;margin-bottom:4px}
+  .legal-close .lc-txt p{font-size:14px;color:var(--muted);line-height:1.55;margin:0}
+  .legal-close .lc-txt a{color:var(--primary);font-weight:700}
+  @media(max-width:860px){
+    .legal-layout{grid-template-columns:1fr;gap:0;max-width:760px}
+    .toc{position:static;top:auto;margin-bottom:8px}
+    .toc>.toc-head,.toc>ol{display:none}
+    .toc-mobile{display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .toc-mobile>summary{list-style:none;cursor:pointer;padding:15px 20px;font-family:var(--display);font-weight:800;font-size:14px;display:flex;align-items:center;gap:10px}
+    .toc-mobile>summary::-webkit-details-marker{display:none}
+    .toc-mobile>summary .tw{margin-left:auto;color:var(--primary);font-size:18px;transition:.25s}
+    .toc-mobile[open]>summary .tw{transform:rotate(45deg)}
+    .toc-mobile ol{list-style:none;padding:4px 8px 12px;counter-reset:tocm}
+    .toc-mobile a{display:flex;gap:8px;font-size:13.5px;font-weight:600;color:var(--text);padding:8px 12px;border-radius:9px}
+    .toc-mobile a::before{counter-increment:tocm;content:counter(tocm) ".";color:var(--muted);font-weight:700;flex:none}
+    .toc-mobile a:hover{background:var(--surface-2);color:var(--primary)}
+    .toc-mobile a.active{color:var(--primary)}
+    .legal{max-width:none}
+    .legal-close{max-width:none}
+  }
+</style>
 </head>
 <body>
 <div class="noise"></div>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <symbol id="i-bill" viewBox="0 0 24 24"><path d="M15 12h-5" stroke="var(--ico-accent, currentColor)" /><path d="M15 8h-5" stroke="var(--ico-accent, currentColor)" /><path d="M19 17V5a2 2 0 0 0-2-2H4" /><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" /></symbol>
+  <symbol id="i-live" viewBox="0 0 24 24"><path d="M16.247 7.761a6 6 0 0 1 0 8.478" /><path d="M19.075 4.933a10 10 0 0 1 0 14.134" /><path d="M4.925 19.067a10 10 0 0 1 0-14.134" /><path d="M7.753 16.239a6 6 0 0 1 0-8.478" /><circle cx="12" cy="12" r="2" /><circle cx="12" cy="12" r="1.6" fill="var(--ico-accent, currentColor)" stroke="none" /></symbol>
+  <symbol id="i-report" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="M8 18v-1" stroke="var(--ico-accent, currentColor)" /><path d="M12 18v-6" stroke="var(--ico-accent, currentColor)" /><path d="M16 18v-3" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" stroke="var(--ico-accent, currentColor)" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="var(--ico-accent, currentColor)" /><circle cx="9" cy="7" r="4" /></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /><path d="m9 16 2 2 4-4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" stroke="var(--ico-accent, currentColor)" /><path d="M22 4h-4" stroke="var(--ico-accent, currentColor)" /><circle cx="4" cy="20" r="2" /></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18" /><path d="m19 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" /><path d="m5 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M7 21h10" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-cycle" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /><path d="M21 3v5h-5" stroke="var(--ico-accent, currentColor)" /><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /><path d="M8 16H3v5" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" stroke="var(--ico-accent, currentColor)" /><path d="M2 12h20" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" stroke="var(--ico-accent, currentColor)" /><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" /></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" stroke="var(--ico-accent, currentColor)" /><path d="M10 22h4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-chart-up" viewBox="0 0 24 24"><path d="M16 7h6v6" stroke="var(--ico-accent, currentColor)" /><path d="m22 7-8.5 8.5-5-5L2 17" /></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" stroke="var(--ico-accent, currentColor)" /><path d="M9 13v2" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" stroke="var(--ico-accent, currentColor)" /><path d="M21.21 15.89A10 10 0 1 1 8 2.83" /></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><circle cx="12" cy="16" r="1" stroke="var(--ico-accent, currentColor)" /><rect x="3" y="10" width="18" height="12" rx="2" /><path d="M7 10V7a5 5 0 0 1 10 0v3" /></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" /><rect width="20" height="8" x="2" y="14" rx="2" ry="2" /><line x1="6" x2="6.01" y1="6" y2="6" stroke="var(--ico-accent, currentColor)" /><line x1="6" x2="6.01" y1="18" y2="18" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /><circle cx="16.5" cy="7.5" r=".8" fill="var(--ico-accent, currentColor)" stroke="none" /></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0" /><path d="M22 8c0-2.3-.8-4.3-2-6" stroke="var(--ico-accent, currentColor)" /><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /><path d="M4 2C2.8 3.7 2 5.7 2 8" stroke="var(--ico-accent, currentColor)" /></symbol>
+</svg>
 
 <nav><div class="wrap nav-in">
   <a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a>
@@ -33,21 +106,62 @@
 
 <main>
   <div class="wrap page-head" style="padding-bottom:10px">
-    <span class="eyebrow">✦ Legal</span>
+    <span class="eyebrow"><svg class="ico"><use href="#i-sparkle"/></svg> Legal</span>
     <h1>Terms of <span class="pop">Service</span></h1>
+    <div class="legal-badge"><svg class="ico" aria-hidden="true"><use href="#i-cycle"/></svg> Last updated: February 12, 2025</div>
   </div>
 
-  <div class="wrap"><div class="legal">
-    <div class="updated">Last updated: February 12, 2025</div>
+  <div class="wrap"><div class="legal-layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-head">On this page</p>
+      <details class="toc-mobile">
+        <summary><svg class="ico" aria-hidden="true" style="width:16px;height:16px"><use href="#i-scale"/></svg> On this page <span class="tw">+</span></summary>
+        <ol>
+          <li><a href="#acceptance-of-terms">Acceptance of terms</a></li>
+          <li><a href="#description-of-services">Description of services</a></li>
+          <li><a href="#account-registration">Account registration</a></li>
+          <li><a href="#subscription-and-payment">Subscription and payment</a></li>
+          <li><a href="#acceptable-use">Acceptable use</a></li>
+          <li><a href="#intellectual-property">Intellectual property</a></li>
+          <li><a href="#ai-generated-content">AI-generated content</a></li>
+          <li><a href="#disclaimer-of-warranties">Disclaimer of warranties</a></li>
+          <li><a href="#limitation-of-liability">Limitation of liability</a></li>
+          <li><a href="#indemnification">Indemnification</a></li>
+          <li><a href="#termination">Termination</a></li>
+          <li><a href="#changes-to-terms">Changes to terms</a></li>
+          <li><a href="#governing-law">Governing law</a></li>
+          <li><a href="#miscellaneous">Miscellaneous</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </details>
+      <ol>
+        <li><a href="#acceptance-of-terms">Acceptance of terms</a></li>
+        <li><a href="#description-of-services">Description of services</a></li>
+        <li><a href="#account-registration">Account registration</a></li>
+        <li><a href="#subscription-and-payment">Subscription and payment</a></li>
+        <li><a href="#acceptable-use">Acceptable use</a></li>
+        <li><a href="#intellectual-property">Intellectual property</a></li>
+        <li><a href="#ai-generated-content">AI-generated content</a></li>
+        <li><a href="#disclaimer-of-warranties">Disclaimer of warranties</a></li>
+        <li><a href="#limitation-of-liability">Limitation of liability</a></li>
+        <li><a href="#indemnification">Indemnification</a></li>
+        <li><a href="#termination">Termination</a></li>
+        <li><a href="#changes-to-terms">Changes to terms</a></li>
+        <li><a href="#governing-law">Governing law</a></li>
+        <li><a href="#miscellaneous">Miscellaneous</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </nav>
+    <div class="legal">
     <p class="intro">Welcome to Legisly. These Terms of Service ("Terms") govern your access to and use of the Legisly website and services provided by Legisly Labs, Inc. ("Legisly," "we," "us," or "our"). By accessing or using our services, you agree to be bound by these Terms.</p>
 
-    <h2>1. Acceptance of terms</h2>
+    <h2 id="acceptance-of-terms" style="scroll-margin-top:92px">1. Acceptance of terms</h2>
     <p>By creating an account or using our services, you agree to these Terms and our Privacy Policy. If you do not agree, do not use our services.</p>
 
-    <h2>2. Description of services</h2>
+    <h2 id="description-of-services" style="scroll-margin-top:92px">2. Description of services</h2>
     <p>Legisly provides AI-powered legislative tracking and intelligence tools, including bill monitoring, report generation, alert notifications, and advocacy assistance. Our services are designed to help businesses and organizations track and respond to legislation.</p>
 
-    <h2>3. Account registration</h2>
+    <h2 id="account-registration" style="scroll-margin-top:92px">3. Account registration</h2>
     <p>To use certain features, you must create an account. You agree to:</p>
     <ul>
       <li>Provide accurate and complete registration information</li>
@@ -56,11 +170,11 @@
       <li>Accept responsibility for all activities under your account</li>
     </ul>
 
-    <h2>4. Subscription and payment</h2>
+    <h2 id="subscription-and-payment" style="scroll-margin-top:92px">4. Subscription and payment</h2>
     <p>Paid subscriptions are billed monthly or annually as selected. You agree to pay all fees associated with your subscription plan. Fees are non-refundable except as required by law or as stated in these Terms.</p>
     <p>We reserve the right to change pricing with 30 days' notice. Continued use after a price change constitutes acceptance of the new pricing.</p>
 
-    <h2>5. Acceptable use</h2>
+    <h2 id="acceptable-use" style="scroll-margin-top:92px">5. Acceptable use</h2>
     <p>You agree not to:</p>
     <ul>
       <li>Use our services for any unlawful purpose</li>
@@ -72,52 +186,71 @@
       <li>Resell or sublicense our services without authorization</li>
     </ul>
 
-    <h2>6. Intellectual property</h2>
+    <h2 id="intellectual-property" style="scroll-margin-top:92px">6. Intellectual property</h2>
     <p>All content, features, and functionality of our services are owned by Legisly Labs, Inc. and are protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our written permission.</p>
     <p>You retain ownership of any content you submit through our services. By submitting content, you grant us a license to use, store, and process that content to provide our services.</p>
 
-    <h2>7. AI-generated content</h2>
+    <h2 id="ai-generated-content" style="scroll-margin-top:92px">7. AI-generated content</h2>
     <p>Our services use artificial intelligence to generate summaries, reports, letters, and other content. While we strive for accuracy, AI-generated content should be reviewed before use. We do not guarantee the accuracy, completeness, or legal sufficiency of AI-generated content.</p>
     <p>You are responsible for reviewing and verifying any content generated by our AI before submitting it to legislators, agencies, or other parties.</p>
 
-    <h2>8. Disclaimer of warranties</h2>
+    <h2 id="disclaimer-of-warranties" style="scroll-margin-top:92px">8. Disclaimer of warranties</h2>
     <p>Our services are provided "as is" without warranties of any kind. We do not warrant that our services will be uninterrupted, error-free, or meet your specific requirements. Legislative data is sourced from public government databases and may contain errors or delays.</p>
 
-    <h2>9. Limitation of liability</h2>
+    <h2 id="limitation-of-liability" style="scroll-margin-top:92px">9. Limitation of liability</h2>
     <p>To the maximum extent permitted by law, Legisly Labs, Inc. shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services. Our total liability shall not exceed the amount you paid for our services in the 12 months preceding the claim.</p>
 
-    <h2>10. Indemnification</h2>
+    <h2 id="indemnification" style="scroll-margin-top:92px">10. Indemnification</h2>
     <p>You agree to indemnify and hold harmless Legisly Labs, Inc., its officers, directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of our services or violation of these Terms.</p>
 
-    <h2>11. Termination</h2>
+    <h2 id="termination" style="scroll-margin-top:92px">11. Termination</h2>
     <p>You may cancel your account at any time. We may suspend or terminate your access if you violate these Terms or for any other reason with or without notice. Upon termination, your right to use our services ceases immediately.</p>
 
-    <h2>12. Changes to terms</h2>
+    <h2 id="changes-to-terms" style="scroll-margin-top:92px">12. Changes to terms</h2>
     <p>We may modify these Terms at any time. We will notify you of material changes via email or through our services. Continued use after changes constitutes acceptance of the modified Terms.</p>
 
-    <h2>13. Governing law</h2>
+    <h2 id="governing-law" style="scroll-margin-top:92px">13. Governing law</h2>
     <p>These Terms are governed by the laws of the State of Delaware without regard to conflict of law principles. Any disputes shall be resolved in the courts located in Delaware.</p>
 
-    <h2>14. Miscellaneous</h2>
+    <h2 id="miscellaneous" style="scroll-margin-top:92px">14. Miscellaneous</h2>
     <p>These Terms constitute the entire agreement between you and Legisly regarding our services. If any provision is found unenforceable, the remaining provisions remain in effect. Our failure to enforce any right does not waive that right.</p>
 
-    <h2>15. Contact</h2>
+    <h2 id="contact" style="scroll-margin-top:92px">15. Contact</h2>
     <p>For questions about these Terms, contact us at: <a href="mailto:legal@legisly.ai">legal@legisly.ai</a></p>
     <p>Legisly Labs, Inc.<br>California, USA</p>
+    </div>
   </div></div>
 
-  <section style="padding:40px 0 90px"></section>
+  <div class="wrap"><div class="legal-close reveal">
+    <div class="panel">
+      <div class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg></div>
+      <div class="lc-txt">
+        <h3>Questions about these terms?</h3>
+        <p>Our team can clarify anything in this agreement. Reach us at <a href="mailto:legal@legisly.ai">legal@legisly.ai</a>.</p>
+      </div>
+    </div>
+  </div></div>
 </main>
+
+<button class="to-top" type="button" aria-label="Back to top"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button>
 
 <footer><div class="wrap">
   <div class="foot-grid">
     <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
-    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a><a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a Demo</a></div>
     <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
     <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
   </div>
   <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
 </div></footer>
 <script>(function(){var t=document.querySelector(".nav-toggle"),n=document.querySelector(".nav-in");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o)});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded",false)})});})();</script>
+<script>
+/* reveal */
+(function(){var els=document.querySelectorAll(".reveal");if(!("IntersectionObserver"in window)||!els.length){els.forEach(function(e){e.classList.add("in")});return}var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})();
+/* TOC active-section highlighting */
+(function(){var links=[].slice.call(document.querySelectorAll(".toc a"));if(!links.length||!("IntersectionObserver"in window))return;var current=null;function setActive(id){if(id===current)return;current=id;links.forEach(function(a){a.classList.toggle("active",a.getAttribute("href").slice(1)===id)})}var heads=[];links.forEach(function(a){var h=document.getElementById(a.getAttribute("href").slice(1));if(h&&heads.indexOf(h)<0)heads.push(h)});var io=new IntersectionObserver(function(entries){var vis=entries.filter(function(e){return e.isIntersecting}).sort(function(a,b){return a.boundingClientRect.top-b.boundingClientRect.top});if(vis.length){setActive(vis[0].target.id)}},{rootMargin:"-92px 0px -65% 0px",threshold:0});heads.forEach(function(h){io.observe(h)})})();
+/* back to top */
+(function(){var b=document.querySelector(".to-top");if(!b)return;function onScroll(){if(window.scrollY>window.innerHeight){b.classList.add("show")}else{b.classList.remove("show")}}window.addEventListener("scroll",onScroll,{passive:true});onScroll();b.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})})})();
+</script>
 </body>
 </html>
