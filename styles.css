@@ -37,7 +37,7 @@ main,nav,footer{position:relative;z-index:1}
 nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
 .nav-in{display:flex;align-items:center;gap:14px;height:70px}
 .logo{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:800;font-size:21px}
-.logo .mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--hero-a),var(--hero-b));display:grid;place-items:center;color:#fff;font-size:19px;box-shadow:var(--shadow)}
+.logo .mark{width:38px;height:38px;border-radius:21%;box-shadow:var(--shadow);display:block}
 .logo .est{font-size:9px;color:var(--muted);font-weight:700;letter-spacing:.12em;display:block;margin-top:-2px}
 .nav-links{margin-left:auto;display:flex;align-items:center;gap:30px}
 .nav-links a{font-size:14px;font-weight:600;color:var(--text);transition:.15s}
