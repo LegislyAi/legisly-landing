@@ -18,12 +18,74 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
+<style>
+  .eyebrow .ico{width:14px;height:14px}
+
+  /* contact info — icon-plate rows */
+  .ci-row{display:flex;align-items:flex-start;gap:14px;padding:15px 0;border-bottom:1px solid var(--border)}
+  .ci-row:last-child{border:none}
+  .ci-row .ic{width:42px;height:42px;border-radius:12px}
+  .ci-row .ic .ico{width:21px;height:21px}
+  .ci-row .ci-body{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .ci-row h4{margin:0}
+  .ci-row .ci-body a,.ci-row .ci-body span{font-size:15px;font-weight:600;color:var(--text);line-height:1.45;word-break:break-word}
+  .ci-row .ci-body a{color:var(--primary);transition:.15s}
+  .ci-row .ci-body a:hover{color:var(--primary-2)}
+  /* primary high-value row — book a demo */
+  .ci-row.ci-primary{margin:2px 0 4px;padding:16px;border:1px solid color-mix(in srgb,var(--primary) 30%,var(--border));border-radius:var(--radius-sm);background:linear-gradient(180deg,color-mix(in srgb,var(--primary) 6%,var(--surface)),var(--surface));box-shadow:var(--shadow)}
+  .ci-row.ci-primary .ci-body a{font-weight:700;display:inline-flex;align-items:center;gap:5px}
+  .contact-info:hover .ci-row.ci-primary{}
+  /* trust pin */
+  .ci-trust{display:inline-flex;align-items:center;gap:7px;margin-top:18px;background:color-mix(in srgb,var(--gold) 18%,var(--surface));border:1px solid color-mix(in srgb,var(--gold) 45%,var(--border));color:#8a6d12;font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.03em;padding:7px 13px;border-radius:999px}
+  .ci-trust .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none}
+
+  /* custom select chevron */
+  .fld.fld-select{position:relative}
+  .fld.fld-select select{appearance:none;-webkit-appearance:none;-moz-appearance:none;padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%238A7160'%20stroke-width='2.2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:18px;cursor:pointer}
+  .fld.fld-select select:focus{background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23F26419'%20stroke-width='2.4'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E")}
+  .fld input:hover,.fld select:hover,.fld textarea:hover{border-color:color-mix(in srgb,var(--primary) 35%,var(--border))}
+
+  /* closing CTA actions */
+  .cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .cta-card .cta-actions .btn.ghost{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);color:#fff}
+  .cta-card .cta-actions .btn.ghost:hover{background:rgba(255,255,255,.22);border-color:#fff;color:#fff;transform:translateY(-2px)}
+
+  @media(max-width:760px){
+    .ci-row.ci-primary{padding:14px}
+    .cta-actions .btn{width:100%;justify-content:center}
+  }
+</style>
 </head>
 <body>
 <div class="noise"></div>
 
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <symbol id="i-bill" viewBox="0 0 24 24"><path d="M15 12h-5" stroke="var(--ico-accent, currentColor)" /><path d="M15 8h-5" stroke="var(--ico-accent, currentColor)" /><path d="M19 17V5a2 2 0 0 0-2-2H4" /><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" /></symbol>
+  <symbol id="i-live" viewBox="0 0 24 24"><path d="M16.247 7.761a6 6 0 0 1 0 8.478" /><path d="M19.075 4.933a10 10 0 0 1 0 14.134" /><path d="M4.925 19.067a10 10 0 0 1 0-14.134" /><path d="M7.753 16.239a6 6 0 0 1 0-8.478" /><circle cx="12" cy="12" r="2" /><circle cx="12" cy="12" r="1.6" fill="var(--ico-accent, currentColor)" stroke="none" /></symbol>
+  <symbol id="i-report" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="M8 18v-1" stroke="var(--ico-accent, currentColor)" /><path d="M12 18v-6" stroke="var(--ico-accent, currentColor)" /><path d="M16 18v-3" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" stroke="var(--ico-accent, currentColor)" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="var(--ico-accent, currentColor)" /><circle cx="9" cy="7" r="4" /></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /><path d="m9 16 2 2 4-4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" stroke="var(--ico-accent, currentColor)" /><path d="M22 4h-4" stroke="var(--ico-accent, currentColor)" /><circle cx="4" cy="20" r="2" /></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18" /><path d="m19 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" /><path d="m5 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M7 21h10" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-cycle" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /><path d="M21 3v5h-5" stroke="var(--ico-accent, currentColor)" /><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /><path d="M8 16H3v5" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" stroke="var(--ico-accent, currentColor)" /><path d="M2 12h20" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" stroke="var(--ico-accent, currentColor)" /><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" /></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" stroke="var(--ico-accent, currentColor)" /><path d="M10 22h4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-chart-up" viewBox="0 0 24 24"><path d="M16 7h6v6" stroke="var(--ico-accent, currentColor)" /><path d="m22 7-8.5 8.5-5-5L2 17" /></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" stroke="var(--ico-accent, currentColor)" /><path d="M9 13v2" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" stroke="var(--ico-accent, currentColor)" /><path d="M21.21 15.89A10 10 0 1 1 8 2.83" /></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><circle cx="12" cy="16" r="1" stroke="var(--ico-accent, currentColor)" /><rect x="3" y="10" width="18" height="12" rx="2" /><path d="M7 10V7a5 5 0 0 1 10 0v3" /></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" /><rect width="20" height="8" x="2" y="14" rx="2" ry="2" /><line x1="6" x2="6.01" y1="6" y2="6" stroke="var(--ico-accent, currentColor)" /><line x1="6" x2="6.01" y1="18" y2="18" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /><circle cx="16.5" cy="7.5" r=".8" fill="var(--ico-accent, currentColor)" stroke="none" /></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0" /><path d="M22 8c0-2.3-.8-4.3-2-6" stroke="var(--ico-accent, currentColor)" /><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /><path d="M4 2C2.8 3.7 2 5.7 2 8" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></symbol>
+</svg>
+
 <nav><div class="wrap nav-in">
-  <a class="logo" href="index.html"><span class="mark">L</span><span>legisly<span class="est">★ EST 2025</span></span></a>
+  <a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a>
   <div class="nav-links">
     <a href="features.html">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
     <a class="nav-cta" href="index.html#waitlist">Request a Demo</a>
@@ -33,7 +95,7 @@
 
 <main>
   <div class="wrap page-head">
-    <span class="eyebrow">✦ We'd love to hear from you</span>
+    <span class="eyebrow"><svg class="ico"><use href="#i-sparkle"/></svg>We'd love to hear from you</span>
     <h1>Get in <span class="pop">touch</span></h1>
     <p class="lede">Have questions? Want a demo for your firm? We're here to help.</p>
   </div>
@@ -42,35 +104,60 @@
     <div class="contact-info reveal">
       <h2>Let's talk</h2>
       <p>Whether you want a demo for your firm, have questions about Legisly, or want to discuss enterprise pricing — we're here to help.</p>
-      <div class="ci-row"><h4>Email</h4><a href="mailto:contact@legisly.ai">contact@legisly.ai</a></div>
-      <div class="ci-row"><h4>Response time</h4><span>Within 24 hours</span></div>
-      <div class="ci-row"><h4>Location</h4><span>California, USA</span></div>
-      <div class="ci-row"><h4>For press inquiries</h4><a href="mailto:contact@legisly.ai">contact@legisly.ai</a></div>
+      <div class="ci-row ci-primary">
+        <span class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+        <div class="ci-body"><h4>Book a demo</h4><a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Grab a 30-min slot on Calendly →</a></div>
+      </div>
+      <div class="ci-row">
+        <span class="ic ic-ai"><svg class="ico" aria-hidden="true"><use href="#i-report"/></svg></span>
+        <div class="ci-body"><h4>Email</h4><a href="mailto:contact@legisly.ai">contact@legisly.ai</a></div>
+      </div>
+      <div class="ci-row">
+        <span class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg></span>
+        <div class="ci-body"><h4>Response time</h4><span>Within 24 hours</span></div>
+      </div>
+      <div class="ci-row">
+        <span class="ic ic-green"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg></span>
+        <div class="ci-body"><h4>Location</h4><span>California, USA</span></div>
+      </div>
+      <div class="ci-row">
+        <span class="ic ic-gold"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        <div class="ci-body"><h4>For press inquiries</h4><a href="mailto:contact@legisly.ai">contact@legisly.ai</a></div>
+      </div>
+      <span class="ci-trust"><span class="dot"></span>Launching Summer 2026</span>
     </div>
 
     <form class="contact-form reveal" action="https://formspree.io/f/mdalewlb" method="POST">
       <h2>Send a message</h2>
-      <div class="fld"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
-      <div class="fld"><label>Email</label><input type="email" name="email" placeholder="you@firm.com" required></div>
-      <div class="fld"><label>Subject</label>
-        <select name="subject">
+      <div class="fld"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" placeholder="Your name" autocomplete="name" required></div>
+      <div class="fld"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" placeholder="you@firm.com" autocomplete="email" required></div>
+      <div class="fld fld-select"><label for="cf-subject">Subject</label>
+        <select id="cf-subject" name="subject">
           <option>Request a Demo</option><option>Enterprise Pricing</option><option>Data Migration</option><option>Partnership</option><option>Press / Media</option><option>Other</option>
         </select>
       </div>
-      <div class="fld"><label>Message</label><textarea name="message" placeholder="How can we help?" required></textarea></div>
+      <div class="fld"><label for="cf-message">Message</label><textarea id="cf-message" name="message" placeholder="How can we help?" required></textarea></div>
       <input type="hidden" name="_subject" value="New Contact Form Submission - Legisly">
       <input type="hidden" name="_next" value="https://legisly.ai/thank-you.html">
       <button type="submit" class="btn primary">Send Message →</button>
     </form>
   </div></div>
 
-  <section style="padding:70px 0 90px"></section>
+  <section class="cta-sec" style="padding-top:72px"><div class="wrap"><div class="cta-card reveal">
+    <span class="pin">Launching Summer 2026</span>
+    <h2>Ready to see Legisly in action?</h2>
+    <p>Request a demo and see how real-time hearing intelligence and AI analysis work for your firm.</p>
+    <div class="cta-actions">
+      <a class="btn primary" href="index.html#waitlist">Request a Demo →</a>
+      <a class="btn ghost" href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a 30-min demo</a>
+    </div>
+  </div></div></section>
 </main>
 
 <footer><div class="wrap">
   <div class="foot-grid">
-    <div class="foot-brand"><a class="logo" href="index.html"><span class="mark">L</span>legisly</a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
-    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a><a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a Demo</a></div>
     <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
     <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
   </div>

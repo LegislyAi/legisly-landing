@@ -1,6 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="160" viewBox="0 0 600 160">
-  <rect width="600" height="160" fill="#0B1120"/>
-  <text font-family="'Righteous', 'Arial', sans-serif" font-size="80" letter-spacing="-0.02em" y="105">
-    <tspan x="135" fill="#FFFFFF">leg</tspan><tspan fill="#06B6D4">i</tspan><tspan fill="#FFFFFF">sly</tspan><tspan fill="#06B6D4">.</tspan>
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Legisly">
+  <rect width="1024" height="1024" rx="216" fill="#F26419"/>
+  <circle cx="512" cy="218" r="70" fill="#06B6A4"/>
+  <circle cx="442" cy="356" r="52" fill="#FFF6EC"/>
+  <circle cx="582" cy="356" r="52" fill="#FFF6EC"/>
+  <circle cx="318" cy="416" r="52" fill="#FFF6EC"/>
+  <circle cx="706" cy="416" r="52" fill="#FFF6EC"/>
+  <circle cx="234" cy="524" r="52" fill="#FFF6EC"/>
+  <circle cx="790" cy="524" r="52" fill="#FFF6EC"/>
+  <rect x="152" y="640" width="720" height="32" rx="16" fill="#FFF6EC"/>
 </svg>

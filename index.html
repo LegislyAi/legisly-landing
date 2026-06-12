@@ -19,17 +19,45 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .hero{padding:60px 0 68px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .hero{padding:60px 0 68px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative}
+  /* aurora atmosphere */
+  .hero::before{content:"";position:absolute;z-index:-1;top:-90px;left:-8%;right:-8%;height:580px;pointer-events:none;filter:blur(48px);opacity:.5;
+    background:radial-gradient(420px 320px at 16% 32%,color-mix(in srgb,var(--hero-b) 42%,transparent),transparent 70%),
+               radial-gradient(480px 360px at 88% 10%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 70%),
+               radial-gradient(380px 300px at 58% 78%,color-mix(in srgb,var(--primary) 18%,transparent),transparent 70%);
+    animation:aura 16s ease-in-out infinite alternate}
+  @keyframes aura{from{transform:translate3d(-2%,0,0) scale(1) rotate(-1deg)}to{transform:translate3d(2.5%,3%,0) scale(1.08) rotate(1.5deg)}}
   .hero h1{font-size:clamp(46px,6vw,82px);font-weight:800;margin:20px 0 0}
-  .hero h1 .pop{color:var(--primary)}
+  .hero h1 .pop{background:linear-gradient(94deg,var(--primary) 25%,var(--hero-b) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  /* "Move first." — the dot perches on the t, rolls down, bounces home; replays every 6s */
+  .hero h1 .pop .dotroll{display:inline-block;color:var(--hero-b);will-change:transform;animation:dotKick 6s 1.2s infinite backwards}
+  @keyframes dotKick{
+    0%   {transform:translate(-.31em,-.66em);animation-timing-function:cubic-bezier(.5,0,.95,.5)}   /* perched on the tip of the t → fall (gravity) */
+    9%   {transform:translate(0,0);animation-timing-function:cubic-bezier(.1,.7,.3,1)}               /* first landing → bounce up */
+    14%  {transform:translate(.02em,-.22em);animation-timing-function:cubic-bezier(.5,0,.95,.5)}     /* apex 1 → fall */
+    19%  {transform:translate(0,0);animation-timing-function:cubic-bezier(.1,.7,.3,1)}               /* second landing → small bounce */
+    22%  {transform:translate(0,-.07em);animation-timing-function:cubic-bezier(.5,0,.95,.5)}         /* apex 2 → fall */
+    25%  {transform:translate(0,0)}                                                                  /* settled at home (the period's spot) */
+    92%  {transform:translate(0,0);animation-timing-function:cubic-bezier(.5,.05,.5,.95)}            /* rest, then hop back onto the t */
+    100% {transform:translate(-.31em,-.66em)}                                                        /* seamless loop: back to the perch */
+  }
   .hero .lede{font-size:18px;color:var(--muted);line-height:1.6;margin:22px 0 30px;max-width:480px;font-weight:500}
   .hero-cta{display:flex;gap:13px;flex-wrap:wrap}
   .trust{display:flex;align-items:center;gap:9px;margin-top:24px;font-size:13.5px;color:var(--muted);font-weight:600}
   .trust .pin{background:var(--gold);color:var(--ink);font-weight:800;font-size:11px;padding:4px 10px;border-radius:999px}
-  .mock{position:relative;animation:floaty 6s ease-in-out infinite}
+  /* entrance choreography */
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .hero .eyebrow,.hero h1,.hero .lede,.hero-cta,.trust{animation:rise .65s cubic-bezier(.2,.7,.2,1) backwards}
+  .hero h1{animation-delay:.08s}.hero .lede{animation-delay:.16s}.hero-cta{animation-delay:.24s}.trust{animation-delay:.32s}
+  .mock{position:relative;animation:rise .8s .25s cubic-bezier(.2,.7,.2,1) backwards,floaty 6s 1.2s ease-in-out infinite}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .alert-float{position:absolute;bottom:-22px;left:-26px;z-index:3;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:11px 16px 11px 11px;box-shadow:var(--shadow-lift);transform:rotate(-2deg);animation:rise .7s .55s cubic-bezier(.2,.7,.2,1) backwards}
+  .alert-float .ic{width:36px;height:36px;border-radius:10px}
+  .alert-float .ic .ico{width:19px;height:19px}
+  .alert-float b{display:block;font-family:var(--display);font-size:12.5px;color:var(--ink)}
+  .alert-float span{font-size:11px;color:var(--muted);font-weight:600}
   .mock .win{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lift)}
-  .mock .bar{display:flex;align-items:center;gap:7px;padding:13px 16px;background:var(--surface-2);border-bottom:1px solid var(--border)}
+  .mock .bar{display:flex;align-items:center;gap:7px;padding:13px 100px 13px 16px;background:var(--surface-2);border-bottom:1px solid var(--border)}
   .dot{width:11px;height:11px;border-radius:50%}
   .mock .title{margin-left:8px;font-size:12.5px;font-weight:700;color:var(--muted);font-family:var(--display)}
   .mock .live,.live-win .live{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:11px;font-weight:800;color:var(--senate)}
@@ -43,17 +71,47 @@
   .ai-line .s{color:var(--accent);font-weight:800;flex:none}
   .ai-line.vote{background:var(--assembly-soft);border-color:color-mix(in srgb,var(--assembly) 28%,var(--border))}
   .ai-line.vote .s{color:var(--assembly)}
-  .badge-float{position:absolute;top:-18px;right:-14px;background:var(--gold);color:var(--ink);font-family:var(--display);font-weight:800;border-radius:50%;width:84px;height:84px;display:grid;place-items:center;text-align:center;font-size:11px;line-height:1.15;box-shadow:var(--shadow-lift);transform:rotate(8deg)}
-  .badge-float b{font-size:19px;display:block}
+  /* ink-stamp badge — splat with animated drips */
+  .badge-float{position:absolute;top:-55px;right:-29px;width:134px;height:154px;z-index:3;color:var(--ink);font-family:var(--display);font-weight:800;display:grid;place-items:center;text-align:center;font-size:12.6px;line-height:1.15;transform:rotate(8deg);animation:stamp .55s .9s cubic-bezier(.2,1.4,.4,1) backwards;filter:drop-shadow(0 10px 16px rgba(120,72,32,.26))}
+  .badge-float .stamp-ink{position:absolute;inset:0;width:100%;height:100%;fill:var(--gold)}
+  .badge-float .stamp-ink .blotch{fill:rgba(42,29,20,.08)}
+  .badge-float .stamp-ink .ring{fill:none;stroke:rgba(42,29,20,.32);stroke-width:1.5;stroke-dasharray:3 4.4;stroke-linecap:round}
+  .badge-float .stamp-txt{position:relative;transform:translateY(-11px)}
+  .badge-float b{font-size:23px;display:block}
+  @keyframes stamp{0%{opacity:0;transform:rotate(16deg) scale(1.7)}55%{opacity:1;transform:rotate(7deg) scale(.92)}75%{transform:rotate(8.5deg) scale(1.04)}100%{transform:rotate(8deg) scale(1)}}
+  /* dripping ink */
+  .stamp-ink .drip{stroke:var(--gold);stroke-linecap:round;transform-box:fill-box;transform-origin:center top;animation:dripGrow 7s ease-in-out infinite}
+  .stamp-ink .d1{stroke-width:4.4}
+  .stamp-ink .d2{stroke-width:5.2;animation-delay:1.6s}
+  .stamp-ink .d3{stroke-width:3.4;animation-delay:3.4s}
+  @keyframes dripGrow{0%,10%{transform:scaleY(.3)}42%{transform:scaleY(1)}58%{transform:scaleY(1)}76%{transform:scaleY(.5)}100%{transform:scaleY(.3)}}
+  .stamp-ink .drop{transform-box:fill-box;opacity:0;animation:dropFall 7s ease-in infinite}
+  .stamp-ink .p2{animation-delay:1.6s}
+  .stamp-ink .p3{animation-delay:3.4s}
+  @keyframes dropFall{0%,46%{opacity:0;transform:translateY(-5px) scale(.55)}54%{opacity:1;transform:translateY(1px) scale(1)}82%{opacity:0;transform:translateY(20px) scale(.9)}100%{opacity:0;transform:translateY(20px)}}
   .marquee{background:var(--primary);color:#fff;padding:14px 0;overflow:hidden;white-space:nowrap;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.03em}
   .marquee .track{display:inline-block;animation:scroll 28s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
   .marquee span{margin:0 16px;opacity:.95}.marquee .st{color:var(--gold)}
+  .eyebrow .ico{width:14px;height:14px}
+  /* official-source credibility strip */
+  .sources-sec{padding:34px 0 4px}
+  .sources-label{text-align:center;font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+  .sources{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:13px 30px}
+  .src{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:700;font-size:15px;color:var(--text);opacity:.82;transition:.18s}
+  .src .ico{width:20px;height:20px;color:var(--muted)}
+  .src:hover{opacity:1;color:var(--primary)}
+  .src:hover .ico{color:var(--primary)}
+  @media(max-width:560px){.src{font-size:13.5px}.sources{gap:11px 20px}}
   @keyframes scroll{to{transform:translateX(-50%)}}
   section{padding:84px 0}
   .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
-  .feat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);transition:.2s;position:relative;overflow:hidden}
-  .feat:hover{transform:translateY(-5px);box-shadow:var(--shadow-lift)}
-  .feat .ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:22px;margin-bottom:16px}
+  .feat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);transition:.22s;position:relative;overflow:hidden}
+  .feat::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--hero-a),var(--hero-b));opacity:0;transition:.25s}
+  .feat:hover{transform:translateY(-5px);box-shadow:var(--shadow-lift);border-color:color-mix(in srgb,var(--primary) 22%,var(--border))}
+  .feat:hover::before{opacity:1}
+  .feat:hover .ic{transform:scale(1.1) rotate(-5deg)}
+  .feat .ic{margin-bottom:16px}
   .feat h3{font-size:20px;font-weight:700;margin-bottom:9px}
   .feat p{font-size:14.5px;color:var(--muted);line-height:1.6}
   .feat .tagpill{position:absolute;top:22px;right:22px;font-size:10px;font-weight:800;font-family:var(--display);letter-spacing:.04em;padding:4px 10px;border-radius:999px}
@@ -79,15 +137,143 @@
   .live-win .ai-line .s{color:#3FE0CE}
   .live-win .ai-line.vote{background:rgba(31,168,95,.18);border-color:rgba(31,168,95,.42);color:#C7F2D8}
   .live-win .ai-line.vote .s{color:#5BD6A8}
-  @media(max-width:920px){section{padding:60px 0}.hero{grid-template-columns:1fr;gap:36px;padding:36px 0}.hero h1{font-size:clamp(34px,8.6vw,58px)}.live-in{grid-template-columns:1fr;gap:30px;padding:0 22px}.feat-grid{grid-template-columns:1fr;margin-top:34px}.stats3{gap:22px}.live-sec{margin:0 16px;padding:54px 0}.badge-float{right:10px;top:-12px;width:72px;height:72px;font-size:10px}.badge-float b{font-size:16px}}
+  @media(max-width:920px){section{padding:60px 0}.hero{grid-template-columns:1fr;gap:36px;padding:36px 0}.hero h1{font-size:clamp(34px,8.6vw,58px)}.live-in{grid-template-columns:1fr;gap:30px;padding:0 22px}.feat-grid{grid-template-columns:1fr;margin-top:34px}.stats3{gap:22px}.live-sec{margin:0 16px;padding:54px 0}.badge-float{right:-4px;top:-46px;width:110px;height:126px;font-size:11.4px}.badge-float b{font-size:19px}.mock .bar{padding-right:76px}.alert-float{left:6px;bottom:-16px}}
   @media(max-width:560px){.hero h1{font-size:clamp(30px,8.8vw,48px)}.live-sec{margin:0 12px}.live-in{padding:0 18px}}
 </style>
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <!-- Legisly icon sprite — adapted from Lucide v1.17 (ISC license, https://lucide.dev).
+       Duotone: strokes inherit currentColor; accent details use var(--ico-accent). -->
+  <symbol id="i-bill" viewBox="0 0 24 24">
+    <path d="M15 12h-5" stroke="var(--ico-accent, currentColor)" />
+    <path d="M15 8h-5" stroke="var(--ico-accent, currentColor)" />
+    <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+    <path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
+  </symbol>
+  <symbol id="i-live" viewBox="0 0 24 24">
+    <path d="M16.247 7.761a6 6 0 0 1 0 8.478" />
+    <path d="M19.075 4.933a10 10 0 0 1 0 14.134" />
+    <path d="M4.925 19.067a10 10 0 0 1 0-14.134" />
+    <path d="M7.753 16.239a6 6 0 0 1 0-8.478" />
+    <circle cx="12" cy="12" r="2" />
+    <circle cx="12" cy="12" r="1.6" fill="var(--ico-accent, currentColor)" stroke="none" />
+  </symbol>
+  <symbol id="i-report" viewBox="0 0 24 24">
+    <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+    <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+    <path d="M8 18v-1" stroke="var(--ico-accent, currentColor)" />
+    <path d="M12 18v-6" stroke="var(--ico-accent, currentColor)" />
+    <path d="M16 18v-3" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-users" viewBox="0 0 24 24">
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <path d="M16 3.128a4 4 0 0 1 0 7.744" stroke="var(--ico-accent, currentColor)" />
+    <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="var(--ico-accent, currentColor)" />
+    <circle cx="9" cy="7" r="4" />
+  </symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24">
+    <path d="M8 2v4" />
+    <path d="M16 2v4" />
+    <rect width="18" height="18" x="3" y="4" rx="2" />
+    <path d="M3 10h18" />
+    <path d="m9 16 2 2 4-4" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24">
+    <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+    <path d="M20 2v4" stroke="var(--ico-accent, currentColor)" />
+    <path d="M22 4h-4" stroke="var(--ico-accent, currentColor)" />
+    <circle cx="4" cy="20" r="2" />
+  </symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24">
+    <path d="M12 3v18" />
+    <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
+    <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
+    <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
+    <path d="M7 21h10" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24">
+    <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+  </symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24">
+    <path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762" />
+  </symbol>
+  <symbol id="i-cycle" viewBox="0 0 24 24">
+    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+    <path d="M21 3v5h-5" stroke="var(--ico-accent, currentColor)" />
+    <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+    <path d="M8 16H3v5" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" stroke="var(--ico-accent, currentColor)" />
+    <path d="M2 12h20" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24">
+    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" stroke="var(--ico-accent, currentColor)" />
+    <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" />
+    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" />
+  </symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24">
+    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+    <path d="M9 18h6" stroke="var(--ico-accent, currentColor)" />
+    <path d="M10 22h4" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-chart-up" viewBox="0 0 24 24">
+    <path d="M16 7h6v6" stroke="var(--ico-accent, currentColor)" />
+    <path d="m22 7-8.5 8.5-5-5L2 17" />
+  </symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24">
+    <path d="M12 8V4H8" />
+    <rect width="16" height="12" x="4" y="8" rx="2" />
+    <path d="M2 14h2" />
+    <path d="M20 14h2" />
+    <path d="M15 13v2" stroke="var(--ico-accent, currentColor)" />
+    <path d="M9 13v2" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24">
+    <path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" stroke="var(--ico-accent, currentColor)" />
+    <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+  </symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24">
+    <circle cx="12" cy="16" r="1" stroke="var(--ico-accent, currentColor)" />
+    <rect x="3" y="10" width="18" height="12" rx="2" />
+    <path d="M7 10V7a5 5 0 0 1 10 0v3" />
+  </symbol>
+  <symbol id="i-server" viewBox="0 0 24 24">
+    <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+    <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+    <line x1="6" x2="6.01" y1="6" y2="6" stroke="var(--ico-accent, currentColor)" />
+    <line x1="6" x2="6.01" y1="18" y2="18" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-key" viewBox="0 0 24 24">
+    <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+    <circle cx="16.5" cy="7.5" r=".8" fill="var(--ico-accent, currentColor)" stroke="none" />
+  </symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24">
+    <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24">
+    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+    <path d="m9 12 2 2 4-4" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-target" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24">
+    <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+    <path d="M22 8c0-2.3-.8-4.3-2-6" stroke="var(--ico-accent, currentColor)" />
+    <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" />
+    <path d="M4 2C2.8 3.7 2 5.7 2 8" stroke="var(--ico-accent, currentColor)" />
+  </symbol>
+</svg>
 <div class="noise"></div>
 
 <nav><div class="wrap nav-in">
-  <a class="logo" href="index.html"><span class="mark">L</span><span>legisly<span class="est">★ EST 2025</span></span></a>
+  <a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a>
   <div class="nav-links">
     <a href="features.html">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
     <a class="nav-cta" href="#waitlist">Join Waitlist</a>
@@ -98,14 +284,30 @@
 <main>
   <div class="wrap hero">
     <div>
-      <span class="eyebrow">✦ AI-Powered Legislative Intelligence</span>
-      <h1>Know everything.<br>Miss nothing.<br><span class="pop">Move first.</span></h1>
+      <span class="eyebrow"><svg class="ico" aria-hidden="true"><use href="#i-sparkle"/></svg>AI-Powered Legislative Intelligence</span>
+      <h1>Know everything.<br>Miss nothing.<br><span class="pop">Move first<span class="dotroll">.</span></span></h1>
       <p class="lede">Built from inside the Capitol. Powered by AI. Made for everyone with something at stake.</p>
-      <div class="hero-cta"><a class="btn primary" href="#waitlist">Claim your spot →</a><a class="btn ghost" href="#live">See it live ↓</a></div>
+      <div class="hero-cta"><a class="btn primary" href="#waitlist">Claim your spot →</a><a class="btn ghost" href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a 30-min demo</a></div>
       <div class="trust"><span class="pin">First 20 FREE</span> 3 months free + founding pricing locked for life</div>
     </div>
     <div class="mock">
-      <div class="badge-float">FIRST 20<b>FREE</b>3 months</div>
+      <div class="badge-float">
+        <svg class="stamp-ink" viewBox="0 0 120 136" aria-hidden="true">
+          <path class="blob" d="M101.3 58.0C101.2 62.0 98.2 66.1 96.4 69.8C94.7 73.6 93.6 77.8 90.9 80.5C88.2 83.2 83.9 84.7 80.4 86.0C76.9 87.4 73.3 87.5 70.0 88.6C66.6 89.8 63.4 92.7 60.0 93.0C56.6 93.2 53.0 91.2 49.6 90.0C46.2 88.9 41.9 88.6 39.4 86.4C36.9 84.1 36.5 79.4 34.7 76.4C32.8 73.4 30.1 71.4 28.2 68.3C26.4 65.3 24.1 61.6 23.5 58.0C23.0 54.4 24.5 50.7 25.1 46.7C25.6 42.6 25.0 37.5 26.8 33.9C28.6 30.3 32.3 26.5 36.0 25.0C39.7 23.4 45.1 24.5 49.1 24.6C53.1 24.6 56.8 23.9 60.0 25.1C63.2 26.4 65.4 30.9 68.4 32.2C71.3 33.6 74.7 32.5 77.8 33.5C80.9 34.5 83.7 36.4 86.9 38.5C90.1 40.6 94.6 42.7 97.0 46.0C99.4 49.2 101.4 54.0 101.3 58.0Z"/>
+          <path class="blotch" d="M82.3 64.2C80.7 67.6 76.1 69.4 72.5 71.8C69.0 74.3 64.7 79.2 61.0 79.0C57.3 78.8 53.6 73.6 50.3 70.6C47.1 67.6 42.1 64.7 41.3 61.0C40.5 57.4 44.0 52.8 45.6 48.6C47.2 44.4 47.7 37.6 50.9 35.9C54.0 34.1 60.1 37.4 64.5 38.0C69.0 38.6 74.4 37.2 77.3 39.5C80.3 41.8 81.4 47.4 82.2 51.5C83.1 55.6 84.0 60.8 82.3 64.2Z"/>
+          <circle cx="104.4" cy="69.9" r="3.2"/><circle cx="101.0" cy="90.0" r="1.6"/><circle cx="85.2" cy="94.0" r="2.4"/><circle cx="68.7" cy="107.2" r="1.3"/><circle cx="45.5" cy="102.7" r="2.8"/><circle cx="23.9" cy="98.1" r="1.5"/><circle cx="18.3" cy="74.9" r="2.1"/>
+          <circle cx="10.2" cy="53.6" r="1.4"/><circle cx="18.4" cy="34.0" r="2.6"/><circle cx="30.9" cy="11.4" r="1.6"/><circle cx="53.6" cy="12.4" r="1.9"/><circle cx="82.0" cy="10.9" r="2.9"/><circle cx="97.0" cy="29.1" r="1.4"/><circle cx="114.1" cy="43.5" r="2.0"/><ellipse cx="103.3" cy="81.0" rx="1.2" ry="3.4" transform="rotate(118 103.3 81.0)"/><ellipse cx="33.0" cy="101.3" rx="1.1" ry="3.0" transform="rotate(212 33.0 101.3)"/><ellipse cx="12.9" cy="36.0" rx="1.2" ry="3.2" transform="rotate(295 12.9 36.0)"/><ellipse cx="92.1" cy="19.7" rx="1.0" ry="2.8" transform="rotate(400 92.1 19.7)"/>
+          <line class="drip d1" x1="44" y1="86" x2="44" y2="106"/>
+          <line class="drip d2" x1="61" y1="90" x2="61" y2="118"/>
+          <line class="drip d3" x1="77" y1="85" x2="77" y2="99"/>
+          <circle class="drop p1" cx="44" cy="110" r="2.4"/>
+          <circle class="drop p2" cx="61" cy="122" r="2.8"/>
+          <circle class="drop p3" cx="77" cy="103" r="2"/>
+          <path class="ring" d="M60 30.5c15.2 0 27.5 12.3 27.5 27.5S75.2 85.5 60 85.5 32.5 73.2 32.5 58 44.8 30.5 60 30.5z"/>
+        </svg>
+        <span class="stamp-txt">FIRST 20<b>FREE</b>3 months</span>
+      </div>
+      <div class="alert-float"><div class="ic ic-ai"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></div><div><b>Client alert sent</b><span>Vote detected · 4 seconds ago</span></div></div>
       <div class="win">
         <div class="bar"><span class="dot" style="background:var(--senate)"></span><span class="dot" style="background:var(--gold)"></span><span class="dot" style="background:var(--assembly)"></span><span class="title">Assembly Housing Committee</span><span class="live"><span class="b"></span>LIVE</span></div>
         <div class="body">
@@ -124,6 +326,18 @@
     <span class="st">★</span><span>CA Bill Tracking</span><span class="st">★</span><span>Live Hearing Intelligence</span><span class="st">★</span><span>AI Analysis &amp; Alerts</span><span class="st">★</span><span>Client Reports</span><span class="st">★</span><span>24/7 Monitoring</span><span class="st">★</span><span>Branded Client Portal</span>
   </div></div>
 
+  <section class="sources-sec reveal"><div class="wrap">
+    <p class="sources-label">Connected directly to the official sources</p>
+    <div class="sources">
+      <span class="src"><svg class="ico" aria-hidden="true"><use href="#i-bill"/></svg>CA leginfo</span>
+      <span class="src"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg>Congress.gov</span>
+      <span class="src"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg>Federal Register</span>
+      <span class="src"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg>Regulations.gov</span>
+      <span class="src"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg>Google Calendar</span>
+      <span class="src"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>FPPC</span>
+    </div>
+  </div></section>
+
   <section><div class="wrap center reveal">
     <div class="kicker">The edge</div>
     <h2 class="big">Your competitors are watching hearings.<br>Legisly <span class="hl">listens to them.</span></h2>
@@ -133,12 +347,12 @@
   <section id="features" style="padding-top:20px"><div class="wrap">
     <div class="center reveal"><div class="kicker">What your firm gets</div><h2 class="big">Everything, in one place</h2></div>
     <div class="feat-grid">
-      <div class="feat reveal"><span class="tagpill t-auto">Automated</span><div class="ic" style="background:var(--primary-soft);color:var(--primary)">▤</div><h3>CA Bill Tracking</h3><p>Real-time ingestion from leginfo. Status, amendments, votes, and AI passage probability — all in one view.</p></div>
-      <div class="feat reveal"><span class="tagpill t-live">Live</span><div class="ic" style="background:var(--senate-soft);color:var(--senate)">◉</div><h3>Live Hearing Intelligence</h3><p>Real-time transcription, speaker ID, AI vote detection, and key-moment alerts — while the hearing is still going.</p></div>
-      <div class="feat reveal"><span class="tagpill t-ai">AI-Powered</span><div class="ic" style="background:var(--accent-soft);color:var(--accent)">▣</div><h3>AI Reports &amp; Client Portal</h3><p>Branded PDFs, scheduled delivery, and a white-labeled portal your clients actually open. 87% avg open rate.</p></div>
-      <div class="feat reveal"><span class="tagpill t-auto">Automated</span><div class="ic" style="background:var(--assembly-soft);color:var(--assembly)">◇</div><h3>Client &amp; Position Mgmt</h3><p>Track support / oppose / watch for every client. Health scores, stakeholder CRM, and position history in one place.</p></div>
-      <div class="feat reveal"><span class="tagpill t-auto">Automated</span><div class="ic" style="background:var(--primary-soft);color:var(--primary)">▦</div><h3>Smart Calendar</h3><p>Hearings, deadlines, votes, and FPPC filings — auto-synced to Google Calendar. Never miss a date.</p></div>
-      <div class="feat reveal"><span class="tagpill t-ai">AI-Powered</span><div class="ic" style="background:var(--accent-soft);color:var(--accent)">✦</div><h3>AI Assistant</h3><p>"What should I focus on today?" Natural-language search, auto-generated position drafts, and daily briefings.</p></div>
+      <div class="feat reveal"><span class="tagpill t-auto">Automated</span><div class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-bill"/></svg></div><h3>CA Bill Tracking</h3><p>Real-time ingestion from leginfo. Status, amendments, votes, and AI passage probability — all in one view.</p></div>
+      <div class="feat reveal"><span class="tagpill t-live">Live</span><div class="ic ic-live"><svg class="ico" aria-hidden="true"><use href="#i-live"/></svg></div><h3>Live Hearing Intelligence</h3><p>Real-time transcription, speaker ID, AI vote detection, and key-moment alerts — while the hearing is still going.</p></div>
+      <div class="feat reveal"><span class="tagpill t-ai">AI-Powered</span><div class="ic ic-ai"><svg class="ico" aria-hidden="true"><use href="#i-report"/></svg></div><h3>AI Reports &amp; Client Portal</h3><p>Branded PDFs, scheduled delivery, and a white-labeled portal your clients actually open. 87% avg open rate.</p></div>
+      <div class="feat reveal"><span class="tagpill t-auto">Automated</span><div class="ic ic-green"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></div><h3>Client &amp; Position Mgmt</h3><p>Track support / oppose / watch for every client. Health scores, stakeholder CRM, and position history in one place.</p></div>
+      <div class="feat reveal"><span class="tagpill t-auto">Automated</span><div class="ic ic-primary"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg></div><h3>Smart Calendar</h3><p>Hearings, deadlines, votes, and FPPC filings — auto-synced to Google Calendar. Never miss a date.</p></div>
+      <div class="feat reveal"><span class="tagpill t-ai">AI-Powered</span><div class="ic ic-ai"><svg class="ico" aria-hidden="true"><use href="#i-sparkle"/></svg></div><h3>AI Assistant</h3><p>"What should I focus on today?" Natural-language search, auto-generated position drafts, and daily briefings.</p></div>
     </div>
     <div class="center" style="margin-top:34px"><a class="btn ghost" href="features.html">See all features →</a></div>
   </div></section>
@@ -173,7 +387,7 @@
         <input type="hidden" name="_next" value="https://legisly.ai/thank-you.html">
         <button type="submit" class="btn primary">Claim your spot →</button>
       </form>
-      <div class="small">Launching Summer 2026 — limited founding-member spots</div>
+      <div class="small">Launching Summer 2026 — limited founding-member spots · <a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:700">or book a 30-min demo →</a></div>
     </div>
   </div></section>
 </main>
@@ -181,8 +395,8 @@
 <!--FOOTER-->
 <footer><div class="wrap">
   <div class="foot-grid">
-    <div class="foot-brand"><a class="logo" href="index.html"><span class="mark">L</span>legisly</a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
-    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a><a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a Demo</a></div>
     <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
     <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
   </div>

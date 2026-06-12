@@ -19,18 +19,73 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .ty{min-height:62vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 0}
-  .ty .check{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff;font-size:34px;font-weight:800;box-shadow:var(--shadow-lift);margin-bottom:24px}
-  .ty h1{font-size:clamp(34px,5vw,56px);font-weight:800;margin-bottom:14px}
+  .ty{display:flex;flex-direction:column;align-items:center;text-align:center;padding:72px 0 18px}
+  .eyebrow .ico{width:14px;height:14px}
+  .ty .check{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff;box-shadow:var(--shadow-lift);margin-bottom:24px;transform:scale(.4);opacity:0;animation:popIn .6s var(--spring) .15s forwards}
+  .ty .check .tick{width:40px;height:40px;fill:none;stroke:#fff;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+  @keyframes popIn{to{transform:scale(1);opacity:1}}
+  .ty h1{font-size:clamp(34px,5vw,56px);font-weight:800;margin:8px 0 14px}
   .ty h1 .pop{color:var(--primary)}
-  .ty p{font-size:17px;color:var(--muted);line-height:1.65;max-width:520px;margin:0 auto 28px;font-weight:500}
+  .ty .lede{font-size:17px;color:var(--muted);line-height:1.65;max-width:540px;margin:0 auto 26px;font-weight:500}
+  .ty-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:14px}
+  .ty-trust{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);font-weight:600}
+  .ty-trust .ico{width:16px;height:16px;color:var(--assembly);--ico-accent:var(--primary)}
+  .ty-trust a{color:var(--primary);font-weight:700}
+
+  /* what happens next — timeline */
+  .ty-next{max-width:760px;margin:14px auto 0;padding:8px 0}
+  .ty-next .sec-k{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:24px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative}
+  .step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 22px;box-shadow:var(--shadow);text-align:left;position:relative;transition:.22s}
+  .step:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift);border-color:color-mix(in srgb,var(--primary) 22%,var(--border))}
+  .step:hover .ic{transform:scale(1.1) rotate(-5deg)}
+  .step .ic{margin-bottom:14px}
+  .step .num{position:absolute;top:18px;right:20px;font-family:var(--display);font-weight:800;font-size:13px;color:color-mix(in srgb,var(--primary) 55%,var(--border))}
+  .step h3{font-size:16px;font-weight:700;margin-bottom:7px}
+  .step p{font-size:13.5px;color:var(--muted);line-height:1.55;font-weight:500}
+
+  /* while you wait — mini link cards */
+  .ty-wait{max-width:1000px;margin:46px auto 0}
+  .ty-wait .sec-k{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:24px}
+  .ty-wait .card-grid{margin-top:0}
+  .ty-wait .icard{display:block}
+  .ty-wait .icard .arrow{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:700;color:var(--primary);font-family:var(--display)}
+  .ty-wait .icard:hover .arrow{gap:9px}
+
+  .ty-foot{text-align:center;padding:40px 0 70px}
+
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="noise"></div>
 
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <symbol id="i-bill" viewBox="0 0 24 24"><path d="M15 12h-5" stroke="var(--ico-accent, currentColor)" /><path d="M15 8h-5" stroke="var(--ico-accent, currentColor)" /><path d="M19 17V5a2 2 0 0 0-2-2H4" /><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" /></symbol>
+  <symbol id="i-live" viewBox="0 0 24 24"><path d="M16.247 7.761a6 6 0 0 1 0 8.478" /><path d="M19.075 4.933a10 10 0 0 1 0 14.134" /><path d="M4.925 19.067a10 10 0 0 1 0-14.134" /><path d="M7.753 16.239a6 6 0 0 1 0-8.478" /><circle cx="12" cy="12" r="2" /><circle cx="12" cy="12" r="1.6" fill="var(--ico-accent, currentColor)" stroke="none" /></symbol>
+  <symbol id="i-report" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="M8 18v-1" stroke="var(--ico-accent, currentColor)" /><path d="M12 18v-6" stroke="var(--ico-accent, currentColor)" /><path d="M16 18v-3" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" stroke="var(--ico-accent, currentColor)" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="var(--ico-accent, currentColor)" /><circle cx="9" cy="7" r="4" /></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /><path d="m9 16 2 2 4-4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" stroke="var(--ico-accent, currentColor)" /><path d="M22 4h-4" stroke="var(--ico-accent, currentColor)" /><circle cx="4" cy="20" r="2" /></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18" /><path d="m19 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" /><path d="m5 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M7 21h10" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-cycle" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /><path d="M21 3v5h-5" stroke="var(--ico-accent, currentColor)" /><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /><path d="M8 16H3v5" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" stroke="var(--ico-accent, currentColor)" /><path d="M2 12h20" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" stroke="var(--ico-accent, currentColor)" /><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" /></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" stroke="var(--ico-accent, currentColor)" /><path d="M10 22h4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-chart-up" viewBox="0 0 24 24"><path d="M16 7h6v6" stroke="var(--ico-accent, currentColor)" /><path d="m22 7-8.5 8.5-5-5L2 17" /></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" stroke="var(--ico-accent, currentColor)" /><path d="M9 13v2" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" stroke="var(--ico-accent, currentColor)" /><path d="M21.21 15.89A10 10 0 1 1 8 2.83" /></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><circle cx="12" cy="16" r="1" stroke="var(--ico-accent, currentColor)" /><rect x="3" y="10" width="18" height="12" rx="2" /><path d="M7 10V7a5 5 0 0 1 10 0v3" /></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" /><rect width="20" height="8" x="2" y="14" rx="2" ry="2" /><line x1="6" x2="6.01" y1="6" y2="6" stroke="var(--ico-accent, currentColor)" /><line x1="6" x2="6.01" y1="18" y2="18" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /><circle cx="16.5" cy="7.5" r=".8" fill="var(--ico-accent, currentColor)" stroke="none" /></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" stroke="var(--ico-accent, currentColor)" /></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0" /><path d="M22 8c0-2.3-.8-4.3-2-6" stroke="var(--ico-accent, currentColor)" /><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /><path d="M4 2C2.8 3.7 2 5.7 2 8" stroke="var(--ico-accent, currentColor)" /></symbol>
+</svg>
+
 <nav><div class="wrap nav-in">
-  <a class="logo" href="index.html"><span class="mark">L</span><span>legisly<span class="est">★ EST 2025</span></span></a>
+  <a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a>
   <div class="nav-links">
     <a href="features.html">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
     <a class="nav-cta" href="index.html#waitlist">Request a Demo</a>
@@ -40,23 +95,81 @@
 
 <main>
   <div class="wrap ty">
-    <div class="check">✓</div>
-    <span class="eyebrow">✦ Message received</span>
+    <div class="check"><svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 6.5"/></svg></div>
+    <span class="eyebrow"><svg class="ico"><use href="#i-sparkle"/></svg>Message received</span>
     <h1>We'll be <span class="pop">in touch</span></h1>
-    <p>Thanks for your interest in Legisly. We'll reach out soon to schedule your demo and discuss how Legisly works for your firm.</p>
-    <a class="btn primary" href="index.html">Back to home →</a>
+    <p class="lede">Thanks for your interest in Legisly. We'll reach out soon to schedule your demo and discuss how Legisly works for your firm.</p>
+    <div class="ty-actions">
+      <a class="btn primary" href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book your demo now →</a>
+      <a class="btn ghost" href="index.html">Back to home</a>
+    </div>
+    <p class="ty-trust"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>No spam, ever. Questions? <a href="mailto:contact@legisly.ai">contact@legisly.ai</a></p>
   </div>
+
+  <section class="wrap ty-next reveal">
+    <div class="sec-k">What happens next</div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <span class="ic ic-primary"><svg class="ico"><use href="#i-bell"/></svg></span>
+        <h3>We review your request</h3>
+        <p>Our team reads every request — usually within one business day.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <span class="ic ic-ai"><svg class="ico"><use href="#i-calendar"/></svg></span>
+        <h3>We email you to schedule</h3>
+        <p>We'll reach out to find a time that works and confirm your demo.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <span class="ic ic-green"><svg class="ico"><use href="#i-rocket"/></svg></span>
+        <h3>Live walkthrough</h3>
+        <p>A tailored walkthrough of Legisly, built around your firm and clients.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap ty-wait reveal">
+    <div class="sec-k">While you wait</div>
+    <div class="card-grid">
+      <a class="icard" href="how-it-works.html">
+        <span class="ic ic-primary"><svg class="ico"><use href="#i-cycle"/></svg></span>
+        <h4>How it works</h4>
+        <p>See how Legisly turns CA legislative activity into firm-ready intelligence.</p>
+        <span class="arrow">Explore →</span>
+      </a>
+      <a class="icard" href="features.html">
+        <span class="ic ic-ai"><svg class="ico"><use href="#i-sparkle"/></svg></span>
+        <h4>Features</h4>
+        <p>Live hearing intelligence, AI analysis, and branded client portals.</p>
+        <span class="arrow">Browse →</span>
+      </a>
+      <a class="icard" href="faq.html">
+        <span class="ic ic-gold"><svg class="ico"><use href="#i-bulb"/></svg></span>
+        <h4>FAQ</h4>
+        <p>Common questions on pricing, data sources, security, and onboarding.</p>
+        <span class="arrow">Read →</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="ty-foot"></div>
 </main>
 
 <footer><div class="wrap">
   <div class="foot-grid">
-    <div class="foot-brand"><a class="logo" href="index.html"><span class="mark">L</span>legisly</a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
-    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a></div>
+    <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a><a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a Demo</a></div>
     <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
     <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
   </div>
   <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
 </div></footer>
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i*0.08)+'s';io.observe(el)});
+</script>
 <script>(function(){var t=document.querySelector(".nav-toggle"),n=document.querySelector(".nav-in");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o)});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded",false)})});})();</script>
 </body>
 </html>
