@@ -95,9 +95,13 @@
   <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0" /><path d="M22 8c0-2.3-.8-4.3-2-6" stroke="var(--ico-accent, currentColor)" /><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /><path d="M4 2C2.8 3.7 2 5.7 2 8" stroke="var(--ico-accent, currentColor)" /></symbol>
 </svg>
 
-<nav><div class="wrap nav-in nav-min">
+<nav><div class="wrap nav-in">
   <a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a>
-  <a class="nav-cta" href="index.html#request">Request access</a>
+  <div class="nav-links">
+    <a href="features.html">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
+    <a class="nav-cta" href="index.html#waitlist">Request a Demo</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></nav>
 
 <main>
@@ -213,7 +217,7 @@
 
     <h2 id="contact" style="scroll-margin-top:92px">15. Contact</h2>
     <p>For questions about these Terms, contact us at: <a href="mailto:legal@legisly.ai">legal@legisly.ai</a></p>
-    <p>Legisly Labs, Inc.<br>United States</p>
+    <p>Legisly Labs, Inc.<br>California, USA</p>
     </div>
   </div></div>
 
@@ -231,12 +235,15 @@
 <button class="to-top" type="button" aria-label="Back to top"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button>
 
 <footer><div class="wrap">
-  <div class="foot-min">
-    <a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a>
-    <nav class="foot-links"><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+  <div class="foot-grid">
+    <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a><a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a Demo</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
   </div>
   <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
 </div></footer>
+<script>(function(){var t=document.querySelector(".nav-toggle"),n=document.querySelector(".nav-in");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o)});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded",false)})});})();</script>
 <script>
 /* reveal */
 (function(){var els=document.querySelectorAll(".reveal");if(!("IntersectionObserver"in window)||!els.length){els.forEach(function(e){e.classList.add("in")});return}var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})();
