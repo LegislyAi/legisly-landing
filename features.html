@@ -7,9 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
-<meta name="description" content="Explore Legisly's features: CA bill tracking, live hearing intelligence, AI reports, client and position management, and more.">
+<meta name="description" content="Explore Legisly's features: CA bill tracking, semantic search, an AI summary on every bill, client reports, and position management.">
 <meta property="og:title" content="Features — Legisly">
-<meta property="og:description" content="Explore Legisly's features: CA bill tracking, live hearing intelligence, AI reports, client and position management, and more.">
+<meta property="og:description" content="Explore Legisly's features: CA bill tracking, semantic search, an AI summary on every bill, client reports, and position management.">
 <meta property="og:image" content="https://legisly.ai/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -18,6 +18,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
+<script src="site.js" defer></script>
 <style>
   .eyebrow .ico{width:14px;height:14px}
   /* jump nav */
@@ -81,7 +82,7 @@
   <a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a>
   <div class="nav-links">
     <a href="features.html" class="active">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
-    <a class="nav-cta" href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Request Demo</a>
+    <a class="nav-login" data-app="login" href="https://d1v7uf95aw2lbq.cloudfront.net/auth/login">Log in</a><a class="nav-cta" data-app="register" href="https://d1v7uf95aw2lbq.cloudfront.net/auth/register">Start free trial</a>
   </div>
   <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></nav>
@@ -90,7 +91,7 @@
   <div class="wrap page-head">
     <span class="eyebrow"><svg class="ico"><use href="#i-sparkle"/></svg>Purpose-built for CA lobbying firms</span>
     <h1>Everything your firm needs <span class="pop">to win</span></h1>
-    <p class="lede">Real-time hearing intelligence, CA + Federal bill tracking, and AI-powered analysis — in one platform.</p>
+    <p class="lede">Real-time hearing intelligence, CA state &amp; local bill tracking, and AI-powered analysis — in one platform.</p>
     <nav class="fjump" aria-label="Feature categories">
       <a href="#cat-data">Data &amp; coverage</a>
       <a href="#cat-clients">Clients &amp; reporting</a>
@@ -106,9 +107,9 @@
       <div class="fgrid">
         <div class="fcard reveal">
           <span class="ic ic-primary"><svg class="ico"><use href="#i-server"/></svg></span>
-          <div class="fhead"><h3>CA + Federal Data Pipeline</h3><span class="pill p-auto">Automated</span></div>
-          <p class="desc">Direct integrations with leginfo.legislature.ca.gov and Congress.gov. Every California and federal bill, amendment, and vote — ingested automatically.</p>
-          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>California leginfo integration</li><li><span class="ck" aria-hidden="true"></span>Congress.gov federal bill data</li><li><span class="ck" aria-hidden="true"></span>Automated ingestion &amp; normalization</li><li><span class="ck" aria-hidden="true"></span>Real-time sync with official sources</li></ul>
+          <div class="fhead"><h3>CA Legislative Data Pipeline</h3><span class="pill p-auto">Automated</span></div>
+          <p class="desc">Direct integration with leginfo.legislature.ca.gov. Every California bill, amendment, vote, and committee analysis — ingested and normalized automatically.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>California leginfo integration</li><li><span class="ck" aria-hidden="true"></span>Committee analyses &amp; vote records</li><li><span class="ck" aria-hidden="true"></span>Automated ingestion &amp; normalization</li><li><span class="ck" aria-hidden="true"></span>Real-time sync with official sources</li></ul>
         </div>
         <div class="fcard reveal">
           <span class="ic ic-primary"><svg class="ico"><use href="#i-bill"/></svg></span>
@@ -118,15 +119,16 @@
         </div>
         <div class="fcard reveal">
           <span class="ic ic-primary"><svg class="ico"><use href="#i-calendar"/></svg></span>
-          <div class="fhead"><h3>Calendar &amp; Legislator Profiles</h3><span class="pill p-auto">Automated</span></div>
-          <p class="desc">Never miss a hearing. Full CA and federal legislative calendars, plus detailed legislator profiles with voting history and committee assignments.</p>
-          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>CA &amp; federal hearing calendars</li><li><span class="ck" aria-hidden="true"></span>Sync to Google / Outlook / iCal</li><li><span class="ck" aria-hidden="true"></span>Legislator bios &amp; voting patterns</li><li><span class="ck" aria-hidden="true"></span>Committee assignments &amp; contacts</li></ul>
+          <div class="fhead"><h3>Hearings, Legislators &amp; Committees</h3><span class="pill p-auto">Automated</span></div>
+          <p class="desc">Never miss a hearing. The Assembly and Senate daily file scraped in near-real-time, plus legislator profiles with the Capitol Codex staff roster and committee assignments.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>Hearing schedule from the daily file</li><li><span class="ck" aria-hidden="true"></span>Legislator bios &amp; voting history</li><li><span class="ck" aria-hidden="true"></span>Capitol Codex staff roster</li><li><span class="ck" aria-hidden="true"></span>Committee assignments &amp; contacts</li></ul>
+          <p class="desc" style="margin-top:14px"><span class="soon">Coming soon</span> Google / Outlook / iCal calendar sync.</p>
         </div>
         <div class="fcard reveal">
           <span class="ic ic-primary"><svg class="ico"><use href="#i-scale"/></svg></span>
-          <div class="fhead"><h3>CA &amp; Federal Regulatory Tracking</h3><span class="pill p-auto">Automated</span></div>
-          <p class="desc">Track California OAL rulemaking, Federal Register notices, and Regulations.gov activity — all in one place alongside your bill tracking.</p>
-          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>California OAL rulemaking tracking</li><li><span class="ck" aria-hidden="true"></span>Federal Register integration</li><li><span class="ck" aria-hidden="true"></span>Regulations.gov comment tracking</li><li><span class="ck" aria-hidden="true"></span>Unified legislative + regulatory view</li></ul>
+          <div class="fhead"><h3>CA Regulatory Tracking</h3><span class="soon">Coming soon</span></div>
+          <p class="desc">In development: California OAL rulemaking tracked in one place alongside your bills, so the regulatory side of an issue sits next to the legislative one.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>California OAL rulemaking tracking</li><li><span class="ck" aria-hidden="true"></span>Public comment window alerts</li><li><span class="ck" aria-hidden="true"></span>Unified legislative + regulatory view</li></ul>
         </div>
       </div>
     </section>
@@ -154,8 +156,8 @@
       <div class="fgrid">
         <div class="fcard feat-hot reveal">
           <span class="ic ic-live"><svg class="ico"><use href="#i-live"/></svg></span>
-          <div class="fhead"><h3>Live Hearing Intelligence — Capture &amp; Transcription</h3><span class="pill p-live">Live · Flagship</span></div>
-          <p class="desc">Our flagship. Real-time hearing audio capture and transcription — never miss what was said in committee, even when you can't be in the room.</p>
+          <div class="fhead"><h3>Live Hearing Intelligence — Capture &amp; Transcription</h3><span class="soon">Coming soon</span></div>
+          <p class="desc">In development, and the thing we are building next: real-time hearing audio capture and transcription, so you never miss what was said in committee even when you can't be in the room. Hearing schedules and committee analyses are already in the product today.</p>
           <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>Real-time hearing audio capture</li><li><span class="ck" aria-hidden="true"></span>Automated speech-to-text</li><li><span class="ck" aria-hidden="true"></span>Speaker identification &amp; attribution</li><li><span class="ck" aria-hidden="true"></span>Searchable hearing archives</li></ul>
         </div>
         <div class="fcard reveal">
@@ -166,8 +168,8 @@
         </div>
         <div class="fcard reveal">
           <span class="ic ic-ai"><svg class="ico"><use href="#i-activity"/></svg></span>
-          <div class="fhead"><h3>Live Intelligence — AI Analysis &amp; Votes</h3><span class="pill p-ai">AI-Powered</span></div>
-          <p class="desc">AI-powered hearing summaries, real-time vote detection, and outcome predictions — delivered as hearings happen.</p>
+          <div class="fhead"><h3>Live Intelligence — AI Analysis &amp; Votes</h3><span class="soon">Coming soon</span></div>
+          <p class="desc">In development: AI hearing summaries, vote detection, and outcome signals delivered as hearings happen. Ships alongside live capture.</p>
           <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>AI-generated hearing summaries</li><li><span class="ck" aria-hidden="true"></span>Real-time vote detection &amp; tallies</li><li><span class="ck" aria-hidden="true"></span>Sentiment &amp; outcome predictions</li><li><span class="ck" aria-hidden="true"></span>Key moment highlights &amp; alerts</li></ul>
         </div>
       </div>
@@ -179,13 +181,13 @@
         <div class="fcard reveal">
           <span class="ic ic-primary"><svg class="ico"><use href="#i-bell"/></svg></span>
           <div class="fhead"><h3>Smart Alerts</h3><span class="pill p-auto">Automated</span></div>
-          <p class="desc">Get notified the moment a bill moves, an amendment drops, or a hearing is scheduled. Email alerts with daily or weekly digest options.</p>
-          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>Bill status &amp; amendment alerts</li><li><span class="ck" aria-hidden="true"></span>Hearing &amp; vote notifications</li><li><span class="ck" aria-hidden="true"></span>Regulatory change alerts</li><li><span class="ck" aria-hidden="true"></span>Daily or weekly digest options</li></ul>
+          <p class="desc">Get notified the moment a bill moves, an amendment drops, or a hearing is scheduled — in-app, by email, SMS, or web push.</p>
+          <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>Bill status &amp; amendment alerts</li><li><span class="ck" aria-hidden="true"></span>Hearing &amp; vote notifications</li><li><span class="ck" aria-hidden="true"></span>In-app, email, SMS &amp; web push</li><li><span class="ck" aria-hidden="true"></span>Activity feed &amp; change detection</li></ul>
         </div>
         <div class="fcard reveal">
           <span class="ic ic-primary"><svg class="ico"><use href="#i-pie"/></svg></span>
-          <div class="fhead"><h3>CA Budget Tracking &amp; FPPC Compliance</h3><span class="pill p-auto">Automated</span></div>
-          <p class="desc">Track California budget trailer bills and FPPC fundraising compliance — the details that matter most to your clients.</p>
+          <div class="fhead"><h3>CA Budget Tracking &amp; FPPC Compliance</h3><span class="soon">Coming soon</span></div>
+          <p class="desc">In development: California budget trailer bills and FPPC fundraising compliance, tracked next to the bills they affect.</p>
           <ul class="fbul"><li><span class="ck" aria-hidden="true"></span>CA budget &amp; trailer bill tracking</li><li><span class="ck" aria-hidden="true"></span>FPPC fundraising compliance tools</li><li><span class="ck" aria-hidden="true"></span>Contribution limit tracking</li><li><span class="ck" aria-hidden="true"></span>Filing deadline reminders</li></ul>
         </div>
       </div>
@@ -194,28 +196,25 @@
   </div></div>
 
   <section class="cta-sec" style="padding-top:72px"><div class="wrap"><div class="cta-card reveal">
-    <span class="pin">Join the Founding 20</span>
-    <h2>3 months free + locked pricing for life</h2>
-    <p>First 20 firms get founding-member pricing locked for life. Real-time hearing intelligence, AI analysis, and branded client portals.</p>
-    <a class="btn primary" href="index.html#waitlist">Claim your spot →</a>
-    <div class="small">Launching Summer 2026 — limited founding-member spots</div>
+    <span class="pin">14 days free · no charge today</span>
+    <h2>Put it in front of your own bills</h2>
+    <p>Semantic search across the CA legislature, an AI summary on every bill, and branded client reports — set up in minutes.</p>
+    <div class="cta-actions">
+      <a class="btn primary" data-app="register" href="https://d1v7uf95aw2lbq.cloudfront.net/auth/register">Start 14-day free trial →</a>
+      <a class="btn ghost" href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a 30-min demo</a>
+    </div>
+    <div class="small">A card is required to start the trial. Nothing is charged today.</div>
   </div></div></section>
 </main>
 
 <footer><div class="wrap">
   <div class="foot-grid">
-    <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with an AI summary on every bill, purpose-built for California lobbying firms.</p></div>
     <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a><a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a Demo</a></div>
     <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
     <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
   </div>
   <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
 </div></footer>
-
-<script>
-  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%2*0.06)+'s';io.observe(el)});
-</script>
-<script>(function(){var t=document.querySelector(".nav-toggle"),n=document.querySelector(".nav-in");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o)});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded",false)})});})();</script>
 </body>
 </html>
