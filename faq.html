@@ -18,6 +18,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
+<script src="site.js" defer></script>
 <style>
   .eyebrow .ico{width:14px;height:14px}
   /* category band dividers (matches features.html .fcat-h) */
@@ -74,7 +75,7 @@
   <a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a>
   <div class="nav-links">
     <a href="features.html">Features</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
-    <a class="nav-cta" href="index.html#waitlist">Request a Demo</a>
+    <a class="nav-login" data-app="login" href="https://d1v7uf95aw2lbq.cloudfront.net/auth/login">Log in</a><a class="nav-cta" data-app="register" href="https://d1v7uf95aw2lbq.cloudfront.net/auth/register">Start free trial</a>
   </div>
   <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></nav>
@@ -91,16 +92,16 @@
     <section class="fcat">
       <div class="fcat-h"><span class="k">Product &amp; coverage</span><span class="ln"></span></div>
       <div class="faq-list">
-        <details class="faq reveal" open><summary>What is Legisly?<span class="tw">+</span></summary><div class="ans"><p>Legisly is a legislative tracking platform with real-time hearing intelligence, purpose-built for California lobbying firms. It covers both California and federal legislation in a single integrated platform.</p><p>Features include real-time bill tracking, live hearing transcription and AI analysis, client and position management, branded client reports, a white-labeled Client Intelligence Portal, regulatory tracking, budget tracking, and FPPC compliance tools.</p></div></details>
+        <details class="faq reveal" open><summary>What is Legisly?<span class="tw">+</span></summary><div class="ans"><p>Legisly is a legislative tracking platform purpose-built for California lobbying firms. It covers the California legislature in a single integrated platform, and every bill arrives with an AI-written summary and amendment analysis.</p><p>Shipped today: keyword and semantic bill search, tracking and positions, notes and assignments, a review inbox, engagements and time tracking, alerts by in-app, email, SMS and web push, hearings, legislators, committees, client reports, and a branded Client Intelligence Portal. On Intelligence and Team you also get the agentic AI assistant, bill and review recommendations, outreach targeting, and gut-and-amend detection.</p><p>On the roadmap: live hearing capture and transcription, calendar sync, regulatory tracking, budget tracking, and FPPC compliance.</p></div></details>
         <details class="faq reveal"><summary>Who is Legisly for?<span class="tw">+</span></summary><div class="ans"><p>Legisly is purpose-built for California lobbying firms and government affairs professionals, including:</p><div class="bul"><span><span class="ck" aria-hidden="true"></span>Solo lobbyists and small lobbying firms</span><span><span class="ck" aria-hidden="true"></span>Mid-size and large CA lobbying firms</span><span><span class="ck" aria-hidden="true"></span>Government affairs consultancies</span><span><span class="ck" aria-hidden="true"></span>Trade associations with CA legislative priorities</span><span><span class="ck" aria-hidden="true"></span>Corporate government relations teams focused on Sacramento</span></div></div></details>
-        <details class="faq reveal"><summary>What jurisdictions do you cover?<span class="tw">+</span></summary><div class="ans"><p>Legisly covers California state legislation (via leginfo.legislature.ca.gov) and federal legislation (via Congress.gov). We also track CA regulatory activity through the Office of Administrative Law and federal rulemakings through the Federal Register and Regulations.gov.</p><p>Multi-state coverage (TX, NY, FL) is planned for a future phase — our primary focus is California + Federal.</p></div></details>
+        <details class="faq reveal"><summary>What jurisdictions do you cover?<span class="tw">+</span></summary><div class="ans"><p>Legisly covers the California legislature via leginfo.legislature.ca.gov — every bill, amendment, vote, committee analysis, hearing, legislator, and committee. Bill search is both keyword and semantic.</p><p>Local government and multi-state coverage are planned for future phases. Today the ingested dataset is the California legislature; the AI assistant on Intelligence and Team can web-search beyond it.</p></div></details>
       </div>
     </section>
 
     <section class="fcat">
       <div class="fcat-h"><span class="k">Platform &amp; intelligence</span><span class="ln"></span></div>
       <div class="faq-list">
-        <details class="faq reveal"><summary>What is Live Hearing Intelligence?<span class="tw">+</span></summary><div class="ans"><p>Legisly captures and transcribes CA legislative hearings in real time with speaker identification and timestamp linking. Our AI then generates hearing summaries, extracts key moments, detects votes, and scores hearing relevance per client.</p><p>All hearings are archived with searchable transcripts. Federal committee hearings are also monitored where audio/video is available.</p></div></details>
+        <details class="faq reveal"><summary>What is Live Hearing Intelligence?<span class="tw">+</span></summary><div class="ans"><p><span class="soon">Coming soon</span> This one is in development, not shipped. The plan: capture and transcribe CA legislative hearings in real time with speaker identification and timestamp linking, then generate hearing summaries, extract key moments, detect votes, and score relevance per client.</p><p>What you get today is the hearing schedule from the Assembly and Senate daily file, committee analyses, and the support/opposition register for each bill.</p></div></details>
         <details class="faq reveal"><summary>What is the Client Intelligence Portal?<span class="tw">+</span></summary><div class="ans"><p>The Client Intelligence Portal is a white-labeled, read-only login that you give to your clients. Each client sees a live bill status dashboard, hearing alerts, position notes from their lobbyist, and a legislative calendar filtered to their issues.</p><p>The portal is branded per firm (your branding, not Legisly's), and a WYSIWYG builder lets you customize what each client sees.</p></div></details>
         <details class="faq reveal"><summary>Can I migrate from my current tools?<span class="tw">+</span></summary><div class="ans"><p>Yes. Legisly includes a Data Migration Wizard that imports your client bill lists, positions, tags, notes, and historical tracking data via CSV/Excel. We support imports from any legacy legislative tracking system.</p><p>Your firm can switch without losing any client history or data.</p></div></details>
       </div>
@@ -110,14 +111,14 @@
       <div class="fcat-h"><span class="k">Security &amp; compliance</span><span class="ln"></span></div>
       <div class="faq-list">
         <details class="faq reveal"><summary>Is my data secure?<span class="tw">+</span></summary><div class="ans"><p>Absolutely. Legisly uses multi-tenant architecture with strict firm and client separation. We use bank-level encryption for all data in transit and at rest. Client positions, internal memos, and firm data are never shared between tenants.</p><p>Enterprise plans include SSO/OAuth and role-based access control. See our <a href="security.html">Security page</a> for details.</p></div></details>
-        <details class="faq reveal"><summary>What does FPPC compliance tracking include?<span class="tw">+</span></summary><div class="ans"><p>Legisly tracks contributions, supports 460/496 form workflows, and maintains a fundraising activity log per client. You'll get compliance deadline alerts for FPPC filing dates so nothing slips through the cracks.</p></div></details>
+        <details class="faq reveal"><summary>What will FPPC compliance tracking include?<span class="tw">+</span></summary><div class="ans"><p><span class="soon">Coming soon</span> FPPC compliance is on the roadmap, not in the product yet. The plan is contribution tracking, 460/496 form workflows, a fundraising activity log per client, and deadline alerts for filing dates.</p></div></details>
       </div>
     </section>
 
     <section class="fcat">
       <div class="fcat-h"><span class="k">Pricing &amp; launch</span><span class="ln"></span></div>
       <div class="faq-list">
-        <details class="faq reveal"><summary>When is Legisly launching?<span class="tw">+</span></summary><div class="ans"><p>Legisly is launching in Summer 2026, starting with California + Federal coverage. Development begins March 2026. Request a demo to get early access and provide input during development.</p></div></details>
+        <details class="faq reveal"><summary>Can I try Legisly before committing?<span class="tw">+</span></summary><div class="ans"><p>Yes — every plan starts with a 14-day free trial. A card is required to begin, but nothing is charged today; the first payment lands when the trial ends, and you can cancel any time before that.</p><p>There is no sales call in the way: pick a plan, enter a card, and your workspace is provisioned automatically. If you would rather be walked through it, book a 30-minute demo and we will set your firm up together.</p></div></details>
         <details class="faq reveal"><summary>How do I get in touch?<span class="tw">+</span></summary><div class="ans"><p>Email us at <a href="mailto:contact@legisly.ai">contact@legisly.ai</a> or visit our <a href="contact.html">Contact page</a>. We respond to all inquiries within 24 hours.</p></div></details>
       </div>
     </section>
@@ -134,19 +135,13 @@
 
 <footer><div class="wrap">
   <div class="foot-grid">
-    <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with real-time hearing intelligence, purpose-built for California lobbying firms.</p></div>
+    <div class="foot-brand"><a class="logo" href="index.html"><img class="mark" src="logo-mark.svg" alt="" width="38" height="38"><span>legisly<span class="est">Know everything.</span></span></a><p>Legislative tracking with an AI summary on every bill, purpose-built for California lobbying firms.</p></div>
     <div class="foot-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How It Works</a><a href="faq.html">FAQ</a><a href="https://calendly.com/legislyca/legisly-demo?month=2026-06" target="_blank" rel="noopener">Book a Demo</a></div>
     <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
     <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="security.html">Security</a></div>
   </div>
   <div class="foot-bottom"><span>© 2026 Legisly Labs, Inc. All rights reserved.</span><a class="x" href="https://x.com/LegislyAI">𝕏</a></div>
 </div></footer>
-
-<script>
-  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
-  document.querySelectorAll('.reveal').forEach((el)=>io.observe(el));
-</script>
-<script>(function(){var t=document.querySelector(".nav-toggle"),n=document.querySelector(".nav-in");if(!t||!n)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o)});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded",false)})});})();</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -157,7 +152,7 @@
       "name": "What is Legisly?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Legisly is a legislative tracking platform with real-time hearing intelligence, purpose-built for California lobbying firms. It covers both California and federal legislation in a single integrated platform. Features include real-time bill tracking, live hearing transcription and AI analysis, client and position management, branded client reports, a white-labeled Client Intelligence Portal, regulatory tracking, budget tracking, and FPPC compliance tools."
+        "text": "Legisly is a legislative tracking platform purpose-built for California lobbying firms. It covers the California legislature in a single integrated platform, and every bill arrives with an AI-written summary and amendment analysis. Shipped today: keyword and semantic bill search, tracking and positions, notes and assignments, a review inbox, engagements and time tracking, alerts by in-app, email, SMS and web push, hearings, legislators, committees, client reports, and a branded Client Intelligence Portal. On Intelligence and Team you also get the agentic AI assistant, bill and review recommendations, outreach targeting, and gut-and-amend detection. On the roadmap: live hearing capture and transcription, calendar sync, regulatory tracking, budget tracking, and FPPC compliance."
       }
     },
     {
@@ -173,7 +168,7 @@
       "name": "What jurisdictions do you cover?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Legisly covers California state legislation (via leginfo.legislature.ca.gov) and federal legislation (via Congress.gov). We also track CA regulatory activity through the Office of Administrative Law and federal rulemakings through the Federal Register and Regulations.gov. Multi-state coverage (TX, NY, FL) is planned for a future phase — our primary focus is California + Federal."
+        "text": "Legisly covers the California legislature via leginfo.legislature.ca.gov — every bill, amendment, vote, committee analysis, hearing, legislator, and committee. Bill search is both keyword and semantic. Local government and multi-state coverage are planned for future phases. Today the ingested dataset is the California legislature; the AI assistant on Intelligence and Team can web-search beyond it."
       }
     },
     {
@@ -181,7 +176,7 @@
       "name": "What is Live Hearing Intelligence?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Legisly captures and transcribes CA legislative hearings in real time with speaker identification and timestamp linking. Our AI then generates hearing summaries, extracts key moments, detects votes, and scores hearing relevance per client. All hearings are archived with searchable transcripts. Federal committee hearings are also monitored where audio/video is available."
+        "text": "Live Hearing Intelligence is in development, not yet shipped. The plan is to capture and transcribe CA legislative hearings in real time with speaker identification and timestamp linking, then generate hearing summaries, extract key moments, detect votes, and score relevance per client. What Legisly provides today is the hearing schedule from the Assembly and Senate daily file, committee analyses, and the support/opposition register for each bill."
       }
     },
     {
@@ -210,18 +205,18 @@
     },
     {
       "@type": "Question",
-      "name": "What does FPPC compliance tracking include?",
+      "name": "What will FPPC compliance tracking include?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Legisly tracks contributions, supports 460/496 form workflows, and maintains a fundraising activity log per client. You'll get compliance deadline alerts for FPPC filing dates so nothing slips through the cracks."
+        "text": "FPPC compliance is on the roadmap, not in the product yet. The plan is contribution tracking, 460/496 form workflows, a fundraising activity log per client, and deadline alerts for filing dates."
       }
     },
     {
       "@type": "Question",
-      "name": "When is Legisly launching?",
+      "name": "Can I try Legisly before committing?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Legisly is launching in Summer 2026, starting with California + Federal coverage. Development begins March 2026. Request a demo to get early access and provide input during development."
+        "text": "Yes — every plan starts with a 14-day free trial. A card is required to begin, but nothing is charged today; the first payment lands when the trial ends, and you can cancel any time before that. There is no sales call in the way: pick a plan, enter a card, and your workspace is provisioned automatically. If you would rather be walked through it, book a 30-minute demo and we will set your firm up together."
       }
     },
     {

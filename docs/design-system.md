@@ -70,6 +70,28 @@ i-scale, i-bolt, i-heart, i-cycle, i-globe, i-rocket, i-bulb, i-chart-up,
 i-cpu, i-pie, i-lock, i-server, i-key, i-activity, i-shield, i-target, i-bell.
 Add new icons to icons.svg following the same grid/stroke/accent rules.
 
+## Roadmap marker
+
+Features that are designed but not shipped carry `.soon` — a gold-tinted pill
+reading "Coming soon", using the same tint as `.ic-gold` so it reads as
+distinct from the orange "Automated" and teal "AI-Powered" capability pills.
+Use `.soon.on-dark` on dark sections. Index's feature cards use the matching
+`.t-soon` tagpill variant.
+
+Never present an unshipped capability without one. The paired copy should also
+say what *does* ship today, so the section stays useful rather than aspirational.
+
+## Nav & CTA pattern
+
+Every page's nav closes with the same two-door pair: `.nav-login` (quiet muted
+text link, existing customers) then `.nav-cta` (orange button, "Start free
+trial"). In the mobile drawer the pair is separated from the section links by a
+1px `--border` rule so the auth actions read as their own group.
+
+Closing CTA cards pair the trial button with a demo button inside
+`.cta-actions`; on `.cta-card` the ghost button is re-tinted for the orange
+gradient (translucent white fill, white text) and both go full-width under 560px.
+
 ## Motion
 
 - Stacked warm shadows (`--shadow`, `--shadow-lift`): hairline ring + contact
@@ -77,10 +99,10 @@ Add new icons to icons.svg following the same grid/stroke/accent rules.
 - Hero atmosphere: blurred aurora blobs (`.hero::before`, drifting 16s loop) —
   warm orange/amber dominant, teal kept faint (≤14%) so the cream never reads
   muddy. Gradient headline accent via `background-clip:text` on `.pop`.
-- The "FIRST 20 FREE" badge is an organic ink-stamp SVG (wobbly blob + dashed
-  ring + satellite droplets) with a delayed "thunk" entrance (`stamp`
-  keyframes). Promotional badges should use this stamped-ink language, not
-  plain circles.
+- The hero trial badge ("FREE FOR 14 DAYS") is an organic ink-stamp SVG (wobbly
+  blob + dashed ring + satellite droplets) with a delayed "thunk" entrance
+  (`stamp` keyframes). Promotional badges should use this stamped-ink language,
+  not plain circles.
 - Primary buttons carry a hover sheen sweep (`.btn.primary::after`).
 - Buttons: hover = `translateY(-2px)` + lift shadow; press = `scale(.97)`.
 - Cards: hover = lift + orange-tinted border + 3px gradient top hairline
