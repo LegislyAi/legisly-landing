@@ -7,7 +7,7 @@
   /* The one place the product app lives. Every CTA also ships a working absolute
      href in markup, so this file only has to be right for param decoration — if it
      fails to load, the links still go to the right place. */
-  var APP_ORIGIN = 'https://d1v7uf95aw2lbq.cloudfront.net';
+  var APP_ORIGIN = 'https://app.legisly.ai';
   var APP_PATHS = { register: '/auth/register', login: '/auth/login' };
 
   var CARRY = /^(utm_[a-z_]+|gclid|fbclid|msclkid)$/;
