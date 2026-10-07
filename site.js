@@ -47,6 +47,7 @@
       var withPlan = Object.assign({}, params);
       if (link.dataset.plan) withPlan.plan = link.dataset.plan;
       if (link.dataset.cycle) withPlan.cycle = link.dataset.cycle;
+      if (link.dataset.seats) withPlan.seats = link.dataset.seats;
       link.href = appUrl(link.dataset.app, withPlan);
     });
 

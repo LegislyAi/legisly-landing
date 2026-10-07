@@ -45,6 +45,17 @@
   .tier .btn{width:100%;justify-content:center;margin-top:auto}
   .tier.pop .btn{background:var(--primary);color:#fff}
   .tier .tnote{font-size:11.5px;color:var(--muted);font-weight:600;text-align:center;line-height:1.45;margin-top:10px}
+  /* ---- Team seat picker (shown by its script; without JS the card sells 2 seats) ---- */
+  .tier .seats{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding:10px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm)}
+  .tier .seats[hidden]{display:none}
+  .tier .seats label{font-size:13.5px;font-weight:700;color:var(--text)}
+  .tier .seats:not([hidden]) + .btn{margin-top:12px}
+  .stepper{display:inline-flex;align-items:center;gap:6px}
+  .stepper button{display:grid;place-items:center;width:40px;height:40px;font-family:var(--body);font-size:19px;font-weight:700;line-height:1;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:11px;cursor:pointer;transition:.18s}
+  .stepper button:hover:not(:disabled){border-color:var(--primary);color:var(--primary)}
+  .stepper button:disabled{color:var(--muted);background:var(--surface-2);cursor:not-allowed}
+  .stepper input{width:58px;height:40px;text-align:center;font-family:var(--display);font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--ink);background:var(--surface);border:1px solid var(--border);border-radius:11px}
+  .stepper input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
   .ai-tag{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;background:var(--accent-soft);color:var(--accent);font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.04em;padding:4px 11px;border-radius:999px;margin:0 0 12px}
 
   /* ---- Team price argument ---- */
@@ -189,8 +200,16 @@
         <li><span class="ck">✓</span>Roles and permissions (firm admin, lobbyist, client viewer)</li>
         <li><span class="ck">✓</span>One invoice, per seat, prorated when you add or remove</li>
       </ul>
+      <div class="seats" data-seat-monthly="110" data-seat-yearly="1122" hidden>
+        <label for="team-seats">Seats</label>
+        <div class="stepper">
+          <button type="button" data-step="-1" aria-label="Remove a seat">&minus;</button>
+          <input id="team-seats" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" value="2">
+          <button type="button" data-step="1" aria-label="Add a seat">+</button>
+        </div>
+      </div>
       <a class="btn ghost" data-app="register" data-plan="team" data-cycle="monthly" href="https://app.legisly.ai/auth/register?plan=team">Start with 2 seats</a>
-      <div class="tnote" data-monthly="$220/mo for two seats. No charge today." data-yearly="$2,244/yr for two seats. No charge today.">$220/mo for two seats. No charge today.</div>
+      <div class="tnote" data-seat-note data-monthly="$220/mo for 2 seats. No charge today." data-yearly="$2,244/yr for 2 seats. No charge today.">$220/mo for 2 seats. No charge today.</div>
     </div>
   </div></div>
 
@@ -321,6 +340,60 @@
   }
 
   buttons.forEach(function(b){b.addEventListener("click",function(){apply(b.dataset.cycle)})});
+})();
+
+/* Team seat picker: the count prices the note under the Team button, relabels
+   both Team CTAs, and rides to the app on their links. The note keeps a monthly
+   and a yearly text, so the billing-cycle switch above goes on working. */
+(function(){
+  var picker=document.querySelector(".seats");
+  var note=document.querySelector("[data-seat-note]");
+  if(!picker||!note)return;
+  var field=picker.querySelector("input");
+  var down=picker.querySelector('[data-step="-1"]');
+  var up=picker.querySelector('[data-step="1"]');
+  var links=[].slice.call(document.querySelectorAll('[data-plan="team"]'));
+  var MIN=2,MAX=9999;
+  var seats=MIN;
+
+  function total(cycle){
+    return "$"+(seats*Number(picker.dataset[cycle==="yearly"?"seatYearly":"seatMonthly"])).toLocaleString("en-US");
+  }
+
+  function show(){
+    field.value=seats;
+    down.disabled=seats<=MIN;
+    up.disabled=seats>=MAX;
+    note.dataset.monthly=total("monthly")+"/mo for "+seats+" seats. No charge today.";
+    note.dataset.yearly=total("yearly")+"/yr for "+seats+" seats. No charge today.";
+    note.textContent=note.dataset[links[0].dataset.cycle];
+    links.forEach(function(link){
+      link.dataset.seats=seats;
+      link.textContent="Start with "+seats+" seats";
+    });
+    document.dispatchEvent(new Event("legisly:relink"));
+  }
+
+  function step(by){
+    seats=Math.min(MAX,Math.max(MIN,seats+by));
+    show();
+  }
+
+  down.addEventListener("click",function(){step(-1)});
+  up.addEventListener("click",function(){step(1)});
+  /* A number still being typed (empty, or below the minimum) changes nothing;
+     leaving the field puts the last good count back. */
+  field.addEventListener("input",function(){
+    var digits=field.value.replace(/\D/g,"").slice(0,4);
+    field.value=digits;
+    var typed=Number(digits);
+    if(typed>=MIN){seats=typed;show()}
+  });
+  field.addEventListener("blur",function(){field.value=seats});
+  field.addEventListener("focus",function(){field.select()});
+
+  picker.hidden=false;
+  show();
 })();
 </script>
 </body>
