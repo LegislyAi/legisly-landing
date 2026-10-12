@@ -7,9 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
-<meta name="description" content="Legisly pricing for California lobbying firms — Core $99/mo, Intelligence $150/mo, Team $110/seat. 14-day free trial, no charge today.">
+<meta name="description" content="Legisly pricing for California lobbying firms — Core $99/mo, Intelligence $150/mo, Team $50–$110 a seat by team size. 14-day free trial, no charge today.">
 <meta property="og:title" content="Pricing — Legisly | CA Lobbying Firm Plans">
-<meta property="og:description" content="Legisly pricing for California lobbying firms — Core $99/mo, Intelligence $150/mo, Team $110/seat. 14-day free trial, no charge today.">
+<meta property="og:description" content="Legisly pricing for California lobbying firms — Core $99/mo, Intelligence $150/mo, Team $50–$110 a seat by team size. 14-day free trial, no charge today.">
 <meta property="og:image" content="https://legisly.ai/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -45,6 +45,9 @@
   .tier .btn{width:100%;justify-content:center;margin-top:auto}
   .tier.pop .btn{background:var(--primary);color:#fff}
   .tier .tnote{font-size:11.5px;color:var(--muted);font-weight:600;text-align:center;line-height:1.45;margin-top:10px}
+  /* the cheaper seat count, when there is one, takes the note's place under the Team button */
+  .tier .tnote [hidden]{display:none}
+  .tier .tnote button{font:inherit;font-weight:800;color:var(--primary);background:none;border:0;padding:6px 2px;margin:-6px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
   /* ---- Team seat picker (shown by its script; without JS the card sells 2 seats) ---- */
   .tier .seats{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding:10px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm)}
   .tier .seats[hidden]{display:none}
@@ -58,13 +61,32 @@
   .stepper input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
   .ai-tag{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;background:var(--accent-soft);color:var(--accent);font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.04em;padding:4px 11px;border-radius:999px;margin:0 0 12px}
 
-  /* ---- Team price argument ---- */
-  .teamsave{display:flex;align-items:flex-start;gap:18px;max-width:1060px;margin:26px auto 0;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--assembly);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow)}
-  .teamsave .ic{flex:none;width:44px;height:44px;border-radius:13px}
-  .teamsave .ic .ico{width:22px;height:22px}
-  .teamsave h3{font-size:16.5px;font-weight:800;margin-bottom:6px}
-  .teamsave p{font-size:14px;color:var(--muted);line-height:1.6}
-  .teamsave b{color:var(--text);font-weight:700}
+  /* ---- Team price by seat count. The table's rows are the one place the per-seat
+          amounts are written: the seat picker reads them from here. ---- */
+  .bands{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;align-items:center;max-width:1060px;margin:26px auto 0;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--assembly);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow)}
+  .bands-copy{display:flex;align-items:flex-start;gap:18px}
+  .bands .ic{flex:none;width:44px;height:44px;border-radius:13px}
+  .bands .ic .ico{width:22px;height:22px}
+  .bands h3{font-size:16.5px;font-weight:800;margin-bottom:6px}
+  .bands p{font-size:14px;color:var(--muted);line-height:1.6;text-wrap:pretty}
+  .bands b{color:var(--text);font-weight:700}
+  .btable{width:100%;border-collapse:separate;border-spacing:0;font-size:14px;font-variant-numeric:tabular-nums}
+  .btable caption{caption-side:top;text-align:left;font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:0 14px 8px}
+  .btable th,.btable td{padding:9px 14px;text-align:right;border-bottom:1px solid var(--border)}
+  .btable th:first-child{text-align:left}
+  .btable thead th{font-size:12px;font-weight:700;color:var(--muted);background:var(--surface-2);border-top:1px solid var(--border)}
+  .btable thead th:first-child{border-left:1px solid var(--border);border-top-left-radius:var(--radius-sm)}
+  .btable thead th:last-child{border-right:1px solid var(--border);border-top-right-radius:var(--radius-sm)}
+  .btable tbody th{font-weight:700;color:var(--text);border-left:1px solid var(--border);white-space:nowrap}
+  .btable tbody td{font-weight:600;color:var(--muted)}
+  .btable tbody td:last-child{border-right:1px solid var(--border)}
+  .btable tbody tr:last-child th{border-bottom-left-radius:var(--radius-sm)}
+  .btable tbody tr:last-child td:last-child{border-bottom-right-radius:var(--radius-sm)}
+  /* the billing period in use reads stronger, and the band the picker is in is marked */
+  .bands[data-cycle="monthly"] .btable tbody td:nth-child(2),
+  .bands[data-cycle="yearly"] .btable tbody td:nth-child(3){color:var(--ink);font-weight:800}
+  .btable tr[aria-current="true"] th,.btable tr[aria-current="true"] td{background:color-mix(in srgb,var(--primary) 7%,var(--surface))}
+  .btable tr[aria-current="true"] th{box-shadow:inset 3px 0 0 var(--primary)}
 
   /* ---- trial mechanics ---- */
   .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1060px;margin:34px auto 0}
@@ -118,7 +140,8 @@
     .ctable-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
     .ctable{min-width:720px}
     .ctable .pname{font-size:16px}
-    .teamsave{flex-direction:column;gap:14px;padding:20px}
+    .bands{grid-template-columns:1fr;gap:20px;padding:20px}
+    .bands-copy{flex-direction:column;gap:14px}
   }
   @media(max-width:560px){
     .facts{grid-template-columns:1fr}
@@ -142,7 +165,7 @@
   <div class="wrap page-head">
     <span class="eyebrow"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>Three plans, one platform</span>
     <h1>Pricing built for <span class="pop">CA lobbying firms</span></h1>
-    <p class="lede">Core covers the California legislature end to end, with an AI summary on every bill. Intelligence adds an AI that works your portfolio. Team puts every Intelligence feature in front of your whole firm — for less per person.</p>
+    <p class="lede">Core covers the California legislature end to end, with an AI summary on every bill. Intelligence adds an AI that works your portfolio. Team puts every Intelligence feature in front of your whole firm, and each seat costs less as the firm grows.</p>
   </div>
 
   <div class="wrap cycle-row">
@@ -189,9 +212,9 @@
 
     <div class="tier reveal">
       <h3>Team</h3>
-      <div class="price"><span data-monthly="$110" data-yearly="$93.50">$110</span><span class="per">/seat/mo</span></div>
-      <div class="price-note" data-monthly="2 seats minimum · billed monthly" data-yearly="2 seats minimum · $1,122 per seat, billed yearly">2 seats minimum · billed monthly</div>
-      <p class="blurb">Intelligence for your whole firm — shared seats, shared workspace, one invoice. And it costs less per person than Intelligence.</p>
+      <div class="price"><span data-team-price>$110</span><span class="per">/seat/mo</span></div>
+      <div class="price-note" data-team-note>2 seats · $220 billed monthly</div>
+      <p class="blurb">Intelligence for your whole firm — shared seats, shared workspace, one invoice. The more seats you take, the less each one costs.</p>
       <span class="ai-tag">✦ On-demand &amp; agentic AI</span>
       <ul>
         <li class="head">Everything in Intelligence, for every seat:</li>
@@ -200,7 +223,7 @@
         <li><span class="ck">✓</span>Roles and permissions (firm admin, lobbyist, client viewer)</li>
         <li><span class="ck">✓</span>One invoice, per seat, prorated when you add or remove</li>
       </ul>
-      <div class="seats" data-seat-monthly="110" data-seat-yearly="1122" hidden>
+      <div class="seats" hidden>
         <label for="team-seats">Seats</label>
         <div class="stepper">
           <button type="button" data-step="-1" aria-label="Remove a seat">&minus;</button>
@@ -209,16 +232,31 @@
         </div>
       </div>
       <a class="btn ghost" data-app="register" data-plan="team" data-cycle="monthly" href="https://app.legisly.ai/auth/register?plan=team">Start with 2 seats</a>
-      <div class="tnote" data-seat-note data-monthly="$220/mo for 2 seats. No charge today." data-yearly="$2,244/yr for 2 seats. No charge today.">$220/mo for 2 seats. No charge today.</div>
+      <div class="tnote"><span role="status" data-team-tip></span><span data-team-rest>No charge today. Cancel anytime during the trial.</span></div>
     </div>
   </div></div>
 
-  <div class="wrap"><div class="teamsave reveal">
-    <span class="ic ic-green"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744" stroke="var(--ico-accent, currentColor)"/><path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="var(--ico-accent, currentColor)"/><circle cx="9" cy="7" r="4"/></svg></span>
-    <div>
-      <h3>Two people cost less on Team than two Intelligence accounts</h3>
-      <p>Two Intelligence subscriptions run <b>$300/mo</b>. Two Team seats are <b>$220/mo</b> — the same features, plus a shared workspace, roles, and a single invoice. <b>You save $80 a month</b>, and you get more. On yearly it is <b>$2,244</b> against <b>$3,060</b> — <b>$816 saved</b>.</p>
+  <div class="wrap"><div class="bands reveal" data-cycle="monthly">
+    <div class="bands-copy">
+      <span class="ic ic-green"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744" stroke="var(--ico-accent, currentColor)"/><path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="var(--ico-accent, currentColor)"/><circle cx="9" cy="7" r="4"/></svg></span>
+      <div>
+        <h3>The more seats, the less each one costs</h3>
+        <p>Every seat is the same price: a firm with 6 seats pays <b>$70</b> for each of them. Two Team seats are <b>$220/mo</b>, where two Intelligence accounts would be <b>$300/mo</b>. Yearly is billed once a year, at <b>15% off</b>.</p>
+      </div>
     </div>
+    <table class="btable">
+      <caption>Team · per seat, per month</caption>
+      <thead>
+        <tr><th scope="col">Seats</th><th scope="col">Billed monthly</th><th scope="col">Billed yearly</th></tr>
+      </thead>
+      <tbody>
+        <tr data-from="2" data-monthly="110" data-yearly="1122"><th scope="row">2</th><td>$110</td><td>$93.50</td></tr>
+        <tr data-from="3" data-monthly="90" data-yearly="918"><th scope="row">3–4</th><td>$90</td><td>$76.50</td></tr>
+        <tr data-from="5" data-monthly="70" data-yearly="714"><th scope="row">5–9</th><td>$70</td><td>$59.50</td></tr>
+        <tr data-from="10" data-monthly="60" data-yearly="612"><th scope="row">10–19</th><td>$60</td><td>$51</td></tr>
+        <tr data-from="20" data-monthly="50" data-yearly="510"><th scope="row">20+</th><td>$50</td><td>$42.50</td></tr>
+      </tbody>
+    </table>
   </div></div>
 
   <div class="wrap"><div class="cmp reveal">
@@ -232,7 +270,7 @@
             <th scope="col" class="th-feat">Features</th>
             <th scope="col"><span class="pname">Core</span><span class="pmeta">$99/mo · 1 seat</span></th>
             <th scope="col" class="th-pop"><span class="ptag">★ Most popular</span><span class="pname">Intelligence</span><span class="pmeta">$150/mo · 1 seat</span></th>
-            <th scope="col"><span class="pname">Team</span><span class="pmeta">$110/seat/mo · 2+</span></th>
+            <th scope="col"><span class="pname">Team</span><span class="pmeta">$50–$110/seat/mo · 2+</span></th>
           </tr>
         </thead>
         <tbody>
@@ -325,75 +363,126 @@
 
 <script>
 /* Billing-cycle switch: swaps the displayed prices and re-points the plan CTAs.
-   site.js rebuilds the hrefs when it hears legisly:relink. */
+   The Team seat picker redraws itself when it hears legisly:cycle, and site.js
+   rebuilds the hrefs when it hears legisly:relink. A seat row carries a monthly
+   and a yearly amount too, but as numbers for the picker, not as text to swap. */
 (function(){
   var cycle=document.querySelector(".cycle");
   if(!cycle)return;
   var buttons=[].slice.call(cycle.querySelectorAll("button"));
-  var swappable=document.querySelectorAll("[data-monthly]");
+  var swappable=document.querySelectorAll("[data-monthly]:not([data-from])");
 
   function apply(mode){
     swappable.forEach(function(el){el.textContent=el.dataset[mode]});
     document.querySelectorAll("[data-plan]").forEach(function(link){link.dataset.cycle=mode});
     buttons.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.cycle===mode))});
+    document.dispatchEvent(new Event("legisly:cycle"));
     document.dispatchEvent(new Event("legisly:relink"));
   }
 
   buttons.forEach(function(b){b.addEventListener("click",function(){apply(b.dataset.cycle)})});
 })();
 
-/* Team seat picker: the count prices the note under the Team button, relabels
-   both Team CTAs, and rides to the app on their links. The note keeps a monthly
-   and a yearly text, so the billing-cycle switch above goes on working. */
+/* Team seat picker. The per-seat amount depends on the seat count and applies
+   to every seat. The amounts are written once, on the rows of the seat table
+   (data-from is the first count a row covers; data-monthly and data-yearly are
+   dollars per seat per month and per year), and everything here is worked out
+   from them: the card's price and note, the cheaper count when one more seat
+   would lower the bill, and the count both Team CTAs carry to the app. */
 (function(){
   var picker=document.querySelector(".seats");
-  var note=document.querySelector("[data-seat-note]");
-  if(!picker||!note)return;
+  var table=document.querySelector(".bands");
+  var rows=[].slice.call(document.querySelectorAll(".bands [data-from]"));
+  var price=document.querySelector("[data-team-price]");
+  var note=document.querySelector("[data-team-note]");
+  var tip=document.querySelector("[data-team-tip]");
+  var rest=document.querySelector("[data-team-rest]");
+  var links=[].slice.call(document.querySelectorAll('[data-plan="team"]'));
+  if(!picker||!rows.length||!price||!note||!tip||!rest||!links.length)return;
   var field=picker.querySelector("input");
   var down=picker.querySelector('[data-step="-1"]');
   var up=picker.querySelector('[data-step="1"]');
-  var links=[].slice.call(document.querySelectorAll('[data-plan="team"]'));
-  var MIN=2,MAX=9999;
+  var MIN=Number(rows[0].dataset.from),MAX=9999;
   var seats=MIN;
 
-  function total(cycle){
-    return "$"+(seats*Number(picker.dataset[cycle==="yearly"?"seatYearly":"seatMonthly"])).toLocaleString("en-US");
+  function money(amount){
+    return "$"+amount.toLocaleString("en-US",{minimumFractionDigits:amount%1?2:0,maximumFractionDigits:2});
+  }
+  function mode(){return links[0].dataset.cycle==="yearly"?"yearly":"monthly"}
+  function bandOf(count){
+    var band=rows[0];
+    rows.forEach(function(row){if(Number(row.dataset.from)<=count)band=row});
+    return band;
+  }
+  function total(count){return count*Number(bandOf(count).dataset[mode()])}
+  /* The first count of the next band, when that many seats cost less in total. */
+  function cheaper(){
+    var next=rows[rows.indexOf(bandOf(seats))+1];
+    if(!next)return null;
+    var count=Number(next.dataset.from);
+    return total(count)<total(seats)?count:null;
   }
 
   function show(){
+    var yearly=mode()==="yearly";
+    var band=bandOf(seats);
+    var each=Number(band.dataset[mode()]);
     field.value=seats;
     down.disabled=seats<=MIN;
     up.disabled=seats>=MAX;
-    note.dataset.monthly=total("monthly")+"/mo for "+seats+" seats. No charge today.";
-    note.dataset.yearly=total("yearly")+"/yr for "+seats+" seats. No charge today.";
-    note.textContent=note.dataset[links[0].dataset.cycle];
+    price.textContent=money(yearly?each/12:each);
+    note.textContent=seats+" seats · "+money(total(seats))+" billed "+mode();
+    table.dataset.cycle=mode();
+    rows.forEach(function(row){
+      if(row===band)row.setAttribute("aria-current","true");
+      else row.removeAttribute("aria-current");
+    });
+    var count=cheaper();
+    tip.textContent="";
+    rest.hidden=count!==null;
+    if(count!==null){
+      var use=document.createElement("button");
+      use.type="button";
+      use.textContent="Use "+count+" seats";
+      use.addEventListener("click",function(){choose(count);field.focus()});
+      tip.appendChild(document.createTextNode(count+" seats cost "+money(total(count))+(yearly?"/yr":"/mo")+", less than "+seats+". "));
+      tip.appendChild(use);
+    }
     links.forEach(function(link){
       link.dataset.seats=seats;
       link.textContent="Start with "+seats+" seats";
     });
+  }
+
+  function choose(count){
+    seats=Math.min(MAX,Math.max(MIN,count));
+    show();
     document.dispatchEvent(new Event("legisly:relink"));
   }
 
-  function step(by){
-    seats=Math.min(MAX,Math.max(MIN,seats+by));
-    show();
-  }
+  /* With scripts on, the table shows what its rows' numbers say. */
+  rows.forEach(function(row){
+    var cells=row.querySelectorAll("td");
+    cells[0].textContent=money(Number(row.dataset.monthly));
+    cells[1].textContent=money(Number(row.dataset.yearly)/12);
+  });
 
-  down.addEventListener("click",function(){step(-1)});
-  up.addEventListener("click",function(){step(1)});
+  down.addEventListener("click",function(){choose(seats-1)});
+  up.addEventListener("click",function(){choose(seats+1)});
   /* A number still being typed (empty, or below the minimum) changes nothing;
      leaving the field puts the last good count back. */
   field.addEventListener("input",function(){
     var digits=field.value.replace(/\D/g,"").slice(0,4);
     field.value=digits;
     var typed=Number(digits);
-    if(typed>=MIN){seats=typed;show()}
+    if(typed>=MIN)choose(typed);
   });
   field.addEventListener("blur",function(){field.value=seats});
   field.addEventListener("focus",function(){field.select()});
+  document.addEventListener("legisly:cycle",show);
 
   picker.hidden=false;
-  show();
+  choose(MIN);
 })();
 </script>
 </body>
